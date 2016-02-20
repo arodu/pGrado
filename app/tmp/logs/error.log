@@ -1,0 +1,984 @@
+2015-09-05 12:34:41 Error: [MissingDatasourceConfigException] The datasource configuration "default" was not found in database.php
+Exception Attributes: array (
+  'config' => 'default',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/view/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(91): ConnectionManager::_getConnectionObject('default')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3617): ConnectionManager::getDataSource('default')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3644): Model->setSource('proyectos')
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3142): Model->getDataSource()
+#5 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3055): Model->_findCount('before', Array)
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(2989): Model->buildQuery('count', Array)
+#7 /srv/http/pGrado-testing-v0.3/app/Model/AppModel.php(122): Model->find('count', Array)
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Model/Model.php(2904): AppModel->find('count', Array)
+#9 /srv/http/pGrado-testing-v0.3/app/Controller/ProyectosController.php(162): Model->exists('1')
+#10 [internal function]: ProyectosController->view('1')
+#11 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(ProyectosController), Array)
+#12 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#13 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#14 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2015-09-15 15:49:35 Error: Fatal Error (4): syntax error, unexpected ',' in [/srv/http/pGrado-testing-v0.3/app/View/Proyectos/admin_index.ctp, line 53]
+2015-09-15 15:49:35 Error: [FatalErrorException] syntax error, unexpected ','
+Request URL: /pGrado-testing-v0.3/admin/proyectos
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/srv/http/pGrad...', 53)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/srv/http/pGrad...', 53, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/srv/http/pGrad...', 53, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-15 15:49:41 Error: Fatal Error (4): syntax error, unexpected ',' in [/srv/http/pGrado-testing-v0.3/app/View/Proyectos/admin_index.ctp, line 53]
+2015-09-15 15:49:41 Error: [FatalErrorException] syntax error, unexpected ','
+Request URL: /pGrado-testing-v0.3/admin/proyectos
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/srv/http/pGrad...', 53)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/srv/http/pGrad...', 53, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/srv/http/pGrad...', 53, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-30 14:49:54 Error: [MissingViewException] View file "Emails/html/password_recover.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Emails/html/password_recover.ctp',
+)
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(470): View->_getViewFileName('password_recove...')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Network/Email/CakeEmail.php(1694): View->render('password_recove...', 'default')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Network/Email/CakeEmail.php(1547): CakeEmail->_renderTemplates('')
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Network/Email/CakeEmail.php(1159): CakeEmail->_render(Array)
+#4 /srv/http/pGrado-testing-v0.3/app/Controller/UsuariosController.php(506): CakeEmail->send()
+#5 [internal function]: UsuariosController->recover()
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsuariosController), Array)
+#7 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#9 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2015-09-30 14:55:06 Error: [NotFoundException] Not Found
+Request URL: /pGrado-testing-v0.3/jurados/datos_impresion
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/JuradosController.php(6): AppController->verificarModulo('proyecto.jurado...')
+#1 [internal function]: JuradosController->beforeFilter(Object(CakeEvent))
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(676): CakeEventManager->dispatch(Object(CakeEvent))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#5 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(JuradosController), Object(CakeRequest))
+#6 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-09-30 14:55:10 Error: [NotFoundException] Not Found
+Request URL: /pGrado-testing-v0.3/jurados/datos_impresion
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/JuradosController.php(6): AppController->verificarModulo('proyecto.jurado...')
+#1 [internal function]: JuradosController->beforeFilter(Object(CakeEvent))
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(676): CakeEventManager->dispatch(Object(CakeEvent))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#5 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(JuradosController), Object(CakeRequest))
+#6 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2015-09-30 15:24:36 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:24:36 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:24:36 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:25:57 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:25:57 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:25:57 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:26:17 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:26:17 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:26:17 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:26:27 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:26:28 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:26:28 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:27:02 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:27:03 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:27:03 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:28:17 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:28:17 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:28:17 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:48:14 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:48:14 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 15:48:15 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-30 23:06:16 Error: [MissingControllerException] Controller class PanelAdminController could not be found.
+Exception Attributes: array (
+  'class' => 'PanelAdminController',
+  'plugin' => 'PanelAdmin',
+)
+Request URL: /pGrado-testing-v0.3/panel_admin/
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-05 15:44:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/datepicker/datepicker3.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-05 15:44:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/datepicker/bootstrap-datepicker.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-11-05 15:44:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/datepicker/locales/bootstrap-datepicker.es.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-06 13:30:18 Error: [ForbiddenException] Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/Component/PermisosComponent.php(49): PermisosComponent->error()
+#1 /srv/http/pGrado-testing-v0.3/app/Controller/AppController.php(86): PermisosComponent->autorizado()
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/Auth/ControllerAuthorize.php(63): AppController->isAuthorized(Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(467): ControllerAuthorize->authorize(Array, Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#5 [internal function]: AuthComponent->startup(Object(MetasController))
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Utility/ObjectCollection.php(128): call_user_func_array(Array, Array)
+#7 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#9 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#10 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#11 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#12 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-12-06 13:30:26 Error: [ForbiddenException] Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/Component/PermisosComponent.php(49): PermisosComponent->error()
+#1 /srv/http/pGrado-testing-v0.3/app/Controller/AppController.php(86): PermisosComponent->autorizado()
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/Auth/ControllerAuthorize.php(63): AppController->isAuthorized(Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(467): ControllerAuthorize->authorize(Array, Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#5 [internal function]: AuthComponent->startup(Object(MetasController))
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Utility/ObjectCollection.php(128): call_user_func_array(Array, Array)
+#7 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#9 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#10 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#11 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#12 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-12-06 13:30:50 Error: [ForbiddenException] Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/Component/PermisosComponent.php(49): PermisosComponent->error()
+#1 /srv/http/pGrado-testing-v0.3/app/Controller/AppController.php(86): PermisosComponent->autorizado()
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/Auth/ControllerAuthorize.php(63): AppController->isAuthorized(Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(467): ControllerAuthorize->authorize(Array, Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#5 [internal function]: AuthComponent->startup(Object(MetasController))
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Utility/ObjectCollection.php(128): call_user_func_array(Array, Array)
+#7 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#9 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#10 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#11 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#12 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-12-06 13:31:57 Error: [ForbiddenException] Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/Component/PermisosComponent.php(49): PermisosComponent->error()
+#1 /srv/http/pGrado-testing-v0.3/app/Controller/AppController.php(86): PermisosComponent->autorizado()
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/Auth/ControllerAuthorize.php(63): AppController->isAuthorized(Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(467): ControllerAuthorize->authorize(Array, Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#5 [internal function]: AuthComponent->startup(Object(MetasController))
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Utility/ObjectCollection.php(128): call_user_func_array(Array, Array)
+#7 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#9 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#10 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#11 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#12 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2015-12-06 13:33:59 Error: Fatal Error (1): Call to a member function find() on null in [/srv/http/pGrado-testing-v0.3/app/Controller/MetasController.php, line 61]
+2015-12-06 13:33:59 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /pGrado-testing-v0.3/metas/add
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/srv/http/pGrad...', 61)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/srv/http/pGrad...', 61, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/srv/http/pGrad...', 61, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-12-06 13:34:38 Error: Fatal Error (1): Call to a member function find() on null in [/srv/http/pGrado-testing-v0.3/app/Controller/MetasController.php, line 61]
+2015-12-06 13:34:38 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /pGrado-testing-v0.3/metas/add
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/srv/http/pGrad...', 61)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/srv/http/pGrad...', 61, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/srv/http/pGrad...', 61, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-12-06 17:59:02 Error: [NotFoundException] Acceso Denegado
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 [internal function]: MetasController->index('1')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MetasController), Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-12-06 17:59:40 Error: [NotFoundException] Acceso Denegado
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 [internal function]: MetasController->index('1')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MetasController), Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-12-06 18:01:49 Error: [NotFoundException] Acceso Denegado
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 [internal function]: MetasController->index('1')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MetasController), Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-12-06 18:16:08 Error: [NotFoundException] Acceso Denegado
+Request URL: /pGrado-testing-v0.3/metas
+Stack Trace:
+#0 [internal function]: MetasController->index()
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MetasController), Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-12-06 18:25:52 Error: Fatal Error (1): Call to undefined function compat() in [/srv/http/pGrado-testing-v0.3/app/Controller/MetasController.php, line 36]
+2015-12-06 18:25:52 Error: [FatalErrorException] Call to undefined function compat()
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/srv/http/pGrad...', 36)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/srv/http/pGrad...', 36, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/srv/http/pGrad...', 36, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-12-06 18:47:54 Error: Fatal Error (1): Using $this when not in object context in [/srv/http/pGrado-testing-v0.3/app/View/Metas/index.ctp, line 22]
+2015-12-06 18:47:54 Error: [FatalErrorException] Using $this when not in object context
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Using $this whe...', '/srv/http/pGrad...', 22)
+#1 [internal function]: ErrorHandler::handleError(1, 'Using $this whe...', '/srv/http/pGrad...', 22, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Using $this whe...', '/srv/http/pGrad...', 22, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-12-06 18:48:48 Error: Fatal Error (1): Call to a member function link() on null in [/srv/http/pGrado-testing-v0.3/app/View/Metas/index.ctp, line 22]
+2015-12-06 18:48:48 Error: [FatalErrorException] Call to a member function link() on null
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/srv/http/pGrad...', 22)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/srv/http/pGrad...', 22, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/srv/http/pGrad...', 22, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-12-06 19:14:57 Error: Fatal Error (4): syntax error, unexpected 'progress_color' (T_STRING) in [/srv/http/pGrado-testing-v0.3/app/View/Metas/index.ctp, line 50]
+2015-12-06 19:14:57 Error: [FatalErrorException] syntax error, unexpected 'progress_color' (T_STRING)
+Request URL: /pGrado-testing-v0.3/metas/index/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/srv/http/pGrad...', 50)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/srv/http/pGrad...', 50, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/srv/http/pGrad...', 50, Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-12-12 10:59:56 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 10:59:56 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 10:59:59 Error: [NotFoundException] Acceso Denegado
+Request URL: /pGrado-testing-v0.3/metas/add/
+Stack Trace:
+#0 [internal function]: MetasController->add()
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MetasController), Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(MetasController), Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-12-12 11:00:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:00 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:15 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:15 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:17 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:17 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:29 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:29 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:29 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:00:29 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:01:48 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:01:48 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:03:40 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:03:40 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:03:41 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:03:41 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:04:10 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:04:10 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:04:11 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-12 11:04:11 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-12-13 21:26:38 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-12-13 21:26:38 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-12-13 21:26:38 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-30 14:31:01 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-01-30 14:31:01 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-01 09:44:41 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-01 09:44:41 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 09:56:13 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-20 09:56:13 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 10:16:20 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-20 10:16:20 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 10:16:22 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-20 10:16:22 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 10:18:09 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-20 10:18:09 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 10:19:33 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-20 10:19:33 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 10:19:35 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/srv/http/pGrado-testing-v0.3/lib/Cake/Utility/String.php, line 24]
+2016-02-20 10:19:35 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/srv/http/pGrad...', 24, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-02-20 13:03:16 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js?_=1455989575776
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 13:03:16 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js?_=1455989575777
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 16:54:16 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/inicio
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:00:11 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js?_=1456003788417
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:00:11 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js?_=1456003788418
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:00:59 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:00:59 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:00:59 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-MO.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:01:18 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:01:18 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:01:18 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-MO.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:01:18 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-MO.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-20 17:02:18 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-02-20 17:02:18 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-02-20 17:02:18 Error: [MissingActionException] Action ProyectosController::lib() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProyectosController',
+  'action' => 'lib',
+)
+Request URL: /pGrado-testing-v0.3/proyectos/lib/css/wysiwyg-color.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-02-20 17:02:32 Error: [MissingControllerException] Controller class DescargasController could not be found.
+Exception Attributes: array (
+  'class' => 'DescargasController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/descargas/Auditoria_Planilla_de_evaluaci%C3%B3n_Predefensa.pdf
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
