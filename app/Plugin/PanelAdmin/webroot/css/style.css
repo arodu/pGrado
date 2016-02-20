@@ -1,0 +1,3 @@
+form div.required input, form div.required select, form div.required textarea{
+	border-left: #FF0000 solid 4px;
+}

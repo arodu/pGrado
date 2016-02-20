@@ -1,0 +1,11 @@
+msgid "Categoría"
+msgstr "Linea de Investigación"
+
+msgid "Categoria"
+msgstr "Linea de Investigación"
+
+msgid "Categorias"
+msgstr "Lineas de Investigación"
+ 
+msgid "Sede"
+msgstr "Sede"

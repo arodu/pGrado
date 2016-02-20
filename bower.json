@@ -1,0 +1,37 @@
+{
+  "name": "pGrado",
+  "description": "Sistema de Gestion y Seguimiento de Proyectos Academicos",
+  "version": "0.3.0",
+  "homepage": "http://pgrado.aisunerg.net.ve",
+  "authors": [
+    "Alberto Rodriguez <arod.unerg@gmail.com>"
+  ],
+  "keywords": [
+    "framework",
+    "pGrado",
+    "UNERG"
+  ],
+  "license": "unerg",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#~2.3.2",
+    "bootstrap": "~3.3",
+    "jquery": "~2.2",
+    "bootstrap3-wysihtml5": "*",
+    "cropper": "~0.11.1",
+    "font-awesome": "~4.5",
+    "jquery-autosize": "~3.0",
+    "jquery-file-upload": "~9.11",
+    "jquery-maskedinput": "~1.4",
+    "bootstrap-tagsinput": "~0.8"
+  },
+  "resolutions": {
+    "jquery": "~2.2"
+  }
+}
