@@ -21,7 +21,7 @@
 		?>
 
 		<style type="text/css">
-			/*
+		/*
 			body{
 				background: url("<?php echo $this->Html->url('/img/fondo.oleo.jpg');?>") no-repeat #000 center !important;
 				background-size: 100% 100% !important;

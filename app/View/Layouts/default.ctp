@@ -13,7 +13,7 @@
 			echo $this->Html->css('/libs/bootstrap/dist/css/bootstrap.min'); // Bootstrap
 			echo $this->Html->css('/libs/font-awesome/css/font-awesome.min'); // Font Awesome Icons
 
-			echo $this->Html->css('/libs/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min'); // smalot-sootstrap-datetimepicker
+			#echo $this->Html->css('/libs/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min'); // smalot-sootstrap-datetimepicker
 
 			//echo $this->Html->css('/libs/bootstrap/css/animate'); // animate CSS
 
@@ -98,8 +98,8 @@
 			echo $this->Html->script('/libs/AdminLTE/dist/js/app.min');								// AdminLTE App
 			//echo $this->Html->script('/libs/adminlte/plugins/iCheck/icheck.min.js');				// iCheck
 
-			echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min'); // smalot-sootstrap-datetimepicker
-			echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es'); // smalot-sootstrap-datetimepicker
+			#echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min'); // smalot-sootstrap-datetimepicker
+			#echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es'); // smalot-sootstrap-datetimepicker
 
 			echo $this->Html->script('/libs/AdminLTE/plugins/slimScroll/jquery.slimscroll.min');	// Slimscroll
 			echo $this->Html->script('/libs/AdminLTE/plugins/fastclick/fastclick.min'); 			// FastClick

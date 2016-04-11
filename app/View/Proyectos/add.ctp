@@ -30,13 +30,12 @@
 
 							echo '<div class="form-group well well-sm required" id="categorias">';
 								echo '<label class="control-label">Linea de Investigación</label> ';
-								echo '<small>(seleccione el programa primero)</small>';
+								echo '<small>(Seleccione Programa de Estudio)</small>';
 								echo '<span class="form-control-static form-control bg-gray text-muted">';
 									echo '<em><i class="fa fa-ban fa-fw"></i> Sin Lineas de Investigación</em>';
 								echo '</span>';
 							echo '</div>';
 
-						// echo $this->Form->input('Proyecto.categoria_id',array('label'=>__("Categoría"),'empty'=>'-- seleccione --','div'=>array('id'=>'categorias','class'=>'form-group well well-sm'), 'class'=>'form-control','between'=>' <small>(seleccione programa primero)</small>'));
 						echo '</div>';
 					echo '</div>';
 
