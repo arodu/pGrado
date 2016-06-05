@@ -44,7 +44,5 @@
 
 <?php echo $this->Form->end(); ?>
 
-
 <?php $this->Html->scriptStart(array('inline' => false)); ?>
-	
 <?php $this->Html->scriptEnd(); ?>

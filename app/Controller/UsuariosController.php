@@ -39,7 +39,7 @@ class UsuariosController extends AppController {
 							'Sede','TipoUsuario','DescripcionUsuario'
 						),
 				));
-			
+
 			// debug($usuario);
 
 			$this->set('usuario',$usuario);
@@ -59,7 +59,7 @@ class UsuariosController extends AppController {
 
 			$tipo_usuario = $this->Usuario->TipoUsuario->find('first',array('conditions'=>array('TipoUsuario.id'=>$this->Auth->user('tipo_usuario_id')),'fields'=>array('id','code'),'recursive' => -1 ));
 			$this->set('tipo_usuario',$tipo_usuario['TipoUsuario']);
-			
+
 
 			$this->render('view_'.Configure::read('Sistema.tipo'));
 		}
@@ -229,7 +229,7 @@ class UsuariosController extends AppController {
 			$file_name = $this->Usuario->foto($tipo_foto,$id);
 
 			$file = new File( $path_to_files.$file_name );
-			
+
 			if( $file->exists() ){
 				return $path_to_files.$file_name;
 			}else{
@@ -303,7 +303,7 @@ class UsuariosController extends AppController {
 		public function login() {
 			$this->set('title_for_layout',false);
 			$this->layout = 'login';
-			
+
 			if($this->Auth->user()){
 				return $this->redirect($this->Auth->redirectUrl());
 			}
@@ -331,7 +331,7 @@ class UsuariosController extends AppController {
 		public function register() {
 			$this->set('title_for_layout','Registro de Usuarios');
 			$this->layout = 'login';
-			
+
 			if($this->Auth->user()){
 				return $this->redirect($this->Auth->redirectUrl());
 			}
@@ -339,7 +339,7 @@ class UsuariosController extends AppController {
 			if ($this->request->is('post')) {
 				$this->Usuario->set($this->request->data);
 
-				if(Configure::read('google_recaptcha')){
+				if(Configure::read('google_recaptcha') && Configure::read(['sistema']['modulos']['external.google_recaptcha'])){
 					$this->ReCaptcha = $this->Components->load('ReCaptcha');
 					$reCaptcha_valido = $this->ReCaptcha->verificar($this->request->data['g-recaptcha-response']);
 				}else{
@@ -414,7 +414,7 @@ class UsuariosController extends AppController {
 									if ( in_array($perfilUsuario[0], $aux) ) {
 										$perfilUsuario = $aux;
 									}else{
-										$perfilUsuario = array_merge($perfilUsuario,$aux);	
+										$perfilUsuario = array_merge($perfilUsuario,$aux);
 									}
 								// -----------------------------------
 
@@ -434,7 +434,7 @@ class UsuariosController extends AppController {
 							if ($this->Usuario->save($data_usuario)){
 								if($configUsuario['activacionPorCorreo']){
 
-									// FALTA ENVIO DE CORREO DE ACTIVACION 
+									// FALTA ENVIO DE CORREO DE ACTIVACION
 
 									$mensaje = 'Se le ha enviado un correo para la activacion de la su cuenta';
 									$element = 'alert/warning';
@@ -457,7 +457,6 @@ class UsuariosController extends AppController {
 			}
 		}
 
-
 		public function recover(){
 			$this->set('title_for_layout','Recuperación de Contraseña');
 			$this->layout = 'login';
@@ -469,7 +468,7 @@ class UsuariosController extends AppController {
 			if ($this->request->is('post')) {
 				$this->Usuario->set($this->request->data);
 
-				if( Configure::read('google_recaptcha') ){
+				if(Configure::read('google_recaptcha') && Configure::read(['sistema']['modulos']['external.google_recaptcha'])){
 					$this->ReCaptcha = $this->Components->load('ReCaptcha');
 					$reCaptcha_valido = $this->ReCaptcha->verificar($this->request->data['g-recaptcha-response']);
 				}else{
@@ -490,12 +489,12 @@ class UsuariosController extends AppController {
 
 							//$email = new CakeEmail('gmail');
 							$email = new CakeEmail('default');
-							
+
 							//$email->from(array('noresponder@aisdevs.com.ve'=>'pGrado'));
 							$email->emailFormat('html');
 							$email->to($user_email);
 							$email->subject('Notificación: recuperación de contraseña');
-						
+
 							$text_email['appNombre'] = Configure::read('sistema.nombre');
 							$text_email['appDescripcion'] = Configure::read('sistema.descripcion');
 							$text_email['usuario'] = $usuario['Usuario']['cedula_nombre_completo'];
@@ -519,11 +518,6 @@ class UsuariosController extends AppController {
 				}else{
 					$this->Session->setFlash('Please re-enter your reCAPTCHA','alert/danger');
 				}
-
-
-
-
-				
 			}
 		}
 

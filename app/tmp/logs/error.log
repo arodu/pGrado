@@ -1624,3 +1624,1860 @@ Stack Trace:
 #1 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
 #2 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2016-04-20 10:26:42 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:26:43 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:26:44 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:26:50 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:26:51 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:27:04 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:27:13 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:27:24 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:28:26 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:28:27 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:29:23 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 10:29:31 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:45:52 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:49:09 Error: [ParseError] syntax error, unexpected 'exit' (T_EXIT), expecting ',' or ';'
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 [internal function]: App::load('UsuariosControl...')
+#1 [internal function]: spl_autoload_call('UsuariosControl...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(266): class_exists('UsuariosControl...')
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:49:09 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2016-04-20 16:49:09 Error: [InternalErrorException] Internal Server Error
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-04-20 16:49:10 Error: [ParseError] syntax error, unexpected 'exit' (T_EXIT), expecting ',' or ';'
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 [internal function]: App::load('UsuariosControl...')
+#1 [internal function]: spl_autoload_call('UsuariosControl...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(266): class_exists('UsuariosControl...')
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:49:10 Error: Fatal Error (16): Exception thrown without a stack frame in [Unknown, line 0]
+2016-04-20 16:49:10 Error: [InternalErrorException] Internal Server Error
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(16, 'Exception throw...', 'Unknown', 0)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(970): ErrorHandler::handleError(16, 'Exception throw...', 'Unknown', 0, Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-04-20 16:49:47 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:50:46 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:50:48 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:50:56 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:50:57 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:51:49 Error: [ParseError] syntax error, unexpected '<', expecting end of file
+Request URL: /pGrado-testing-v0.3/recover
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/srv/http/pGrad...', Array)
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/srv/http/pGrad...')
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-04-20 16:55:25 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-MO.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-20 16:55:25 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-20 16:55:25 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-20 16:55:25 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-20 16:55:25 Error: [MissingControllerException] Controller class LibsController could not be found.
+Exception Attributes: array (
+  'class' => 'LibsController',
+  'plugin' => NULL,
+)
+Request URL: /pGrado-testing-v0.3/libs/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-MO.js
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-20 16:55:35 Error: [ForbiddenException] Forbidden
+Request URL: /pGrado-testing-v0.3/planillas/aprobacionPropuesta/1
+Stack Trace:
+#0 [internal function]: PlanillasController->aprobacionPropuesta('1')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(491): ReflectionMethod->invokeArgs(Object(PlanillasController), Array)
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PlanillasController), Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-04-20 16:55:39 Error: [ForbiddenException] Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.
+Request URL: /pGrado-testing-v0.3/proyectos/printPdf/1
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/Component/PermisosComponent.php(49): PermisosComponent->error()
+#1 /srv/http/pGrado-testing-v0.3/app/Controller/AppController.php(86): PermisosComponent->autorizado()
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/Auth/ControllerAuthorize.php(63): AppController->isAuthorized(Array)
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(469): ControllerAuthorize->authorize(Array, Object(CakeRequest))
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Component/AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#5 /srv/http/pGrado-testing-v0.3/lib/Cake/Utility/ObjectCollection.php(128): AuthComponent->startup(Object(ProyectosController))
+#6 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): ObjectCollection->trigger('startup')
+#7 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(678): CakeEventManager->dispatch(Object(CakeEvent))
+#8 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#9 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProyectosController), Object(CakeRequest))
+#10 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-04-22 08:28:18 Error: [NotFoundException] Not Found
+Request URL: /pGrado-testing-v0.3/jurados/datos_impresion
+Stack Trace:
+#0 /srv/http/pGrado-testing-v0.3/app/Controller/JuradosController.php(6): AppController->verificarModulo('proyecto.jurado...')
+#1 /srv/http/pGrado-testing-v0.3/lib/Cake/Event/CakeEventManager.php(243): JuradosController->beforeFilter(Object(CakeEvent))
+#2 /srv/http/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#3 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#4 /srv/http/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(JuradosController), Object(CakeRequest))
+#5 /srv/http/pGrado-testing-v0.3/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2016-06-04 21:46:53 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:54 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:55 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:58 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:58 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:58 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:46:59 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:00 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:07 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:08 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:08 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:08 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-06-04 21:47:08 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[42000] [1049] Unknown database \'grados_base5_testing\'',
+  'enabled' => true,
+)
+Request URL: /pGrado-testing-v0.3/login
+Stack Trace:
+#0 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Datasource/DboSource.php(260): Mysql->connect()
+#1 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3626): ConnectionManager::getDataSource('default')
+#3 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1155): Model->setDataSource('default')
+#4 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(3653): Model->setSource('usuarios')
+#5 /var/www/html/pGrado-testing-v0.3/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#6 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(215): Model->schema()
+#7 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/Helper/FormHelper.php(479): FormHelper->_introspectModel('Usuario', 'fields')
+#8 /var/www/html/pGrado-testing-v0.3/app/View/Usuarios/login.ctp(2): FormHelper->create('Usuario')
+#9 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(971): include('/var/www/html/p...')
+#10 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(933): View->_evaluate('/var/www/html/p...', Array)
+#11 /var/www/html/pGrado-testing-v0.3/lib/Cake/View/View.php(473): View->_render('/var/www/html/p...')
+#12 /var/www/html/pGrado-testing-v0.3/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#13 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#14 /var/www/html/pGrado-testing-v0.3/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest))
+#15 /var/www/html/pGrado-testing-v0.3/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}

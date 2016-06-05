@@ -77,7 +77,7 @@ class Categoria extends AppModel {
 
 	public function getRuta($id){
 		$parents = $this->getPath( $id, array('Categoria.nombre'));
-		$aux = null;
+		$aux = array();
 		foreach ($parents as $parent) {
 			$aux[] = $parent['Categoria']['nombre'];
 		}

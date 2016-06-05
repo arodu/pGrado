@@ -13,14 +13,15 @@
 		$config['sistema']['info']['fecha'] = '2014 - 2015';
 
 		// VERSION
-			$number	= '0.3';
+			$mayor	= '0';
+			$minor	= '3';
 			$update	= '';
 			$bdd	= '3';
 			$state	= 'alfa';
 			$coment = '';
 
-			$versionLargo = $number.( ( $update=='' ? '' : '.'.$update) ).'-'.$bdd.' '.( ( $state=='' ? '' : $state) );
-			$versionCorto = $number.' '.( ( $state=='' ? '' : $state) );
+			$versionLargo = $mayor.'.'.$minor.( ( $update=='' ? '' : '.'.$update) ).'-'.$bdd.' '.( ( $state=='' ? '' : $state) ).' '.( $coment=='' ? '' : '('.$coment.')') ; // 0.3.1-3 alfa (designer)
+			$versionCorto = $mayor.'.'.$minor.( ( $update=='' ? '' : '.'.$update) ).' '.( ( $state=='' ? '' : $state) ); // 0.3.1 alfa
 
 		// format 0.1-1 beta
 		$config['sistema']['version']['largo'] = $versionLargo;
@@ -30,7 +31,6 @@
 		$config['sistema']['usuario']['soloUsuariosPreRegistrados'] = false;
 		$config['sistema']['usuario']['soloUsuariosAdmin'] = false; 			// Solo pueden acceder usuarios de tipo admin
 		$config['sistema']['usuario']['activacionPorCorreo'] = false;
-
 
 		$config['sistema']['usuario']['avatar_default'] = array(
 				'25'  => 'avatar.default.25.png',
@@ -62,7 +62,7 @@
 
 		$config['proyectos']['archivos']['cantidad'] = 5; // Cantidad de archivos que se pueden guardar por cada proyecto
 
-		$config['proyectos']['tiempo']['eliminacion'] = 24; //Cantidad en HORAS
+		$config['proyectos']['tiempo']['eliminacion'] = 24; //Tiempo para poder eliminar un Proyecto, cantidad en HORAS
 
 
 	// FORMATOS PARA DESCARGAR
@@ -76,13 +76,18 @@
 
 	// Activar/Desactivar Modulos
 		$config['sistema']['modulos'] = array(
-				'main.mensajes'	 => true,
-				'proyecto.archivos' => true,
-				'proyecto.escenarios' => true,
-				'proyecto.comentarios'=> true,
-				'proyecto.jurados'=> true,
+				'main.mensajes'	 => false,
+				'proyecto.archivos' => false,
+				'proyecto.escenarios' => false,
+				'proyecto.comentarios'=> false,
+				'proyecto.jurados'=> false,
 				'proyecto.metas'=> true,
-				'proyecto.asuntos'=> true,
+				'proyecto.asuntos'=> false,
+
+				'external.google_analytics' => false,
+				'external.google_recaptcha' => false,
+				'external.facebook_page' => false,   // true only if twitter_timeline is false
+				'external.twitter_timeline' => false,   // true only if facebook_page is false
 			);
 
 /**

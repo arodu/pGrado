@@ -46,13 +46,13 @@
 			'class'=>'form-control',
 			'placeholder'=>'Confirmacion de Contraseña',
 		));
-
-		//echo $this->Captcha->render($captchaConfig);
 	?>
 
-	<div class="form-group">
-		<?php echo $this->element('external/google_recaptcha'); ?>
-	</div>
+	<?php if($mod_activo['external.google_recaptcha']){ ?>
+		<div class="form-group">
+			<?php echo $this->element('external/google_recaptcha'); ?>
+		</div>
+	<?php } ?>
 
 	<div class="row">
 		<div class="col-xs-12">

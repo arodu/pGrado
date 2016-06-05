@@ -1,4 +1,4 @@
-	<p class="login-box-msg">Ingrese su Correo Electronico para recuperar su Contraseña</p>
+<p class="login-box-msg">Ingrese su Correo Electronico para recuperar su Contraseña</p>
 <?php echo $this->Form->create('Usuario'); ?>
 
 	<?php
@@ -11,13 +11,13 @@
 			'placeholder'=>'Ingrese su Correo Electronico',
 			'after'=>'<span class="glyphicon glyphicon-envelope form-control-feedback"></span>',
 		));
-
-		//echo $this->Captcha->render($captchaConfig);
 	?>
 
-	<div class="form-group">
-		<?php echo $this->element('external/google_recaptcha'); ?>
-	</div>
+	<?php if($mod_activo['external.google_recaptcha']){ ?>
+		<div class="form-group">
+			<?php echo $this->element('external/google_recaptcha'); ?>
+		</div>
+	<?php } ?>
 
 	<div class="row">
 		<div class="col-xs-12">
@@ -29,7 +29,7 @@
 					'data-loading-text'=>'Enviando, por favor espere...',
 					'escape'=>false,
 				)
-			);?>
+			); ?>
 		</div>
 	</div>
 
@@ -59,6 +59,3 @@
     });
 
 <?php $this->Html->scriptEnd(); ?>
-
-
-

@@ -108,7 +108,7 @@
 
 			echo $this->fetch('script');
 
-			echo $this->element('external/google_analytics');
+			if($mod_activo['external.google_analytics']){ echo $this->element('external/google_analytics'); }
 		?>
   </body>
 </html>

@@ -245,8 +245,8 @@
 
 	<?php if(!$this->request->is('mobile')){ ?>
 		<div class="col-md-4 col-sm-6 col-xs-12 text-right">
-			<?php echo $this->element('external/facebook_page'); ?>
-			<?php //echo $this->element('external/twitter_timeline'); ?>
+			<?php if($mod_activo['external.facebook_page'] && !$mod_activo['external.twitter_timeline']){ echo $this->element('external/facebook_page'); } ?>
+			<?php if($mod_activo['external.twitter_timeline'] && !$mod_activo['external.facebook_page']){ echo $this->element('external/twitter_timeline'); }?>
 		</div>
 	<?php } ?>
 
