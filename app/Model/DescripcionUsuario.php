@@ -41,8 +41,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'telf_cel' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -51,8 +51,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'telf_trab' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -61,8 +61,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'telf_hab' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -71,8 +71,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'direccion' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -81,8 +81,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'titulo_obtenido' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -91,8 +91,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'profesion' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -101,8 +101,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'inst_labora' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -111,8 +111,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'nivel_academico' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -121,8 +121,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'resumen_curricular' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -145,8 +145,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'telf_cel' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -155,8 +155,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'telf_hab' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,
@@ -165,8 +165,8 @@ class DescripcionUsuario extends AppModel {
 					),
 				),
 				'direccion' => array(
-					'notEmpty' => array(
-						'rule' => array('notEmpty'),
+					'notBlank' => array(
+						'rule' => array('notBlank'),
 						//'message' => 'Your custom message here',
 						//'allowEmpty' => false,
 						//'required' => false,

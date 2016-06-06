@@ -17,21 +17,20 @@
 			if(isset($userInfo['perfil']['estudiante']) && $userInfo['perfil']['estudiante'])
 				echo $this->element('sidebar/menu/estudiante');
 
-            if(isset($userInfo['perfil']['tutoracad']) && $userInfo['perfil']['tutoracad'])
-                echo $this->element('sidebar/menu/tutoracad');
+			//if(isset($userInfo['perfil']['tutoracad']) && $userInfo['perfil']['tutoracad'])
+			//	echo $this->element('sidebar/menu/tutoracad');
 
-            if(isset($userInfo['perfil']['tutormetod']) && $userInfo['perfil']['tutormetod'])
-                echo $this->element('sidebar/menu/tutormetod');
+			//if(isset($userInfo['perfil']['tutormetod']) && $userInfo['perfil']['tutormetod'])
+			//	echo $this->element('sidebar/menu/tutormetod');
 
 			if(isset($userInfo['perfil']['tutoracad']) && $userInfo['perfil']['tutoracad'])
-                echo $this->element('sidebar/menu/docente');
+				echo $this->element('sidebar/menu/docente');
 
+			if(isset($userInfo['perfil']['coordpg']) && $userInfo['perfil']['coordpg'])
+				echo $this->element('sidebar/menu/coordpg');
 
-            if(isset($userInfo['perfil']['coordpg']) && $userInfo['perfil']['coordpg'])
-                echo $this->element('sidebar/menu/coordpg');
-
-            //if(isset($userInfo['perfil']['admin']) && $userInfo['perfil']['admin'])
-            //    echo $this->element('sidebar/menu/admin');
+			//if(isset($userInfo['perfil']['admin']) && $userInfo['perfil']['admin'])
+			//    echo $this->element('sidebar/menu/admin');
 
 			if(isset($userInfo) && $userInfo)
 				echo $this->element('sidebar/menu/usuario');

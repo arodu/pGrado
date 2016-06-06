@@ -94,7 +94,7 @@ class AutorsController extends AppController {
 					}
 				}
 
-				//debug($this->request->data); 
+				//debug($this->request->data);
 				if($this->request->data['Autor']['tipoAutorNombre'] == 'Estudiante'){
 
 					$cant_proyectos = $this->Autor->find('count',array(
@@ -175,40 +175,16 @@ class AutorsController extends AppController {
 			$usuarios_proyecto = $this->Autor->find('list',array('fields'=>array('usuario_id'),'conditions'=>array('Autor.proyecto_id'=>$proyecto_id)));
 
 			if($tipoAutor['TipoAutor']['code'] == 'estudiante'){
-
 				return $this->redirect(array('action'=>'addCompanero',$proyecto_id));
-
-				//$tipo_usuario_id = '1';
-				//$usuarios = $this->Autor->Usuario->find('list',array('fields'=>array('id','cedula_nombre_completo'),'order'=>array('Usuario.nombres','Usuario.apellidos'),'conditions'=>array('NOT'=>array('Usuario.id'=>$usuarios_proyecto),'Usuario.tipo_usuario_id'=>$tipo_usuario_id)));
-
 			}elseif($tipoAutor['TipoAutor']['code'] == 'tutoracad'){
-				$tipo_usuario_id = '2';
-				$usuarios = $this->Autor->Usuario->find('list',array('fields'=>array('id','nombre_completo'),'order'=>array('Usuario.nombres','Usuario.apellidos'),'conditions'=>array('NOT'=>array('Usuario.id'=>$usuarios_proyecto),'Usuario.tipo_usuario_id'=>$tipo_usuario_id)));
-
+				$usuarios = $this->Autor->Usuario->listPerfil('tutoracad', $usuarios_proyecto);
 			}elseif($tipoAutor['TipoAutor']['code'] == 'tutormetod'){
-				$usuarios_metod = $this->Autor->Usuario->Perfil->find('first',array(
-					'conditions'=>array('Perfil.code'=>'tutormetod'),
-					'contain'=>array(
-						'Usuario'=>array(
-								'conditions'=>array('NOT'=>array('Usuario.id'=>$usuarios_proyecto)),
-								'fields'=>array('Usuario.id','Usuario.nombre_completo'),
-								'order'=>array('Usuario.nombre_completo'),
-							)
-						),
-					));
-
-				$usuarios = null;
-				foreach ($usuarios_metod['Usuario'] as $usuario_m) {
-					$usuarios[$usuario_m['id']] = $usuario_m['nombre_completo'];
-				}
+				$usuarios = $this->Autor->Usuario->listPerfil('tutormetod', $usuarios_proyecto);
 			}else{
 				$usuarios = array();
 			}
 			$this->set(compact('proyecto_id', 'tipoAutor','usuarios'));
 		}
-		// $proyectos = $this->Autor->Proyecto->find('list');
-		// $tipoAutors = $this->Autor->TipoAutor->find('list');
-		
 	}
 
 	public function addCompanero($proyecto_id){
@@ -251,7 +227,7 @@ class AutorsController extends AppController {
 				$data['Autor']['tipoAutorNombre'] = 'Estudiante';
 
 				$this->request->data = $data;
-				
+
 				$this->add();
 
 			}else{
@@ -362,7 +338,7 @@ class AutorsController extends AppController {
 			return $this->redirect(array('controller'=>'proyectos','action' => 'index'));
 		}elseif($autor['TipoAutor']['code'] == 'tutoracad'){
 			return $this->redirect(array('controller'=>'proyectos','action' => 'indexTutorAcad'));
-		}elseif($autor['TipoAutor']['code'] == 'tutormetod'){		
+		}elseif($autor['TipoAutor']['code'] == 'tutormetod'){
 			return $this->redirect(array('controller'=>'proyectos','action' => 'indexTutorMetod'));
 		}else{
 			return $this->redirect(array('controller'=>'pages','action' => 'index'));

@@ -92,7 +92,7 @@ class PagesController extends AppController {
 
 
 	public function descargas(){
-
+		$this->verificarModulo('main.descargas');
 	}
 
 

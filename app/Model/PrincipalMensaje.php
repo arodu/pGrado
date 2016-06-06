@@ -32,8 +32,8 @@ class PrincipalMensaje extends AppModel {
 			),
 		),
 		'titulo' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

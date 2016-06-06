@@ -1,10 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 class ProyectosController extends AppController {
-    public $uses = array('Proyecto','Mensaje');
+  public $uses = array('Proyecto','Mensaje');
 	public $components = array('Paginator', 'Session','Search');
 	private $adminRouting = false;
-
 
 	// *************** METODOS PROYECTOS *************************
 		public function verActivo(){
@@ -92,7 +91,7 @@ class ProyectosController extends AppController {
 
 			$this->set(compact('proyectos'));
 
-			$this->set('menuActive','tutoracad');
+			$this->set('menuActive','docente');
 
 			$this->render('index');
 		}
@@ -122,12 +121,14 @@ class ProyectosController extends AppController {
 				));
 			$this->set(compact('proyectos'));
 
-			$this->set('menuActive','tutormetod');
+			$this->set('menuActive','docente');
 
 			$this->render('index');
 		}
 
 		public function indexJurado() {
+
+      $this->verificarModulo('proyecto.jurados');
 
 			$proyectos_jurado = $this->Proyecto->Jurado->find('list',array(
 					'conditions'=>array(
@@ -230,9 +231,9 @@ class ProyectosController extends AppController {
 			if(@$proyecto_autor['TipoAutor']['code'] == 'estudiante'){
 				$this->set('menuActive','estudiante');
 			}elseif(@$proyecto_autor['TipoAutor']['code'] == 'tutormetod'){
-				$this->set('menuActive','tutormetod');
+				$this->set('menuActive','docente');
 			}elseif(@$proyecto_autor['TipoAutor']['code'] == 'tutoracad'){
-				$this->set('menuActive','tutoracad');
+				$this->set('menuActive','docente');
 			}
 		}
 
@@ -242,7 +243,7 @@ class ProyectosController extends AppController {
             //$this->render("Planillas/print_proyecto");
 		}
 
-        public function printPdf($id = null){
+    public function printPdf($id = null){
 			$this->layout = 'printPdf';
 			$this->view($id);
             $this->response->type('application/pdf');
@@ -334,7 +335,8 @@ class ProyectosController extends AppController {
 
 			$tipo_usuario_id = '2';
 			$usuarios_proyecto = array( $this->Auth->user('id') );
-			$tutors = $this->Proyecto->Autor->Usuario->find('list',array('fields'=>array('id','nombre_completo'),'order'=>array('Usuario.nombres','Usuario.apellidos'),'conditions'=>array('NOT'=>array('Usuario.id'=>$usuarios_proyecto),'Usuario.tipo_usuario_id'=>$tipo_usuario_id)));
+
+      $tutors = $this->Proyecto->Autor->Usuario->listPerfil('tutoracad', $usuarios_proyecto);
 
 			//$categorias = $this->Proyecto->Categoria->generateTreeList(array('activo'=>'1'),null,null,'|---');
 

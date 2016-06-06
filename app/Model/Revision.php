@@ -12,8 +12,8 @@ class Revision extends AppModel {
 
 	public $validate = array(
 		'titulo' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -22,8 +22,8 @@ class Revision extends AppModel {
 			),
 		),
 		'resumen' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -32,8 +32,8 @@ class Revision extends AppModel {
 			),
 		),
 		'descripcion' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -42,8 +42,8 @@ class Revision extends AppModel {
 			),
 		),
 		'etiquetas' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -71,7 +71,7 @@ class Revision extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-	);	
+	);
 
 	public $belongsTo = array(
 		'Proyecto' => array(

@@ -276,16 +276,20 @@
 				<div class="box-footer">
 					<?php $disabled = ( $revisionEditable ? false : 'disabled' );?>
 
-					<?php echo $this->Html->link('<i class="fa fa-edit"></i>&nbsp;Editar Revision',
-							array('controller'=>'revisions','action' => 'edit', $revision['id']),
-							array('class'=>'btn btn-primary','disabled'=>$disabled,'escape'=>false)
-						); ?>
+					<?php if($mod_activo['proyecto.revisions']): ?>
 
-					<?php /* Botones de VER REVISINES Y VERSION PARA IMPRIMIR */ ?>
-					<?php echo $this->Html->link('<i class="fa fa-code-fork"></i>&nbsp;Ver Revisiones',
-							array('controller'=>'revisions','action' => 'index',$proyecto['Proyecto']['id']),
-							array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false)
-						); ?>
+						<?php echo $this->Html->link('<i class="fa fa-edit"></i>&nbsp;Editar Revision',
+								array('controller'=>'revisions','action' => 'edit', $revision['id']),
+								array('class'=>'btn btn-primary','disabled'=>$disabled,'escape'=>false)
+							); ?>
+
+						<?php /* Botones de VER REVISINES Y VERSION PARA IMPRIMIR */ ?>
+						<?php echo $this->Html->link('<i class="fa fa-code-fork"></i>&nbsp;Ver Revisiones',
+								array('controller'=>'revisions','action' => 'index',$proyecto['Proyecto']['id']),
+								array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false)
+							); ?>
+					<?php endif; ?>
+
 
 					<?php echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Imprimir Planillas',
 							'#',

@@ -33,8 +33,8 @@ class Usuario extends AppModel {
  */
 	public $validate = array(
 		'cedula' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -59,8 +59,8 @@ class Usuario extends AppModel {
 			),
 		),
         'password' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -77,8 +77,8 @@ class Usuario extends AppModel {
 			),
         ),
 		'password_confirm' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -95,8 +95,8 @@ class Usuario extends AppModel {
 			),
 		),
 		'password_check' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -113,8 +113,8 @@ class Usuario extends AppModel {
 			),
 		),
 		'nombres' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -123,8 +123,8 @@ class Usuario extends AppModel {
 			),
 		),
 		'apellidos' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -133,8 +133,8 @@ class Usuario extends AppModel {
 			),
 		),
 		'sexo' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -143,8 +143,8 @@ class Usuario extends AppModel {
 			),
 		),
 		'email' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -165,8 +165,8 @@ class Usuario extends AppModel {
 			)
 		),
 		'email_confirm' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -485,6 +485,37 @@ class Usuario extends AppModel {
 		return $file_name;
 
 	}
+
+	public function listPerfil($perfil = 'tutoracad', $notUser = array()){
+		$lista = $this->PerfilsUsuario->find('all',array(
+			'fields'=>array('Usuario.id','Usuario.nombres', 'Usuario.apellidos'),
+			'order'=>array('Usuario.nombres','Usuario.apellidos'),
+			'conditions'=>array(
+				'PerfilsUsuario.perfil_id' => $this->Perfil->findIdByCode($perfil),
+				'NOT'=>array(
+					'PerfilsUsuario.usuario_id'=>$notUser,
+				),
+			),
+			'joins'=>array(
+				array(
+					'table' => 'usuarios',
+					'alias' => 'Usuario',
+					'type' => 'LEFT',
+					'conditions' => array(
+						'Usuario.id = PerfilsUsuario.usuario_id',
+					)
+				)
+			),
+		));
+
+		$out = array();
+		foreach ($lista as $usuario) {
+			$out[$usuario['Usuario']['id']] = $usuario['Usuario']['nombres'].' '.$usuario['Usuario']['apellidos'];
+		}
+
+		return $out;
+	}
+
 
 	//$r = hash('sha1', $clave);
 

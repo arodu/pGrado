@@ -25,8 +25,8 @@ class Archivo extends AppModel {
  */
 	public $validate = array(
 		'nombre' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -35,8 +35,8 @@ class Archivo extends AppModel {
 			),
 		),
 		'tipo' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -45,8 +45,8 @@ class Archivo extends AppModel {
 			),
 		),
 		'ruta' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -102,9 +102,9 @@ class Archivo extends AppModel {
 
 
 	public function addFile(){
-		
-		
-		
+
+
+
 	}
 
 

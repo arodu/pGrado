@@ -17,6 +17,12 @@ class RevisionsController extends AppController {
  */
 	public $components = array('Paginator');
 
+	public function beforeFilter(){
+		$this->verificarModulo('proyecto.revisions');
+		parent::beforeFilter();
+	}
+
+
 /**
  * index method
  *
@@ -46,17 +52,17 @@ class RevisionsController extends AppController {
 				//debug($revisions);
 				//debug($ultima);
 
-				
+
 				/*
 				$old_article = $revisions[0]['Revision']['resumen'];
-				$new_article = $ultima['Revision']['resumen']; // Supongamos que alguien pega un nuevo artículo en formato html 
+				$new_article = $ultima['Revision']['resumen']; // Supongamos que alguien pega un nuevo artículo en formato html
 
 				$diff = xdiff_string_diff($old_article, $new_article, 1);
 				if (is_string($diff)) {
 					// echo "Diferencias entre los dos artículos:\n";
 					debug($diff);
 				}
-				 
+
 				exit(); */
 
 				$this->set(compact('revisions','ultima'));
@@ -66,7 +72,7 @@ class RevisionsController extends AppController {
 	}
 
 	public function view( $proyecto_id ) {
-		
+
 		$revision = $this->Revision->find('first',array(
 				'conditions'=>array(
 						'Revision.proyecto_id'=>$proyecto_id,
@@ -85,7 +91,7 @@ class RevisionsController extends AppController {
  * @return void
  */
 /* public function add() {
-		
+
 		if ($this->request->is('post')) {
 			debug($this->request->data); exit();
 			$this->Revision->create();
@@ -160,7 +166,7 @@ class RevisionsController extends AppController {
 				throw new ForbiddenException('Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.');
 			}
 		}
-		
+
 		$this->set('proyecto_id',$revision['Revision']['proyecto_id']);
 	}
 

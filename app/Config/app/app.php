@@ -77,11 +77,14 @@
 	// Activar/Desactivar Modulos
 		$config['sistema']['modulos'] = array(
 				'main.mensajes'	 => false,
+				'main.descargas'	 => false,
+
+				'proyecto.revisions' => false,
 				'proyecto.archivos' => false,
 				'proyecto.escenarios' => false,
 				'proyecto.comentarios'=> false,
 				'proyecto.jurados'=> false,
-				'proyecto.metas'=> true,
+				'proyecto.metas'=> false,
 				'proyecto.asuntos'=> false,
 
 				'external.google_analytics' => false,
