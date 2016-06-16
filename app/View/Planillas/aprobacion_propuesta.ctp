@@ -1,4 +1,5 @@
 <?php
+	error_reporting(false);
 
 	$autores = null;
 	$tutores = null;
@@ -78,7 +79,7 @@
 	$html .= '<table border="1" cellspacing="0" cellpadding="4" style="font-size:.8em;">
 		<tr>
 			<td align="left">
-				P: '.$proyecto['Proyecto']['id'].';&nbsp;&nbsp;D: '.$planilla['Planilla']['id'].';&nbsp;&nbsp;V: '.$verificacion.'
+				P-'.$proyecto['Proyecto']['id'].';&nbsp;&nbsp;D-'.$planilla['Planilla']['id'].';&nbsp;&nbsp;V-'.$verificacion.'
 			</td>
 			<td align="right">
 				Ultima Actualización: '.$this->General->dateTimeFormatPrint($proyecto['Revision'][0]['updated']).'
@@ -89,7 +90,7 @@
 
 	$html .= '<ol style="font-size:80%; text-align:justify;">
 	<caption><b>Pasos a seguir para la Aprobación de Propuestas de Proyecto de Grado I</b></caption>
-	<li> Registrarse en el Sistema Automatizado para Proyecto de Grado <u>https://pgrado.aisunerg.net.ve</u></li>
+	<li> Registrarse en el Sistema para Proyecto de Grado <u>https://pgrado.aisunerg.net.ve</u></li>
 	<li> Llenar la planilla correspondiente con tus datos personales e introducir los títulos y tema respectivo a tu área de investigación. Debes tener cuidado de ingresar todos los datos importantes para hacer conocer lo que deseas desarrollar como trabajo de investigación, de manera tal que el jurado evaluador comprenda fácilmente la relevancia de tu estudio.</li>
 	<li> Imprimir las planillas 001 y 002 para entregarlas al jurado evaluador.</li>
 	<li> Buscar al jurado asignado y llevar la planilla para que éste evalué el tema y coloque las observaciones pertinentes al caso.</li>

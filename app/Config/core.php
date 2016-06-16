@@ -31,7 +31,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+	Configure::write('debug', 2);
 
 /**
  * Google analytics:
@@ -49,7 +49,10 @@
  * 		No usar reCAPTCHA:
  * Configure::write('google_recaptcha',false);
  */
-	Configure::write('google_recaptcha',array('sitekey'=>'6LdhvgQTAAAAAGEC7mnw0q6ytJP6sqOd1Ko0KGek','secretkey'=>'6LdhvgQTAAAAAL8vCdj2ZXeONaqO3utL2tarKrWC'));
+	Configure::write('google_recaptcha',array(
+		'sitekey'=>'6LdhvgQTAAAAAGEC7mnw0q6ytJP6sqOd1Ko0KGek',
+		'secretkey'=>'6LdhvgQTAAAAAL8vCdj2ZXeONaqO3utL2tarKrWC'
+	));
 	//Configure::write('google_recaptcha',false);
 
 /**

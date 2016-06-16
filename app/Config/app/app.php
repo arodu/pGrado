@@ -1,7 +1,7 @@
 <?php
-		// Lenguaje de i18n
-		Configure::write('Config.language', 'esp_inf');
-		//$config['Config']['language'] = 'esp_inf';
+	// Lenguaje de i18n
+	Configure::write('Config.language', 'esp_inf');
+	//$config['Config']['language'] = 'esp_inf';
 
 
 	// GENERALES
@@ -10,7 +10,7 @@
 		$config['sistema']['info']['descripcion'] = 'Sistema de Gestión y Seguimiento de Proyectos Académicos';
 		$config['sistema']['info']['institucion']['largo'] = 'Área de Ingeniería de Sistemas, UNERG';
 		$config['sistema']['info']['institucion']['corto'] = 'AIS UNERG';
-		$config['sistema']['info']['fecha'] = '2014 - 2015';
+		$config['sistema']['info']['fecha'] = '2014 - 2016';
 
 		// VERSION
 			$mayor	= '0';
@@ -76,16 +76,16 @@
 
 	// Activar/Desactivar Modulos
 		$config['sistema']['modulos'] = array(
-				'main.mensajes'	 => false,
-				'main.descargas'	 => false,
+				'main.mensajes' => false,
+				'main.descargas' => false,
 
 				'proyecto.revisions' => false,
 				'proyecto.archivos' => false,
-				'proyecto.escenarios' => false,
-				'proyecto.comentarios'=> false,
-				'proyecto.jurados'=> false,
-				'proyecto.metas'=> false,
-				'proyecto.asuntos'=> false,
+				'proyecto.escenarios' => true,
+				'proyecto.comentarios' => false,
+				'proyecto.jurados' => false,
+				'proyecto.metas' => false,
+				'proyecto.asuntos' => false,
 
 				'external.google_analytics' => false,
 				'external.google_recaptcha' => false,

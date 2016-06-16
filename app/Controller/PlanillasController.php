@@ -4,10 +4,9 @@ class PlanillasController extends AppController {
 
 	public $uses = array('Planilla','Proyecto');
 
-	public function beforeFilter(){
-		parent::beforeFilter();
-		Configure::write('debug',2);
-	}
+	//public function beforeFilter(){
+	//	parent::beforeFilter();
+	//}
 
 	public function verificar($id=null, $verf=null){
 
@@ -17,7 +16,11 @@ class PlanillasController extends AppController {
 		$data = ( is_array($data) ? json_encode($data) : $data );
 		$tipo_planilla_id = $this->Planilla->TipoPlanilla->findIdByCode($tipo_planilla);
 
-		$guardar['Planilla'] = array('tipo_planilla_id'=>$tipo_planilla_id, 'proyecto_id'=>$proyecto_id, 'data'=>$data);
+		$guardar['Planilla'] = array(
+			'tipo_planilla_id'=>$tipo_planilla_id,
+			'proyecto_id'=>$proyecto_id,
+			'data'=>$data
+		);
 
 		$this->Planilla->create();
 		if ($this->Planilla->save($guardar)) {

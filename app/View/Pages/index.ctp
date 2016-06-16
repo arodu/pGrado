@@ -155,19 +155,19 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="item">
-								<img src="http://placehold.it/900x300/39CCCC/ffffff&amp;text=pGrado+v0.3" alt="First slide">
+								<?php echo $this->Html->image('example_carrousel_1.png'); ?>
 								<div class="carousel-caption">
 									First Slide
 								</div>
 							</div>
 							<div class="item active">
-								<img src="http://placehold.it/900x300/3c8dbc/ffffff&amp;text=pGrado+v0.3" alt="Second slide">
+								<?php echo $this->Html->image('example_carrousel_2.png'); ?>
 								<div class="carousel-caption">
 									Second Slide
 								</div>
 							</div>
 							<div class="item">
-								<img src="http://placehold.it/900x300/f39c12/ffffff&amp;text=pGrado+v0.3" alt="Third slide">
+								<?php echo $this->Html->image('example_carrousel_3.png'); ?>
 								<div class="carousel-caption">
 									Third Slide
 								</div>
@@ -182,8 +182,8 @@
 					</div>
 
 				<?php }else{ ?>
-						<img src="http://placehold.it/400x100/3c8dbc/ffffff&amp;text=pGrado+v0.3" class="img-responsive">
-				<?php } ?>
+					<?php echo $this->Html->image('example_carrousel_min.png'); ?>
+					<?php } ?>
 
 	      	</div>
 		</div>
