@@ -65,12 +65,12 @@ class AppController extends Controller {
 	public function userUpdate(){
 		$redirect = array('controller'=>'usuarios','action'=>'edit');
 		$allows   = array(
-						array('controller'=>'usuarios','action'=>'logout'),
-						array('controller'=>'usuarios','action'=>'getFoto'),
-						array('controller'=>'usuarios','action'=>'getUpdatedFoto'),
-						array('controller'=>'mensajes','action'=>'lista_mensajes'),
-						array('controller'=>'mensajes','action'=>'index'),
-					);
+			array('controller'=>'usuarios','action'=>'logout'),
+			array('controller'=>'usuarios','action'=>'getFoto'),
+			array('controller'=>'usuarios','action'=>'getUpdatedFoto'),
+			array('controller'=>'mensajes','action'=>'lista_mensajes'),
+			array('controller'=>'mensajes','action'=>'index'),
+		);
 
 		$allows = array_merge($allows, array($redirect));
 

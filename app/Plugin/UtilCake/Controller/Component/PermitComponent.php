@@ -13,7 +13,7 @@ class PermitComponent extends Component {
 
     'defaultResponse' => false,   // false,  loged,  public
     'userRoot' => false,
-    'reload' => false,
+    'reload' => false,  // Recargar los premisos en cada request
     'errorMessage' => '',
   );
 

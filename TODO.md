@@ -1,14 +1,23 @@
 ## TODO
-
-* Acomodar menu Principal
 * Acomodar Dashboard
-* Arreglar error en archivos PDF, impresion de Planillas del Proyecto
 * Revisar Lista de Proyectos (Estudiantes, TutorAcad, TutorMetod, Jurados)
-
-* Agregar Permit
 
 
 ## DONE
-
 * En listado de Tutores Academicos, solo pueden aparecer los que sean tipo tutoracad
 (vistas: proyectos.add, proyectos.view)
+* Agregar Permit (LISTO)
+* Acomodar menu Principal (LISTO)
+* Arreglar error en archivos PDF, impresion de Planillas del Proyecto (LISTO)
+
+
+## Hoja de Ruta
+* Completar modulo de descargas
+* Revision
+  * Ingresar nuevo estudiante
+  * Actualizar los datos
+  * Generar nuevo proyecto
+  * Agregar Escenario al Proyecto
+  * Agregar Tutor Academico y Metodologico
+  * Agregar Compañero
+  *
