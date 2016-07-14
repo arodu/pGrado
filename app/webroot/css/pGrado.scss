@@ -1,22 +1,33 @@
-/* add pGrado */
+// Add to pGrado
 .box-time {
   margin: 0px 12px;
 }
+
 .mano{
   cursor:pointer; cursor: hand;
 }
+
 @media (max-width: 768px) {
   .contact-icon{
     margin: 18px;
   }
 }
-.timeline .timeline-item-user .timeline-header{
-  font-weight: bold;
+
+.timeline{
+  .timeline-item-user{
+    .timeline-header{
+      font-weight: bold;
+    }
+  }
 }
-.panel-ayuda .panel-ayuda-item{
-  padding: 3px 6px 3px 6px;
-  border-radius: 4px;
+
+.panel-ayuda{
+  .panel-ayuda-item{
+    padding: 3px 6px 3px 6px;
+    border-radius: 4px;
+  }
 }
+
 .slideToTop{
   position: fixed;
   bottom: 5px;
@@ -33,36 +44,47 @@
   opacity: .7;
   display: none;
 }
+
 .version{
   margin-right: 35px;
 }
+
 .users-list .users-list-img{
   margin: auto;
 }
 
-/* CakePhp */
-form div.required input, form div.required select, form div.required textarea{
-  border-left: #FF0000 solid 2px;
+// Add to CakePHP
+form {
+  .required {
+    input, select, textarea{
+      border-left: #FF0000 solid 2px;
+    }
+  }
 }
 
 .error-message{
 	font-size: .85em;
 }
 
-/* Mod AdminLTE */
-.main-header a.logo, .login-logo a.logo{
-  font-style: italic;
-  font-weight: bold;
+// Mod to AdminLTE
+.main-header, .login-logo{
+  a.logo{
+    font-style: italic;
+    font-weight: bold;
+  }
 }
+
 .nav-tabs-custom {
     box-shadow: none;
 }
+
 .tab-timeline{
   background-color: #ECF0F5;
   padding: 10px;
   margin-top: 10px;
   border-radius: 3px;
 }
+
 .notifications-menu > .dropdown-menu > li .menu > li > a {
     white-space: normal !important;
     text-align: justify;
@@ -72,41 +94,43 @@ form div.required input, form div.required select, form div.required textarea{
 .timeline .timeline-item .timeline-body{
   word-wrap: break-word;
 }
+
 .main-footer {
   padding: 5px 15px;
 }
+
 @media (max-width: 768px) {
   .login-box,.register-box {
     width: 90%;
     margin-top: 20px;
   }
 }
-.callout.callout-gray {
-  border-color: #B5BBC8;
-}
-.callout.callout-gray.active {
-  border-color: #367FA9;
-}
-.callout.callout-gray,.alert.alert-gray {
+
+.callout.callout-gray, .alert.alert-gray {
   color: #000 !important;
+  border-color: #B5BBC8;
+  background-color: #F4F4F4;
+  &.active {
+    border-color: #367FA9;
+  }
+  a{
+    color: #367FA9;
+    text-decoration: none;
+  }
+  .btn{
+    color: #333;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: #E4E4E4;
+  }
 }
-.callout.callout-gray,.alert.alert-gray {
-  /*background-color: #D2D6DE !important;*/
-  background-color: #F4F4F4 !important;
-}
-.callout.callout-gray a,.alert.alert-gray a{
-  color: #367FA9;
-  text-decoration: none;
-}
-.callout.callout-gray .btn,.alert.alert-gray .btn{
-  color: #333;
-  text-decoration: none;
-}
+
 .sidebar-mini.sidebar-collapse .nodisplay {
   display: none;
 }
 
-/*AGREGADOS*/
+// Agregados
 .file-box {
   float: left;
   width: 220px;
@@ -118,27 +142,28 @@ form div.required input, form div.required select, form div.required textarea{
   position: relative;
   margin-bottom: 20px;
   margin-right: 20px;
+  .icon {
+    padding: 15px 10px;
+    text-align: center;
+    i {
+      font-size: 70px;
+      color: #DADADA;
+    }
+  }
+  .icon, .image {
+    height: 100px;
+    overflow: hidden;
+  }
+  .file-name {
+    padding: 10px;
+    background-color: #F8F8F8;
+    border-top: 1px solid #E7EAEC;
+    small {
+      color: #676A6C;
+    }
+  }
 }
-.file .icon {
-  padding: 15px 10px;
-  text-align: center;
-}
-.file .icon, .file .image {
-  height: 100px;
-  overflow: hidden;
-}
-.file .file-name {
-  padding: 10px;
-  background-color: #F8F8F8;
-  border-top: 1px solid #E7EAEC;
-}
-.file .icon i {
-  font-size: 70px;
-  color: #DADADA;
-}
-.file-name small {
-  color: #676A6C;
-}
+
 .corner {
   position: absolute;
   display: inline-block;

@@ -5,7 +5,7 @@
 		<?php echo $this->Html->image($user_foto,array('class'=>'img-circle','alt'=>'User Image')); ?>
 	</div>
 	<div class="pull-left info">
-		<p><?php echo $userInfo['nombre'];?></p>
+		<p><?php echo $userInfo['nombre_completo'];?></p>
 		<?php if(isset($userInfo) && $userInfo){ ?>
 			<small><i class="fa fa-circle fa-fw text-green"></i> Online</small>
 		<?php }else{ ?>

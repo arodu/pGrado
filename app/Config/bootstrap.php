@@ -70,6 +70,7 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 CakePlugin::load('DebugKit');
+CakePlugin::load('UtilCake');
 CakePlugin::load('PanelAdmin', array('bootstrap' => false, 'routes' => false));
 
 /**

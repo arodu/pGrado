@@ -8,7 +8,7 @@
 			),
 		'config'=>array('activo'=>'Editar Revisión')
 		);
-	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));	
+	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));
 ?>
 
 
@@ -51,29 +51,30 @@
 </div>
 
 <?php
-	echo $this->Html->css('/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.min',array('inline'=>false));
-	echo $this->Html->script('/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min',array('inline'=>false));
-	echo $this->Html->script('/libs/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.es-MO',array('inline'=>false));
+	echo $this->Html->script('/libs/wysihtml5/dist/wysihtml5-0.3.0.min',array('inline'=>false));
+	echo $this->Html->css('/libs/bootstrap3-wysihtml5/dist/bootstrap-wysihtml5-0.0.2',array('inline'=>false));
+	echo $this->Html->script('/libs/bootstrap3-wysihtml5/dist/bootstrap-wysihtml5-0.0.2',array('inline'=>false));
+	echo $this->Html->script('/mods/bootstrap3-wysihtml5/bootstrap-wysihtml5.es-MO',array('inline'=>false));
 ?>
 <?php $this->Html->scriptStart(array('inline' => false)); ?>
-	$(function(){
+$(function(){
+	$('.textarea-wysihtml5').each(function(){
 
-		//$("textarea").wysihtml5();
-
-		$('.textarea-wysihtml5').wysihtml5({
-				"font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
-				"emphasis": true, //Italics, bold, etc. Default true
-				"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-				"html": false, //Button which allows you to edit the generated HTML. Default false
-				"link": true, //Button to insert a link. Default true
-				"image": true, //Button to insert an image. Default true,
-				"color": false, //Button to change color of font
-				"size": 'sm',
-				"fa": true,
-				locale: "es-MO",
-		});
-
-		$('.wysihtml5-toolbar').addClass('pull-right');
-
+		$(this).wysihtml5({
+					"font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+					"emphasis": true, //Italics, bold, etc. Default true
+					"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+					"html": false, //Button which allows you to edit the generated HTML. Default false
+					"link": true, //Button to insert a link. Default true
+					"image": true, //Button to insert an image. Default true,
+					"color": false, //Button to change color of font
+					"size": 'sm',
+					"fa": true,
+					locale: "es-MO",
+			});
 	});
+
+	$('.wysihtml5-toolbar').addClass('pull-right');
+});
+
 <?php $this->Html->scriptEnd(); ?>

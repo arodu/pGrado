@@ -1,10 +1,10 @@
+
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
 
 	<?php echo $this->element('sidebar/panel/usuario'); ?>
 
 	<?php // echo $this->element('sidebar/panel/search'); ?>
-
 
 	<ul class="sidebar-menu">
 		<li class="header">MENÚ PRINCIPAL</li>

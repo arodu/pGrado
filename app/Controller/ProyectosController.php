@@ -32,26 +32,28 @@ class ProyectosController extends AppController {
 		}
 
 		public function index() {
-
 			$proyectos_autor = $this->Proyecto->Autor->find('list',array(
 					'conditions'=>array(
 						'Autor.usuario_id'=>$this->Auth->user('id'),
 						'Autor.tipo_autor_id'=> $this->Proyecto->Autor->TipoAutor->findIdByCode('estudiante'),
-						),
+					),
 					'fields'=>array('proyecto_id'),
 				));
 
 			$proyectos = $this->Proyecto->find('all',array(
 					'conditions'=>array(
 							'Proyecto.id'=>$proyectos_autor,
-						),
+					),
+          'order'=>array(
+            'Proyecto.created'=>'desc',
+          ),
 					'contain'=>array(
 							'Categoria','Fase','Estado',
 							'Autor'=>array('fields'=>array('id','activo'),
 								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo')),
 								'TipoAutor'),
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
-						),
+					),
 				));
 
 			$aux = null;
@@ -77,7 +79,10 @@ class ProyectosController extends AppController {
 			$proyectos = $this->Proyecto->find('all',array(
 					'conditions'=>array(
 							'Proyecto.id'=>$proyectos_autor,
-						),
+					),
+          'order'=>array(
+            'Proyecto.created'=>'desc',
+          ),
 					'contain'=>array(
 							'Autor'=>array(
 								'fields'=>array('id','activo'),
@@ -86,7 +91,7 @@ class ProyectosController extends AppController {
 							'Fase',
 							'Estado',
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
-						),
+					),
 				));
 
 			$this->set(compact('proyectos'));
@@ -108,7 +113,10 @@ class ProyectosController extends AppController {
 			$proyectos = $this->Proyecto->find('all',array(
 					'conditions'=>array(
 							'Proyecto.id'=>$proyectos_autor,
-						),
+					),
+          'order'=>array(
+            'Proyecto.created'=>'desc',
+          ),
 					'contain'=>array(
 							'Autor'=>array(
 								'fields'=>array('id','activo'),
@@ -117,7 +125,7 @@ class ProyectosController extends AppController {
 							'Fase',
 							'Estado',
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
-						),
+					),
 				));
 			$this->set(compact('proyectos'));
 
@@ -140,18 +148,19 @@ class ProyectosController extends AppController {
 			$proyectos = $this->Proyecto->find('all',array(
 					'conditions'=>array(
 							'Proyecto.id'=>$proyectos_jurado,
-						),
+					),
+          'order'=>array(
+            'Proyecto.created'=>'desc',
+          ),
 					'contain'=>array(
 							'Categoria','Grupo','Fase','Programa','Estado',
 							'Autor'=>array(
 								'fields'=>array('id','activo'),
 								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo')),'TipoAutor'),
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
-						),
+					),
 				));
 			$this->set(compact('proyectos'));
-
-			// debug($proyectos); exit();
 
 			$this->set('menuActive','docente');
 
@@ -494,7 +503,7 @@ class ProyectosController extends AppController {
 			$this->Proyecto->recursive = 0;
 
 			$this->Paginator->settings = array(
-				'limit' => 20,
+				'limit' => ( isset($this->request->query['limit']) ? $this->request->query['limit'] : 20 ),
 				'contain'=>array(
 						'Categoria','Fase','Grupo','Estado','Sede','Programa',
 						'Revision'=>array(

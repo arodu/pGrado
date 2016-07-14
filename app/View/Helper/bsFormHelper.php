@@ -108,6 +108,16 @@ class bsFormHelper extends FormHelper {
 		return $checkbox;
 	}
 
+	public function bsStatic( $fieldName, $options = array()){
+
+		echo '<div class="form-group">
+	    <label class="col-sm-2 control-label">Email</label>
+	    <div class="col-sm-10">
+	      <p class="form-control-static">email@example.com</p>
+	    </div>
+	  </div>';
+	}
+
 
 	protected function _getTextLabel($fieldName, $options){
 
@@ -146,6 +156,10 @@ class bsFormHelper extends FormHelper {
 			case 'checkbox':
 			case 'bsCheckbox':
 					return $this->bsCheckbox($fieldName, $options);
+					break;
+
+			case 'static':
+					return $this->bsStatic($fieldName, $options);
 					break;
 
 			case 'datetime':

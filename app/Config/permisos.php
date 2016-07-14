@@ -123,5 +123,14 @@
 						'directorio'=>array('coordpg'),
 					),
 
+					'descargas'=>array(
+						'index'=>'public',
+						'download'=>'public',
+						'admin'=> array('coordpg'),
+						'add'=>array('coordpg'),
+						'edit'=> array('coordpg'),
+						'delete'=>array('coordpg'),
+					),
+
 				)
 			);

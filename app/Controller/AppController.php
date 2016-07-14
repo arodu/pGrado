@@ -1,55 +1,29 @@
 <?php
-/**
- * Application level Controller
- *
- * This file is application-wide controller file. You can put all
- * application-wide controller-related methods here.
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
 App::uses('Controller', 'Controller');
-
-/**
- * Application Controller
- *
- * Add your application-wide methods in the class below, your controllers
- * will inherit them.
- *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
- */
-
 class AppController extends Controller {
 
 	public $components = array(
 		'DebugKit.Toolbar',
 		'Session',
-		'Permisos'=>array(
+		/* 'Permisos'=>array(
 				'fileConfig'=>'permisos',
 				'arreglo'=>'Permisos',
-			),
+			), */
+		'UtilCake.Permit'=>array(
+			'userModel'=>'Usuario',
+			'profileModel'=>'Perfil',
+			//'reload'=>true,
+		),
 		'Auth' => array(
 			'loginRedirect' => array('controller' => 'pages','action' => 'index'),
-			'logoutRedirect' => array('controller' => 'usuarios','action' => 'login',),
-			'loginAction'=> array('controller' => 'usuarios','action' => 'login',),
+			'logoutRedirect' => array('controller' => 'usuarios','action' => 'login'),
+			'loginAction'=> array('controller' => 'usuarios','action' => 'login'),
 			'authorize' => array('Controller'), // Added this line
 			'authenticate' => array(
 				'Form' => array(
 					'userModel'=>'Usuario',
 					'contain'=>array(
-							'Perfil'=>array('fields'=>array('id','code')),
+							//'Perfil'=>array('fields'=>array('id','code')),
 							'Sede',
 							'TipoUsuario',
 						),
@@ -60,12 +34,13 @@ class AppController extends Controller {
 			)
 		),
 	);
-
 	//public $helpers = array('General');
 
 	public function beforeFilter(){
 		parent::beforeFilter();
-		$this->set('userInfo',$this->Permisos->userInfo());
+		$userInfo = ( $this->Auth->user() ? $this->Session->read('userInfo') : false);
+		$this->set('userInfo',$userInfo);
+		$this->set('referer', $this->referer());
 		$this->userUpdate();
 
 		$this->set('mod_activo', Configure::read('sistema.modulos') );
@@ -83,7 +58,8 @@ class AppController extends Controller {
 	}
 
 	public function isAuthorized() {
-		return $this->Permisos->autorizado();
+		//return $this->Permisos->autorizado();
+		return $this->Permit->isAuthorized();
 	}
 
 	public function userUpdate(){

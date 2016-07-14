@@ -40,6 +40,7 @@
 			);
 
 	// ARCHIVOS
+		$config['sistema']['archivos']['descargas'] = ROOT.DS.APP_DIR.DS.'files'.DS.'descargas'.DS;
 		$config['sistema']['archivos']['proyectos'] = ROOT.DS.APP_DIR.DS.'files'.DS.'proyectos'.DS;
 		$config['sistema']['archivos']['usuarios'] = ROOT.DS.APP_DIR.DS.'files'.DS.'usuarios'.DS;
 		$config['sistema']['archivos']['backups'] = ROOT.DS.APP_DIR.DS.'files'.DS.'backups'.DS;
@@ -77,9 +78,10 @@
 	// Activar/Desactivar Modulos
 		$config['sistema']['modulos'] = array(
 				'main.mensajes' => false,
-				'main.descargas' => false,
+				'main.descargas' => true,
 
-				'proyecto.revisions' => false,
+				'proyecto.imprimir' => true,
+				'proyecto.revisions' => true,
 				'proyecto.archivos' => false,
 				'proyecto.escenarios' => true,
 				'proyecto.comentarios' => false,

@@ -274,28 +274,30 @@
 
 			<?php // ----------------- BOX FOOTER ------------------- ?>
 				<div class="box-footer">
-					<?php $disabled = ( $revisionEditable ? false : 'disabled' );?>
+					<?php
+						$disabled = ( $revisionEditable ? false : 'disabled' );
 
-					<?php if($mod_activo['proyecto.revisions']): ?>
+						if($mod_activo['proyecto.revisions']){
+							echo $this->Html->link('<i class="fa fa-edit"></i>&nbsp;Editar Revision',
+									array('controller'=>'revisions','action' => 'edit', $revision['id']),
+									array('class'=>'btn btn-primary','disabled'=>$disabled,'escape'=>false)
+								);
+							echo '&nbsp;';
 
-						<?php echo $this->Html->link('<i class="fa fa-edit"></i>&nbsp;Editar Revision',
-								array('controller'=>'revisions','action' => 'edit', $revision['id']),
-								array('class'=>'btn btn-primary','disabled'=>$disabled,'escape'=>false)
-							); ?>
+							/* Botones de VER REVISINES Y VERSION PARA IMPRIMIR */
+							echo $this->Html->link('<i class="fa fa-code-fork"></i>&nbsp;Ver Revisiones',
+									array('controller'=>'revisions','action' => 'index',$proyecto['Proyecto']['id']),
+									array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false)
+								);
+						}
 
-						<?php /* Botones de VER REVISINES Y VERSION PARA IMPRIMIR */ ?>
-						<?php echo $this->Html->link('<i class="fa fa-code-fork"></i>&nbsp;Ver Revisiones',
-								array('controller'=>'revisions','action' => 'index',$proyecto['Proyecto']['id']),
-								array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false)
-							); ?>
-					<?php endif; ?>
-
-
-					<?php echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Imprimir Planillas',
-							'#',
-							array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal')
-						); ?>
-
+						if($mod_activo['proyecto.imprimir']){
+							echo '&nbsp;';
+							echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Imprimir Planillas', '#',
+								array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal')
+							);
+						}
+					?>
 				</div>
 		</div>
 	</div>
@@ -323,9 +325,14 @@
 					<?php echo '<strong>'.__('Grupo').': </strong>'.$proyecto['Grupo']['nombre'] ?>
 				</div>
 
-				<div class="box-footer">
-					<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#planillasModal" data-whatever="estudiante" title="Imprimir PLanillas"><i class="fa fa-print fa-fw"></i> Imprimir Planillas</button>
-				</div>
+
+				<?php if($mod_activo['proyecto.imprimir']): ?>
+					<div class="box-footer">
+						<?php echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Imprimir Planillas', '#',
+							array('class'=>'btn btn-default btn-xs btn-tooltip','disabled'=>$disabled,'escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal', 'title'=>'Imprimir Planillas')
+						); ?>
+					</div>
+				<?php endif; ?>
 
 			</div>
 
@@ -538,40 +545,42 @@
 	</div>
 
 <?php // ----------------- MODAL IMPRESION DE PLANILLAS ------------------- ?>
-	<div class="modal fade" id="planillasModal" tabindex="-1" role="dialog" aria-labelledby="planillasModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title" id="planillasModalLabel"><i class="fa fa-print fa-fw"></i> Imprimir Planillas</h4>
-				</div>
-				<div id="modal-content" class="modal-body">
-
-					<div class="list-group">
-
-						<?php
-
-						// Planilla 001 - Vista de Impresion
-								echo $this->Html->link('<i class="fa fa-file-text-o fa-fw"></i> 001 - Proyecto/Propuesta versión para Imprimir',
-									array('controller'=>'proyectos','action'=>'printPdf',$proyecto['Proyecto']['id'],'admin'=>false),
-									array('class'=>'list-group-item','target'=>'_blank','escape'=>false));
-
-						// Planilla 002 - Planilla de Aprobacion de Propuesta
-							if($proyecto['Fase']['code']=='propuesta'){
-								echo $this->Html->link('<i class="fa fa-file-pdf-o fa-fw"></i> 002 - Planilla de Aprobacion de Propuesta',
-									array('controller'=>'planillas','action'=>'aprobacionPropuesta',$proyecto['Proyecto']['id'],'admin'=>false),
-									array('class'=>'list-group-item','target'=>'_blank','escape'=>false));
-							}
-
-						?>
+	<?php if($mod_activo['proyecto.imprimir']): ?>
+		<div class="modal fade" id="planillasModal" tabindex="-1" role="dialog" aria-labelledby="planillasModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="planillasModalLabel"><i class="fa fa-print fa-fw"></i> Imprimir Planillas</h4>
 					</div>
-				</div>
-				<div class="modal-footer">
-				<?php echo $this->Form->button('Cerrar',array('class'=>'btn btn-default pull-left','type'=>'button','data-dismiss'=>'modal')); ?>
+					<div id="modal-content" class="modal-body">
+
+						<div class="list-group">
+
+							<?php
+
+							// Planilla 001 - Vista de Impresion
+									echo $this->Html->link('<i class="fa fa-file-text-o fa-fw"></i> 001 - Proyecto/Propuesta versión para Imprimir',
+										array('controller'=>'proyectos','action'=>'printPdf',$proyecto['Proyecto']['id'],'admin'=>false),
+										array('class'=>'list-group-item','target'=>'_blank','escape'=>false));
+
+							// Planilla 002 - Planilla de Aprobacion de Propuesta
+								if($proyecto['Fase']['code']=='propuesta'){
+									echo $this->Html->link('<i class="fa fa-file-pdf-o fa-fw"></i> 002 - Planilla de Aprobacion de Propuesta',
+										array('controller'=>'planillas','action'=>'aprobacionPropuesta',$proyecto['Proyecto']['id'],'admin'=>false),
+										array('class'=>'list-group-item','target'=>'_blank','escape'=>false));
+								}
+
+							?>
+						</div>
+					</div>
+					<div class="modal-footer">
+					<?php echo $this->Form->button('Cerrar',array('class'=>'btn btn-default pull-left','type'=>'button','data-dismiss'=>'modal')); ?>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	<?php endif; ?>
 
 <?php // ----------------- MODAL AGREGAR AUTOR ------------------- ?>
 	<?php if($proyectoEditable){ ?>

@@ -23,7 +23,7 @@
 
 			//echo $this->Html->css('/libs/iCheck/square/blue.min'); // iCheck
 
-			echo $this->Html->css('pGrado'); //pGrado CSS
+			echo $this->Html->css('pGrado.min'); //pGrado CSS
 
 			echo $this->fetch('meta');
 			echo $this->fetch('css');

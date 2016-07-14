@@ -4,7 +4,7 @@
 
 	$bc = array('config'=>array('activo'=>'Proyectos'));
 
-	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));	
+	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));
 ?>
 
 
@@ -15,17 +15,16 @@
 			<?php echo $this->Html->link('<i class="fa fa-plus"></i> Agregar Nueva Propuesta',array('controller'=>'proyectos','action'=>'add'),array('class'=>'btn btn-sm btn-primary','escape'=>false));?>
 		<?php } ?>
 
-		<?php if($this->params['action'] != 'index' && ( $userInfo['perfil']['tutoracad'] || $userInfo['perfil']['tutormetod'])){  ?>
-			<h4>&nbsp;</h4>
+		<?php if($this->params['action'] != 'index' && ( $userInfo['perfil']['tutoracad'] || $userInfo['perfil']['tutormetod'])):  ?>
+			<!-- <h4>&nbsp;</h4>
 
 			<div class="box-tools pull-right">
 				<div class="has-feedback">
 					<input class="form-control input-sm" placeholder="Buscar..." type="search">
 					<span class="fa fa-search form-control-feedback text-muted"></span>
 				</div>
-			</div>
-
-		<?php } ?>
+			</div> -->
+		<?php endif; ?>
 	</div><!-- /.box-header -->
 	<div class="box-body">
 		<?php if(count($proyectos) > 0){ ?>
@@ -67,7 +66,7 @@
 										</div>
 
 										<div class="proyecto_datos text">
-											<dl class="dl-horizontal">	
+											<dl class="dl-horizontal">
 												<dt>Tema:</dt><dd><?php echo $proyecto['Proyecto']['tema'];?></dd>
 												<dt>Linea de Investigación:</dt><dd><?php echo $proyecto['Categoria']['nombre'];?></dd>
 												<dt>Autor(es):</dt>
@@ -115,7 +114,7 @@
 		} // EndIfElse?>
 
 	</div><!-- /.box-body -->
-</div> 
+</div>
 
 <?php //debug($proyectos); ?>
 
@@ -144,5 +143,3 @@
 </div><!-- /.modal -->
 
 /**/ ?>
-
-

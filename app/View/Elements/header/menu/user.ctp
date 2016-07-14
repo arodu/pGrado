@@ -25,7 +25,6 @@
 
 		<!-- Menu Body -->
 
-		
 		<?php if($userInfo['userMenu']){ ?>
 			<li class="user-body">
 				<div class="col-xs-4 text-center">
