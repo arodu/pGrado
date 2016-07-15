@@ -106,14 +106,14 @@ class DescargasController extends AppController {
 		if (!$archivo) {
 			throw new NotFoundException(__('Invalid archivo'));
 		}
-
-		$path_file = $path_file.$archivo['Descarga']['ruta'];
+		$path_file = $path_file.$archivo['Descarga']['archivo'];
 		$this->response->type($archivo['Descarga']['tipo']);
 
-		if($descarga)
+		if($descarga){
 			$this->response->file($path_file, array('download'=>true,'name'=>$archivo['Descarga']['nombre']));
-		else
+		}else{
 			$this->response->file($path_file);
+		}
 
 		return $this->response;
 	}
@@ -160,6 +160,8 @@ class DescargasController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Descarga->delete()) {
+			//$file = new File(WWW_ROOT.ltrim($video['Video']['ruta'], '/'));
+			//$file->delete();
 			$this->Session->setFlash('The descarga has been deleted','alert/success');
 		} else {
 			$this->Session->setFlash('The descarga could not be deleted. Please, try again','alert/error');

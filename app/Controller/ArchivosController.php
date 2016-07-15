@@ -238,7 +238,8 @@ class ArchivosController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 
 		if ($this->Archivo->delete()) {
-
+			//$file = new File(WWW_ROOT.ltrim($video['Video']['ruta'], '/'));
+			//$file->delete();
 		}else{
 			$this->Session->setFlash(__('The archivo could not be deleted. Please, try again.'),'alert/warning');
 		}

@@ -36,6 +36,8 @@
 
 	Router::connect('/panel_admin', array('controller' => 'usuarios', 'action' => 'login','plugin'=>'panel_admin'));
 
+	Router::connect('/download/*', array('controller' => 'descargas', 'action' => 'download'));
+
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

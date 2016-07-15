@@ -9,6 +9,7 @@
 * Agregar Permit (LISTO)
 * Acomodar menu Principal (LISTO)
 * Arreglar error en archivos PDF, impresion de Planillas del Proyecto (LISTO)
+* Modulo de Descargas
 
 
 ## Hoja de Ruta

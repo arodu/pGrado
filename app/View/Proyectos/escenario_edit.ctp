@@ -12,7 +12,6 @@
 ?>
 
 
-
 <div class="row">
 	<div class="col-sm-9">
 		<div class="escenarios form box">

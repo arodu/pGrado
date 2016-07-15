@@ -58,19 +58,19 @@
 					),
 
 				'archivos'=>array(
-						'index'=>'public',
-						'view'=>'public',
-						'view2'=>'public',
-						'add'=>'public',
-						'download'=>'public',
-						'imagen'=>'public',
-						'miniatura'=>'public',
-						'delete'=>'public',
+						'index'=>'loged',
+						'view'=>'loged',
+						'view2'=>'loged',
+						'add'=>'loged',
+						'download'=>'loged',
+						'imagen'=>'loged',
+						'miniatura'=>'loged',
+						'delete'=>'loged',
 					),
 
 				'comentarios'=>array(
-						'index'=>'public',
-						'add'=>'public',
+						'index'=>'loged',
+						'add'=>'loged',
 					),
 
 				'planillas'=>array(
@@ -80,25 +80,25 @@
 					),
 
 				'usuarios'=>array(
-						'index'=>'public',
-						'view'=>'public',
-						'view_pop'=>'public',
-						'edit'=>'public',
-						'editpassword'=>'public',
-						'editcategorias'=>'public',
+						'index'=>'loged',
+						'view'=>'loged',
+						'view_pop'=>'loged',
+						'edit'=>'loged',
+						'editpassword'=>'loged',
+						'editcategorias'=>'loged',
 
-						'getUpdatedFoto'=>'public',
-						'add_foto'=>'public',
-						'existeFoto'=>'public',
-						'getFoto'=>'public',
+						'getUpdatedFoto'=>'loged',
+						'add_foto'=>'loged',
+						'existeFoto'=>'loged',
+						'getFoto'=>'loged',
 					),
 
 				'mensajes'=>array(
-						'index'=>'public',
-						'view'=>'public',
-						'lista_mensajes'=>'public',
-						'delete'=>'public',
-						'deleteAll'=>'public',
+						'index'=>'loged',
+						'view'=>'loged',
+						'lista_mensajes'=>'loged',
+						'delete'=>'loged',
+						'deleteAll'=>'loged',
 					),
 
 				'revisions'=>array(
@@ -114,18 +114,18 @@
 					),
 
 				'pages'=>array(
-						'index'=>'public',
-						'test'=>array('public'),
-						'creditos'=>'public',
-						'descargas'=>'public',
-						'file_upload'=>'public',
-						'error'=>'public',
+						'index'=>'loged',
+						'test'=>array('loged'),
+						'creditos'=>'loged',
+						'descargas'=>'loged',
+						'file_upload'=>'loged',
+						'error'=>'loged',
 						'directorio'=>array('coordpg'),
 					),
 
 					'descargas'=>array(
-						'index'=>'public',
-						'download'=>'public',
+						'index'=>'loged',
+						'download'=>'loged',
 						'admin'=> array('coordpg'),
 						'add'=>array('coordpg'),
 						'edit'=> array('coordpg'),

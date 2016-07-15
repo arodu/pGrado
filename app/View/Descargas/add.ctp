@@ -14,10 +14,10 @@
 
 
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-10">
 		<div class="escenarios form box">
 		<?php echo $this->Form->create('Descarga',array('type'=>'file', 'inputDefaults'=>array('div'=>array('class'=>'form-group well well-sm'),'class'=>'form-control'))); ?>
-			<div class="box-body col-md-8 col-md-offset-2">
+			<div class="box-body">
 			<?php
 					echo $this->Form->input('Descarga.nombre');
 					echo $this->Form->input('Descarga.archivo', array('type'=>'file'));

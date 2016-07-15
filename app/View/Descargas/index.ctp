@@ -1,3 +1,28 @@
+<?php
+	$this->assign('title-page', 'Descargas');
+
+	$bc = array(
+		'config'=>array('activo'=>'Descargas')
+		);
+	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));
+?>
+
+<?php if($this->Permit->hasPermission(array('admin','coordpg','root'))): ?>
+	<div class="box box-warning box-solid">
+		<div class="box-header with-border">
+			<h3 class="box-title">Panel Coordinador</h3>
+			<div class="box-tools pull-right">
+				<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+			</div><!-- /.box-tools -->
+		</div><!-- /.box-header -->
+		<div style="display: block;" class="box-body text-right">
+			<?php echo $this->Permit->link('Administrar', array('controller'=>'descargas', 'action'=>'admin'), array('class'=>'btn btn-default btn-flat', 'escape'=>false)); ?>
+		</div><!-- /.box-body -->
+	</div>
+<?php endif; ?>
+
+
+
 <div class="row">
 	<div class="col-md-10">
 
