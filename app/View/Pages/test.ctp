@@ -29,25 +29,36 @@
 
 
 	echo $this->bsForm->selectMultilevel('Proyecto.grupo_id', array('options'=>$options, 'id'=>'grupito','empty'=>'-- Seleccione --'));
-
 	echo $this->bsForm->selectMultilevel('Proyecto.grupo_id', $options, array('id'=>'grupito','empty'=>'-- Seleccione --'));
+	echo $this->bsForm->input('Proyecto.grupo_id',
+		array(
+			'required'=>true,
+			'options'=>$options,
+			'div'=>array('class'=>'form-group '),
+			'label'=>'Seleccion de Grupos',
+			'type'=>'selectMultilevel',
+			'class'=>'form-control',
+			'empty'=>'-- Seleccione un Grupo --'
+		)
+	);
 
-	echo $this->bsForm->input('Proyecto.grupo_id',array('required'=>true,'options'=>$options,'div'=>array('class'=>'form-group '),'label'=>'Seleccion de Grupos','type'=>'selectMultilevel','class'=>'form-control','empty'=>'-- Seleccione un Grupo --'));
+
+	echo $this->bsForm->input('Proyecto.grupo_id',array('type'=>'static_form', 'label'=>'Prueba de Static', 'class'=>''));
 
 	?>
 	<hr/>
 	<?php
 
 
-	echo $this->bsForm->input('Proyecto.group_id',array('div'=>array('class'=>'form-group'),'label'=>'<i class="fa fa-cog fa-spin"></i> Seleccion de Grupos','type'=>'checkbox'));
+		echo $this->bsForm->input('Proyecto.group_id',array('div'=>array('class'=>'form-group'),'label'=>'<i class="fa fa-cog fa-spin"></i> Seleccion de Grupos','type'=>'checkbox'));
 	?>
 
 
 	<?php // echo $this->bsForm->input('activar',array('type'=>'bsCheckbox','before'=>'asdasd','div'=>array('class'=>'checkbox'))); ?>
-	
-	<?php // echo $this->Form->input('activar',array('type'=>'checkbox','class'=>'form-control','div'=>array('class'=>'form-group'))); ?>		
 
-	<?php 
+	<?php // echo $this->Form->input('activar',array('type'=>'checkbox','class'=>'form-control','div'=>array('class'=>'form-group'))); ?>
+
+	<?php
 
 		// echo $this->bsForm->input('activar',array('type'=>'checkbox'));
 
@@ -60,10 +71,10 @@
 	?>
 
 
-<?php 	
+<?php
 		/* $value = "Hola Mundo!!!";
 
-		
+
 		$key = 'wt1U5MACWJFTXGenFoZoiLwQGrLgdbHA';
 
 		/*

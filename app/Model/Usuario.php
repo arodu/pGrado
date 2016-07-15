@@ -411,7 +411,7 @@ class Usuario extends AppModel {
 			$this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']);
 		}
 
-		$codigo = date() . $this->data[$this->alias]['id'];
+		$codigo = date('now') . $this->data[$this->alias]['id'];
 		$this->data[$this->alias]['hash'] = hash( 'sha1' , $codigo );
 		return true;
 	}
@@ -438,7 +438,7 @@ class Usuario extends AppModel {
 					'Perfil'=>array('fields'=>array('id','code')))));
 
 		$out['id'] = $usuario['Usuario']['id'];
-		$out['nombre'] = $usuario['Usuario']['nombres'].' '.$usuario['Usuario']['apellidos'];		
+		$out['nombre'] = $usuario['Usuario']['nombres'].' '.$usuario['Usuario']['apellidos'];
 		$out['updated_foto'] = $usuario['Usuario']['updated_foto'];
 		$out['foto'] = $usuario['Usuario']['foto'];
 

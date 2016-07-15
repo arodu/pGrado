@@ -26,7 +26,6 @@
 
 			<?php $actionForm = $this->Html->url(array('controller'=>'usuarios','action'=>'add_foto')); ?>
 
-
 			<form class="avatar-form" action="<?php echo $actionForm; ?>" enctype="multipart/form-data" method="post">
 				<div class="avatar-body">
 
@@ -35,7 +34,7 @@
 						<input class="avatar-src" name="avatar_src" type="hidden">
 						<input class="avatar-data" name="avatar_data" type="hidden">
 						<label for="avatarInput">Cargar Imagen</label>
-						<input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+						<input class="avatar-input" id="avatarInput" name="avatar_file" type="file" accept="image/*">
 					</div>
 
 					<!-- Crop and preview -->
@@ -47,6 +46,7 @@
 							<div class="avatar-preview preview-lg"></div>
 							<div class="avatar-preview preview-md"></div>
 							<div class="avatar-preview preview-sm"></div>
+              <div class="avatar-preview preview-sm preview-circle"></div>
 						</div>
 					</div>
 

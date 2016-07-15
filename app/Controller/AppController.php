@@ -34,7 +34,7 @@ class AppController extends Controller {
 			)
 		),
 	);
-	//public $helpers = array('General');
+	public $helpers = array('UtilCake.bsForm');
 
 	public function beforeFilter(){
 		parent::beforeFilter();
@@ -63,10 +63,13 @@ class AppController extends Controller {
 	}
 
 	public function userUpdate(){
+
+
 		$redirect = array('controller'=>'usuarios','action'=>'edit');
 		$allows   = array(
 			array('controller'=>'usuarios','action'=>'logout'),
 			array('controller'=>'usuarios','action'=>'getFoto'),
+			array('controller'=>'usuarios','action'=>'existeFoto'),
 			array('controller'=>'usuarios','action'=>'getUpdatedFoto'),
 			array('controller'=>'mensajes','action'=>'lista_mensajes'),
 			array('controller'=>'mensajes','action'=>'index'),
@@ -86,7 +89,7 @@ class AppController extends Controller {
 			if($sal === false){
 				$this->Session->setFlash(__('Es necesario que actualice sus datos antes de realizar cualquier otra acción.'),'alert/warning');
 				return $this->redirect(array('controller'=>$redirect['controller'],'action'=>$redirect['action'],'admin'=>false));
-			}elseif($sal === true){
+			}else if($sal === true){
 				// NO HACER NADA
 				return true;
 			}

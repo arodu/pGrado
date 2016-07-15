@@ -40,7 +40,7 @@
   						<div class="list-group-item">
   							<div class="row">
   								<div class="col-xs-8 col-sm-10">
-  									<h4 class="list-group-item-heading"><?php echo $descarga['Descarga']['nombre'];?></h4>
+  									<h4 class="list-group-item-heading"><strong><?php echo $descarga['Descarga']['nombre'];?></strong></h4>
                     <p><?php echo $descarga['Descarga']['descripcion'];?></p>
   								</div>
   								<div class="col-xs-4 col-sm-2 text-center">

@@ -4,10 +4,8 @@
 <li class="dropdown user user-menu">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		<?php // echo $this->Html->image($user_foto, array('class'=>'user-image','alt'=>'User Image')); ?>
-
 		<?php echo $this->Html->image($user_foto,array('class'=>'user-image','alt'=>'User Image')); ?>
-
-		<span class="hidden-xs"><?php echo $userInfo['nombre']; ?></span>
+		<span class="hidden-xs"><?php echo $userInfo['nombre']; ?>&nbsp;</span>
 	</a>
 
 	<ul class="dropdown-menu">
@@ -18,8 +16,10 @@
 			<?php echo $this->Html->image($user_foto,array('class'=>'img-circle','alt'=>'User Image')); ?>
 
 			<p>
-				<?php echo $userInfo['nombre'].' - '.$userInfo['tipo']; ?>
-				<small><?php echo $userInfo['Sede']['nombre']; ?></small>
+				<?php echo $userInfo['nombre']; ?>
+				<?php echo  ' / '; ?>
+				<?php echo $userInfo['tipo']; ?>
+				<?php echo '<small>'.$userInfo['Sede']['nombre'].'</small>'; ?>
 			</p>
 		</li>
 
@@ -28,7 +28,7 @@
 		<?php if($userInfo['userMenu']){ ?>
 			<li class="user-body">
 				<div class="col-xs-4 text-center">
-					<?php echo $this->Html->link($userInfo['userMenu']['paneladmin']['label'],$userInfo['userMenu']['paneladmin']['url'],array('title'=>$userInfo['userMenu']['paneladmin']['title'],'target'=>'_blankcd ww')); ?>
+					<?php echo $this->Html->link($userInfo['userMenu']['paneladmin']['label'],$userInfo['userMenu']['paneladmin']['url'],array('title'=>$userInfo['userMenu']['paneladmin']['title'],'target'=>'_blank')); ?>
 				</div>
 				<!--<div class="col-xs-4 text-center">
 					<a href="#">Sales</a>
@@ -38,7 +38,6 @@
 				</div>-->
 			</li>
 		<?php } ?>
-
 
 		<!-- Menu Footer-->
 		<li class="user-footer">

@@ -15,8 +15,8 @@
 ## Hoja de Ruta
 * Completar modulo de descargas
 * Revision
-  * Ingresar nuevo estudiante
-  * Actualizar los datos
+  * Ingresar nuevo estudiante (LISTO)
+  * Actualizar los datos (LISTO)
   * Generar nuevo proyecto
   * Agregar Escenario al Proyecto
   * Agregar Tutor Academico y Metodologico

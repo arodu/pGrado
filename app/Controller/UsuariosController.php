@@ -339,7 +339,7 @@ class UsuariosController extends AppController {
 			if ($this->request->is('post')) {
 				$this->Usuario->set($this->request->data);
 
-				if(Configure::read('google_recaptcha') && Configure::read(['sistema']['modulos']['external.google_recaptcha'])){
+				if( Configure::read('google_recaptcha') && Configure::read('sistema.modulos')['external.google_recaptcha'] ){
 					$this->ReCaptcha = $this->Components->load('ReCaptcha');
 					$reCaptcha_valido = $this->ReCaptcha->verificar($this->request->data['g-recaptcha-response']);
 				}else{
@@ -347,7 +347,6 @@ class UsuariosController extends AppController {
 				}
 
 				if( $reCaptcha_valido ) {
-
 					if($this->Usuario->validates())	{
 
 						$usuario = $this->Usuario->find('first',array(

@@ -13,7 +13,7 @@
 
 
 	<?php
-		debug($userInfo);
+		//debug($userInfo);
 
 		// echo '<pre>'. print_r (mcrypt_list_algorithms (), TRUE). '</ Pre>';
 
