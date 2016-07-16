@@ -50,9 +50,9 @@ class PlanillasController extends AppController {
 				'contain'=>array('TipoAutor')
 			));
 
-		$userInfo = $this->Permisos->userInfo();
+		$userInfo = $this->Permit->user();
 
-		if(empty($proyecto_autor) || !$userInfo['perfil']['coordpg'] || !$userInfo['perfil']['root']){
+		if(empty($proyecto_autor) || !$userInfo['coordpg'] || !$userInfo['root']){
 			throw new ForbiddenException(); // Proyecto no Pertenece al Usuario Actual
 		}
 

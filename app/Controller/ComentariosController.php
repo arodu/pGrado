@@ -13,10 +13,9 @@ class ComentariosController extends AppController {
 
 	public function index($proyecto_id, $tipo = null) {
 		$this->layout = 'ajax';
-
 		$options = array(
 						'conditions'=>array('Comentario.proyecto_id'=>$proyecto_id),
-						'order'=>array('Comentario.updated'=>'DESC'),
+						'order'=>array('Comentario.created'=>'DESC'),
 						'contain'=>array(
 								'Usuario'=>array('fields'=>array('id','nombre_completo','foto'))
 							),
@@ -57,11 +56,38 @@ class ComentariosController extends AppController {
 		throw new InternalErrorException();
 	}
 
-	public function edit(){
-
-
-
-
+	public function edit($id = null) {
+		$this->layout = 'ajax';
+		if (!$this->Comentario->exists($id)) {
+			throw new NotFoundException(__('Comentario Invalido!'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Comentario->save($this->request->data)) {
+				//$this->Session->setFlash('Cambios realizados correctamente','alert/success');
+			}
+		} else {
+			$options = array('conditions' => array('Comentario.id' => $id));
+			$this->request->data = $this->Comentario->find('first', $options);
+		}
 	}
+
+	public function delete($id = null) {
+		$this->Comentario->id = $id;
+		if (!$this->Comentario->exists()) {
+			throw new NotFoundException(__('Comentario Invalido!'));
+		}
+		$this->request->allowMethod('post', 'delete');
+		$data['Comentario'] = array(
+			'id' => $id,
+			'eliminado'=>true,
+		);
+		if ($this->Comentario->save($data)) {
+			$this->response->statusCode(200);
+		} else {
+			$this->response->statusCode(500);
+		}
+		return $this->response;
+	}
+
 
 }

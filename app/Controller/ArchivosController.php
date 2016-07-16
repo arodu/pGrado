@@ -34,25 +34,12 @@ class ArchivosController extends AppController {
 
 	public function index($proyecto_id) {
 		$this->layout = 'ajax';
-
 		$this->revisarProyecto($proyecto_id); // Revisa si el usuario actual tiene acceso al proyecto
-
 		$archivos = $this->Archivo->find('all',array(
 				'conditions'=>array('Archivo.proyecto_id'=>$proyecto_id),
 				'order'=>array('Archivo.id'=>'DESC')
 			));
-
 		$this->set(compact('archivos','proyecto_id'));
-	}
-
-	public function view($proyecto_id){
-		$this->layout = 'ajax';
-		$this->index($proyecto_id);
-	}
-
-	public function view2($proyecto_id){
-		$this->layout = 'ajax';
-		$this->index($proyecto_id);
 	}
 
 	public function download($id = null, $descarga = false) {
@@ -112,14 +99,12 @@ class ArchivosController extends AppController {
 
 	public function add($proyecto_id) {
 		$this->revisarProyecto($proyecto_id); // Revisa si el usuario actual tiene acceso al proyecto
-
 		$path_to_files = Configure::read('sistema.archivos.proyectos');
 
 		if ($this->request->is('post')) {
 			$file = $this->params['form']['file'];
 
 			//debug($file); exit();
-
 
 			if ($file['error'] == UPLOAD_ERR_OK) {
 
@@ -132,13 +117,13 @@ class ArchivosController extends AppController {
 
 				if(count($archivos) >= $cant_pos_archivos){
 					$this->Session->setFlash('Ya se han guardado la cantidad maxima de archivos permitida','alert/danger');
-					return $this->redirect(array('action' => 'view2',$proyecto_id));
+					return $this->redirect(array('action' => 'index',$proyecto_id));
 				}
 
 				foreach ($archivos as $archivo) {
 					if($archivo == $file['name']){
 						$this->Session->setFlash('Ya existe un archivo con este nombre','alert/warning');
-						return $this->redirect(array('action' => 'view2',$proyecto_id));
+						return $this->redirect(array('action' => 'index',$proyecto_id));
 					}
 				}
 
@@ -148,7 +133,7 @@ class ArchivosController extends AppController {
 					if( !mkdir($path_file) ){
 						//throw new InternalErrorException(__('Error creando Directorio'));
 						$this->Session->setFlash('Error creando Directorio','alert/danger');
-						return $this->redirect(array('action' => 'view2',$proyecto_id));
+						return $this->redirect(array('action' => 'index',$proyecto_id));
 					}
 				}
 
@@ -175,15 +160,13 @@ class ArchivosController extends AppController {
 					$this->Archivo->create();
 					if ($this->Archivo->save($data_archivo)) {
 						//return $this->redirect(array('action' => 'index',$proyecto_id));
-						return $this->redirect(array('action' => 'view2',$proyecto_id));
+						return $this->redirect(array('action' => 'index',$proyecto_id));
 					}
 				}else{
 					throw new InternalErrorException(__('Error moviendo Archivo'));
 				}
 			}
-
 			throw new InternalErrorException(__('Error guardando Archivo'));
-
 		}
 	}
 
@@ -243,7 +226,7 @@ class ArchivosController extends AppController {
 		}else{
 			$this->Session->setFlash(__('The archivo could not be deleted. Please, try again.'),'alert/warning');
 		}
-		return $this->redirect(array('action' => 'view2',$archivo['Archivo']['proyecto_id']));
+		return $this->redirect(array('action' => 'index',$archivo['Archivo']['proyecto_id']));
 	}
 
 }

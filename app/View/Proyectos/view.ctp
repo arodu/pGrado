@@ -111,11 +111,16 @@
 
 						<?php // ----------------- BOTON TAB 3 ------------------- ?>
 							<?php if($mod_activo['proyecto.comentarios']){ ?>
-								<li role="presentation" class="dropdown">
+								<li role="presentation">
+									<a href="#tab-coment" class="btn-tab-coment" data-toggle="tab">
+										<i class="fa fa-quote-left"></i>
+										<span class="hidden-sm">&nbsp;<?php echo __('Comentarios'); ?></span>
+									</a>
+								</li>
+								<!-- <li role="presentation" class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 										<i class="fa fa-quote-left"></i>
 										<span class="hidden-sm">&nbsp;Comentarios</span>
-										<!-- <i class="fa fa-caret-down fa-fw"></i> -->
 									</a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a id="coment-all" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>Todos</a></li>
@@ -123,7 +128,7 @@
 										<li><a id="coment-users" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-users"></i>Usuarios</a></li>
 										<li><a id="coment-system" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-desktop"></i>Sistema</a></li>
 									</ul>
-								</li>
+								</li> -->
 							<?php } ?>
 
 						<?php // ----------------- BOTON TAB 4 ------------------- ?>
@@ -245,27 +250,27 @@
 							</div>
 
 						<?php // ----------------- TAB 2 ------------------- ?>
-							<div id="tab-archivos" class="tab-pane fade border-radious">
+							<div id="tab-archivos" class="tab-pane fade border-radious proyecto_archivos">
 								<i class="fa fa-refresh fa-spin"></i> Cargando...
 							</div>
 
 						<?php // ----------------- TAB 3 ------------------- ?>
-							<div id="tab-coment" class="tab-pane fade border-radious">
-								<i class="fa fa-refresh fa-spin"></i> Cargando...
+							<div id="tab-coment" class="tab-pane fade border-radious proyecto_comentarios">
+								<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
 							</div>
 
 						<?php // ----------------- TAB 4 ------------------- ?>
-							<div id="tab-metas" class="tab-pane fade border-radious">
+							<div id="tab-metas" class="tab-pane fade border-radious  proyecto_metas">
 								<i class="fa fa-refresh fa-spin"></i> Cargando...
 							</div>
 
 						<?php // ----------------- TAB 5 ------------------- ?>
-							<div id="tab-asuntos" class="tab-pane fade border-radious">
+							<div id="tab-asuntos" class="tab-pane fade border-radious  proyecto_asuntos">
 								<i class="fa fa-refresh fa-spin"></i> Cargando...
 							</div>
 
 						<?php // ----------------- TAB 6 ------------------- ?>
-							<div id="tab-jurados" class="tab-pane fade border-radious">
+							<div id="tab-jurados" class="tab-pane fade border-radious  proyecto_jurados">
 								<i class="fa fa-refresh fa-spin"></i> Cargando...
 							</div>
 
@@ -412,7 +417,7 @@
 						$cant_pos_estudiante = Configure::read('proyectos.cantidad.tipo_autor.estudiante');
 						if($cant_pos_estudiante >= 2){ ?>
 							<div class="box-footer">
-								<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#exampleModal" data-whatever="estudiante" title="Agregar Compañero"><?php echo $icoplus;?>Compañero</button>
+								<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="estudiante" title="Agregar Compañero"><?php echo $icoplus;?>Compañero</button>
 							</div>
 				<?php
 						}
@@ -476,8 +481,8 @@
 				</div>
 				<?php if($proyectoEditable){ ?>
 					<div class="box-footer">
-						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#exampleModal" data-whatever="tutoracad" title="Agregar Tutor Académico"><?php echo $icoplus;?>Académico</button>
-						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#exampleModal" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><?php echo $icoplus;?>Metodológico</button>
+						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutoracad" title="Agregar Tutor Académico"><?php echo $icoplus;?>Académico</button>
+						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><?php echo $icoplus;?>Metodológico</button>
 					</div>
 				<?php } ?>
 			</div>
@@ -584,12 +589,12 @@
 
 <?php // ----------------- MODAL AGREGAR AUTOR ------------------- ?>
 	<?php if($proyectoEditable){ ?>
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="addAutor" tabindex="-1" role="dialog" aria-labelledby="addAutor" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			        <h4 class="modal-title" id="exampleModalLabel">Agregar ...</h4>
+			        <h4 class="modal-title" id="addAutorLabel">Agregar ...</h4>
 			      </div>
 			      <div id="modal-content" class="modal-body">
 			      		Cargando...
@@ -604,7 +609,7 @@
 			</div>
 
 			<?php $this->Html->scriptStart(array('inline' => false)); ?>
-				$('#exampleModal').on('show.bs.modal', function (event){
+				$('#addAutor').on('show.bs.modal', function (event){
 					var button = $(event.relatedTarget); // Button that triggered the modal
 					var recipient = button.data('whatever'); // Extract info from data-* attributes
 					var modal = $(this);
@@ -644,29 +649,33 @@
 
 		<?php // ----------------- SCRIPTS TABs ------------------- ?>
 
-			$('.box-body .btn-tab-coment').on('shown.bs.tab', function (e) {
-				var coment = $(this).attr('id');
-
-				$.ajax({
-					url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>"+"/"+coment,
-					dataType: 'html',
-					beforeSend: function(){
-						$('#tab-coment').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-					},
-					complete: function(msg){
-						$('#tab-coment').html(msg.responseText);
-						//autosize($('#tab-coment .tab-timeline textarea'));
-					}
+			<?php // ----------------- Cargar Comentarios ------------------- ?>
+				$('.box-body .btn-tab-coment').on('shown.bs.tab', function (e) {
+					cargarComentarios();
+					// e.target // newly activated tab
+					// e.relatedTarget // previous active tab
 				});
 
-				// e.target // newly activated tab
-				// e.relatedTarget // previous active tab
-			});
+				function cargarComentarios(){
+					$.ajax({
+						url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
+						dataType: 'html',
+						beforeSend: function(){
+							//$('#tab-coment').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+							$('#tab-coment').append('<div class="commemt_overlay"><i class="fa fa-refresh fa-spin"></i> Cargando...</div>');
+						},
+						complete: function(msg){
+							$('#tab-coment').html(msg.responseText);
+							//autosize($('#tab-coment .tab-timeline textarea'));
+							//$('#tab-coment').removeClass('overlay');
+						}
+					});
+				}
 
 			$('.box-body a.btn-tab-archivos').on('shown.bs.tab', function (e) {
 
 				$.ajax({
-					url: "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'view2','admin'=>false,$proyecto['Proyecto']['id']));?>",
+					url: "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
 					dataType: 'html',
 					beforeSend: function(){
 						$('#tab-archivos').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
@@ -709,26 +718,6 @@
 
 				// e.target // newly activated tab
 				// e.relatedTarget // previous active tab
-
-			});
-
-		<?php // ----------------- SCRIPTS ARCHIVOS ------------------- ?>
-			$(function(){
-				// $('.cant-archivos').text($('#cant-archivos').text());
-
-			});
-
-			$('#archivosModal').on('shown.bs.modal', function (event) {
-
-				var modal = $(this);
-
-				$.ajax({
-					url: "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'index',$proyecto['Proyecto']['id']));?>",
-					dataType: 'html',
-					complete: function(msg){
-						modal.find('.modal-body').html(msg.responseText);
-					}
-				});
 
 			});
 

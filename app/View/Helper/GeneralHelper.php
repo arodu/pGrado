@@ -54,7 +54,7 @@ class GeneralHelper extends AppHelper {
 		$strmes = $this->meses['largo'];
 		//debug(date('d m Y h:i a',$date));
 		return date('d',$date).' de '.$strmes[date('n',$date)].' de '.date('Y',$date);
-	}	
+	}
 
 	public function niceDateFormatView($date=null){
 		$dateF = $this->formatDateTime($date);
@@ -86,7 +86,7 @@ class GeneralHelper extends AppHelper {
 			$size = round($size / 1024, 1);
 			$ext = ' KB';
 		}else{
-			$ext = ' Bytes';	
+			$ext = ' Bytes';
 		}
 		return $size.$ext;
 	}
@@ -111,7 +111,7 @@ class GeneralHelper extends AppHelper {
 
 		switch ($type) {
 			case 'doc':
-			case 'docx':	
+			case 'docx':
 							$icon = 'fa-file-word-o';
 							break;
 			case 'gif':
@@ -197,7 +197,7 @@ class GeneralHelper extends AppHelper {
 		$foto = $this->requestAction('/usuarios/existeFoto/'.$tipo_foto.'/'.$id);
 
 		if($updated_foto == null){
-			$updated_foto = $this->requestAction('usuarios/getUpdatedFoto/'.$id);	
+			$updated_foto = $this->requestAction('usuarios/getUpdatedFoto/'.$id);
 		}
 
 		if($foto){
@@ -216,6 +216,22 @@ class GeneralHelper extends AppHelper {
 
 			return $imageBaseUrl.$file;
 		}
+	}
+
+
+	public function return_bytes($val) {
+    $val = trim($val);
+    $last = strtolower($val[strlen($val)-1]);
+    switch($last) {
+        // El modificador 'G' está disponble desde PHP 5.1.0
+        case 'g':
+            $val *= 1024;
+        case 'm':
+            $val *= 1024;
+        case 'k':
+            $val *= 1024;
+    }
+    return $val;
 	}
 
 

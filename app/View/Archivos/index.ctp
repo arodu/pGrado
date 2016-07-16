@@ -1,80 +1,130 @@
 <?php echo $this->Session->flash(); ?>
+<div class="text-progress"></div>
+<div id="progress" class="progress progress-xxs">
+	<div class="progress-bar progress-bar-primary progress-bar-striped"></div>
+</div>
 
-<div class="index archivos">
+<div class="file-box">
+	<div class="file">
+		<div class="fileinput-button">
+			<input id="fileupload" type="file" name="file" />
+			<div class="icon">
+				<i class="fa fa-plus"></i>
+			</div>
+			<span class="text-progress text-muted"></span>
+			<div class="file-name">
+				<span><strong><i class="fa fa-upload fa-fw"></i> Agregar Archivo...</strong></span>
+				<br>
+				<small>&nbsp;</small>
+			</div>
+		</div>
+	</div>
+</div>
 
-	<?php if(empty($archivos)){ ?>
-			<ul class="list-group">
-				<li class="list-group-item info-progress">
-					<div class="text-progress"><span class="text-muted">No se encontraron archivos</span></div>
-					<div id="progress" class="progress">
-						<div class="progress-bar"></div>
+<?php foreach ($archivos as $archivo) { ?>
+	<div class="file-box">
+
+		<div class="file">
+
+			<?php
+				$esImagen = $this->General->esImagen($archivo['Archivo']['nombre']);
+
+				if( $esImagen ){
+					$url = $this->Html->url(array('controller'=>'archivos','action'=>'download',$archivo['Archivo']['id']));
+				}else{
+					$url = $this->Html->url(array('controller'=>'archivos','action'=>'download',$archivo['Archivo']['id'],'1'));
+				}
+			?>
+
+			<?php
+				echo $this->Html->link('<i class="fa fa-times"></i>',
+						array('controller'=>'archivos','action'=>'delete',$archivo['Archivo']['id']),
+						array('class'=>'delete-file','escape'=>false)
+					);
+			?>
+
+			<a href="<?php echo $url;?>" title="<?php echo $archivo['Archivo']['nombre'];?>" target="_blank">
+				<span class="corner"></span>
+
+
+				<?php $ft = $this->General->fileType($archivo['Archivo']['nombre']); ?>
+
+				<?php if($esImagen){ ?>
+					<div class="image" style="text-align: center;">
+						<?php echo $this->Html->image(
+
+							$this->Html->url(array('controller'=>'archivos','action'=>'miniatura',$archivo['Archivo']['id']),true)
+
+						,array('style'=>'max-width:220px;max-height:100px;')); ?>
 					</div>
-				</li>
-			</ul>
+				<?php }else{ ?>
+					<div class="icon">
+						<?php echo '<i class="fa '.$this->General->iconFileType($archivo['Archivo']['nombre']).'"></i>'; ?>
+					</div>
+				<?php } ?>
 
-	<?php }else{ ?>
-		<ul class="list-group">
-
-			<?php foreach ($archivos as $archivo) { ?>
-				<li class="list-group-item"><?php
-						echo $this->Html->link(
-								'<i class="fa fa-file-o"></i> '.$archivo['Archivo']['nombre'].' - '.$this->General->byteSize($archivo['Archivo']['tamano']).' - '.$this->General->dateTimeFormatPrint($archivo['Archivo']['created']),
-								array('controller'=>'archivos','action'=>'download',$archivo['Archivo']['id'],true),
-								array('escape'=>false)
-							);
-
-						echo $this->Html->link('<i class="fa fa-trash"></i>', array('controller'=>'archivos','action' => 'delete', $archivo['Archivo']['id']), array('class'=>'close','escape'=>false));
-
-					?>
-
-				</li>
-			<?php } ?>
-
-			<li class="list-group-item info-progress hidden">
-				<div class="text-progress"></div>
-				<div id="progress" class="progress">
-					<div class="progress-bar"></div>
+				<div class="file-name">
+					<?php echo $archivo['Archivo']['nombre'];?>
+					<br>
+					<small><?php echo $this->General->byteSize($archivo['Archivo']['tamano']).' - '.$this->General->dateTimeFormatPrint($archivo['Archivo']['created']); ?></small>
 				</div>
-			</li>
+			</a>
+
+		</div>
+	</div>
+<?php } ?>
 
 
-		</ul>
-	<?php } ?>
+<!--
+<div class="fileinput-button">
+	<div class="file-box">
+		<div class="file">
+				<input id="fileupload" type="file" name="file" />
 
+				<div class="icon">
+					<i class="fa fa-plus"></i>
+				</div>
+				<span class="text-progress text-muted"></span>
+
+				<div class="file-name bg-blue">
+					<span><strong><i class="fa fa-upload fa-fw"></i> Agregar Archivo...</strong></span>
+					<br>
+					<small>&nbsp;</small>
+				</div>
+
+		</div>
+	</div>
 </div>
+-->
 
-<div class="clearfix"></div>
-
-
-<div id="index-view" class="hidden">
-	<?php echo $this->requestAction(array('controller'=>'archivos','action'=>'view',$proyecto_id,'admin'=>false),array('return')); ?>
-</div>
+<span id="cant-archivos" class="hidden"><?php echo count($archivos);?></span>
 
 
 <script type="text/javascript">
-	$(function () {
-		'use strict';
+	$('.cant-archivos').text( $('#cant-archivos').text() );
 
-		var url = "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'add',$proyecto_id));?>";
+	'use strict';
 
+	var url = "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'add',$proyecto_id));?>";
+	var max_filesize = <?php echo $this->General->return_bytes(ini_get('upload_max_filesize')) ?>
 
-		$('#fileupload').fileupload({
+	$('#fileupload').fileupload({
+		url: url,
+		dataType: 'html', //dataType: 'json',
+		type: 'post',
 
-			url: url,
-			dataType: 'html', //dataType: 'json',
-			type: 'post',
+		add: function(e, data) {
+			var uploadErrors = [];
+			var acceptFileTypes = /(\.|\/)(gif|jpeg|jpg|png|pdf|doc|docx|odt|txt)$/i;
 
-			add: function(e, data) {
-				var uploadErrors = [];
-				var acceptFileTypes = /(\.|\/)(gif|jpeg|jpg|png|pdf|doc|docx|odt|txt)$/i;
+			if(data.originalFiles[0]['name'].length && !acceptFileTypes.test(data.originalFiles[0]['name'])) {
+				uploadErrors.push('Formato de Archivo no aceptado');
+			}
 
-				if(data.originalFiles[0]['name'].length && !acceptFileTypes.test(data.originalFiles[0]['name'])) {
-					uploadErrors.push('Formato de Archivo no aceptado');
-				}
+			if(data.originalFiles[0]['size'] > max_filesize) {
+				uploadErrors.push('Tamaño de Archivo no aceptado');
+			}
 
-				if(data.originalFiles[0]['size'] > 5000000) {
-					uploadErrors.push('Filesize is too big');
-				}
 				if(uploadErrors.length > 0) {
 					alert(uploadErrors.join("\n"));
 				} else {
@@ -83,34 +133,35 @@
 			},
 
 			beforeSend: function (e, data) {
-				$('.info-progress').removeClass('hidden');
-				$('#progress').html('<div class="progress-bar"></div>');
-
-				$('.info-progress .text-progress').html('<small class="text-muted"><i class="fa fa-refresh fa-spin"></i> Cargando <strong>'+data.originalFiles[0]['name']+'</strong></small>');
-
+				$('.fileinput-button .icon').html('<i class="fa fa-spinner fa-pulse"></i>');
+				$('.fileinput-button .file-name span').html( data.originalFiles[0]['name'] );
+				$('.fileinput-button .file-name small').html( '<i class="fa fa-refresh fa-spin"></i> Cargando Archivo...' );
+				$('.fileinput-button #fileupload').attr('disabled','disabled');
+				$('.fileinput-button .file-name').removeClass('bg-blue').addClass('bg-gray');
 			},
 
 			progressall: function (e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
-				$('#progress .progress-bar').css('width',progress + '%').text(progress + '%');
+				$('#progress .progress-bar').css('width', progress+'%');
+				$('.fileinput-button .text-progress').html( progress+'%' );
+
+			},
+
+			fail: function(e, data){
+				alert("Error Cargando el Archivo!");
 			},
 
 			done: function (e, data) {
-				$('#archivosModal .modal-body').html(data.result);
-
-				$('.info-progress .text-progress').html('<small class=""><i class="fa fa-check"></i> Cargado con exito! <strong>'+data.originalFiles[0]['name']+'</strong></small>');
-
-				$('#files').html($('#index-view').html());
+				$('.box-body .tab-content #tab-archivos').html(data.result);
 				$('#index-view').remove();
 				$('.cant-archivos').text($('#cant-archivos').text());
-
 			}
+		})
+		.prop('disabled', !$.support.fileInput)
+		.parent().addClass($.support.fileInput ? undefined : 'disabled');
 
-		}).prop('disabled', !$.support.fileInput)
-			.parent().addClass($.support.fileInput ? undefined : 'disabled');
 
-
-		$('.index.archivos a.close').click(function(){
+		$('.file-box a.delete-file').click(function(){
 
 			if(confirm('¿Esta seguro que desea elimiar este archivo?')){
 
@@ -120,13 +171,16 @@
 					url: link.attr('href'),
 					type: 'post',
 					beforeSend: function(){
-						link.closest('.list-group-item').slideUp();
+						link.closest('.file-box').hide(600);
 					},
 					complete: function(msg){
 						//$('#files').html(data);
-						link.closest('.modal-body').html(msg.responseText);
-						$('#files').html($('#index-view').html());
-						$('#index-view').remove();
+						//link.closest('.modal-body').html(msg.responseText);
+						$('.box-body .tab-content #tab-archivos').html(msg.responseText);
+
+						//$('#files').html($('#index-view').html());
+
+						//$('#index-view').remove();
 						$('.cant-archivos').text($('#cant-archivos').text());
 					}
 				});
@@ -135,8 +189,4 @@
 
 			return false;
 		});
-
-	});
 </script>
-
-

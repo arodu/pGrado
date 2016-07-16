@@ -1,0 +1,45 @@
+.proyecto_archivos{
+  .file{
+		position: relative;
+
+    .fileinput-button {
+      display: block;
+    }
+
+    .file-name{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .delete-file{
+      z-index: 100;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+
+      .fa{
+        font-size: 1.5em;
+        padding: 2px;
+        background-color: #ccc;
+        color: #fff;
+        &:hover{
+          background-color: #333;
+          color: #fff;
+        }
+      }
+    }
+
+    .icon {
+      position: relative;
+    }
+
+    .text-progress {
+      font-size: 2.2em;
+      position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+	}
+}

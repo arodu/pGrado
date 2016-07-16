@@ -4,10 +4,19 @@ class PanelAdminAppController extends AppController {
 
 	public $components = array(
 		'Session',
-		'Permisos'=>array(
+		/*'Permisos'=>array(
 				'fileConfig'=>'PanelAdmin.permisos',
 				'arreglo'=>'PermisosAdmin',
-			),
+			), */
+		'UtilCake.Permit'=>array(
+			'config' => array(
+	      'file' => 'PanelAdmin.permisos',
+	      'name' => 'PermisosAdmin',
+	    ),
+			'userModel'=>'Usuario',
+			'profileModel'=>'Perfil',
+			//'reload'=>true,
+		),
 		'Auth' => array(
 			'loginRedirect' => array('plugin'=>'panel_admin','controller' => 'pages','action' => 'index'),
 			'logoutRedirect' => array('plugin'=>'panel_admin','controller' => 'usuarios','action' => 'login',),
@@ -30,7 +39,8 @@ class PanelAdminAppController extends AppController {
 	);
 
 	public function isAuthorized() {
-		return $this->Permisos->autorizado();
+		//return $this->Permisos->autorizado();
+		return $this->Permit->isAuthorized();
 	}
 
 	public function beforeFilter() {

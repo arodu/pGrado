@@ -1,7 +1,4 @@
-// BootstrapMod
-.form-control.form-control-static{
-  border: 0px;
-}
+
 
 // Add to pGrado
 .box-time {
@@ -201,3 +198,7 @@ form {
 
 
 }
+
+@import "bs_mod";
+@import "proyecto_archivos";
+@import "proyecto_comentarios";

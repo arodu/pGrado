@@ -51,25 +51,28 @@ class UsuariosController extends PanelAdminAppController {
 		if($this->Auth->loggedIn()){
 			Configure::load('PanelAdmin.permisos'); // Cargar Archivo
 			$permisos = Configure::read('PermisosAdmin'); // Leer Arreglo de Permisos
-			$perfiles = $this->Auth->user('Perfil');
+			//$perfiles = $this->Auth->user('Perfil');
+
+			$perfiles = $this->Permit->user();
+
 			$data=array();
 			foreach ($permisos as $controller => $acceso) {
-				foreach ($perfiles as $perfil) {
-					if($perfil['code'] == 'root'){
+				foreach ($perfiles as $perfil => $value) {
+					if($perfil == 'root' and $value){
 						$data[] = $controller;
 						break;
 					}
 					if( isset($acceso['index']) && is_array($acceso['index'])){
-						if(in_array($perfil['code'], $acceso['index']) ){
+						if(in_array($perfil, $acceso['index']) ){
 							$data[] = $controller;
 							break;
 						}
 						if(in_array('public', $acceso['index']) ){
-							$data[] = $controller;	
+							$data[] = $controller;
 							break;
 						}
 					}elseif( isset($acceso['index']) && !is_array($acceso['index']) && $acceso['index']=='public'){
-						$data[] = $controller;	
+						$data[] = $controller;
 						break;
 					}
 				}
@@ -132,12 +135,12 @@ class UsuariosController extends PanelAdminAppController {
 	}
 
 	public function viewFoto( $id = null, $tipo_foto = 'user' ){
-		
+
 		$path_to_files = Configure::read('sistema.archivos.usuarios');
 		$file_name = $this->Usuario->foto( $tipo_foto, $id );
 
 		$file = new File( $path_to_files.$file_name );
-			
+
 		if( $file->exists() ){
 			$this->response->type('image/png');
 			$this->response->file( $path_to_files.$file_name);

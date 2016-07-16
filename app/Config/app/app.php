@@ -82,9 +82,9 @@
 
 				'proyecto.imprimir' => true,
 				'proyecto.revisions' => true,
-				'proyecto.archivos' => false,
+				'proyecto.archivos' => true,
 				'proyecto.escenarios' => true,
-				'proyecto.comentarios' => false,
+				'proyecto.comentarios' => true,
 				'proyecto.jurados' => false,
 				'proyecto.metas' => false,
 				'proyecto.asuntos' => false,

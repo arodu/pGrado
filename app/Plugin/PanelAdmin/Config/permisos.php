@@ -3,7 +3,7 @@
 		'PermisosAdmin'=>array(
 				//Controladores
 				'pages'=>array(
-						'index'=>'public',
+						'index'=>'loged',
 					),
 				'autors'=>array(
 						'index'=>array('admin'),
@@ -125,8 +125,8 @@
 						'view'=>array('admin'),
 						'viewFoto'=>array('admin'),
 
-						'perfilUsuario'=>'public',
-						'viewFotoPerfil'=>array('public'),
+						'perfilUsuario'=>'loged',
+						'viewFotoPerfil'=>array('loged'),
 
 						'edit'=>array('admin'),
 						'editCategorias'=>array('admin'),

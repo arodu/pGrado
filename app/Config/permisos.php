@@ -71,6 +71,8 @@
 				'comentarios'=>array(
 						'index'=>'loged',
 						'add'=>'loged',
+						'edit'=>'loged',
+						'delete'=>'loged',
 					),
 
 				'planillas'=>array(
