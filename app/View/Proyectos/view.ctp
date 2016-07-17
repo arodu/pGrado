@@ -90,189 +90,190 @@
 				<div class="box-body nav-tabs-custom">
 
 					<ul class="nav nav-tabs">
-						<?php // ----------------- BOTON TAB 1 ------------------- ?>
-							<li role="presentation" class="active">
-								<a href="#tab-info" data-toggle="tab">
-									<i class="fa fa-th-list"></i><span class="hidden-sm">&nbsp;Información</span>
-								</a>
-							</li>
-
-						<?php // ----------------- BOTON TAB 2 ------------------- ?>
-							<?php if($mod_activo['proyecto.archivos']){ ?>
-								<li role="presentation">
-									<a href="#tab-archivos" class="btn-tab-archivos" data-toggle="tab">
-										<i class="fa fa-files-o"></i>
-										<span class="hidden-sm">&nbsp;<?php echo __('Archivos'); ?>
-											&nbsp;&nbsp;<span class="cant-archivos badge bg-blue"><?php echo $cant_archivos;?></span>
-										</span>
+						<?php // ----------------- BOTON TABS ------------------- ?>
+							<?php // ----------------- BOTON TAB 1 ------------------- ?>
+								<li role="presentation" class="active">
+									<a href="#tab-info" data-toggle="tab">
+										<i class="fa fa-th-list"></i><span class="hidden-sm">&nbsp;Información</span>
 									</a>
 								</li>
-							<?php } ?>
 
-						<?php // ----------------- BOTON TAB 3 ------------------- ?>
-							<?php if($mod_activo['proyecto.comentarios']){ ?>
-								<li role="presentation">
-									<a href="#tab-coment" class="btn-tab-coment" data-toggle="tab">
-										<i class="fa fa-quote-left"></i>
-										<span class="hidden-sm">&nbsp;<?php echo __('Comentarios'); ?></span>
-									</a>
-								</li>
-								<!-- <li role="presentation" class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-										<i class="fa fa-quote-left"></i>
-										<span class="hidden-sm">&nbsp;Comentarios</span>
-									</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a id="coment-all" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>Todos</a></li>
-										<li class="divider"></li>
-										<li><a id="coment-users" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-users"></i>Usuarios</a></li>
-										<li><a id="coment-system" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-desktop"></i>Sistema</a></li>
-									</ul>
-								</li> -->
-							<?php } ?>
+							<?php // ----------------- BOTON TAB 2 ------------------- ?>
+								<?php if($mod_activo['proyecto.archivos']){ ?>
+									<li role="presentation">
+										<a href="#tab-archivos" class="btn-tab-archivos" data-toggle="tab">
+											<i class="fa fa-files-o"></i>
+											<span class="hidden-sm">&nbsp;<?php echo __('Archivos'); ?>
+												&nbsp;&nbsp;<span class="cant-archivos badge bg-blue"><?php echo $cant_archivos;?></span>
+											</span>
+										</a>
+									</li>
+								<?php } ?>
 
-						<?php // ----------------- BOTON TAB 4 ------------------- ?>
-							<?php if($mod_activo['proyecto.metas']){ ?>
-								<li role="presentation">
-									<a href="#tab-metas" class="btn-tab-metas" data-toggle="tab">
-										<i class="fa fa-clock-o"></i>
-										<span class="hidden-sm">&nbsp;<?php echo __('Metas'); ?>
-										</span>
-									</a>
-								</li>
-							<?php } ?>
+							<?php // ----------------- BOTON TAB 3 ------------------- ?>
+								<?php if($mod_activo['proyecto.comentarios']){ ?>
+									<li role="presentation">
+										<a href="#tab-coment" class="btn-tab-coment" data-toggle="tab">
+											<i class="fa fa-quote-left"></i>
+											<span class="hidden-sm">&nbsp;<?php echo __('Comentarios'); ?></span>
+										</a>
+									</li>
+									<!-- <li role="presentation" class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+											<i class="fa fa-quote-left"></i>
+											<span class="hidden-sm">&nbsp;Comentarios</span>
+										</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a id="coment-all" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>Todos</a></li>
+											<li class="divider"></li>
+											<li><a id="coment-users" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-users"></i>Usuarios</a></li>
+											<li><a id="coment-system" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-desktop"></i>Sistema</a></li>
+										</ul>
+									</li> -->
+								<?php } ?>
 
-						<?php // ----------------- BOTON TAB 5 ------------------- ?>
-							<?php if($mod_activo['proyecto.asuntos']){ ?>
-								<li role="presentation" class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-										<i class="fa fa-exclamation-circle"></i>
-										<span class="hidden-sm">&nbsp;Asuntos</span>
-										<!-- <i class="fa fa-caret-down fa-fw"></i>-->
-									</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a id="asuntos-all" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab"><i class="fa fa-arrow-circle-down"></i>Todos</a></li>
-										<li class="divider"></li>
-										<li>
-											<a id="asuntos-open" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab">
-												<i class="fa fa-exclamation-circle"></i>Abiertos
-												&nbsp;&nbsp;<span class="cant-metas badge bg-blue"><?php echo 0;?></span>
-											</a>
-										</li>
-										<li>
-											<a id="asuntos-close" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab">
-												<i class="fa fa-check-circle"></i>Cerrados
-												&nbsp;&nbsp;<span class="cant-metas badge bg-blue"><?php echo 0;?></span>
-											</a>
-										</li>
-									</ul>
-								</li>
-							<?php } ?>
+							<?php // ----------------- BOTON TAB 4 ------------------- ?>
+								<?php if($mod_activo['proyecto.metas']){ ?>
+									<li role="presentation">
+										<a href="#tab-metas" class="btn-tab-metas" data-toggle="tab">
+											<i class="fa fa-clock-o"></i>
+											<span class="hidden-sm">&nbsp;<?php echo __('Metas'); ?>
+											</span>
+										</a>
+									</li>
+								<?php } ?>
 
-						<?php // ----------------- BOTON TAB 6 ------------------- ?>
-							<?php if($mod_activo['proyecto.jurados']){ ?>
-								<li role="presentation">
-									<a class="btn-tab-jurados" href="#tab-jurados" data-toggle="tab"><i class="fa fa-legal">
-										</i><span class="hidden-sm">&nbsp;Jurados</span>
-									</a>
-								</li>
-							<?php } ?>
+							<?php // ----------------- BOTON TAB 5 asuntos ------------------- ?>
+								<?php if($mod_activo['proyecto.asuntos']){ ?>
+									<li role="presentation" class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+											<i class="fa fa-exclamation-circle"></i>
+											<span class="hidden-sm">&nbsp;Asuntos</span>
+											<!-- <i class="fa fa-caret-down fa-fw"></i>-->
+										</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a id="asuntos-all" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab" data-view="all"><i class="fa fa-arrow-circle-down"></i>Todos</a></li>
+											<li class="divider"></li>
+											<li>
+												<a id="asuntos-open" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab" data-view="open">
+													<i class="fa fa-exclamation-circle"></i>Abiertos
+													&nbsp;&nbsp;<span class="cant-metas badge bg-blue"><?php echo 0;?></span>
+												</a>
+											</li>
+											<li>
+												<a id="asuntos-close" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab" data-view="close">
+													<i class="fa fa-check-circle"></i>Cerrados
+													&nbsp;&nbsp;<span class="cant-metas badge bg-blue"><?php echo 0;?></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+								<?php } ?>
+
+							<?php // ----------------- BOTON TAB 6 ------------------- ?>
+								<?php if($mod_activo['proyecto.jurados']){ ?>
+									<li role="presentation">
+										<a class="btn-tab-jurados" href="#tab-jurados" data-toggle="tab"><i class="fa fa-legal">
+											</i><span class="hidden-sm">&nbsp;Jurados</span>
+										</a>
+									</li>
+								<?php } ?>
 					</ul>
 
 					<div class="tab-content">
+						<?php // ----------------- TABS ------------------- ?>
+							<?php // ----------------- TAB 1 info ------------------- ?>
+								<div id="tab-info" class="tab-pane fade in active">
 
-						<?php // ----------------- TAB 1 ------------------- ?>
-							<div id="tab-info" class="tab-pane fade in active">
-
-									<div class="text-muted text-right">
-										<small>
-											<strong>Ultima Actualización: </strong>
-											<br class="visible-xs" />
-											<?php echo h($revision['Usuario']['nombre_completo']).' - '.
-													$this->General->dateTimeFormatView($revision['updated']
-												); ?>
-										</small>
-									</div>
-
-								<?php // ----------------- BOX RESUMEN ------------------------- ?>
-									<div class="box box-default box-solid">
-										<div class="box-header with-border">
-											<strong><?php echo __('Resumen'); ?></strong>
-											<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
+										<div class="text-muted text-right">
+											<small>
+												<strong>Ultima Actualización: </strong>
+												<br class="visible-xs" />
+												<?php echo h($revision['Usuario']['nombre_completo']).' - '.
+														$this->General->dateTimeFormatView($revision['updated']
+													); ?>
+											</small>
 										</div>
 
-										<div class="box-body text-justify">
-											<?php echo $this->General->htmlTrim($revision['resumen']); ?>
-										</div>
+									<?php // ----------------- BOX RESUMEN ------------------------- ?>
+										<div class="box box-default box-solid">
+											<div class="box-header with-border">
+												<strong><?php echo __('Resumen'); ?></strong>
+												<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
+											</div>
 
-										<div class="box-footer">
-											<?php
-											$etiquetas = explode(',', $revision['etiquetas']);
-											foreach ($etiquetas as $etiqueta) {
-												echo '<span class="label label-default">'.
-														trim($etiqueta).
-														'</span> ';
-											}
-											?>
-										</div>
+											<div class="box-body text-justify">
+												<?php echo $this->General->htmlTrim($revision['resumen']); ?>
+											</div>
 
-									</div>
-
-								<?php // ----------------- BOX DESCRIPCION --------------------- ?>
-									<div class="box box-default box-solid">
-										<div class="box-header with-border">
-											<strong><?php echo __('Descripción'); ?></strong>
-											<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
-										</div>
-
-										<div class="box-body text-justify">
-											<?php echo $this->General->htmlTrim($revision['descripcion']); ?>
-										</div>
-									</div>
-
-								<?php // ----------------- BOX OBSERVACIONES ------------------- ?>
-									<div class="box box-default box-solid">
-										<div class="box-header with-border">
-											<strong><?php echo __('Observaciones'); ?></strong>
-											<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
-										</div>
-										<div class="box-body text-justify">
-											<?php
-												if($revision['observaciones'] == ''){
-													echo '<div class="text-muted"><small>Sin Observaciones</small></div>';
-												}else{
-													echo $this->General->htmlTrim($revision['observaciones']);
+											<div class="box-footer">
+												<?php
+												$etiquetas = explode(',', $revision['etiquetas']);
+												foreach ($etiquetas as $etiqueta) {
+													echo '<span class="label label-default">'.
+															trim($etiqueta).
+															'</span> ';
 												}
-											?>
+												?>
+											</div>
+
 										</div>
-									</div>
 
-							</div>
+									<?php // ----------------- BOX DESCRIPCION --------------------- ?>
+										<div class="box box-default box-solid">
+											<div class="box-header with-border">
+												<strong><?php echo __('Descripción'); ?></strong>
+												<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
+											</div>
 
-						<?php // ----------------- TAB 2 ------------------- ?>
-							<div id="tab-archivos" class="tab-pane fade border-radious proyecto_archivos">
-								<i class="fa fa-refresh fa-spin"></i> Cargando...
-							</div>
+											<div class="box-body text-justify">
+												<?php echo $this->General->htmlTrim($revision['descripcion']); ?>
+											</div>
+										</div>
 
-						<?php // ----------------- TAB 3 ------------------- ?>
-							<div id="tab-coment" class="tab-pane fade border-radious proyecto_comentarios">
-								<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
-							</div>
+									<?php // ----------------- BOX OBSERVACIONES ------------------- ?>
+										<div class="box box-default box-solid">
+											<div class="box-header with-border">
+												<strong><?php echo __('Observaciones'); ?></strong>
+												<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
+											</div>
+											<div class="box-body text-justify">
+												<?php
+													if($revision['observaciones'] == ''){
+														echo '<div class="text-muted"><small>Sin Observaciones</small></div>';
+													}else{
+														echo $this->General->htmlTrim($revision['observaciones']);
+													}
+												?>
+											</div>
+										</div>
 
-						<?php // ----------------- TAB 4 ------------------- ?>
-							<div id="tab-metas" class="tab-pane fade border-radious  proyecto_metas">
-								<i class="fa fa-refresh fa-spin"></i> Cargando...
-							</div>
+								</div>
 
-						<?php // ----------------- TAB 5 ------------------- ?>
-							<div id="tab-asuntos" class="tab-pane fade border-radious  proyecto_asuntos">
-								<i class="fa fa-refresh fa-spin"></i> Cargando...
-							</div>
+							<?php // ----------------- TAB 2 archivos ------------------- ?>
+								<div id="tab-archivos" class="tab-pane fade border-radious proyecto_archivos proyecto_overlay">
+									<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
+								</div>
 
-						<?php // ----------------- TAB 6 ------------------- ?>
-							<div id="tab-jurados" class="tab-pane fade border-radious  proyecto_jurados">
-								<i class="fa fa-refresh fa-spin"></i> Cargando...
-							</div>
+							<?php // ----------------- TAB 3 comment ------------------- ?>
+								<div id="tab-coment" class="tab-pane fade border-radious proyecto_comentarios proyecto_overlay">
+									<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
+								</div>
+
+							<?php // ----------------- TAB 4 metas ------------------- ?>
+								<div id="tab-metas" class="tab-pane fade border-radious proyecto_metas proyecto_overlay">
+									<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
+								</div>
+
+							<?php // ----------------- TAB 5 asuntos ------------------- ?>
+								<div id="tab-asuntos" class="tab-pane fade border-radious  proyecto_asuntos proyecto_overlay">
+									<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
+								</div>
+
+							<?php // ----------------- TAB 6 jurados ------------------- ?>
+								<div id="tab-jurados" class="tab-pane fade border-radious  proyecto_jurados proyecto_overlay">
+									<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
+								</div>
 
 					</div>
 				</div>
@@ -306,10 +307,8 @@
 				</div>
 		</div>
 	</div>
-
 <?php // ----------------- PANEL LATERAL DERECHO ------------------- ?>
 	<div class="col-sm-3">
-
 		<?php // ----------------- DATOS PROYECTO ------------------- ?>
 			<div class="box <?php echo $classActivo;?>">
 				<div class="box-header">
@@ -637,10 +636,10 @@
 	<?php echo $this->Html->script('/libs/jquery-file-upload/js/vendor/jquery.ui.widget',array('inline'=>false)); ?>
 	<?php echo $this->Html->script('/libs/jquery-file-upload/js/jquery.fileupload.js',array('inline'=>false)); ?>
 	<?php echo $this->Html->script('/libs/jquery-autosize/dist/autosize.min',array('inline'=>false)); ?>
+	<?php echo $this->Html->script('/libs/jquery-form/jquery.form',array('inline'=>false)); ?>
 
 <?php // ----------------- JavaScript ------------------- ?>
 	<?php $this->Html->scriptStart(array('inline' => false)); ?>
-
 
 		<?php // ----------------- user_popover ------------------- ?>
 			//user_popover();
@@ -649,36 +648,39 @@
 
 		<?php // ----------------- SCRIPTS TABs ------------------- ?>
 
-			<?php // ----------------- Cargar Comentarios ------------------- ?>
-				$('.box-body .btn-tab-coment').on('shown.bs.tab', function (e) {
-					cargarComentarios();
-					// e.target // newly activated tab
-					// e.relatedTarget // previous active tab
+		var overlay_wrapper = '<div class="wrapper"><i class="fa fa-refresh fa-spin"></i> Cargando</div>';
+
+		<?php // ----------------- Cargar Comentarios ------------------- ?>
+			$('.box-body .btn-tab-coment').on('shown.bs.tab', function(event) {
+				cargarComentarios(event);
+				// e.target // newly activated tab
+				// e.relatedTarget // previous active tab
+			});
+
+			function cargarComentarios(event){
+				$.ajax({
+					url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
+					dataType: 'html',
+					beforeSend: function(){
+						//$('#tab-coment').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						$('#tab-coment.proyecto_overlay').append(overlay_wrapper);
+					},
+					complete: function(msg){
+						$('#tab-coment').html(msg.responseText);
+						//autosize($('#tab-coment .tab-timeline textarea'));
+					}
 				});
+			}
 
-				function cargarComentarios(){
-					$.ajax({
-						url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
-						dataType: 'html',
-						beforeSend: function(){
-							//$('#tab-coment').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-							$('#tab-coment').append('<div class="commemt_overlay"><i class="fa fa-refresh fa-spin"></i> Cargando...</div>');
-						},
-						complete: function(msg){
-							$('#tab-coment').html(msg.responseText);
-							//autosize($('#tab-coment .tab-timeline textarea'));
-							//$('#tab-coment').removeClass('overlay');
-						}
-					});
-				}
-
+		<?php // ----------------- Cargar Archivos ------------------- ?>
 			$('.box-body a.btn-tab-archivos').on('shown.bs.tab', function (e) {
 
 				$.ajax({
 					url: "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
 					dataType: 'html',
 					beforeSend: function(){
-						$('#tab-archivos').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						//$('#tab-archivos').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						$('#tab-archivos.proyecto_overlay').append(overlay_wrapper);
 					},
 					complete: function(msg){
 						$('#tab-archivos').html(msg.responseText);
@@ -689,36 +691,62 @@
 				// e.relatedTarget // previous active tab
 			});
 
-			$('.box-body a.btn-tab-metas').on('shown.bs.tab', function (e) {
+		<?php // ----------------- Cargar Metas ------------------- ?>
+			$('.box-body a.btn-tab-metas').on('shown.bs.tab', function(event) {
+				cargarMetas(event);
+			});
+
+			function cargarMetas(event){
 				$content = $('#tab-metas');
 				$.ajax({
 					url: "<?php echo $this->Html->url(array('controller'=>'metas','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
 					dataType: 'html',
 					beforeSend: function(){
-						$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						$('#tab-metas.proyecto_overlay').append(overlay_wrapper);
 					},
 					complete: function(msg){
 						$content.html(msg.responseText);
 					}
 				});
+			}
+
+		<?php // ----------------- Cargar Asuntos ------------------- ?>
+			$('.box-body a.btn-tab-asuntos').on('shown.bs.tab', function(event) {
+				cargarAsuntos(event, 'all');
 			});
 
+			function cargarAsuntos(event, view){
+				$content = $('#tab-asuntos');
+				$.ajax({
+					url: "<?php echo $this->Html->url(array('controller'=>'asuntos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>"+"/"+view,
+					dataType: 'html',
+					beforeSend: function(){
+						//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						$('#tab-metas.proyecto_overlay').append(overlay_wrapper);
+					},
+					complete: function(msg){
+						$content.html(msg.responseText);
+					}
+				});
+			}
+
+		<?php // ----------------- Cargar Jurados ------------------- ?>
 			$('.box-body a.btn-tab-jurados').on('shown.bs.tab', function (e) {
 
 				$.ajax({
 					url: "<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'view_jurados','admin'=>false,$proyecto['Proyecto']['id']));?>",
 					dataType: 'html',
 					beforeSend: function(){
-						$('#tab-jurados').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						//$('#tab-jurados').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+						$('#tab-jurados.proyecto_overlay').append(overlay_wrapper);
 					},
 					complete: function(msg){
 						$('#tab-jurados').html(msg.responseText);
 					}
 				});
-
 				// e.target // newly activated tab
 				// e.relatedTarget // previous active tab
-
 			});
 
 	<?php $this->Html->scriptEnd(); ?>

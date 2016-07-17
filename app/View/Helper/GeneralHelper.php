@@ -49,6 +49,11 @@ class GeneralHelper extends AppHelper {
 		return $strmes[date('n',$date)].' '.date('d Y',$date);
 	}
 
+	public function dateFormatPrint($date=null){
+		$date = $this->formatDateTime($date);
+		return date('d/m/Y',$date);
+	}
+
 	public function dateFormatComplete($date=null){
 		$date = $this->formatDateTime($date);
 		$strmes = $this->meses['largo'];

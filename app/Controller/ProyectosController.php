@@ -319,6 +319,10 @@ class ProyectosController extends AppController {
 						$escenario['Escenario'] = array('proyecto_id'=>$this->Proyecto->id);
 						if( !$this->Proyecto->Escenario->save($escenario) ){ $guardar = false; }
 
+            $this->Proyecto->Meta->create();
+            $meta['Meta'] = array('proyecto_id'=>$this->Proyecto->id, 'titulo'=>'default');
+            if( !$this->Proyecto->Meta->save($meta) ){ $guardar = false; }
+
 						if( $guardar ){
 							$this->Session->setFlash(__('Su Propuesta ha sido guardada correctamente.'),'alert/success');
 

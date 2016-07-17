@@ -1,49 +1,118 @@
 <div id="metas" class="metas index">
-	<?php
-		echo $this->Html->link('<i class="fa fa-plus fa-fw"></i> '.__('Agregar Nueva Meta'),
-			array('action' => 'add',$proyecto_id),
-			array('class'=>'ajax-link btn btn-primary btn-sm','data-target'=>'#tab-metas','escape'=>false)
-		);
-
-		//echo '&nbsp;&nbsp;';
-
-		//echo $this->Form->input('Buscar', array(
-		//	'type'=>'search',
-		//	'placeholder'=>'Buscar...',
-		//	'class'=>'form-control input-sm',
-		//	'label'=>false, 'div'=>false,
-		//	'style'=>'width: 30%;display: inline;'
-		//));
-
-		echo $this->Html->link('<i class="fa fa-list fa-fw"></i> '.__('Abiertos'),'#',
-			array('class'=>'ajax-link pull-right','data-target'=>'#tab-metas','escape'=>false)
-		);
-
-		//echo $this->Html->link('<i class="fa fa-list fa-fw"></i> '.__('Ver Todos'),'#',
-		//	array('class'=>'ajax-link pull-right','data-target'=>'#tab-metas','escape'=>false)
-		//);
-	?>
+	<div class="pull-right">
+		<?php
+			echo $this->Form->button('<i class="fa fa-plus fa-fw"></i> '.__('Nueva Meta'),array(
+				'type' => 'button',
+				'class'=>'btn btn-default btn-sm meta-modal-link',
+				'data-url'=> $this->Html->url(array('controller'=>'metas', 'action'=>'add', $proyecto_id)),
+				'data-action'=>'add',
+				'title'=>'Agregar Nueva Meta',
+			));
+		?>
+	</div>
+	<div class="clearfix"></div>
 	<hr/>
-
-	<?php echo printMetas($metas, $this->Html); ?>
-	
+	<div>
+		<?php echo printMetas($metas, $this); ?>
+	</div>
 </div>
 
+	<?php function printMetas($metas, $object, $rec = 0){ ?>
+		<?php foreach($metas as $meta): ?>
+			<div class="meta">
+				<div class="row father">
+					<div class="col-md-10">
+						<div class="meta-titulo">
+
+							<?php if($meta['Meta']['cerrado']): ?>
+								<span class="label label-default">Cerrado</span>
+							<?php endif; ?>
+
+							<span><?php echo $meta['Meta']['titulo']; ?></span>
+							<?php if($meta['Meta']['culminacion'] != null): ?>
+								<date>[ Fecha Limite: <?php echo $object->General->dateFormatPrint($meta['Meta']['culminacion']); ?> ]</date>
+							<?php endif; ?>
+
+						</div>
+						<p class="text-justify">
+							<?php echo $meta['Meta']['descripcion']; ?>
+						</p>
+
+						<?php $progreso = progreso($meta['Meta']['completado'], $meta['Meta']['total']); ?>
+
+						<small class="pull-right">Completado: <?php echo $progreso; ?>%</small>
+						<div class="clearfix"></div>
+						<div class="progress progress-xxs">
+							<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?php echo $progreso; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $progreso; ?>%">
+								<span class="sr-only"><?php echo $progreso; ?>% Complete</span>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-2">
+						<?php if($meta['Meta']['cerrado']): ?>
+							<button class="btn btn-default btn-xs btn-block" disabled="disabled">Editar</button>
+							<?php
+								echo $object->Form->button(__('Abrir'),array(
+									'type' => 'button',
+									'class'=>'btn btn-danger btn-xs btn-block meta-modal-link',
+									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
+									'data-action'=>'edit',
+									'title'=>'Abrir Meta',
+								));
+							?>
+						<?php else: ?>
+							<?php
+								echo $object->Form->button(__('Editar'),array(
+									'type' => 'button',
+									'class'=>'btn btn-default btn-xs btn-block meta-modal-link',
+									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'edit', $meta['Meta']['id'])),
+									'data-action'=>'edit',
+									'title'=>'Editar Meta',
+								));
+							?>
+							<?php
+								echo $object->Form->button(__('Cerrar'),array(
+									'type' => 'button',
+									'class'=>'btn btn-primary btn-xs btn-block meta-modal-link',
+									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
+									'data-action'=>'edit',
+									'title'=>'Cerrar Meta',
+								));
+							?>
+						<?php endif; ?>
+
+					</div>
+				</div>
+				<div class="child">
+					<!-- childs -->
+					<?php printMetas($meta['children'], $object, $rec+1); ?>
+					<!-- /childs -->
+				</div>
+			</div>
+		<?php endforeach; ?>
+	<?php } // end printMetas ?>
+
+
 <?php
-	function printMetas($metas, $html, $rec = 0){
+	/*function printMetas($metas, $object, $rec = 0){
 		$out = '<ul class="" style="list-style-type: none;">';
 			foreach($metas as $meta){
 				$out .= '<li>';
 
-					$out .= $meta['Meta']['titulo'].' ('.$meta['Meta']['alias'].')';
+					$out .= '<strong>'.$meta['Meta']['titulo'].'</strong>';
+					if($meta['Meta']['culminacion'] != null){
+						$out .= ' [ <em>Fecha Limite: '.$object->General->dateFormatPrint($meta['Meta']['culminacion']).'</em> ]';
+					}
+					$out .= '<br/>'.$meta['Meta']['descripcion'];
 
 					$out .= '<div class="pull-right">';
 						if($meta['Meta']['cerrado']){
-							$out .= $html->link('reabrir','#',array('class'=>'btn btn-danger btn-xs'));$out .= '&nbsp;&nbsp;';
-							$out .= $html->link('editar','#',array('class'=>'btn btn-default btn-xs disabled','disabled'=>'disabled'));
+							$out .= $object->Html->link('reabrir','#',array('class'=>'btn btn-danger btn-xs'));$out .= '&nbsp;&nbsp;';
+							$out .= $object->Html->link('editar','#',array('class'=>'btn btn-default btn-xs disabled','disabled'=>'disabled'));
 						}else{
-							$out .= $html->link('cerrar','#',array('class'=>'btn btn-primary btn-xs'));$out .= '&nbsp;&nbsp;';
-							$out .= $html->link('editar','#',array('class'=>'btn btn-default btn-xs'));
+							$out .= $object->Html->link('cerrar','#',array('class'=>'btn btn-primary btn-xs'));$out .= '&nbsp;&nbsp;';
+							$out .= $object->Html->link('editar','#',array('class'=>'btn btn-default btn-xs'));
 						}
 					$out .= '</div>';
 
@@ -55,13 +124,13 @@
 
 					$out .= '<hr style="margin-top:10px; margin-bottom:10px;"/>';
 					if( !empty($meta['children']) ){
-						$out .= printMetas($meta['children'], $html, $rec+1);
+						$out .= printMetas($meta['children'], $object, $rec+1);
 					}
 				$out .= '</li>';
 			}
 		$out .= '</ul>';
 		return $out;
-	}
+	} */
 
 	function progress_color($rec){
 		switch($rec){
@@ -74,143 +143,38 @@
 		}
 	}
 
-	function completado($completado, $total){
-		return (($completado * 100) / $total).'%';
+	function progreso($completado, $total){
+		if($total == 0)
+			return '0';
+		else
+			return round(($completado * 100) / $total);
 	}
-
 
 	//debug($metas);
 ?>
 
-<style>
-
-</style>
 
 
-
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#metasModal" data-action="add" title="Agregar Nueva Meta">Nueva Meta</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#metasModal" data-action="edit" title="Editar Meta">Editar</button> -->
+<!--
+<div class="modal fade" id="metasModal" tabindex="-1" role="dialog" aria-labelledby="metasModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+				<i class="fa fa-refresh fa-spin"></i> Cargando...
+      </div>
+    </div>
+  </div>
+</div> -->
 
 <?php // ----------------- JavaScript ------------------- ?>
-	<?php $this->Html->scriptStart(array('inline' => false)); ?>
+	<script type="text/javascript">
 
-		$('.ajax-link').on('click', function () {
-			url = $(this).attr('href');
-			target = $(this).data('target');
-
-			$.ajax({
-				url: url,
-				dataType: 'html',
-				beforeSend: function(){
-					$(target).html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-				},
-				complete: function(msg){
-					$(target).html(msg.responseText);
-				}
-			});
-
-			return false;
-		});
-	<?php $this->Html->scriptEnd(); ?>
-
-
-<?php /*
-	$.ajax({
-		url: "<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'view_jurados','admin'=>false,$proyecto['Proyecto']['id']));?>",
-		dataType: 'html',
-		beforeSend: function(){
-			$('#tab-jurados').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-		},
-		complete: function(msg){
-			$('#tab-jurados').html(msg.responseText);
-		}
-	});
-
-	// e.target // newly activated tab
-	// e.relatedTarget // previous active tab
-
-});
-*/ ?>
-
-<!--
-<div class="metas index">
-	<h2><?php echo __('Metas'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('proyecto_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('alias'); ?></th>
-			<th><?php echo $this->Paginator->sort('titulo'); ?></th>
-			<th><?php echo $this->Paginator->sort('descripcion'); ?></th>
-			<th><?php echo $this->Paginator->sort('principal'); ?></th>
-			<th><?php echo $this->Paginator->sort('cerrado'); ?></th>
-			<th><?php echo $this->Paginator->sort('bloqueado'); ?></th>
-			<th><?php echo $this->Paginator->sort('completado'); ?></th>
-			<th><?php echo $this->Paginator->sort('total'); ?></th>
-			<th><?php echo $this->Paginator->sort('parent_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('lft'); ?></th>
-			<th><?php echo $this->Paginator->sort('rght'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('updated'); ?></th>
-			<th><?php echo $this->Paginator->sort('finalized'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($metas as $meta): ?>
-	<tr>
-		<td><?php echo h($meta['Meta']['id']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($meta['Proyecto']['tema'], array('controller' => 'proyectos', 'action' => 'view', $meta['Proyecto']['id'])); ?>
-		</td>
-		<td><?php echo h($meta['Meta']['alias']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['titulo']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['descripcion']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['principal']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['cerrado']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['bloqueado']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['completado']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['total']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($meta['ParentMeta']['alias'], array('controller' => 'metas', 'action' => 'view', $meta['ParentMeta']['id'])); ?>
-		</td>
-		<td><?php echo h($meta['Meta']['lft']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['rght']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['created']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['updated']); ?>&nbsp;</td>
-		<td><?php echo h($meta['Meta']['finalized']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $meta['Meta']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $meta['Meta']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $meta['Meta']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $meta['Meta']['id']))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Meta'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Proyectos'), array('controller' => 'proyectos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Proyecto'), array('controller' => 'proyectos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Metas'), array('controller' => 'metas', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Parent Meta'), array('controller' => 'metas', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Asuntos'), array('controller' => 'asuntos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Asunto'), array('controller' => 'asuntos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
--->
+		// ------------------
+		$('.meta-modal-link').modalLink('#generalModal');
+	</script>

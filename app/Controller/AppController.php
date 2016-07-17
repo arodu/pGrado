@@ -109,4 +109,25 @@ class AppController extends Controller {
 		return hash('crc32', $code, false);
 	}
 
+
+	public function allowProyecto($proyecto_id){
+		$this->loadModel('Autor');
+		$proyecto_autor = $this->Autor->find('count', array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$proyecto_id,
+				'Autor.usuario_id'=>$this->Auth->user('id'),
+				'Autor.activo'=>true,
+			),
+		));
+		$permiso = $this->Permit->user();
+
+		if($proyecto_autor > 0 or $permiso['root'] or $permiso['admin'] or $permiso['coordpg']){
+			return true;
+		}
+
+		throw new NotFoundException(__('Proyecto no Pertenece al Usuario Actual'));
+	}
+
+
+
 }

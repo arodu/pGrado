@@ -1,0 +1,39 @@
+#tab-metas{
+
+  .meta{
+    .father{
+
+      padding: 10px 0;
+
+      .meta-titulo{
+        font-size: 1em;
+        span{
+          font-weight: bold;
+          display: inline-block;
+        }
+        date{
+          font-size: .8em;
+          font-style: italic;
+        }
+      }
+
+      &:hover{
+        background-color: #eee;
+      }
+
+    }
+
+    .child{
+      padding-left: 20px;
+    }
+  }
+
+}
+
+#fechaCulminacion{
+  > .div{
+    margin: 0 auto;
+  }
+
+
+}

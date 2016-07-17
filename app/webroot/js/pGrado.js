@@ -54,6 +54,32 @@ $(function(){
 
 });
 
+$.fn.modalLink = function(target){
+	$(this).on('click', function(){
+		var modal = $(target);
+
+		if( $(this).is( "a" ) ){
+			var url = $(this).prop('href');
+		}else{
+			var url = $(this).data('url');
+		}
+
+		modal.modal('show');
+		$.ajax({
+			url: url,
+			dataType: 'html',
+			beforeSend: function(){
+				modal.find('.modal-body').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+			},
+			complete: function(msg){
+				modal.html(msg.responseText);
+			}
+		});
+
+		return false;
+	});
+}
+
 
 $.fn.btnTextAnimado = function(){
 

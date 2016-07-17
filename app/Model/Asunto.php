@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Asunto Model
  *
  * @property Meta $Meta
+ * @property Proyecto $Proyecto
  * @property Usuario $Propietario
  * @property Usuario $Responsable
  */
@@ -14,7 +15,7 @@ class Asunto extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'num_secuencia';
+	public $displayField = 'titulo';
 
 /**
  * Validation rules
@@ -82,9 +83,19 @@ class Asunto extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'responsable_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
  * belongsTo associations

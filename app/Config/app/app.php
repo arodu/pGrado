@@ -86,8 +86,8 @@
 				'proyecto.escenarios' => true,
 				'proyecto.comentarios' => true,
 				'proyecto.jurados' => false,
-				'proyecto.metas' => false,
-				'proyecto.asuntos' => false,
+				'proyecto.metas' => true,
+				'proyecto.asuntos' => true,
 
 				'external.google_analytics' => false,
 				'external.google_recaptcha' => false,

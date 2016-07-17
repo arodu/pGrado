@@ -18,23 +18,9 @@ class ArchivosController extends AppController {
 		parent::beforeFilter();
 	}
 
-	private function revisarProyecto($proyecto_id){
-		// Revisa si el usuario actual tiene acceso al proyecto
-		$proyecto_autor = $this->Archivo->Proyecto->Autor->find('first',array(
-			'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-			//'contain'=>array('TipoAutor')
-		));
-
-		if(empty($proyecto_autor)){
-			throw new NotFoundException(__('Proyecto no Pertenece al Usuario Actual'));
-		}else{
-			return true;
-		}
-	}
-
 	public function index($proyecto_id) {
 		$this->layout = 'ajax';
-		$this->revisarProyecto($proyecto_id); // Revisa si el usuario actual tiene acceso al proyecto
+		$this->allowProyecto($proyecto_id);
 		$archivos = $this->Archivo->find('all',array(
 				'conditions'=>array('Archivo.proyecto_id'=>$proyecto_id),
 				'order'=>array('Archivo.id'=>'DESC')
@@ -44,25 +30,18 @@ class ArchivosController extends AppController {
 
 	public function download($id = null, $descarga = false) {
 		$path_to_files = Configure::read('sistema.archivos.proyectos');
-
 		$archivo = $this->Archivo->find('first', array('conditions' => array('Archivo.id' => $id)));
 
 		if (!$archivo) {
 			throw new NotFoundException(__('Invalid archivo'));
 		}
-
-		$this->revisarProyecto($archivo['Archivo']['proyecto_id']); // Revisa si el usuario actual tiene acceso al proyecto
+		$this->allowProyecto($archivo['Archivo']['proyecto_id']);
 
 		$path_file = $path_to_files.$archivo['Archivo']['proyecto_id'].DS.$archivo['Archivo']['nombre'];
-
-		//debug($path_file); exit();
-
 		$this->response->type($archivo['Archivo']['tipo']);
 
-		if($descarga)
-			$this->response->file($path_file, array('download'=>true,'name'=>$archivo['Archivo']['nombre']));
-		else
-			$this->response->file($path_file);
+		if($descarga) $this->response->file($path_file, array('download'=>true,'name'=>$archivo['Archivo']['nombre']));
+		else $this->response->file($path_file);
 
 		return $this->response;
 	}
@@ -74,17 +53,13 @@ class ArchivosController extends AppController {
 
 	public function imagen($id = null, $miniatura = false){
 		$path_to_files = Configure::read('sistema.archivos.proyectos');
-
 		$archivo = $this->Archivo->find('first', array('conditions' => array('Archivo.id' => $id)));
 
 		if (!$archivo) {
 			throw new NotFoundException(__('Invalid archivo'));
 		}
-
-		$this->revisarProyecto($archivo['Archivo']['proyecto_id']); // Revisa si el usuario actual tiene acceso al proyecto
-
+		$this->allowProyecto($archivo['Archivo']['proyecto_id']);
 		$path_file = $path_to_files.$archivo['Archivo']['proyecto_id'].DS;
-
 		if($miniatura){
 			$path_file = $path_file . $this->Imagen->addSufijo( $archivo['Archivo']['nombre'], $this->sufijo);
 		}else{
@@ -98,7 +73,7 @@ class ArchivosController extends AppController {
 	}
 
 	public function add($proyecto_id) {
-		$this->revisarProyecto($proyecto_id); // Revisa si el usuario actual tiene acceso al proyecto
+		$this->allowProyecto($proyecto_id);
 		$path_to_files = Configure::read('sistema.archivos.proyectos');
 
 		if ($this->request->is('post')) {
@@ -215,9 +190,7 @@ class ArchivosController extends AppController {
 		if (!$archivo) {
 			throw new NotFoundException(__('Invalid archivo'));
 		}
-
-		$this->revisarProyecto($archivo['Archivo']['proyecto_id']); // Revisa si el usuario actual tiene acceso al proyecto
-
+		$this->allowProyecto($archivo['Archivo']['proyecto_id']);
 		$this->request->allowMethod('post', 'delete');
 
 		if ($this->Archivo->delete()) {

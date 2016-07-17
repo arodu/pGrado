@@ -89,6 +89,17 @@
 
 		</div><!-- ./wrapper -->
 
+		<?php // ----------------- MODAL General ------------------- ?>
+			<div class="modal fade" id="generalModal" tabindex="-1" role="dialog" aria-labelledby="generalModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-body">
+							<i class="fa fa-refresh fa-spin"></i> Cargando...
+						</div>
+					</div>
+				</div>
+			</div>
+
 		<?php
 			echo $this->fetch('bottom-html');
 

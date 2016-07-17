@@ -114,7 +114,12 @@ class AppModel extends Model {
 
 		switch ($type) {
 			case 'listActivo':
-					return $this->_listActivo($query); break;
+					return $this->_listActivo($query);
+					break;
+
+			case 'proyecto_id':
+					return $this->_proyecto_id($query);
+					break;
 
 			case 'listMultilevel':
 
@@ -130,7 +135,7 @@ class AppModel extends Model {
 		$fields = ( isset($query['fields']) && $query['fields'] ? $query['fields'] : array( $this->alias.'.'.$this->primaryKey , $this->alias.'.'.$this->displayField , $this->alias.'.'.$this->activoField ) );
 
 		$aux = $this->find('list',array('fields'=>$fields));
-		
+
 		$results = array();
 
 		if(isset($aux[1])){ $results['Activos'] = $aux[1]; }
@@ -142,9 +147,14 @@ class AppModel extends Model {
 
 	protected function _listMultilevel( $query = array() ){
 
-
-
 	}
 
+	protected function _proyecto_id( $query = array() ){
+		if(isset($query['fields'])){
+			$query['fields'] = array_merge($query['fields'], array($this->alias.'.proyecto_id'));
+		}
+		$result = $this->find('first', $query);
+		return ( isset($result[$this->alias]['proyecto_id']) ? $result[$this->alias]['proyecto_id'] : null );
+	}
 
 }

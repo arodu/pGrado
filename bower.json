@@ -29,7 +29,9 @@
     "jquery-autosize": "~3.0",
     "jquery-file-upload": "~9.11",
     "jquery-maskedinput": "~1.4",
-    "bootstrap-tagsinput": "~0.8"
+    "bootstrap-tagsinput": "~0.8",
+    "jquery-form": "^3.46.0",
+    "bootstrap-datepicker": "^1.6.1"
   },
   "resolutions": {
     "jquery": "~2.2"

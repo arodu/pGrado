@@ -15,7 +15,7 @@ class Meta extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'alias';
+	public $displayField = 'titulo';
 
 	public $actsAs = array('Containable','Tree');
 	public $recursive = -1;
@@ -29,16 +29,6 @@ class Meta extends AppModel {
 		'proyecto_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'alias' => array(
-			'notBlank' => array(
-				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
