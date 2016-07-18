@@ -12,7 +12,7 @@
 					<?php echo $this->bsForm->hidden('Asunto.proyecto_id',array('value'=>$proyecto_id)); ?>
 					<?php
 						echo $this->bsForm->input('descripcion');
-						echo $this->bsForm->input('meta_id', array('empty'=>''));
+						echo $this->bsForm->input('meta_id');
 						echo $this->bsForm->input('responsable_id', array('empty'=>'', 'selected'=>$userInfo['id']));
 					?>
 					<hr/>

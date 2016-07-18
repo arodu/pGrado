@@ -80,9 +80,18 @@
 											<tr class="<?php echo $class_tr;?>">
 												<td>
 													<?php
-														echo $this->Html->link(h($proyecto['Proyecto']['id']).'&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i>', array('action' => 'view', $proyecto['Proyecto']['id'],'admin'=>true),array('class'=>'btn btn-default btn-sm','escape'=>false,'title'=>$proyecto['Proyecto']['tema'], 'data-toggle'=>'tooltip', 'data-placement'=>'right'));
+														echo $this->Html->link(
+															h($proyecto['Proyecto']['id']).'&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i>',
+															array('action' => 'view', $proyecto['Proyecto']['id'],'admin'=>false),
+															array(
+																'class'=>'btn btn-default btn-sm',
+																'escape'=>false,
+																'title'=>$proyecto['Proyecto']['tema'],
+																'data-toggle'=>'tooltip',
+																'data-placement'=>'right'
+															)
+														);
 													?>
-
 												</td>
 
 												<td>

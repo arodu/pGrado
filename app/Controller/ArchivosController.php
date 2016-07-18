@@ -181,9 +181,28 @@ class ArchivosController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Archivo->id = $id;
+		$this->layout = 'ajax';
+		$archivo = $this->Archivo->find('first', array('conditios'=>array('Archivo.id'=>$id)));
+		if (!$archivo) { throw new NotFoundException(__('Invalid archivo')); }
+		$this->allowProyecto($archivo['Archivo']['proyecto_id']);
+		$success = false;
+		if ($this->request->is(array('post', 'put'))) {
+			$this->Archivo->id = $id;
+			$path_to_files = Configure::read('sistema.archivos.proyectos');
+			if ($this->Archivo->delete()) {
+				$this->Flash->call_success(__('Archivo Eliminado.'));
+				$success = true;
+				//$file = new File(WWW_ROOT.ltrim($video['Video']['ruta'], '/'));
+				//$file->delete();
+			}else{
+				$this->Flash->call_error(__('No se ha podido eliminar el Archivo.'));
+			}
+		} else {
+			$this->request->data = $archivo;
+		}
 
-		$path_to_files = Configure::read('sistema.archivos.proyectos');
+		/*
+
 
 		$archivo = $this->Archivo->find('first',array('conditions'=>array('Archivo.id'=>$id)));
 
@@ -199,7 +218,8 @@ class ArchivosController extends AppController {
 		}else{
 			$this->Session->setFlash(__('The archivo could not be deleted. Please, try again.'),'alert/warning');
 		}
-		return $this->redirect(array('action' => 'index',$archivo['Archivo']['proyecto_id']));
+		return $this->redirect(array('action' => 'index',$archivo['Archivo']['proyecto_id'])); */
+		$this->set(compact('success'));
 	}
 
 }

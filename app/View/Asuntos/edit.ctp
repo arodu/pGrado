@@ -13,7 +13,7 @@
 						echo $this->bsForm->input('id');
 						echo $this->bsForm->hidden('Asunto.proyecto_id',array('value'=>$proyecto_id));
 						echo $this->bsForm->input('Asunto.descripcion');
-						echo $this->bsForm->input('Asunto.meta_id', array('empty'=>''));
+						echo $this->bsForm->input('Asunto.meta_id');
 						echo $this->bsForm->input('Asunto.responsable_id', array('empty'=>'', 'selected'=>$userInfo['id']));
 					echo '<hr/>';
 						echo $this->Form->button('Guardar', array('value'=>'Guardar', 'type'=>'submit','class'=>'btn btn-primary btn-submit')).'&nbsp;';

@@ -4,7 +4,7 @@
 	$bc = array(
 		'items'=>array(
 				0 => array('title'=>'Proyectos','url'=>'/proyectos/index'),
-				1 => array('title'=>'Ver Proyecto','url'=>'/proyectos/view/'.$proyecto['id']),
+				1 => array('title'=>'Ver Proyecto','url'=>'/proyectos/view/'.$proyecto['Proyecto']['id']),
 			),
 		'config'=>array('activo'=>'Editar Escenario')
 		);
@@ -15,15 +15,18 @@
 <div class="row">
 	<div class="col-sm-9">
 		<div class="escenarios form box">
+			<?php // ----------------- BOX HEADER ------------------- ?>
+				<div class="box-header text-justify">
+					<h3 class="box-title">
+						<?php echo strip_tags($proyecto['Revision'][0]['titulo']); ?>
+					</h3>
+				</div>
+
+
 		<?php echo $this->Form->create('Escenario',array('inputDefaults'=>array('div'=>array('class'=>'form-group well well-sm'),'class'=>'form-control'))); ?>
 			<div class="box-body">
 			<?php
 				echo $this->Form->input('id');
-
-
-				echo '<div class="form-group well well-sm"><label for="ProyectoTema">Proyecto</label>';
-				echo '<p class="form-control-static">'.$proyecto['tema'].'</p></div>';
-
 				echo $this->Form->input('nombre',array('label'=>'Nombre de la empresa, institución u organización'));
 				echo $this->Form->input('direccion',array('label'=>'Dirección'));
 				echo $this->Form->input('cedula',array('label'=>'Cedula de la Persona de Contacto'));
@@ -39,7 +42,7 @@
 			<div class="box-footer">
 				<?php echo $this->Form->button('<i class="fa fa-save fa-fw"></i> Guardar Escenario',array('type'=>'submit','class'=>'btn btn-primary',));?>
 
-				<?php echo $this->Html->link('<i class="fa fa-reply fa-fw"></i> Regresar al Proyecto',array('action'=>'view',$proyecto['id']),array('class'=>'btn btn-default','escape'=>false)); ?>
+				<?php echo $this->Html->link('<i class="fa fa-reply fa-fw"></i> Regresar al Proyecto',array('controller'=>'proyectos', 'action'=>'view',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default','escape'=>false)); ?>
 
 			</div>
 			<?php echo $this->Form->end(); ?>

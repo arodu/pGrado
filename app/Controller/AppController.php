@@ -125,6 +125,10 @@ class AppController extends Controller {
 		throw new NotFoundException(__('Proyecto no Pertenece al Usuario Actual'));
 	}
 
+	public function menuActivo( $menu ){
+		$this->set('menuActive',$menu);
+	}
+
 
 
 }

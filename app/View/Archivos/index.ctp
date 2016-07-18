@@ -39,7 +39,7 @@
 			<?php
 				echo $this->Html->link('<i class="fa fa-times"></i>',
 						array('controller'=>'archivos','action'=>'delete',$archivo['Archivo']['id']),
-						array('class'=>'delete-file','escape'=>false)
+						array('class'=>'delete-file file-modal-link','escape'=>false)
 					);
 			?>
 
@@ -161,32 +161,7 @@
 		.parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 
-		$('.file-box a.delete-file').click(function(){
+		// ------------------
+		$('.file-modal-link').modalLink('#generalModal');
 
-			if(confirm('¿Esta seguro que desea elimiar este archivo?')){
-
-				var link = $(this);
-
-				$.ajax({
-					url: link.attr('href'),
-					type: 'post',
-					beforeSend: function(){
-						link.closest('.file-box').hide(600);
-					},
-					complete: function(msg){
-						//$('#files').html(data);
-						//link.closest('.modal-body').html(msg.responseText);
-						$('.box-body .tab-content #tab-archivos').html(msg.responseText);
-
-						//$('#files').html($('#index-view').html());
-
-						//$('#index-view').remove();
-						$('.cant-archivos').text($('#cant-archivos').text());
-					}
-				});
-
-			}
-
-			return false;
-		});
 </script>

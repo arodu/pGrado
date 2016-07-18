@@ -71,7 +71,7 @@ class MetasController extends AppController {
 				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
 			}
 		}
-		$metas = $this->Meta->generateTreeList(null,null,null,'--- ');
+		$metas = $this->Meta->generateTreeList(array('Meta.proyecto_id'=>$proyecto_id),null,null,'--- ');
 		$this->set(compact('metas','proyecto_id', 'success'));
 	}
 
@@ -101,7 +101,7 @@ class MetasController extends AppController {
 			$options = array('conditions' => array('Meta.' . $this->Meta->primaryKey => $id));
 			$this->request->data = $this->Meta->find('first', $options);
 		}
-		$metas = $this->Meta->generateTreeList(null,null,null,'--- ');
+		$metas = $this->Meta->generateTreeList(array('Meta.proyecto_id'=>$proyecto_id),null,null,'--- ');
 		$this->set(compact('metas','proyecto_id', 'success'));
 	}
 

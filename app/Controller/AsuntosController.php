@@ -41,7 +41,7 @@ class AsuntosController extends AppController {
 			)
 		));
 
-		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'&nbsp;&nbsp;&nbsp;&nbsp;');
+		$metas = $this->Asunto->Meta->generateTreeList(array('Meta.proyecto_id'=>$proyecto_id),null,null,'&nbsp;&nbsp;&nbsp;&nbsp;');
 		$usuarios_proyecto = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
 		$this->set(compact('asuntos', 'proyecto_id', 'metas', 'usuarios_proyecto'));
 	}
@@ -85,14 +85,14 @@ class AsuntosController extends AppController {
 
 			$this->Asunto->create();
 			if ($this->Asunto->save($this->request->data)) {
-				$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
+				$this->Asunto->Meta->review($proyecto_id);
 				$this->Flash->call_success(__('The asunto has been saved.'));
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));
 			}
 		}
-		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'--- ');
+		$metas = $this->Asunto->Meta->generateTreeList(array('Meta.proyecto_id'=>$proyecto_id),null,null,'--- ');
 		$responsables = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
 		$this->set(compact('metas', 'responsables','proyecto_id', 'success'));
 	}
@@ -114,7 +114,7 @@ class AsuntosController extends AppController {
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Asunto->save($this->request->data)) {
-				$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
+				$this->Asunto->Meta->review($proyecto_id);
 				$this->Flash->call_success(__('The asunto has been saved.'));
 				$success = true;
 			} else {
@@ -124,7 +124,7 @@ class AsuntosController extends AppController {
 			$options = array('conditions' => array('Asunto.id' => $id));
 			$this->request->data = $this->Asunto->find('first', $options);
 		}
-		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'--- ');
+		$metas = $this->Asunto->Meta->generateTreeList(array('Meta.proyecto_id'=>$proyecto_id),null,null,'--- ');
 		$responsables = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
 		$this->set(compact('metas', 'responsables','proyecto_id', 'success'));
 	}
@@ -170,7 +170,7 @@ class AsuntosController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Asunto->delete()) {
-			$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
+			//$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
 			$this->Flash->call_success(__('The asunto has been deleted.'));
 		} else {
 			$this->Flash->call_error(__('The asunto could not be deleted. Please, try again.'));

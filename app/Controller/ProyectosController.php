@@ -167,75 +167,38 @@ class ProyectosController extends AppController {
 			$this->render('new_index');
 		}
 
-		public function view($id = null) {
+		public function view($id = null){
 
-			if (!$this->Proyecto->exists($id)) {
-				throw new NotFoundException(__('Invalid proyecto'));
-			}
+      if (!$this->Proyecto->exists($id)) { throw new NotFoundException(__('Invalid proyecto')); }
+      $this->allowProyecto($id);
 
-			$proyecto_autor = $this->Proyecto->Autor->find('first',array(
-					'conditions'=>array('Autor.proyecto_id'=>$id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-					'contain'=>array('TipoAutor')
-				));
-
-			if($this->adminRouting == false){
-				if(empty($proyecto_autor)){
-					throw new NotFoundException(__('Proyecto no Pertenece al Usuario Actual'));
-				}
-			}
-			//debug($proyecto_autor); exit();
-
-			$options = array(
-				'conditions' => array('Proyecto.id' => $id),
-				'contain'=>array(
-						'Categoria','Sede','Fase','Grupo','Estado','Escenario','Programa',
-						'Autor'=>array(
-							'TipoAutor',
-
-							'Usuario'=>array('fields'=>array('cedula','cedula_nombre_completo','nombre_completo','id','email','foto'),
-								'DescripcionUsuario'
-							)
-						),
-						'Revision'=>array('limit'=>'1','order'=>array('Revision.updated DESC'),'Usuario'=>array('fields'=>array('nombre_completo','id')))
-					)
-				);
-
-			$proyecto = $this->Proyecto->find('first', $options);
+      $proyecto = $this->Proyecto->find('first', array(
+        'conditions' => array('Proyecto.id' => $id),
+        'contain'=>array(
+          'Categoria','Sede','Fase','Grupo','Estado','Escenario','Programa',
+          'Autor'=>array(
+            'TipoAutor',
+            'Usuario'=>array(
+              'DescripcionUsuario',
+              'fields'=>array('cedula','cedula_nombre_completo','nombre_completo','id','email','foto'),
+            )
+          ),
+          'Revision'=>array(
+            'order'=>array('Revision.updated'=>'DESC'),
+            'limit'=>'1',
+            'Usuario'=>array('fields'=>array('nombre_completo','id'))
+          )
+        )
+      ));
 
 			//$cant_revisiones = $this->Proyecto->Revision->find('count',array('conditions'=>array('Revision.proyecto_id'=>$id)));
 			$proyecto['Datos'] = array('cant_revisiones'=>$this->Proyecto->Revision->find('count',array('conditions'=>array('Revision.proyecto_id'=>$id))));
-
-
 			// Actualiza nombre de la categoria y lo remplaza por la ruta de la linea y el proyecto de la linea
 			$proyecto['Categoria']['nombre'] = $this->Proyecto->Categoria->getRuta($proyecto['Categoria']['id']);
-
 			$cant_archivos = $this->Proyecto->Archivo->find('count',array('conditions'=>array('Archivo.proyecto_id' => $id)));
+      $cant_comentarios = $this->Proyecto->Comentario->find('count',array('conditions'=>array('Comentario.proyecto_id'=>$id)));
 
-			$this->set(compact('proyecto','proyecto_autor','cant_archivos'));
-
-
-			$revisionEditable = true;
-			$proyectoEditable = false;
-
-			if($proyecto['Proyecto']['activo']){
-				$proyectoEditable = false;
-			}else{
-				if(@$proyecto_autor['TipoAutor']['code'] == 'estudiante'){
-					$proyectoEditable = true;
-				}
-			}
-
-			if($this->adminRouting == true){
-				$revisionEditable = false;
-				$proyectoEditable = false;
-			}
-
-			$cant_comentarios = $this->Proyecto->Comentario->find('count',array(
-						'conditions'=>array('Comentario.proyecto_id'=>$id)
-					));
-
-			$this->set(compact('proyectoEditable','revisionEditable','cant_comentarios'));
-
+			$this->set(compact('proyecto','proyecto_autor','cant_archivos','cant_comentarios'));
 
 			if(@$proyecto_autor['TipoAutor']['code'] == 'estudiante'){
 				$this->set('menuActive','estudiante');
@@ -379,18 +342,7 @@ class ProyectosController extends AppController {
 
 		public function escenarioEdit($proyecto_id = null) {
 			$this->verificarModulo('proyecto.escenarios');
-
-			$proyecto_autor = $this->Proyecto->Autor->find('first',array(
-					'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-					'contain'=>array('Proyecto'=>array('fields'=>array('id','tema','activo'))),
-					'recursive'=>-1,
-				));
-
-			$this->set('proyecto',$proyecto_autor['Proyecto']);
-
-			if(empty($proyecto_autor) || $proyecto_autor['Proyecto']['activo']){
-				throw new NotFoundException(__('Invalid proyecto'));
-			}
+      $this->allowProyecto($proyecto_id);
 
 			if ($this->request->is(array('post', 'put'))) {
 				if ($this->Proyecto->Escenario->save($this->request->data)) {
@@ -404,7 +356,7 @@ class ProyectosController extends AppController {
 					$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', $this->Auth->user('nombre_completo').' ha modificado el escenario del Proyecto', array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
 					/**/
 
-					return $this->redirect(array('action' => 'view',$proyecto_id));
+					return $this->redirect(array('controller'=>'proyectos', 'action' => 'view',$proyecto_id));
 				} else {
 					$this->Session->setFlash(__('The escenario could not be saved. Please, try again.'),'alert/danger');
 				}
@@ -413,6 +365,19 @@ class ProyectosController extends AppController {
 				$options = array('conditions' => array('Escenario.proyecto_id' => $proyecto_id));
 				$this->request->data = $this->Proyecto->Escenario->find('first', $options);
 			}
+
+      $proyecto = $this->Proyecto->find('first', array(
+        'conditions'=>array('Proyecto.id'=>$proyecto_id),
+        'contain'=>array(
+          'Revision'=>array(
+            'fields'=>array('id','titulo'),
+            'order'=>array('updated'=>'desc'),
+            'limit'=>1,
+          )
+        )
+      ));
+
+      $this->set(compact('proyecto'));
 		}
 
 		public function view_jurados($proyecto_id = null) {
@@ -552,14 +517,6 @@ class ProyectosController extends AppController {
 
 				$this->set(compact('fases','estados','categorias','grupos','sedes','programas'));
 			}
-		}
-
-		public function admin_view($id = null){
-			$this->adminRouting = true;
-			$this->view($id);
-			$this->set('adminView',true);
-			$this->set('menuActive','admin');
-			$this->render('view');
 		}
 
 		public function admin_estados_list($fase_id){

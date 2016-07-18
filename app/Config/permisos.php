@@ -53,8 +53,8 @@
 
 
 						// Imresiones PDF
-							'cartas_asignacion_defensa'=>array('coordpg'),
-							'actas_evaluacion_defensa'=>array('coordpg'),
+						'cartas_asignacion_defensa'=>array('coordpg'),
+						'actas_evaluacion_defensa'=>array('coordpg'),
 					),
 
 				'archivos'=>array(
@@ -109,7 +109,7 @@
 					),
 
 				'autors'=>array(
-						'add'=>array('estudiante'),
+						'add'=>array('estudiante', 'coordpg', 'admin', 'root'),
 						'addCompanero'=>array('estudiante'),
 						'solicitud'=>array('estudiante','tutoracad','tutormetod'),
 						'delete'=>array('estudiante'),

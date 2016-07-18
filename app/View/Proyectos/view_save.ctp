@@ -1,9 +1,15 @@
 <?php // ----------------- PRECONDICIONES ------------------- ?>
 	<?php
 		$classActivo = '';
+		$icoplus = '<i class="fa fa-plus"></i>&nbsp;';
 
 		if($proyecto['Proyecto']['activo']){
 			$classActivo = ' box-primary box-solid';
+		}
+
+		if(isset($adminView) && $adminView){
+			$classActivo = 'box-warning';
+			// echo $this->element('call/warning',array('titulo'=>'Vista Administrativa'));
 		}
 
 		$cant_estudiantes=0;
@@ -32,19 +38,20 @@
 
 
 <?php // ----------------- PANEL COORDINADOR ------------------- ?>
-	<?php if($this->Permit->hasPermission(array('coordpg','admin','root'))): ?>
+	<?php if(isset($adminView) && $adminView && isset($userInfo['perfil']['coordpg']) && $userInfo['perfil']['coordpg']){ ?>
 		<div class="box box-warning box-solid">
 			<div class="box-header with-border">
 				<h3 class="box-title">Panel Coordinador</h3>
 				<div class="box-tools pull-right">
 					<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div style="display: block;" class="box-body">
 				<?php echo $this->Html->link('Editar Proyecto',array('controller'=>'proyectos','action'=>'edit','admin'=>true,$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-flat','escape'=>false)); ?>
 				<?php echo $this->Html->link('Asignar Jurados',array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-flat','escape'=>false)); ?>
-				<!-- <div class="btn-group">
+
+
+				<div class="btn-group">
 					<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
@@ -56,10 +63,13 @@
 						<li class="divider"></li>
 						<li><a href="#">Separated link</a></li>
 					</ul>
-				</div> -->
+				</div>
+
+
+
 			</div><!-- /.box-body -->
 		</div>
-	<?php endif; ?>
+	<?php } ?>
 
 <div class="row">
 <?php // ----------------- PANEL PRINCIPAL ------------------- ?>
@@ -227,23 +237,26 @@
 											<div>
 												<hr/>
 												<?php
+													$disabled = ( $revisionEditable ? false : 'disabled' );
 
-													if($mod_activo['proyecto.revisions'] and !$proyecto['Proyecto']['bloqueado']){
-														echo $this->Html->link('<i class="fa fa-edit"></i> '.__('Editar Revision'),
+													if($mod_activo['proyecto.revisions']){
+														echo $this->Html->link('<i class="fa fa-edit"></i>&nbsp;Editar Revision',
 																array('controller'=>'revisions','action' => 'edit', $revision['id']),
-																array('class'=>'btn btn-primary','escape'=>false)
-															).'&nbsp;';
+																array('class'=>'btn btn-primary','disabled'=>$disabled,'escape'=>false)
+															);
+														echo '&nbsp;';
 
 														/* Botones de VER REVISINES Y VERSION PARA IMPRIMIR */
-														echo $this->Html->link('<i class="fa fa-code-fork"></i>' .__('Ver Revisiones'),
+														echo $this->Html->link('<i class="fa fa-code-fork"></i>&nbsp;Ver Revisiones',
 																array('controller'=>'revisions','action' => 'index',$proyecto['Proyecto']['id']),
-																array('class'=>'btn btn-default','escape'=>false)
-															).'&nbsp;';
+																array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false)
+															);
 													}
 
 													if($mod_activo['proyecto.imprimir']){
-														echo $this->Html->link('<i class="fa fa-print fa-fw"></i> '.__('Imprimir Planillas'), '#',
-															array('class'=>'btn btn-default','escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal')
+														echo '&nbsp;';
+														echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Imprimir Planillas', '#',
+															array('class'=>'btn btn-default','disabled'=>$disabled,'escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal')
 														);
 													}
 												?>
@@ -305,7 +318,7 @@
 				<?php if($mod_activo['proyecto.imprimir']): ?>
 					<div class="box-footer">
 						<?php echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Imprimir Planillas', '#',
-							array('class'=>'btn btn-default btn-xs btn-tooltip','escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal', 'title'=>'Imprimir Planillas')
+							array('class'=>'btn btn-default btn-xs btn-tooltip','disabled'=>$disabled,'escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal', 'title'=>'Imprimir Planillas')
 						); ?>
 					</div>
 				<?php endif; ?>
@@ -359,20 +372,41 @@
 											echo '</span>';
 										echo '</div>';
 									echo '</li>';
+
+
+									/*
+									echo '<span class="'.$aux.'">';
+
+									echo $aux = ( $autor['activo'] ? '' : '<spam class="mano" title="Esperando a que compañero acepte la solicitud del Proyecto"><i class="fa fa-ban"></i></spam> '); ;
+
+									echo $autor['Usuario']['cedula_nombre_completo'];
+									echo '</spam>';
+
+									if(!$autor['activo']){
+										if($proyectoEditable){
+											echo $this->Form->postLink('&nbsp;<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger','title'=>'Eliminar Estudiante','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?'));
+										}
+									}
+									//debug($autor);
+
+									echo '<br/>'; */
 								}
 							}
 						?>
 					</ul>
 				</div>
 
-				<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
-						<?php $cant_pos_estudiante = Configure::read('proyectos.cantidad.tipo_autor.estudiante'); ?>
-						<?php if($cant_estudiantes < $cant_pos_estudiante): ?>
+				<?php
+					if($proyectoEditable){
+						$cant_pos_estudiante = Configure::read('proyectos.cantidad.tipo_autor.estudiante');
+						if($cant_pos_estudiante >= 2){ ?>
 							<div class="box-footer">
-								<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="estudiante" title="Agregar Compañero"><i class="fa fa-plus"></i> Compañero</button>
+								<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="estudiante" title="Agregar Compañero"><?php echo $icoplus;?>Compañero</button>
 							</div>
-						<?php endif; ?>
-				<?php endif; ?>
+				<?php
+						}
+					}
+				?>
 			</div>
 
 		<?php // ----------------- DATOS TUTORES ------------------- ?>
@@ -431,8 +465,8 @@
 				</div>
 				<?php if($proyectoEditable){ ?>
 					<div class="box-footer">
-						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutoracad" title="Agregar Tutor Académico"><i class="fa fa-plus"></i> Académico</button>
-						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><i class="fa fa-plus"></i> Metodológico</button>
+						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutoracad" title="Agregar Tutor Académico"><?php echo $icoplus;?>Académico</button>
+						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><?php echo $icoplus;?>Metodológico</button>
 					</div>
 				<?php } ?>
 			</div>
@@ -458,7 +492,7 @@
 					<?php if($proyectoEditable){ ?>
 						<div class="box-footer">
 							<?php
-								echo $this->Html->link('<i class="fa fa-plus"></i> '.__('Escenario'),array('action'=>'escenarioEdit',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-xs btn-tooltip','title'=>'Agregar Escenario','escape'=>false)); ?>
+								echo $this->Html->link($icoplus.'Escenario',array('action'=>'escenarioEdit',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-xs btn-tooltip','title'=>'Agregar Escenario','escape'=>false)); ?>
 						</div>
 					<?php } ?>
 				</div>
@@ -538,7 +572,7 @@
 	<?php endif; ?>
 
 <?php // ----------------- MODAL AGREGAR AUTOR ------------------- ?>
-	<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
+	<?php if($proyectoEditable){ ?>
 			<div class="modal fade" id="addAutor" tabindex="-1" role="dialog" aria-labelledby="addAutor" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
@@ -551,7 +585,7 @@
 			          <?php // echo $this->Form->input('usuarios',array('empty'=>'-- seleccione --')); ?>
 			      </div>
 			      <div class="modal-footer">
-							<?php echo $this->Form->button('Cerrar',array('class'=>'btn btn-default pull-left','type'=>'button','data-dismiss'=>'modal')); ?>
+					<?php echo $this->Form->button('Cerrar',array('class'=>'btn btn-default pull-left','type'=>'button','data-dismiss'=>'modal')); ?>
 			        <?php // echo $this->Form->button('Guardar',array('class'=>'btn btn-primary','type'=>'submit')); ?>
 			      </div>
 			    </div>
@@ -580,7 +614,7 @@
 					});
 				});
 			<?php $this->Html->scriptEnd(); ?>
-	<?php endif; ?>
+	<?php } ?>
 
 <?php // ----------------- Enlaces EXTERNOS ------------------- ?>
 	<?php echo $this->Html->css('/libs/jquery-file-upload/css/jquery.fileupload',array('inline'=>false)); ?>
