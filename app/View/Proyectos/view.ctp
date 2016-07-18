@@ -93,17 +93,18 @@
 						<?php // ----------------- BOTON TABS ------------------- ?>
 							<?php // ----------------- BOTON TAB 1 ------------------- ?>
 								<li role="presentation" class="active">
-									<a href="#tab-info" data-toggle="tab">
-										<i class="fa fa-th-list"></i><span class="hidden-sm">&nbsp;Información</span>
+									<a href="#tab-info" data-toggle="tab" title="Información">
+										<i class="fa fa-th-list"></i>&nbsp;
+										<span class="hidden-sm hidden-xs"><?php echo __('Información'); ?></span>
 									</a>
 								</li>
 
 							<?php // ----------------- BOTON TAB 2 ------------------- ?>
 								<?php if($mod_activo['proyecto.archivos']){ ?>
 									<li role="presentation">
-										<a href="#tab-archivos" class="btn-tab-archivos" data-toggle="tab">
+										<a href="#tab-archivos" class="btn-tab-archivos" data-toggle="tab" title="Archivos">
 											<i class="fa fa-files-o"></i>
-											<span class="hidden-sm">&nbsp;<?php echo __('Archivos'); ?>
+											<span class="hidden-sm hidden-xs">&nbsp;<?php echo __('Archivos'); ?>
 												&nbsp;&nbsp;<span class="cant-archivos badge bg-blue"><?php echo $cant_archivos;?></span>
 											</span>
 										</a>
@@ -113,9 +114,9 @@
 							<?php // ----------------- BOTON TAB 3 ------------------- ?>
 								<?php if($mod_activo['proyecto.comentarios']){ ?>
 									<li role="presentation">
-										<a href="#tab-coment" class="btn-tab-coment" data-toggle="tab">
-											<i class="fa fa-quote-left"></i>
-											<span class="hidden-sm">&nbsp;<?php echo __('Comentarios'); ?></span>
+										<a href="#tab-coment" class="btn-tab-coment" data-toggle="tab" title="Comentarios">
+											<i class="fa fa-quote-left"></i>&nbsp;
+											<span class="hidden-sm hidden-xs"><?php echo __('Comentarios'); ?></span>
 										</a>
 									</li>
 									<!-- <li role="presentation" class="dropdown">
@@ -135,9 +136,9 @@
 							<?php // ----------------- BOTON TAB 4 ------------------- ?>
 								<?php if($mod_activo['proyecto.metas']){ ?>
 									<li role="presentation">
-										<a href="#tab-metas" class="btn-tab-metas" data-toggle="tab">
-											<i class="fa fa-clock-o"></i>
-											<span class="hidden-sm">&nbsp;<?php echo __('Metas'); ?>
+										<a href="#tab-metas" class="btn-tab-metas" data-toggle="tab" title="Metas">
+											<i class="fa fa-clock-o"></i>&nbsp;
+											<span class="hidden-sm hidden-xs"><?php echo __('Metas'); ?>
 											</span>
 										</a>
 									</li>
@@ -145,36 +146,21 @@
 
 							<?php // ----------------- BOTON TAB 5 asuntos ------------------- ?>
 								<?php if($mod_activo['proyecto.asuntos']){ ?>
-									<li role="presentation" class="dropdown">
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-											<i class="fa fa-exclamation-circle"></i>
-											<span class="hidden-sm">&nbsp;Asuntos</span>
-											<!-- <i class="fa fa-caret-down fa-fw"></i>-->
+									<li role="presentation">
+										<a href="#tab-asuntos" class="btn-tab-asuntos" data-toggle="tab" title="Asuntos">
+											<i class="fa fa-exclamation-circle"></i>&nbsp;
+											<span class="hidden-sm hidden-xs"><?php echo __('Asuntos'); ?>
+											</span>
 										</a>
-										<ul class="dropdown-menu" role="menu">
-											<li><a id="asuntos-all" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab" data-view="all"><i class="fa fa-arrow-circle-down"></i>Todos</a></li>
-											<li class="divider"></li>
-											<li>
-												<a id="asuntos-open" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab" data-view="open">
-													<i class="fa fa-exclamation-circle"></i>Abiertos
-													&nbsp;&nbsp;<span class="cant-metas badge bg-blue"><?php echo 0;?></span>
-												</a>
-											</li>
-											<li>
-												<a id="asuntos-close" class="btn-tab-asuntos" href="#tab-asuntos" data-toggle="tab" data-view="close">
-													<i class="fa fa-check-circle"></i>Cerrados
-													&nbsp;&nbsp;<span class="cant-metas badge bg-blue"><?php echo 0;?></span>
-												</a>
-											</li>
-										</ul>
 									</li>
 								<?php } ?>
 
 							<?php // ----------------- BOTON TAB 6 ------------------- ?>
 								<?php if($mod_activo['proyecto.jurados']){ ?>
 									<li role="presentation">
-										<a class="btn-tab-jurados" href="#tab-jurados" data-toggle="tab"><i class="fa fa-legal">
-											</i><span class="hidden-sm">&nbsp;Jurados</span>
+										<a class="btn-tab-jurados" href="#tab-jurados" data-toggle="tab">
+											<i class="fa fa-legal"></i>&nbsp;
+											<span class="hidden-sm hidden-xs" title="Jurados"><?php echo __('Jurados'); ?></span>
 										</a>
 									</li>
 								<?php } ?>
@@ -637,6 +623,7 @@
 	<?php echo $this->Html->script('/libs/jquery-file-upload/js/jquery.fileupload.js',array('inline'=>false)); ?>
 	<?php echo $this->Html->script('/libs/jquery-autosize/dist/autosize.min',array('inline'=>false)); ?>
 	<?php echo $this->Html->script('/libs/jquery-form/jquery.form',array('inline'=>false)); ?>
+	<?php echo $this->Html->script('/libs/mixitup/build/jquery.mixitup.min', array('inline'=>false)); ?>
 
 <?php // ----------------- JavaScript ------------------- ?>
 	<?php $this->Html->scriptStart(array('inline' => false)); ?>
@@ -713,13 +700,13 @@
 
 		<?php // ----------------- Cargar Asuntos ------------------- ?>
 			$('.box-body a.btn-tab-asuntos').on('shown.bs.tab', function(event) {
-				cargarAsuntos(event, 'all');
+				cargarAsuntos(event);
 			});
 
-			function cargarAsuntos(event, view){
+			function cargarAsuntos(event){
 				$content = $('#tab-asuntos');
 				$.ajax({
-					url: "<?php echo $this->Html->url(array('controller'=>'asuntos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>"+"/"+view,
+					url: "<?php echo $this->Html->url(array('controller'=>'asuntos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
 					dataType: 'html',
 					beforeSend: function(){
 						//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');

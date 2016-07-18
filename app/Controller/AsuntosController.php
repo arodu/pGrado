@@ -21,7 +21,7 @@ class AsuntosController extends AppController {
  *
  * @return void
  */
-	public function index($proyecto_id, $view) {
+	public function index($proyecto_id) {
 		$this->layout = 'ajax';
 		$this->allowProyecto($proyecto_id);
 
@@ -29,9 +29,21 @@ class AsuntosController extends AppController {
 			'conditions'=>array(
 				'Asunto.proyecto_id'=>$proyecto_id,
 			),
+			'order'=>array('Asunto.num_secuencia'=>'desc'),
+			'contain'=>array(
+				'Meta',
+				'Propietario'=>array(
+					'fields'=>array('id', 'nombres', 'apellidos', 'updated_foto'),
+				),
+				'Responsable'=>array(
+					'fields'=>array('id', 'nombres', 'apellidos', 'updated_foto'),
+				),
+			)
 		));
 
-		$this->set(compact('asuntos', 'proyecto_id'));
+		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'&nbsp;&nbsp;&nbsp;&nbsp;');
+		$usuarios_proyecto = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
+		$this->set(compact('asuntos', 'proyecto_id', 'metas', 'usuarios_proyecto'));
 	}
 
 /**
@@ -54,21 +66,32 @@ class AsuntosController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($proyecto_id) {
+		$this->layout = 'ajax';
+		$this->allowProyecto($proyecto_id);
+		$success = false;
 		if ($this->request->is('post')) {
+
+			$ultimo_asunto = $this->Asunto->find('first',array(
+				'conditions'=>array('Asunto.proyecto_id'=>$proyecto_id),
+				'order'=>array('Asunto.num_secuencia'=>'desc'),
+				'limit'=>1,
+			));
+
+			$this->request->data['Asunto']['num_secuencia'] = @$ultimo_asunto['Asunto']['num_secuencia'] + 1;
+			$this->request->data['Asunto']['propietario_id'] = $this->Auth->user('id');
+
 			$this->Asunto->create();
 			if ($this->Asunto->save($this->request->data)) {
 				$this->Flash->success(__('The asunto has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$success = true;
 			} else {
 				$this->Flash->error(__('The asunto could not be saved. Please, try again.'));
 			}
 		}
-		$metas = $this->Asunto->Meta->find('list');
-		$proyectos = $this->Asunto->Proyecto->find('list');
-		$propietarios = $this->Asunto->Propietario->find('list');
-		$responsables = $this->Asunto->Responsable->find('list');
-		$this->set(compact('metas', 'proyectos', 'propietarios', 'responsables'));
+		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'--- ');
+		$responsables = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
+		$this->set(compact('metas', 'responsables','proyecto_id', 'success'));
 	}
 
 /**

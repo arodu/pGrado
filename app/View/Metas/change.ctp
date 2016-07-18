@@ -21,7 +21,7 @@
 
 				<?php echo $this->bsForm->create('Meta', array('class'=>'ajaxForm')); ?>
           <?php echo $this->bsForm->input('Meta.id'); ?>
-					<?php echo $this->Form->button('Aceptar', array('value'=>'Aceptar', 'type'=>'submit','class'=>'btn btn-primary')); ?>
+					<?php echo $this->Form->button('Aceptar', array('value'=>'Aceptar', 'type'=>'submit','class'=>'btn btn-primary btn-submit')); ?>
 					<?php echo $this->Form->buttom('Cancelar', array('value'=>'Cancelar', 'type'=>'button', 'class'=>'btn btn-default', 'data-dismiss'=>'modal')); ?>
 				<?php echo $this->bsForm->end(); ?>
 

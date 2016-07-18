@@ -15,10 +15,12 @@ class Usuario extends AppModel {
 
 	public $useTable = 'usuarios';
 	public $displayField = 'cedula';
-	public $actsAs = array('Containable','Captcha' => array(
-        'field' => array('captcha'),
-        'error' => 'Código Captcha Incorrecto'
-    ));
+	public $actsAs = array('Containable',
+			//'Captcha' => array(
+      //  'field' => array('captcha'),
+      //  'error' => 'Código Captcha Incorrecto'
+    	//)
+	);
 
 	public $virtualFields = array(
 			'nombre_completo' => 'CONCAT(Usuario.nombres," ",Usuario.apellidos)',

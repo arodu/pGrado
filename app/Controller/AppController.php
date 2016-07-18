@@ -4,11 +4,8 @@ class AppController extends Controller {
 
 	public $components = array(
 		'DebugKit.Toolbar',
+		'Flash',
 		'Session',
-		/* 'Permisos'=>array(
-				'fileConfig'=>'permisos',
-				'arreglo'=>'Permisos',
-			), */
 		'UtilCake.Permit'=>array(
 			'userModel'=>'Usuario',
 			'profileModel'=>'Perfil',

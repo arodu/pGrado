@@ -89,4 +89,24 @@ public $actsAs = array('Containable');
 			'order' => ''
 		)
 	);
+
+	public function usuarios($proyecto_id){
+
+		$usuarios_id = $this->find('list', array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$proyecto_id,
+				'Autor.activo'=>true,
+			),
+			'fields'=>array('usuario_id'),
+		));
+
+		$usuarios = $this->Usuario->find('list',array(
+			'conditions'=>array('Usuario.id'=>$usuarios_id),
+			'fields'=>array('id','nombre_completo'),
+		));
+
+		return $usuarios;
+	}
+
+
 }

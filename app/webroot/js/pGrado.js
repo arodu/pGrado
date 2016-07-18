@@ -54,6 +54,13 @@ $(function(){
 
 });
 
+$.fn.btnSubmit = function(){
+	$(this).closest('form').on('submit', function(){
+		$(this).prop('disabled',true);
+		$(this).addClass('disabled');
+	});
+}
+
 $.fn.modalLink = function(target){
 	$(this).on('click', function(){
 		var modal = $(target);
@@ -73,12 +80,25 @@ $.fn.modalLink = function(target){
 			},
 			complete: function(msg){
 				modal.html(msg.responseText);
+				$('.btn-submit').btnSubmit();
 			}
 		});
 
 		return false;
 	});
 }
+
+//$.fn.ajaxFormSubmit = function( target ){
+//	$(this).ajaxForm({
+//		target: target;
+//		beforeSubmit: function(arr, $form, options) {
+//				// The array of form data takes the following form:
+//				// [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
+//
+//				// return false to cancel submit
+//		}
+//	});
+//}
 
 
 $.fn.btnTextAnimado = function(){
