@@ -1,0 +1,33 @@
+.asunto{
+
+  padding: 10px;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+
+
+  .secuencia{
+    text-align: center;
+    font-size: 2em;
+  }
+
+  .propietario, .meta{
+    font-size: .8em;
+    font-style: italic;
+    color: #666;
+  }
+
+  .meta{
+    font-weight: bold;
+  }
+
+  &:hover{
+    background-color: #eee;
+  }
+
+}
+
+.mix-container{
+  .mix{
+   display: none;
+ }
+}

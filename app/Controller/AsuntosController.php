@@ -53,6 +53,7 @@ class AsuntosController extends AppController {
  * @param string $id
  * @return void
  */
+ /*
 	public function view($id = null) {
 		if (!$this->Asunto->exists($id)) {
 			throw new NotFoundException(__('Invalid asunto'));
@@ -60,6 +61,7 @@ class AsuntosController extends AppController {
 		$options = array('conditions' => array('Asunto.' . $this->Asunto->primaryKey => $id));
 		$this->set('asunto', $this->Asunto->find('first', $options));
 	}
+	*/
 
 /**
  * add method
@@ -83,10 +85,10 @@ class AsuntosController extends AppController {
 
 			$this->Asunto->create();
 			if ($this->Asunto->save($this->request->data)) {
-				$this->Flash->success(__('The asunto has been saved.'));
+				$this->Flash->call_success(__('The asunto has been saved.'));
 				$success = true;
 			} else {
-				$this->Flash->error(__('The asunto could not be saved. Please, try again.'));
+				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));
 			}
 		}
 		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'--- ');
@@ -105,22 +107,30 @@ class AsuntosController extends AppController {
 		if (!$this->Asunto->exists($id)) {
 			throw new NotFoundException(__('Invalid asunto'));
 		}
+		$this->layout = 'ajax';
+		$proyecto_id = $this->Asunto->find('proyecto_id', array('conditions'=>array('Asunto.id'=>$id)));
+		$this->allowProyecto($proyecto_id);
+		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Asunto->save($this->request->data)) {
-				$this->Flash->success(__('The asunto has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Flash->call_success(__('The asunto has been saved.'));
+				$success = true;
 			} else {
-				$this->Flash->error(__('The asunto could not be saved. Please, try again.'));
+				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Asunto.' . $this->Asunto->primaryKey => $id));
+			$options = array('conditions' => array('Asunto.id' => $id));
 			$this->request->data = $this->Asunto->find('first', $options);
 		}
-		$metas = $this->Asunto->Metum->find('list');
-		$proyectos = $this->Asunto->Proyecto->find('list');
-		$propietarios = $this->Asunto->Propietario->find('list');
-		$responsables = $this->Asunto->Responsable->find('list');
-		$this->set(compact('metas', 'proyectos', 'propietarios', 'responsables'));
+		$metas = $this->Asunto->Meta->generateTreeList(null,null,null,'--- ');
+		$responsables = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
+		$this->set(compact('metas', 'responsables','proyecto_id', 'success'));
+	}
+
+	public function change($id = null){
+		
+
+
 	}
 
 /**
@@ -137,9 +147,9 @@ class AsuntosController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Asunto->delete()) {
-			$this->Flash->success(__('The asunto has been deleted.'));
+			$this->Flash->call_success(__('The asunto has been deleted.'));
 		} else {
-			$this->Flash->error(__('The asunto could not be deleted. Please, try again.'));
+			$this->Flash->call_error(__('The asunto could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

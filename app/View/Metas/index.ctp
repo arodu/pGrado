@@ -51,9 +51,8 @@
 					</div>
 					<div class="col-md-2">
 						<?php if($meta['Meta']['cerrado']): ?>
-							<button class="btn btn-default btn-xs btn-block" disabled="disabled">Editar</button>
 							<?php
-								echo $object->Form->button(__('Abrir'),array(
+								echo $object->Form->button('<i class="fa fa-unlock-alt fa-fw"></i> '.__('Abrir'),array(
 									'type' => 'button',
 									'class'=>'btn btn-danger btn-xs btn-block meta-modal-link',
 									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
@@ -63,21 +62,21 @@
 							?>
 						<?php else: ?>
 							<?php
-								echo $object->Form->button(__('Editar'),array(
-									'type' => 'button',
-									'class'=>'btn btn-default btn-xs btn-block meta-modal-link',
-									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'edit', $meta['Meta']['id'])),
-									'data-action'=>'edit',
-									'title'=>'Editar Meta',
-								));
-							?>
-							<?php
-								echo $object->Form->button(__('Cerrar'),array(
+								echo $object->Form->button('<i class="fa fa-lock fa-fw"></i> '.__('Cerrar'),array(
 									'type' => 'button',
 									'class'=>'btn btn-primary btn-xs btn-block meta-modal-link',
 									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
 									'data-action'=>'edit',
 									'title'=>'Cerrar Meta',
+								));
+							?>
+							<?php
+								echo $object->Form->button('<i class="fa fa-edit fa-fw"></i> '.__('Editar'),array(
+									'type' => 'button',
+									'class'=>'btn btn-default btn-xs btn-block meta-modal-link',
+									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'edit', $meta['Meta']['id'])),
+									'data-action'=>'edit',
+									'title'=>'Editar Meta',
 								));
 							?>
 						<?php endif; ?>
