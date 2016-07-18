@@ -40,6 +40,7 @@ class MetasController extends AppController {
  * @param string $id
  * @return void
  */
+ /*
 	public function view($id = null) {
 		if (!$this->Meta->exists($id)) {
 			throw new NotFoundException(__('Invalid meta'));
@@ -47,57 +48,8 @@ class MetasController extends AppController {
 		$options = array('conditions' => array('Meta.' . $this->Meta->primaryKey => $id));
 		$this->set('meta', $this->Meta->find('first', $options));
 	}
+	*/
 
-	public $metas = array();
-	public $saveData = array();
-
-
-	public function review($proyecto_id){
-		$metas = $this->Meta->find('threaded', array(
-			'conditions'=>array('Meta.proyecto_id'=>$proyecto_id),
-			'fields'=>array('id','cerrado','parent_id'),
-			'contain'=>array('Asunto'=>array('fields'=>array('id','cerrado'))),
-		));
-
-		foreach ($metas as $meta) {
-			$this->_review($meta);
-		}
-
-		//debug($this->saveData); exit();
-
-
-		if($this->Meta->saveMany($this->saveData)){
-			return true;
-		}
-		return false;
-	}
-
-	protected function _review($node){
-
-		$total_child = 0;
-		$close_child = 0;
-		if( count($node['children']) > 0 ){
-			//$close = 0;
-			foreach ($node['children'] as $child) {
-				$aux = $this->_review($child);
-				$total_child += $aux['total_child'];
-				$close_child += $aux['close_child'];
-			}
-		}
-
-		$cerrado = ( $node['Meta']['cerrado'] ? 1 : 0 );
-
-		$this->saveData[]['Meta'] = array(
-			'id'=>$node['Meta']['id'],
-			'completado'=>( $close_child + $cerrado ),
-			'total'=>( $total_child + 1 ),
-		);
-
-		return array(
-			'close_child'=>( $close_child + $cerrado ),
-			'total_child'=>( $total_child + 1 ),
-		);
-	}
 
 
 /**
@@ -112,7 +64,7 @@ class MetasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Meta->create();
 			if ($this->Meta->save($this->request->data)) {
-				$this->review($proyecto_id);
+				$this->Meta->review($proyecto_id);
 				$this->Session->setFlash(__('Nueva Meta guardada con exito!'), 'alert/success');
 				$success = true;
 			} else {
@@ -139,7 +91,7 @@ class MetasController extends AppController {
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Meta->save($this->request->data)) {
-				$this->review($proyecto_id);
+				$this->Meta->review($proyecto_id);
 				$this->Session->setFlash(__('The meta has been saved.'), 'alert/success');
 				$success = true;
 			} else {
@@ -168,7 +120,7 @@ class MetasController extends AppController {
 			);
 
 			if ($this->Meta->save($data)) {
-				$this->review($meta['Meta']['proyecto_id']);
+				$this->Meta->review($meta['Meta']['proyecto_id']);
 				$this->Session->setFlash(__('The meta has been saved.'), 'alert/success');
 				$success = true;
 			} else {
@@ -195,7 +147,7 @@ class MetasController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Meta->delete()) {
-			$this->review($proyecto_id);
+			$this->Meta->review($proyecto_id);
 			$this->Session->setFlash(__('The meta has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The meta could not be deleted. Please, try again.'));

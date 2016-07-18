@@ -9,7 +9,7 @@ class AppController extends Controller {
 		'UtilCake.Permit'=>array(
 			'userModel'=>'Usuario',
 			'profileModel'=>'Perfil',
-			//'reload'=>true,
+			'reload'=>true,
 		),
 		'Auth' => array(
 			'loginRedirect' => array('controller' => 'pages','action' => 'index'),

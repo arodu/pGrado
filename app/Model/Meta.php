@@ -156,4 +156,62 @@ class Meta extends AppModel {
 		)
 	);
 
+	public $saveData = array();
+
+	public function review($proyecto_id){
+		$metas = $this->find('threaded', array(
+			'conditions'=>array('proyecto_id'=>$proyecto_id),
+			'fields'=>array('id','cerrado','parent_id'),
+			'contain'=>array('Asunto'=>array('fields'=>array('id','cerrado'))),
+		));
+
+		foreach ($metas as $meta) {
+			$this->_review($meta);
+		}
+
+		if($this->saveMany($this->saveData)){
+			return true;
+		}
+		return false;
+	}
+
+	protected function _review($node){
+
+		$total_child = 0;
+		$close_child = 0;
+		if( count($node['children']) > 0 ){
+			//$close = 0;
+			foreach ($node['children'] as $child) {
+				$aux = $this->_review($child);
+				$total_child += $aux['total_child'];
+				$close_child += $aux['close_child'];
+			}
+		}
+
+		$total_asunto = count($node['Asunto']);
+		$close_asunto = 0;
+		if( $total_asunto > 0 ){
+			foreach ($node['Asunto'] as $asunto) {
+				if($asunto['cerrado']){
+					$close_asunto++;
+				}
+			}
+		}
+
+		$cerrado = ( $node['Meta']['cerrado'] ? 1 : 0 );
+
+		$this->saveData[]['Meta'] = array(
+			'id'=>$node['Meta']['id'],
+			'completado'=>( $close_child + $close_asunto + $cerrado ),
+			'total'=>( $total_child + $total_asunto + 1 ),
+		);
+
+		return array(
+			'close_child'=>( $close_child + $close_asunto + $cerrado ),
+			'total_child'=>( $total_child + $total_asunto + 1 ),
+		);
+	}
+
+
+
 }

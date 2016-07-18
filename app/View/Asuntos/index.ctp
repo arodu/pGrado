@@ -114,9 +114,28 @@
 						</div>
 						<div class="col-md-2">
 							<?php if($asunto['Asunto']['cerrado']): ?>
-								<button class="btn btn-danger btn-xs btn-block">Abrir</button>
+								<?php
+									echo $this->Html->link(
+										'<i class="fa fa-unlock-alt fa-fw"></i> '.__('Abrir'),
+										array('controller'=>'asuntos', 'action'=>'change', $asunto['Asunto']['id']),
+										array(
+											'class'=>'btn btn-danger btn-xs btn-block btn-edit-asunto',
+											'escape'=>false,
+										)
+									);
+								?>
 							<?php else: ?>
-								<button class="btn btn-primary btn-xs btn-block">Cerrar</button>
+								<?php
+									echo $this->Html->link(
+										'<i class="fa fa-lock fa-fw"></i> '.__('Cerrar'),
+										array('controller'=>'asuntos', 'action'=>'change', $asunto['Asunto']['id']),
+										array(
+											'class'=>'btn btn-primary btn-xs btn-block btn-edit-asunto',
+											'escape'=>false,
+										)
+									);
+								?>
+
 								<?php if( $userInfo['id'] == $asunto['Propietario']['id'] ): ?>
 									<?php
 										echo $this->Html->link(

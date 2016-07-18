@@ -85,6 +85,7 @@ class AsuntosController extends AppController {
 
 			$this->Asunto->create();
 			if ($this->Asunto->save($this->request->data)) {
+				$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
 				$this->Flash->call_success(__('The asunto has been saved.'));
 				$success = true;
 			} else {
@@ -113,6 +114,7 @@ class AsuntosController extends AppController {
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Asunto->save($this->request->data)) {
+				$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
 				$this->Flash->call_success(__('The asunto has been saved.'));
 				$success = true;
 			} else {
@@ -128,9 +130,30 @@ class AsuntosController extends AppController {
 	}
 
 	public function change($id = null){
-		
+		$asunto = $this->Asunto->find('first', array('conditions' => array('Asunto.id' => $id)));
+		if (!$asunto) { throw new NotFoundException(__('Invalid asunto')); }
+		$this->allowProyecto($asunto['Asunto']['proyecto_id']);
+		$success = false;
+		if ($this->request->is(array('post', 'put'))) {
 
+			$cerrado = ( $asunto['Asunto']['cerrado'] ? false : true );
 
+			$data['Asunto'] = array(
+				'id'=>$asunto['Asunto']['id'],
+				'cerrado' => $cerrado,
+			);
+
+			if ($this->Asunto->save($data)) {
+				$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
+				$this->Flash->call_success(__('The asunto has been saved.'));
+				$success = true;
+			} else {
+				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $asunto;
+		}
+		$this->set(compact('asunto', 'success'));
 	}
 
 /**
@@ -147,6 +170,7 @@ class AsuntosController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Asunto->delete()) {
+			$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
 			$this->Flash->call_success(__('The asunto has been deleted.'));
 		} else {
 			$this->Flash->call_error(__('The asunto could not be deleted. Please, try again.'));
