@@ -10,7 +10,6 @@ class ComentariosController extends AppController {
 		parent::beforeFilter();
 	}
 
-
 	public function index($proyecto_id, $tipo = null) {
 		$this->layout = 'ajax';
 		$this->allowProyecto($proyecto_id);
@@ -62,39 +61,46 @@ class ComentariosController extends AppController {
 
 		$proyecto_id = $this->Comentario->find('proyecto_id', array('conditions'=>array('Comentario.id'=>$id)));
 		$this->allowProyecto($proyecto_id);
-
+		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			//$proyecto_id = $this->Comentario->find('proyecto_id', array('conditions'=>array('Comentario.id'=>$id)));
 			//$this->revisarProyecto($this->request->data['proyecto_id']); // Revisa si el usuario actual tiene acceso al proyecto
 
 			if ($this->Comentario->save($this->request->data)) {
-				//$this->Session->setFlash('Cambios realizados correctamente','alert/success');
+				$this->Flash->call_success('Comentario Editado');
+				$success = true;
+			}else{
+				$this->Flash->call_error('Ha Ocurrido un error editando el comentario.');
 			}
 		} else {
 			$options = array('conditions' => array('Comentario.id' => $id));
 			$this->request->data = $this->Comentario->find('first', $options);
 		}
+		$this->set(compact('success'));
 	}
 
 	public function delete($id = null) {
-		$this->Comentario->id = $id;
-		if (!$this->Comentario->exists()) {
+		$this->layout = 'ajax';
+		if (!$this->Comentario->exists($id)) {
 			throw new NotFoundException(__('Comentario Invalido!'));
 		}
+
 		$proyecto_id = $this->Comentario->find('proyecto_id', array('conditions'=>array('Comentario.id'=>$id)));
 		$this->allowProyecto($proyecto_id);
-
-		$this->request->allowMethod('post', 'delete');
-		$data['Comentario'] = array(
-			'id' => $id,
-			'eliminado'=>true,
-		);
-		if ($this->Comentario->save($data)) {
-			$this->response->statusCode(200);
+		$success = false;
+		if ($this->request->is(array('post', 'put'))) {
+			$this->request->data['Comentario']['eliminado'] = true;
+			if ($this->Comentario->save($this->request->data)) {
+				$this->Flash->call_success('Comentario Eliminado');
+				$success = true;
+			}else{
+				$this->Flash->call_error('Ha Ocurrido un error eliminando el comentario.');
+			}
 		} else {
-			$this->response->statusCode(500);
+			$options = array('conditions' => array('Comentario.id' => $id));
+			$this->request->data = $this->Comentario->find('first', $options);
 		}
-		return $this->response;
+		$this->set(compact('success'));
 	}
 
 

@@ -5,7 +5,7 @@
 			<h4 class="modal-title" id="addAutorLabel">Agregar Nueva Meta</h4>
 		</div>
 		<div class="modal-body">
-			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Flash->render() ?>
 
 			<?php if(!$success): ?>
 				<?php echo $this->bsForm->create('Meta', array('class'=>'ajaxForm')); ?>

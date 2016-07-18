@@ -65,10 +65,10 @@ class MetasController extends AppController {
 			$this->Meta->create();
 			if ($this->Meta->save($this->request->data)) {
 				$this->Meta->review($proyecto_id);
-				$this->Session->setFlash(__('Nueva Meta guardada con exito!'), 'alert/success');
+				$this->Flash->call_success(__('Nueva Meta guardada con exito!'));
 				$success = true;
 			} else {
-				$this->Session->setFlash(__('The meta could not be saved. Please, try again.'), 'alert/error');
+				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
 			}
 		}
 		$metas = $this->Meta->generateTreeList(null,null,null,'--- ');
@@ -92,10 +92,10 @@ class MetasController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Meta->save($this->request->data)) {
 				$this->Meta->review($proyecto_id);
-				$this->Session->setFlash(__('The meta has been saved.'), 'alert/success');
+				$this->Flash->call_success(__('The meta has been saved.'));
 				$success = true;
 			} else {
-				$this->Session->setFlash(__('The meta could not be saved. Please, try again.'), 'alert/danger');
+				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Meta.' . $this->Meta->primaryKey => $id));
@@ -121,10 +121,10 @@ class MetasController extends AppController {
 
 			if ($this->Meta->save($data)) {
 				$this->Meta->review($meta['Meta']['proyecto_id']);
-				$this->Session->setFlash(__('The meta has been saved.'), 'alert/success');
+				$this->Flash->call_success(__('The meta has been saved.'));
 				$success = true;
 			} else {
-				$this->Session->setFlash(__('The meta could not be saved. Please, try again.'), 'alert/danger');
+				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
 			}
 		} else {
 			$this->request->data = $meta;
@@ -148,9 +148,9 @@ class MetasController extends AppController {
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Meta->delete()) {
 			$this->Meta->review($proyecto_id);
-			$this->Session->setFlash(__('The meta has been deleted.'));
+			$this->Flash->call_success(__('The meta has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The meta could not be deleted. Please, try again.'));
+			$this->Flash->call_error(__('The meta could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

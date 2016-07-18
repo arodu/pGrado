@@ -28,18 +28,23 @@
 		<?php foreach ($comentarios as $comentario): ?>
 
 			<?php
+
 				$bg_class = '';
-				$icon_bg_class = 'bg-blue';
-				$icon = 'fa fa-comment-o';
+				$icon_bg_class = 'bg-green';
+				$icon = 'fa fa-comment';
 				$user_active = false;
 				$item_class = '';
 
-				if($comentario['Usuario']['id'] == $userInfo['id']){
+				if( $comentario['Comentario']['eliminado'] ){
+					$icon_bg_class = 'bg-red';
+					$icon = 'fa fa-times';
+				}elseif($comentario['Usuario']['id'] == $userInfo['id']){
 					$icon_bg_class = 'bg-blue';
 					$icon = 'fa fa-comment fa-flip-horizontal';
 					$user_active = true;
 					$item_class = 'timeline-item-user';
 				}
+
 			?>
 
 			<?php $coment_fecha = $this->General->niceDateFormatView($comentario['Comentario']['created']); ?>
@@ -87,26 +92,18 @@
 									<li>
 										<?php
 											echo $this->Html->link(
-												'<i class="fa fa-edit fa-fw"></i> Editar</a>', '#',
-												array(
-													'data-id'=>$comentario['Comentario']['id'],
-													'data-toggle'=>'modal',
-													'data-target'=>'#editCommentModal',
-													'escape'=>false,
-												)
+												'<i class="fa fa-edit fa-fw"></i>'.__('Editar'),
+												array('controller'=>'comentarios', 'action'=>'edit', $comentario['Comentario']['id']),
+												array('class'=>'comment-modal-link','escape'=>false)
 											);
 										?>
 									</li>
 									<li>
 										<?php
 											echo $this->Html->link(
-												'<i class="fa fa-trash fa-fw"></i> '.__('Eliminar'), '#',
-												array(
-													'data-id'=>$comentario['Comentario']['id'],
-													'class'=>'commentDelete',
-													'confirm'=>'¿Esta segudo que desea elimiar este Comentario?',
-													'escape'=>false,
-												)
+												'<i class="fa fa-trash fa-fw"></i>'.__('Eliminar'),
+												array('controller'=>'comentarios', 'action'=>'delete', $comentario['Comentario']['id']),
+												array('class'=>'comment-modal-link','escape'=>false)
 											);
 										?>
 									</li>
@@ -222,6 +219,9 @@
 
 		return false;
 	});
+
+	// ------------------
+	$('.comment-modal-link').modalLink('#generalModal');
 
 
 </script>

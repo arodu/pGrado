@@ -710,7 +710,7 @@
 					dataType: 'html',
 					beforeSend: function(){
 						//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-						$('#tab-metas.proyecto_overlay').append(overlay_wrapper);
+						$('#tab-asuntos.proyecto_overlay').append(overlay_wrapper);
 					},
 					complete: function(msg){
 						$content.html(msg.responseText);
