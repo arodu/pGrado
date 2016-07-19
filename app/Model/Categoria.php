@@ -74,6 +74,16 @@ class Categoria extends AppModel {
 		)
 	);
 
+	public $belongsTo = array(
+		'Programa' => array(
+			'className' => 'Programa',
+			'foreignKey' => 'programa_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
 
 	public function getRuta($id){
 		$parents = $this->getPath( $id, array('Categoria.nombre'));

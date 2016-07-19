@@ -3,12 +3,13 @@
 	<fieldset>
 		<legend><?php echo __('Add Categoria'); ?></legend>
 	<?php
+		echo $this->Form->input('programa_id');
 		echo $this->Form->input('parent_id',array('label'=>'Categoría Padre','options'=>$categorias_list,'empty'=>'--Selecione--'));
 		echo $this->Form->input('nombre');
 		echo $this->Form->input('descripcion');
 		echo $this->Form->input('activo',array('div'=>array('class'=>'checkbox'),'class'=>''));
 
-		echo $this->Form->input('Usuario');
+		//echo $this->Form->input('Usuario');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

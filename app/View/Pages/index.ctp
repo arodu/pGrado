@@ -194,52 +194,45 @@
 		<div class="row">
 
 			<div class="col-xs-12 col-md-4">
-				<div class="small-box bg-yellow">
-					<div class="inner">
-						<h4>Descargas</h4>
-						<p>&nbsp;</p>
-					</div>
-					<div class="icon">
-						<i class="fa fa-download"></i>
-					</div>
-					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-				</div>
-			</div>
+				<a class="info-box bg-teal" href="<?php echo $this->Html->url(array('controller'=>'proyectos', 'action'=>'index'));?>">
+					<span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
 
-
-			<div class="col-xs-12 col-md-4">
-				<div class="small-box bg-red">
-					<div class="inner">
-						<h4>53<sup style="font-size: 20px">%</sup></h4>
-						<p>Bounce Rate</p>
+					<div class="info-box-content">
+						<span class="info-box-text">&nbsp;</span>
+						<span class="info-box-number">Mis<br/>Proyectos</span>
 					</div>
-					<div class="icon">
-						<i class="fa fa-gears"></i>
-					</div>
-					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-				</div>
+					<!-- /.info-box-content -->
+				</a>
+				<!-- /.info-box -->
 			</div>
 
 			<div class="col-xs-12 col-md-4">
-				<div class="small-box bg-blue">
-					<div class="inner">
-						<h4>Ayuda</h4>
-						<p>Manual de Usuario</p>
+				<a class="info-box bg-green" href="<?php echo $this->Html->url(array('controller'=>'descargas', 'action'=>'index'));?>">
+					<span class="info-box-icon"><i class="fa fa-download"></i></span>
+
+					<div class="info-box-content">
+						<span class="info-box-text">&nbsp;</span>
+						<span class="info-box-number">Descargas</span>
 					</div>
-					<div class="icon">
-						<i class="fa fa-question"></i>
-					</div>
-					<a href="#" class="small-box-footer">Descargar <i class="fa fa-arrow-circle-right"></i></a>
-				</div>
+					<!-- /.info-box-content -->
+				</a>
+				<!-- /.info-box -->
 			</div>
 
+			<div class="col-xs-12 col-md-4">
+				<a class="info-box bg-blue" href="#">
+					<span class="info-box-icon"><i class="fa fa-question"></i></span>
 
-
-
+					<div class="info-box-content">
+						<span class="info-box-text">&nbsp;</span>
+						<span class="info-box-number">Ayuda</span>
+					</div>
+					<!-- /.info-box-content -->
+				</a>
+				<!-- /.info-box -->
+			</div>
 
 		</div>
-
-
 
 
 	</div>

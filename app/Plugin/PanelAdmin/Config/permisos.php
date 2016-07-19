@@ -20,6 +20,13 @@
 						'delete'=>array('admin'),
 						'recrearArbol'=>array('admin'),
 					),
+				'programas'=>array(
+						'index'=>array('admin'),
+						'add'=>array('admin'),
+						'view'=>array('admin'),
+						'edit'=>array('admin'),
+						'delete'=>array('admin'),
+					),
 				'escenarios'=>array(
 						'index'=>array('admin'),
 						'add'=>array('admin'),

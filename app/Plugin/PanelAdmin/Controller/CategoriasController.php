@@ -63,9 +63,9 @@ class CategoriasController extends PanelAdminAppController {
 		}
 
 		$categorias_list = $this->Categoria->generateTreeList(null,null,null,'|---');
-		$usuarios = $this->Categoria->Usuario->find('list');
-
-		$this->set(compact('categorias_list','usuarios'));
+		//$usuarios = $this->Categoria->Usuario->find('list');
+		$programas = $this->Categoria->Programa->find('list');
+		$this->set(compact('categorias_list','programas'));
 
 	}
 

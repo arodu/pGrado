@@ -7,6 +7,14 @@
 					'proyectos_edit'=>array('coordpg','admin','root'),
 				),
 
+				'grupos'=>array(
+					'index'=>array('coordpg','admin','root'),
+					'add'=>array('coordpg','admin','root'),
+					'view'=>array('coordpg','admin','root'),
+					'edit'=>array('coordpg','admin','root'),
+					'delete'=>array('coordpg','admin','root'),
+				),
+
 				//Controladores
 				'proyectos'=>array(
 						'index'=>array('estudiante'),

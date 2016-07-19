@@ -1,5 +1,5 @@
 <?php
 App::uses('PanelAdminAppController', 'PanelAdmin.Controller');
-class TipoUsuariosController extends PanelAdminAppController {
+class TipoProgramasController extends PanelAdminAppController {
 	public $scaffold;
 }
