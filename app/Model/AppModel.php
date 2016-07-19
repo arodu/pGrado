@@ -145,10 +145,6 @@ class AppModel extends Model {
 
 	}
 
-	protected function _listMultilevel( $query = array() ){
-
-	}
-
 	protected function _proyecto_id( $query = array() ){
 		if(isset($query['fields'])){
 			$query['fields'] = array_merge($query['fields'], array($this->alias.'.proyecto_id'));

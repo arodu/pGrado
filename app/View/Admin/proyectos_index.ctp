@@ -2,14 +2,14 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="box box-primary">
-
+			<?php echo $this->Search->create('Proyecto',array('id'=>'search-form','autoSubmit'=>true,'inputDefaults'=>array('class'=>'form-control input-sm')));?>
 			<div class="box-header">
 				<h3 class="box-title">
-					<?php echo $this->Html->link('Listado de Proyectos <i class="fa fa-undo fa-fw"></i>',array('controller'=>'proyectos','action'=>'index','admin'=>true),array('escape'=>false)); ?>
+					<?php echo $this->Html->link('Listado de Proyectos <i class="fa fa-undo fa-fw"></i>',array('controller'=>'admin','action'=>'proyectos_index'),array('escape'=>false)); ?>
+					<?php echo $this->Search->inputPageLimit(array('class'=>'form-control form-control-inline', 'options'=>array('Elementos'=>array('10'=>'10','20'=>'20','100'=>'100','500'=>'500')))); ?>
 				</h3>
 
 				<div class="box-tools pull-right">
-
 					<div id="exportar-boton" class="dropdown">
 						<button class="btn btn-default btn-flat dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 							Exportar <i class="fa fa-caret-down fa-fw"></i>
@@ -28,7 +28,6 @@
 
 				<div class="proyectos index">
 					<div class="table-responsive">
-						<?php echo $this->Search->create('Articulo',array('id'=>'search-form','autoSubmit'=>true,'inputDefaults'=>array('class'=>'form-control input-sm')));?>
 							<table cellpadding="0" cellspacing="0" class="table table-hover">
 								<thead>
 									<tr>
@@ -82,7 +81,7 @@
 													<?php
 														echo $this->Html->link(
 															h($proyecto['Proyecto']['id']).'&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i>',
-															array('action' => 'view', $proyecto['Proyecto']['id'],'admin'=>false),
+															array('controller'=>'proyectos','action' => 'view', $proyecto['Proyecto']['id'],'admin'=>false),
 															array(
 																'class'=>'btn btn-default btn-sm',
 																'escape'=>false,
@@ -174,7 +173,7 @@
 								</tbody>
 							</table>
 							<?php echo $this->Form->hidden('tipo',array('id'=>'fotmat-tipo','value'=>'html')); ?>
-						<?php echo $this->Search->end(); ?>
+
 					</div>
 
 				</div>
@@ -202,6 +201,7 @@
 	            </div>
 	            <div class="clearfix"></div>
 	        </div>
+			<?php echo $this->Search->end(); ?>
 		</div>
 	</div>
 </div>

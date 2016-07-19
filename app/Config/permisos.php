@@ -1,6 +1,12 @@
 <?php
 	$config = array(
 		'Permisos'=>array(
+
+				'admin'=>array(
+					'proyectos_index'=>array('coordpg','admin','root'),
+					'proyectos_edit'=>array('coordpg','admin','root'),
+				),
+
 				//Controladores
 				'proyectos'=>array(
 						'index'=>array('estudiante'),
@@ -18,10 +24,13 @@
 						'printView'=>array('estudiante','tutoracad','tutormetod'),
 						'view_jurados'=>array('estudiante','tutoracad','tutormetod'),
 
-						'admin_index'=>array('admin','coordpg'),
+						'selectlist_programas'=>'loged',
+						'selectlist_fases'=>'loged',
+
+						//'admin_index'=>array('admin','coordpg'),
 						'admin_view'=>array('admin','coordpg'),
 						'admin_estados_list'=>array('coordpg'),
-						'admin_edit'=>array('coordpg'),
+						//'admin_edit'=>array('coordpg'),
 						'admin_asignacion_jurados'=>array('coordpg'),
 						'admin_edit_batch'=>array('coordpg'),
 					),

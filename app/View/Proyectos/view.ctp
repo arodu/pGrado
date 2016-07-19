@@ -33,33 +33,37 @@
 
 <?php // ----------------- PANEL COORDINADOR ------------------- ?>
 	<?php if($this->Permit->hasPermission(array('coordpg','admin','root'))): ?>
-		<div class="box box-warning box-solid">
-			<div class="box-header with-border">
-				<h3 class="box-title">Panel Coordinador</h3>
-				<div class="box-tools pull-right">
-					<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-				</div><!-- /.box-tools -->
-			</div><!-- /.box-header -->
-			<div style="display: block;" class="box-body">
-				<?php echo $this->Html->link('Editar Proyecto',array('controller'=>'proyectos','action'=>'edit','admin'=>true,$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-flat','escape'=>false)); ?>
-				<?php echo $this->Html->link('Asignar Jurados',array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-flat','escape'=>false)); ?>
-				<!-- <div class="btn-group">
-					<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						<span class="caret"></span>
-						<span class="sr-only">Toggle Dropdown</span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
+		<nav class="navbar navbar-yellow">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <span class="navbar-brand">Panel Coordinador</span>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><?php echo $this->Html->link('<i class="fa fa-caret-left fa-fw"></i> '.__('Listado'),array('controller'=>'admin','action'=>'proyectos_index'),array('class'=>'','escape'=>false)); ?></li>
 					</ul>
-				</div> -->
-			</div><!-- /.box-body -->
-		</div>
+		      <ul class="nav navbar-nav navbar-right">
+						<li><?php echo $this->Html->link('Editar Proyecto',array('controller'=>'admin','action'=>'proyectos_edit',$proyecto['Proyecto']['id']),array('class'=>'','escape'=>false)); ?></li>
+
+						<?php if($mod_activo['proyecto.jurados']): ?>
+							<li><?php echo $this->Html->link('Asignar Jurados',array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id']),array('class'=>'','escape'=>false)); ?></li>
+						<?php endif; ?>
+
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
 	<?php endif; ?>
+
 
 <div class="row">
 <?php // ----------------- PANEL PRINCIPAL ------------------- ?>
@@ -279,6 +283,7 @@
 				</div>
 		</div>
 	</div>
+
 <?php // ----------------- PANEL LATERAL DERECHO ------------------- ?>
 	<div class="col-sm-3">
 		<?php // ----------------- DATOS PROYECTO ------------------- ?>
@@ -289,6 +294,9 @@
 						<span class="badge">
 							<?php echo ($proyecto['Proyecto']['activo'] ? 'Activo' : 'Inactivo'); ?>
 						</span>
+						<?php if($proyecto['Proyecto']['bloqueado']): ?>
+							<span class="badge">Bloqueado</span>
+						<?php endif; ?>
 					</div>
 				</div>
 				<div class="box-body">
@@ -318,54 +326,32 @@
 					<h3 class="box-title"><?php echo (($cant_estudiantes >= 2) ? 'Autores' : 'Autor');?></h3>
 				</div>
 				<div class="box-body">
-					<ul class="products-list product-list-in-box">
-						<?php
-							foreach ($proyecto['Autor'] as $autor) {
-								if($autor['TipoAutor']['code'] == 'estudiante'){
+					<?php foreach ($proyecto['Autor'] as $autor): ?>
+						<?php if($autor['TipoAutor']['code'] == 'estudiante'): ?>
+							<?php $btn_perfil = ( $autor['activo'] ? 'btn-perfil' : '' ); ?>
+							<div class="autor <?php echo ( $autor['activo'] ? 'activo' : 'inactivo' ); ?>">
+								<div class="avatar">
+									<?php
+										$user_imagen = $this->element('usuario/avatarXS',array('foto' => $autor['Usuario']['foto']));
+										echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $autor['Usuario']['id'] ));
+									?>
+								</div>
+								<div class="datos">
+									<span class="nombre"><?php echo $autor['Usuario']['nombre_completo']; ?></span>
+									<span class="cedula"><?php echo $autor['Usuario']['cedula']; ?></span>
+									<i class="user-inactivo fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
+								</div>
+								<?php if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo']) ): ?>
+									<?php //if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo'] or $userInfo['id']==$autor['Usuario']['id']) ): ?>
+									<?php echo $this->Form->postLink('<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger close','title'=>'Eliminar','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?')); ?>
+								<?php endif; ?>
 
-									$aux = ( $autor['activo'] ? '' : 'text-muted' );
-									$btn_perfil = ( $autor['activo'] ? 'btn-perfil' : '' );
-
-									echo '<li class="item">';
-										echo '<div class="product-img">';
-											$user_imagen = $this->element('usuario/avatarXS',array('foto' => $autor['Usuario']['foto']));
-
-											echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $autor['Usuario']['id'] ));
-
-										echo '</div>';
-
-										echo '<div class="product-info">';
-											echo '<span class="product-title '.$aux.'">';
-												echo $autor['Usuario']['nombre_completo'];
-												//<!-- <span class="label label-warning pull-right">$1800</span> -->
-												//echo '<a class="close"><i class="fa fa-times"></i></a>';
-
-												if(!$autor['activo']){
-													if($proyectoEditable){
-														echo $this->Form->postLink('<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger close','title'=>'Eliminar','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?'));
-													}
-												}
-
-											echo '</span>';
-											echo '<span class="product-description ">';
-												//echo $autor['TipoAutor']['nombre'];
-												echo $autor['Usuario']['cedula'];
-												$inactivo = '
-													<spam class="mano btn-tooltip" title="No ha aceptado <br/>solicitud de proyecto">
-														<span class="label bg-yellow">Inactivo</span>
-													</spam>';
-												echo ( $autor['activo'] ? '' : $inactivo );
-
-											echo '</span>';
-										echo '</div>';
-									echo '</li>';
-								}
-							}
-						?>
-					</ul>
+							</div>
+						<?php endif;?>
+					<?php endforeach; ?>
 				</div>
 
-				<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
+				<?php if(!$proyecto['Proyecto']['bloqueado'] and !$proyecto['Proyecto']['activo']): ?>
 						<?php $cant_pos_estudiante = Configure::read('proyectos.cantidad.tipo_autor.estudiante'); ?>
 						<?php if($cant_estudiantes < $cant_pos_estudiante): ?>
 							<div class="box-footer">
@@ -381,60 +367,50 @@
 					<h3 class="box-title"><?php echo (($cant_tutores >= 2) ? 'Tutores' : 'Tutor');?></h3>
 				</div>
 				<div class="box-body">
+					<?php $academico = $metodologico = false; ?>
+					<?php foreach ($proyecto['Autor'] as $autor): ?>
+						<?php if($autor['TipoAutor']['code'] != 'estudiante'): ?>
+							<?php $btn_perfil = ( $autor['activo'] ? 'btn-perfil' : '' ); ?>
+							<div class="autor <?php echo ( $autor['activo'] ? 'activo' : 'inactivo' ); ?>">
+								<div class="avatar">
+									<?php
+										$user_imagen = $this->element('usuario/avatarXS',array('foto' => $autor['Usuario']['foto']));
+										echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $autor['Usuario']['id'] ));
+									?>
+								</div>
+								<div class="datos">
+									<span class="nombre"><?php echo $autor['Usuario']['nombre_completo']; ?></span>
+									<span class="cedula"><?php echo $autor['TipoAutor']['nombre']; ?></span>
+									<i class="user-inactivo fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
+								</div>
+								<?php if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo']) ): ?>
+									<?php //if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo'] or $userInfo['id']==$autor['Usuario']['id']) ): ?>
+									<?php echo $this->Form->postLink('<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger close','title'=>'Eliminar','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?')); ?>
+								<?php endif; ?>
 
-					<ul class="products-list product-list-in-box">
-						<?php
-							if($cant_tutores >0){
-								foreach ($proyecto['Autor'] as $autor) {
-									if($autor['TipoAutor']['code'] != 'estudiante'){
-										$aux = ( $autor['activo'] ? '' : 'text-muted' );
-										$btn_perfil = ( $autor['activo'] ? 'btn-perfil' : '' );
+							</div>
 
-										echo '<li class="item">';
-											echo '<div class="product-img">';
-												$user_imagen = $this->element('usuario/avatarXS',array('foto' => $autor['Usuario']['foto']));
-												echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $autor['Usuario']['id']));
-											echo '</div>';
-
-											echo '<div class="product-info">';
-												echo '<span class="product-title '.$aux.'">';
-													echo $autor['Usuario']['nombre_completo'];
-													//<!-- <span class="label label-warning pull-right">$1800</span> -->
-													//echo '<a class="close"><i class="fa fa-times"></i></a>';
-
-													if(!$autor['activo']){
-														if($proyectoEditable){
-															echo $this->Form->postLink('<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger close','title'=>'Eliminar','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?'));
-														}
-													}
-
-												echo '</span>';
-												echo '<span class="product-description '.$aux.'">';
-													echo $autor['TipoAutor']['nombre'];
-													$inactivo = '
-														<spam class="mano btn-tooltip" title="No ha aceptado<br/>solicitud de proyecto">
-															<i class="fa fa-ban text-yellow"></i>
-														</spam>';
-												echo ( $autor['activo'] ? '' : $inactivo );
-
-												echo '</span>';
-											echo '</div>';
-										echo '</li>';
-									}
-								}
-							}else{
-								echo '<span class="text-muted"><small>N/A</small></span>';
-							}
-						?>
-					</ul>
-
+							<?php
+								$academico = ( $autor['TipoAutor']['code']=='tutoracad' ? true : $academico );
+								$metodologico = ( $autor['TipoAutor']['code']=='tutormetod' ? true : $metodologico );
+							?>
+						<?php endif;?>
+					<?php endforeach; ?>
 				</div>
-				<?php if($proyectoEditable){ ?>
+
+				<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
 					<div class="box-footer">
-						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutoracad" title="Agregar Tutor Académico"><i class="fa fa-plus"></i> Académico</button>
-						<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><i class="fa fa-plus"></i> Metodológico</button>
+						<?php if(!$academico): ?>
+							<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutoracad" title="Agregar Tutor Académico"><i class="fa fa-plus"></i> Académico</button>
+						<?php endif; ?>
+
+						<?php if(!$metodologico): ?>
+							<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><i class="fa fa-plus"></i> Metodológico</button>
+						<?php endif; ?>
+
 					</div>
-				<?php } ?>
+				<?php endif; ?>
+
 			</div>
 
 		<?php // ----------------- DATOS ESCENARIO ------------------- ?>
@@ -455,12 +431,12 @@
 								echo '<p>Sin Escenario de Proyecto</p>';
 						} ?>
 					</div>
-					<?php if($proyectoEditable){ ?>
+					<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
 						<div class="box-footer">
 							<?php
 								echo $this->Html->link('<i class="fa fa-plus"></i> '.__('Escenario'),array('action'=>'escenarioEdit',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-xs btn-tooltip','title'=>'Agregar Escenario','escape'=>false)); ?>
 						</div>
-					<?php } ?>
+					<?php endif; ?>
 				</div>
 			<?php } ?>
 
@@ -478,7 +454,7 @@
 			</div>
 
 		<?php // ----------------- ELIMINAR PROYECTO ------------------- ?>
-			<?php if($proyectoEditable){ ?>
+			<?php if(!$proyecto['Proyecto']['bloqueado'] and !$proyecto['Proyecto']['activo']): ?>
 				<div class="box box-danger collapsed-box">
 					<div class="box-header">
 						<h3 class="box-title">Eliminar Proyecto</h3>
@@ -496,7 +472,7 @@
 						<?php echo $this->Form->postLink(__('<i class="fa fa-trash fa-fw"></i> Eliminar Proyecto'), array('action' => 'delete', $proyecto['Proyecto']['id']), array('class'=>'btn btn-danger btn-xs','escape'=>false), __('¿Esta seguro que desea realizar esta acción?', $proyecto['Proyecto']['id'])); ?>
 					</div>
 				</div>
-			<?php } ?>
+			<?php endif; ?>
 	</div>
 
 <?php // ----------------- MODAL IMPRESION DE PLANILLAS ------------------- ?>

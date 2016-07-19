@@ -414,35 +414,25 @@ class ProyectosController extends AppController {
 			$this->set('fases',$fases);
 		}
 
-
 		public function delete($id = null) {
 			$this->Proyecto->id = $id;
 			if (!$this->Proyecto->exists()) {
 				throw new NotFoundException(__('Invalid proyecto'));
 			}
+      $this->allowProyecto($id);
 
-			$proyecto_autor = $this->Proyecto->find('first',array(
-				'conditions'=>array('Proyecto.id'=>$id,'Proyecto.activo'=>'0'),
-				'contain'=>array(
-						'Autor'=>array('conditions'=>array('Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>'1')),
-					)
-				));
-
+      $proyecto = $this->Proyecto->find('first',array('conditions'=>array('Proyecto.id'=>$id)));
 			$proyecto_id = $id;
 			$usuarios_id = $this->Proyecto->Autor->find('list',array(
 				'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.activo'=>'1','Autor.usuario_id <>'=>$this->Auth->user('id')),
 				'fields'=>array('usuario_id')));
 
-			if(empty($proyecto_autor) || empty($proyecto_autor['Autor'])){
-				throw new ForbiddenException('Acceso Denegado.');
-			}
-
 
 			/* Revisar fecha de creacion del proyecto*/
-				$total_seconds = strtotime('now') - strtotime($proyecto_autor['Proyecto']['created']);
+				$total_seconds = strtotime('now') - strtotime($proyecto['Proyecto']['created']);
 				$total_horas = floor ( $total_seconds / 3600 );
 				$tiempo_eliminacion = Configure::read('proyectos.tiempo.eliminacion');
-				if($total_horas <= $tiempo_eliminacion){
+				if($total_horas <= $tiempo_eliminacion and !$this->Permit->user('root') and !$this->Permit->user('admin') and !$this->Permit->user('coordpg')){
 					$this->Session->setFlash(__('Solo se puede eliminar un Proyecto '.$tiempo_eliminacion.' horas despues de ser creado'),'alert/danger');
 					return $this->redirect(array('action'=>'view',$id));
 				}
@@ -466,72 +456,39 @@ class ProyectosController extends AppController {
 			return $this->redirect(array('action' => 'index'));
 		}
 
+    public function selectlist_programas($type_list, $ref_id = null){
+      if($type_list == 'categorias' && $ref_id != null){
+        $list = $this->Proyecto->Categoria->generateTreeList(array('activo'=>'1','programa_id'=>$ref_id),null,null,'--- ');
+      }else{
+        $list = array();
+      }
+
+      $this->response->type('json');
+      $this->response->body(json_encode($list));
+      return $this->response;
+    }
+
+    public function selectlist_fases($type_list, $ref_id = null){
+      if($type_list == 'estados' && $ref_id != null){
+        $list = $this->Proyecto->Estado->find('list',array(
+            'conditions'=>array(
+              'or'=>array(
+                  array('Estado.code'=>'espera'),
+                  array('Estado.fase_id'=>$ref_id),
+                )
+              ),
+            'order'=>array('Estado.orden'=>'ASC'),
+          ));
+      }else{
+        $list = array();
+      }
+
+      $this->response->type('json');
+      $this->response->body(json_encode($list));
+      return $this->response;
+    }
 
 	// *************** BLOQUE ADMIN ROUTING **********************
-		public function admin_index(){
-			$this->Proyecto->recursive = 0;
-
-			$this->Paginator->settings = array(
-				'limit' => ( isset($this->request->query['limit']) ? $this->request->query['limit'] : 20 ),
-				'contain'=>array(
-						'Categoria','Fase','Grupo','Estado','Sede','Programa',
-						'Revision'=>array(
-								'order'=>array('updated'=>'DESC'),'limit'=>'1',
-								'fields'=>array('id','titulo'),
-							),
-						'Autor'=>array('TipoAutor',
-								'Usuario'=>array('fields'=>array('cedula_nombre_completo','cedula','nombre_completo','sexo'))
-							)
-					),
-				'order'=>array('Proyecto.created'=>'DESC'),
-			);
-
-			$proyectos = $this->Paginator->paginate('Proyecto',$this->Search->getConditions());
-			$this->set(compact('proyectos'));
-
-			if(isset($this->request->query['tipo']) && $this->request->query['tipo'] == 'csv'){
-				$this->layout = 'vacio';
-				$this->response->download("export_".date('YmdHms').".csv");
-				$this->render('export/admin_csv');
-				return;
-			}else if(isset($this->request->query['tipo']) && $this->request->query['tipo'] == 'pdf'){
-				$this->layout = 'vacio';
-				$this->render('export/admin_pdf');
-				return;
-			}else{
-
-				//$aux_categorias = $this->Proyecto->Categoria->find('list',array('fields'=>array('id','nombre','activo')));
-				$categorias_activo = $this->Proyecto->Categoria->generateTreeList(array('activo'=>'1'),null,null,'|---');
-				$categorias_inactivo = $this->Proyecto->Categoria->generateTreeList(array('activo'=>'0'),null,null,'|---');
-
-				$categorias = array();
-					if( !empty($categorias_activo) ){ $categorias['Activos'] = $categorias_activo; }
-					if( !empty($categorias_inactivo) ){ $categorias['Inactivo'] = $categorias_inactivo; }
-
-				$fases = $this->Proyecto->Fase->find('list');
-				$estados = $this->Proyecto->Estado->find('list');
-				$sedes = $this->Proyecto->Sede->find('list');
-				$programas = $this->Proyecto->Programa->find('listActivo');
-
-				$grupos = $this->Proyecto->Grupo->find('listActivo');
-
-				$this->set(compact('fases','estados','categorias','grupos','sedes','programas'));
-			}
-		}
-
-		public function admin_estados_list($fase_id){
-			$this->layout = 'ajax';
-			$estados = $this->Proyecto->Estado->find('list',array(
-					'conditions'=>array(
-						'or'=>array(
-								array('Estado.fase_id'=>'0'),
-								array('Estado.fase_id'=>$fase_id),
-							)
-						),
-					'order'=>array('Estado.orden'=>'ASC'),
-				));
-			$this->set(compact('estados'));
-		}
 
 		public function admin_reporte(){
 			$this->Proyecto->recursive = 0;
@@ -562,68 +519,6 @@ class ProyectosController extends AppController {
 
 			$this->set(compact('proyectos','fases','estados','categorias','grupos','sedes'));
 		}
-
-		public function admin_edit($id = null) {
-			if (!$this->Proyecto->exists($id)) {
-				throw new NotFoundException(__('Invalid proyecto'));
-			}
-
-			/*$proyecto_autor = $this->Proyecto->Autor->find('first',array(
-				'conditions'=>array('Autor.proyecto_id'=>$id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-				'recursive'=>-1,
-				)); */
-
-			if ($this->request->is(array('post', 'put'))) {
-				if ($this->Proyecto->save($this->request->data)) {
-	                $this->Session->setFlash('El Proyecto ha sido modificado correctamente.','alert/success');
-
-					/**/ // MENSAJES
-					// Guardar Mensaje
-					$usuarios_id = $this->Proyecto->Autor->find('list',array(
-						'conditions'=>array('Autor.proyecto_id'=>$id,'Autor.activo'=>'1'),
-						'fields'=>array('usuario_id')));
-					$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', 'La Coordinación ha modificado su Proyecto', array('controller'=>'proyectos','action'=>'view',$id) );
-					/**/
-
-	                return $this->redirect(array('action' => 'view','admin'=>true,$id));
-
-				} else {
-					$this->Session->setFlash(__('The proyecto could not be saved. Please, try again.'));
-				}
-			} else {
-				$options = array('conditions' => array('Proyecto.' . $this->Proyecto->primaryKey => $id));
-				$this->request->data = $proyecto = $this->Proyecto->find('first', $options);
-			}
-
-			$programas = $this->Proyecto->Programa->find('list',array(
-					'fields'=>array('Programa.id','Programa.nombre','TipoPrograma.nombre'),
-					'conditions'=>array('Programa.activo'=>'1'),
-					'recursive'=>0,
-				));
-
-			$grupos = $this->Proyecto->Grupo->find('list');
-
-
-			$programa_id = $proyecto['Proyecto']['programa_id'];
-			$categorias = $this->Proyecto->Categoria->generateTreeList(array('activo'=>'1','programa_id'=>$programa_id),null,null,'|---');
-
-			$sedes = $this->Proyecto->Sede->find('list');
-			$fases = $this->Proyecto->Fase->find('list');
-			$fase_id = $proyecto['Proyecto']['fase_id'];
-			$estados = $this->Proyecto->Estado->find('list',array(
-					'conditions'=>array(
-						'or'=>array(
-								array('Estado.fase_id'=>'0'),
-								array('Estado.fase_id'=>$fase_id),
-							)
-						),
-					'order'=>array('Estado.orden'=>'ASC'),
-				));
-
-			$this->set(compact('categorias','programas', 'grupos','sedes', 'fases', 'estados'));
-		}
-
-
 
 		public function admin_edit_batch() {
 

@@ -3,3 +3,37 @@
     border: 0px;
   }
 }
+
+.form-control-inline {
+    display:inline;
+    width:auto;
+}
+
+.navbar-yellow{
+  background-color: #F39C12;
+  color: #eee;
+  border-color: #DB8B0B;
+
+  .navbar-nav > li > a{
+      color: #eee;
+       &:focus, &:hover{
+          color: #333;
+          background-color: #F7BE64;
+      }
+  }
+
+  .navbar-toggle {
+    border-color: #ddd;
+    .icon-bar {
+      background-color: #eee;
+    }
+  }
+
+  &.navbar {
+    position: relative;
+    min-height: 40px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+  }
+
+}

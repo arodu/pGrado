@@ -10,7 +10,7 @@
 	</a>
 	<ul class="treeview-menu">
 		<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Proyectos',
-			array('controller'=>'proyectos','action'=>'index','admin'=>true),
+			array('controller'=>'admin','action'=>'proyectos_index'),
 			array('escape'=>false));?></li>
 
 		<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Directorio',

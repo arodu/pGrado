@@ -327,4 +327,28 @@ class Proyecto extends AppModel {
 		return ( $permiso > 0 ? true : false );
 	}
 
+	public function findProyecto($proyecto_id) {
+		$proyecto = $this->find('first',array(
+			'conditions'=>array('Proyecto.id'=>$proyecto_id),
+			'contain'=>array(
+				'Autor'=>array(
+					'order'=>array('tipo_autor_id'=>'asc'),
+					'TipoAutor',
+					'Usuario'=>array(
+						'fields'=>array('id','cedula','nombres','apellidos','email','hash','nombre_completo'),
+					)
+				),
+				'Revision'=>array(
+					'fields'=>array('id','titulo'),
+					'order'=>array('Revision.updated'=>'desc'),
+					'limit'=>1,
+				),
+			),
+		));
+
+		$proyecto['Revision'] = $proyecto['Revision'][0];
+
+		return $proyecto;
+	}
+
 }

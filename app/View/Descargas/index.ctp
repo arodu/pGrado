@@ -7,21 +7,30 @@
 	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));
 ?>
 
-<?php if($this->Permit->hasPermission(array('admin','coordpg','root'))): ?>
-	<div class="box box-warning box-solid">
-		<div class="box-header with-border">
-			<h3 class="box-title">Panel Coordinador</h3>
-			<div class="box-tools pull-right">
-				<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-			</div><!-- /.box-tools -->
-		</div><!-- /.box-header -->
-		<div style="display: block;" class="box-body text-right">
-			<?php echo $this->Permit->link('Administrar', array('controller'=>'descargas', 'action'=>'admin'), array('class'=>'btn btn-default btn-flat', 'escape'=>false)); ?>
-		</div><!-- /.box-body -->
-	</div>
-<?php endif; ?>
+<?php // ----------------- PANEL COORDINADOR ------------------- ?>
+	<?php if($this->Permit->hasPermission(array('coordpg','admin','root'))): ?>
+		<nav class="navbar navbar-yellow">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <span class="navbar-brand">Panel Coordinador</span>
+		    </div>
 
-
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav navbar-right">
+						<li><?php echo $this->Permit->link('Administrar', array('controller'=>'descargas', 'action'=>'admin'), array('class'=>'', 'escape'=>false)); ?></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	<?php endif; ?>
 
 <div class="row">
 	<div class="col-md-10">

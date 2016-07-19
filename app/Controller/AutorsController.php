@@ -165,7 +165,6 @@ class AutorsController extends AppController {
 			return $this->redirect(array('controller'=>'proyectos','action' => 'view',$this->request->data['Autor']['proyecto_id']));
 		}
 
-
 		if ($this->request->is('get')) {
 
 			$tipoAutorCode = $this->request->query['tipoAutor'];
@@ -189,17 +188,9 @@ class AutorsController extends AppController {
 
 	public function addCompanero($proyecto_id){
 		$this->layout = 'ajax';
+		$this->allowProyecto($proyecto_id);
 
 		if ($this->request->is('post')) {
-
-			$proyecto_autor = $this->Autor->find('first',array(
-					'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-					'recursive'=>-1,
-				));
-
-			if(empty($proyecto_autor)){
-				throw new NotFoundException(__('Invalid proyecto'));
-			}
 
 			$tipo_usuario_id = '1';
 			$companero = $this->Autor->Usuario->find('first',array(
@@ -354,27 +345,14 @@ class AutorsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Autor->id = $id;
-
-		$autor = $this->Autor->find('first',array('conditions'=>array('Autor.id'=>$id),
-			'contain'=>array(
-					'Proyecto','TipoAutor',
-				)
-			));
-
-		$usuario_auth = $this->Autor->find('first',array(
-				'conditions'=>array(
-					'Autor.proyecto_id'=>$autor['Proyecto']['id'],
-					'Autor.usuario_id'=>$this->Auth->user('id'),
-					'Autor.activo'=>'1',
-				),'recursive'=>-1
-			));
-
-		if (!$autor || $autor['Autor']['activo'] || $autor['Proyecto']['activo'] || !$usuario_auth) {
-			throw new NotFoundException(__('Invalid autor'));
-		}
+		$autor = $this->Autor->find('first',array(
+			'conditions'=>array('Autor.id'=>$id),
+			'contain'=>array('TipoAutor')
+		));
+		$this->allowProyecto($autor['Autor']['proyecto_id']);
 
 		$this->request->allowMethod('post', 'delete');
+		$this->Autor->id = $id;
 
 		if ($this->Autor->delete()) {
 			$this->Session->setFlash(__('El '.$autor['TipoAutor']['nombre'].' seleccionado ha sido eliminado correctamente.'),'alert/success');
