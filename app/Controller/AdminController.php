@@ -4,6 +4,7 @@ class AdminController extends AppController {
 
   public $uses = array('Proyecto');
 	public $components = array('Paginator', 'Session','Search');
+  public $layout = 'adminlte';
 
   public function proyectos_index(){
     $this->Proyecto->recursive = 0;
@@ -58,7 +59,6 @@ class AdminController extends AppController {
     }
   }
 
-
 	public function proyectos_edit($proyecto_id = null) {
 		if (!$this->Proyecto->exists($proyecto_id)) {
 			throw new NotFoundException(__('Invalid proyecto'));
@@ -104,9 +104,6 @@ class AdminController extends AppController {
 
 		$this->set(compact('proyecto_view','categorias','programas', 'grupos','sedes', 'fases', 'estados'));
 	}
-
-
-
 
 }
 ?>

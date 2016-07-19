@@ -10,6 +10,7 @@ class RevisionsController extends AppController {
 
 
 	public $uses = array('Revision','Mensaje');
+	public $layout = 'adminlte';
 /**
  * Components
  *
@@ -30,45 +31,20 @@ class RevisionsController extends AppController {
  */
 	public function index($proyecto_id) {
 
-			//dl('xdiff');
+		$this->allowProyecto($proyecto_id);
 
-			$autor_proyecto = $this->Revision->Proyecto->Autor->find('count',
-				array('conditions'=>array(
-						'Autor.usuario_id'=>$this->Auth->user('id'),
-						'Autor.proyecto_id'=>$proyecto_id,
-						'Autor.activo'=>'1',
-					)));
-			if($autor_proyecto >= 1){
-				$this->Revision->recursive = 0;
-				$ultima = $this->Revision->find('first',array('conditions'=>array('Revision.proyecto_id'=>$proyecto_id),'order'=>array('Revision.updated DESC')));
+		$this->Revision->recursive = 0;
+		$ultima = $this->Revision->find('first',array('conditions'=>array('Revision.proyecto_id'=>$proyecto_id),'order'=>array('Revision.updated DESC')));
 
-				$this->Paginator->settings = array(
-					'limit' => 1,
-					'order'=>array('Revision.updated'=>'DESC'),
-					);
+		$this->Paginator->settings = array(
+			'limit' => 1,
+			'order'=>array('Revision.updated'=>'DESC'),
+			);
 
-				$revisions =  $this->Paginator->paginate('Revision',array('Revision.proyecto_id'=>$proyecto_id, 'Revision.id <>'=>$ultima['Revision']['id']));
+		$revisions =  $this->Paginator->paginate('Revision',array('Revision.proyecto_id'=>$proyecto_id, 'Revision.id <>'=>$ultima['Revision']['id']));
 
-				//debug($revisions);
-				//debug($ultima);
+		$this->set(compact('revisions','ultima'));
 
-
-				/*
-				$old_article = $revisions[0]['Revision']['resumen'];
-				$new_article = $ultima['Revision']['resumen']; // Supongamos que alguien pega un nuevo artículo en formato html
-
-				$diff = xdiff_string_diff($old_article, $new_article, 1);
-				if (is_string($diff)) {
-					// echo "Diferencias entre los dos artículos:\n";
-					debug($diff);
-				}
-
-				exit(); */
-
-				$this->set(compact('revisions','ultima'));
-			}else{
-				throw new ForbiddenException('Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.');
-			}
 	}
 
 	public function view( $proyecto_id ) {
@@ -120,51 +96,37 @@ class RevisionsController extends AppController {
  */
 	public function edit($id = null) {
 		$revision = $this->Revision->find('first',array('conditions'=>array('Revision.id'=>$id),'recursive'=>-1));
+		if(!$revision){ throw new NotFoundException(__('Invalid revision')); }
 
-		if (empty($revision)) {
-			throw new NotFoundException(__('Invalid revision'));
-		}else{
+		$this->allowProyecto($revision['Revision']['proyecto_id']);
 
-			$autor_proyecto = $this->Revision->Proyecto->Autor->find('count',
-				array('conditions'=>array(
-						'Autor.usuario_id'=>$this->Auth->user('id'),
-						'Autor.proyecto_id'=>$revision['Revision']['proyecto_id'],
+		if ($this->request->is(array('post', 'put'))) {
+			unset($this->request->data['Revision']['id']);
+			$this->request->data['Revision']['usuario_id'] = $this->Auth->user('id');
+			$this->request->data['Revision']['proyecto_id'] = $revision['Revision']['proyecto_id'];
+			$this->Revision->create();
+			if ($this->Revision->save($this->request->data)) {
+				$this->Session->setFlash(__('The revision has been saved.'),'alert/success');
+
+			/**/ // MENSAJES
+			// Guardar Mensaje
+			$proyecto_id = $revision['Revision']['proyecto_id'];
+			$usuarios_id = $this->Revision->Proyecto->Autor->find( 'list', array(
+				'conditions'=>array(
+						'Autor.proyecto_id'=>$proyecto_id,
 						'Autor.activo'=>'1',
-					)));
+						'Autor.usuario_id <>'=> $this->Auth->user('id')),
+				'fields'=>array('usuario_id')));
+			$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', $this->Auth->user('nombre_completo').' ha actualizado la revision del Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
+			/**********************/
 
-			if($autor_proyecto >= 1){
-					if ($this->request->is(array('post', 'put'))) {
-						unset($this->request->data['Revision']['id']);
-						$this->request->data['Revision']['usuario_id'] = $this->Auth->user('id');
-						$this->request->data['Revision']['proyecto_id'] = $revision['Revision']['proyecto_id'];
-						$this->Revision->create();
-						if ($this->Revision->save($this->request->data)) {
-							$this->Session->setFlash(__('The revision has been saved.'),'alert/success');
-
-						/**/ // MENSAJES
-						// Guardar Mensaje
-						$proyecto_id = $revision['Revision']['proyecto_id'];
-						$usuarios_id = $this->Revision->Proyecto->Autor->find( 'list', array(
-							'conditions'=>array(
-									'Autor.proyecto_id'=>$proyecto_id,
-									'Autor.activo'=>'1',
-									'Autor.usuario_id <>'=> $this->Auth->user('id')),
-							'fields'=>array('usuario_id')));
-						$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', $this->Auth->user('nombre_completo').' ha actualizado la revision del Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
-						/**********************/
-
-
-							return $this->redirect(array('controller'=>'proyectos','action' => 'view',$revision['Revision']['proyecto_id']));
-						} else {
-							$this->Session->setFlash(__('The revision could not be saved. Please, try again.'));
-						}
-					} else {
-						$options = array('conditions' => array('Revision.' . $this->Revision->primaryKey => $id));
-						$this->request->data = $this->Revision->find('first', $options);
-					}
-			}else{
-				throw new ForbiddenException('Acceso Denegado, no tiene los Permisos suficientes para realizar esta acción.');
+				return $this->redirect(array('controller'=>'proyectos','action' => 'view',$revision['Revision']['proyecto_id']));
+			} else {
+				$this->Session->setFlash(__('The revision could not be saved. Please, try again.'));
 			}
+		} else {
+			$options = array('conditions' => array('Revision.' . $this->Revision->primaryKey => $id));
+			$this->request->data = $this->Revision->find('first', $options);
 		}
 
 		$this->set('proyecto_id',$revision['Revision']['proyecto_id']);

@@ -117,7 +117,7 @@
 						<div class="timeline-body <?php echo $bg_class;?>">
 							<?php
 								$text =	$comentario['Comentario']['texto'];
-								$text = str_replace(" ", "&nbsp;", $text);
+								//$text = str_replace(" ", "&nbsp;", $text);
 								$text = str_replace("\n", "<br />", $text);
 
 								echo $text;

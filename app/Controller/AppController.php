@@ -116,9 +116,8 @@ class AppController extends Controller {
 				'Autor.activo'=>true,
 			),
 		));
-		$permiso = $this->Permit->user();
 
-		if($proyecto_autor > 0 or $permiso['root'] or $permiso['admin'] or $permiso['coordpg']){
+		if($proyecto_autor > 0 or $this->Permit->user('root') or $this->Permit->user('admin') or $this->Permit->user('coordpg')){
 			return true;
 		}
 
@@ -129,6 +128,10 @@ class AppController extends Controller {
 		$this->set('menuActive',$menu);
 	}
 
+	public function checkUserPassword($password){
+		$this->loadModel('Usuario');
+		return $this->Usuario->checkUserPassword($this->Auth->user('id'), $password);
+	}
 
 
 }

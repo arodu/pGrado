@@ -13,7 +13,7 @@
 						'verActivo'=>array('estudiante'),
 						'add'=>array('estudiante'),
 						'getCategoria'=>array('estudiante'),
-						'escenarioEdit'=>array('estudiante'),
+						'escenario_edit'=>array('estudiante'),
 						'delete'=>array('estudiante'),
 
 						'indexTutorAcad'=>array('tutoracad'),

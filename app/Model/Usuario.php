@@ -246,6 +246,12 @@ class Usuario extends AppModel {
 		return $blowfish->check($this->data[$this->name][$field], $user[$this->name]['password']);
 	}
 
+	public function checkUserPassword($user_id, $password){
+		$user = $this->find('first',array('conditions'=>array($this->name.'.id'=>$user_id)));
+		$blowfish = new BlowfishPasswordHasher();
+		return $blowfish->check($password, $user[$this->name]['password']);
+	}
+
 	private function _firstKey($array = array()){
 		foreach ($array as $key => $value){
 			return $key;

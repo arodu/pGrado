@@ -239,6 +239,20 @@ class GeneralHelper extends AppHelper {
     return $val;
 	}
 
+	public function breadcrumb($list=array()){
+		$out = '<ol class="breadcrumb">';
+		$out .= '<li>'.$this->Html->link('<i class="fa fa-home"></i> '.__('Inicio'), '/', array('escape'=>false)).'</li>';
+		foreach ($list as $value => $url) {
+			if($url === true){
+				$out .= '<li class="active">'.$value.'</li>';
+			}else{
+				$out .= '<li>'.$this->Html->link($value, $url, array('escape'=>false)).'</li>';
+			}
+		}
+		$out .= '</ol>';
+		return $out;
+	}
+
 
 }
 

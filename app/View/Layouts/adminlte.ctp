@@ -56,29 +56,7 @@
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
-
-				<?php //-------------------------------------------------------------------------------------------// ?>
-					<!-- Content Header (Page header) -->
-					<section class="content-header">
-						<h1><?php /*
-							General UI
-							<small>Preview of UI elements</small> */
-							echo $this->fetch('title-page'); ?>
-						</h1><?php /*
-							<ol class="breadcrumb">
-								<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-								<li class="active">Blank page</li>
-							</ol> */
-							echo $this->fetch('breadcrumb'); ?>
-					</section>
-
-					<!-- Main content -->
-					<section class="content">
-						<?php echo $this->Session->flash(); ?>
-						<?php echo $this->fetch('content'); ?>
-					</section><!-- /.content -->
-				<?php //-------------------------------------------------------------------------------------------// ?>
-
+				<?php echo $this->fetch('content'); ?>
 			</div><!-- /.content-wrapper -->
 
 			<footer class="main-footer">

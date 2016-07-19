@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 class ProyectosController extends AppController {
   public $uses = array('Proyecto','Mensaje');
 	public $components = array('Paginator', 'Session','Search');
-	private $adminRouting = false;
+  public $layout = 'adminlte';
 
 	// *************** METODOS PROYECTOS *************************
 		public function verActivo(){
@@ -340,7 +340,7 @@ class ProyectosController extends AppController {
 			$this->set(compact('categorias'));
 		}
 
-		public function escenarioEdit($proyecto_id = null) {
+		public function escenario_edit($proyecto_id = null) {
 			$this->verificarModulo('proyecto.escenarios');
       $this->allowProyecto($proyecto_id);
 
@@ -414,47 +414,81 @@ class ProyectosController extends AppController {
 			$this->set('fases',$fases);
 		}
 
-		public function delete($id = null) {
-			$this->Proyecto->id = $id;
-			if (!$this->Proyecto->exists()) {
-				throw new NotFoundException(__('Invalid proyecto'));
-			}
+    public function delete($id = null){
       $this->allowProyecto($id);
-
       $proyecto = $this->Proyecto->find('first',array('conditions'=>array('Proyecto.id'=>$id)));
-			$proyecto_id = $id;
-			$usuarios_id = $this->Proyecto->Autor->find('list',array(
-				'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.activo'=>'1','Autor.usuario_id <>'=>$this->Auth->user('id')),
-				'fields'=>array('usuario_id')));
+      $this->layout = 'ajax';
+      $success = false;
 
+      /* Revisar fecha de creacion del proyecto*/
+      	$total_horas = floor( (strtotime('now') - strtotime($proyecto['Proyecto']['created'])) / 3600 );
+      	$tiempo_eliminacion = Configure::read('proyectos.tiempo.eliminacion');
+      	if($total_horas <= $tiempo_eliminacion and !$this->Permit->user('root') and !$this->Permit->user('admin') and !$this->Permit->user('coordpg')){
+      		$this->Flash->call_error(__('Solo se puede eliminar un Proyecto '.$tiempo_eliminacion.' horas despues de ser creado'));
+      		$success = true;
+      	}
+      /* FIN Revisar fecha de creacion del proyecto*/
 
-			/* Revisar fecha de creacion del proyecto*/
-				$total_seconds = strtotime('now') - strtotime($proyecto['Proyecto']['created']);
-				$total_horas = floor ( $total_seconds / 3600 );
-				$tiempo_eliminacion = Configure::read('proyectos.tiempo.eliminacion');
-				if($total_horas <= $tiempo_eliminacion and !$this->Permit->user('root') and !$this->Permit->user('admin') and !$this->Permit->user('coordpg')){
-					$this->Session->setFlash(__('Solo se puede eliminar un Proyecto '.$tiempo_eliminacion.' horas despues de ser creado'),'alert/danger');
-					return $this->redirect(array('action'=>'view',$id));
-				}
-			/* FIN Revisar fecha de creacion del proyecto*/
+      if($this->request->is('post') and !$success){
+        $this->Proyecto->id = $id;
 
+        if($this->checkUserPassword($this->request->data['Proyecto']['user_password'])){
+          if ($this->Proyecto->delete()) {
+            $this->Flash->alert_success(__('Proyecto eliminado correctamente.'));
+            return $this->redirect(array('controller'=>'proyectos', 'action'=>'index'));
+          }else{
+            $this->Flash->alert_error(__('Ha ocurrido un error elimiando el Proyecto.'));
+          }
+        }else{
+          $this->Flash->alert_error(__('Contraseña de usuario Incorrecta.'));
+        }
+        return $this->redirect(array('controller'=>'proyectos', 'action'=>'view',$id));
+      }
+      $this->set('proyecto_id', $id);
+      $this->set('success', $success);
+    }
 
-			$this->request->allowMethod('post', 'delete');
-			if ($this->Proyecto->delete()) {
-				$this->Session->setFlash(__('Proyecto eliminado correctamente.'),'alert/success');
-
-				/**/ // MENSAJES
-				// Guardar Mensaje
-				$this->Mensaje->saveMensaje( $usuarios_id, 'proy-delet', $this->Auth->user('nombre_completo').' ha eliminado el Proyecto #'.$proyecto_id);
-				/**/
-
-			} else {
-				$this->Session->setFlash(__('El Proyecto no se ha eliminado correctamente. Por favor, inténtelo de nuevo.'),'alert/danger');
-			}
-
-
-			return $this->redirect(array('action' => 'index'));
-		}
+//		public function delete($id = null) {
+//			$this->Proyecto->id = $id;
+//			if (!$this->Proyecto->exists()) {
+//				throw new NotFoundException(__('Invalid proyecto'));
+//			}
+//      $this->allowProyecto($id);
+//
+//      $proyecto = $this->Proyecto->find('first',array('conditions'=>array('Proyecto.id'=>$id)));
+//			$proyecto_id = $id;
+//			$usuarios_id = $this->Proyecto->Autor->find('list',array(
+//				'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.activo'=>'1','Autor.usuario_id <>'=>$this->Auth->user('id')),
+//				'fields'=>array('usuario_id')));
+//
+//
+//			/* Revisar fecha de creacion del proyecto*/
+//				$total_seconds = strtotime('now') - strtotime($proyecto['Proyecto']['created']);
+//				$total_horas = floor ( $total_seconds / 3600 );
+//				$tiempo_eliminacion = Configure::read('proyectos.tiempo.eliminacion');
+//				if($total_horas <= $tiempo_eliminacion and !$this->Permit->user('root') and !$this->Permit->user('admin') and !$this->Permit->user('coordpg')){
+//					$this->Session->setFlash(__('Solo se puede eliminar un Proyecto '.$tiempo_eliminacion.' horas despues de ser creado'),'alert/danger');
+//					return $this->redirect(array('action'=>'view',$id));
+//				}
+//			/* FIN Revisar fecha de creacion del proyecto*/
+//
+//
+//			$this->request->allowMethod('post', 'delete');
+//			if ($this->Proyecto->delete()) {
+//				$this->Session->setFlash(__('Proyecto eliminado correctamente.'),'alert/success');
+//
+//				/**/ // MENSAJES
+//				// Guardar Mensaje
+//				$this->Mensaje->saveMensaje( $usuarios_id, 'proy-delet', $this->Auth->user('nombre_completo').' ha eliminado el Proyecto #'.$proyecto_id);
+//				/**/
+//
+//			} else {
+//				$this->Session->setFlash(__('El Proyecto no se ha eliminado correctamente. Por favor, inténtelo de nuevo.'),'alert/danger');
+//			}
+//
+//
+//			return $this->redirect(array('action' => 'index'));
+//		}
 
     public function selectlist_programas($type_list, $ref_id = null){
       if($type_list == 'categorias' && $ref_id != null){
