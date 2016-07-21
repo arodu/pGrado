@@ -17,9 +17,9 @@
 
 			<?php else: ?>
 				<hr/>
-				<script type="text/javascript">
-					cargarComentarios();
-				</script>
+
+				<?php echo $this->Html->scriptBlock('$("#tab-coment").recargar("'.$this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id)).'");'); ?>
+
 				<?php echo $this->Form->buttom('Cerrar', array('value'=>'Cerrar', 'type'=>'button', 'class'=>'btn btn-default', 'data-dismiss'=>'modal')); ?>
 			<?php endif; ?>
 		</div>
@@ -27,7 +27,5 @@
 </div>
 
 <?php $this->Html->scriptStart(array('inline'=>false)); ?>
-	$('.ajaxForm').ajaxForm({
-		target: '#generalModal',
-	});
+	$('.ajaxForm').ajaxFormulario('#generalModal');
 <?php $this->Html->scriptEnd(); ?>

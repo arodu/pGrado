@@ -105,5 +105,60 @@ class AdminController extends AppController {
 		$this->set(compact('proyecto_view','categorias','programas', 'grupos','sedes', 'fases', 'estados'));
 	}
 
+  public function proyectos_move() {
+
+    if ($this->request->is(array('post', 'put'))) {
+      $filtros = $this->request->data['Proyecto'];
+
+      $conditions = array();
+      foreach ($filtros as $filtro => $value) {
+        if( $value != ''){
+          $conditions['Proyecto.'.$filtro] = $value;
+        }
+      }
+
+      $proyectos = $this->Proyecto->find('all', array(
+        'conditions'=>$conditions,
+        'contain'=>array(
+          'Programa', 'Categoria', 'Grupo', 'Sede','Estado','Fase',
+          'Autor'=>array(
+            'Usuario'=>array('fields'=>array('id','nombre_completo', 'cedula_nombre_completo')),
+          ),
+          'Revision'=>array(
+            'order'=>array('updated'=>'desc'),
+            'limit'=>1,
+            'fields'=>array('id','titulo'),
+          ),
+        ),
+      ));
+      $this->set('proyectos', $proyectos);
+
+      $categorias = $this->Proyecto->Categoria->find('list', array('conditions'=>array('Categoria.programa_id'=>$this->request->data['Proyecto']['programa_id'])));
+      $estados = $this->Proyecto->Estado->find('list', array('conditions'=>array('Estado.fase_id'=>$this->request->data['Proyecto']['fase_id'])));
+    }else{
+      $categorias = array();
+      $estados = array();
+    }
+
+    $programas = $this->Proyecto->Programa->find('list',array(
+        'fields'=>array('Programa.id','Programa.nombre','TipoPrograma.nombre'),
+        'recursive'=>0,
+      ));
+    $grupos = $this->Proyecto->Grupo->find('list');
+    $sedes = $this->Proyecto->Sede->find('list');
+    $fases = $this->Proyecto->Fase->find('list');
+
+    $this->set(compact('programas', 'grupos','sedes', 'fases', 'categorias', 'estados'));
+  }
+
+  public function proyectos_move_trans(){
+
+    if($this->request->is('post')){
+      debug($this->request->data);
+      exit();
+    }
+
+  }
+
 }
 ?>

@@ -129,6 +129,7 @@ class MetasController extends AppController {
 		} else {
 			$this->request->data = $meta;
 		}
+		$this->set('proyecto_id', $meta['Meta']['proyecto_id']);
 		$this->set(compact('meta', 'success'));
 	}
 

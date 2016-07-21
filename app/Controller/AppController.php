@@ -54,6 +54,10 @@ class AppController extends Controller {
 		$this->Session->write('Log',array());
 	}
 
+	public function beforeRender(){
+		//sleep(2);
+	}
+
 	public function isAuthorized() {
 		//return $this->Permisos->autorizado();
 		return $this->Permit->isAuthorized();
@@ -116,11 +120,9 @@ class AppController extends Controller {
 				'Autor.activo'=>true,
 			),
 		));
-
 		if($proyecto_autor > 0 or $this->Permit->user('root') or $this->Permit->user('admin') or $this->Permit->user('coordpg')){
 			return true;
 		}
-
 		throw new NotFoundException(__('Proyecto no Pertenece al Usuario Actual'));
 	}
 
@@ -131,6 +133,20 @@ class AppController extends Controller {
 	public function checkUserPassword($password){
 		$this->loadModel('Usuario');
 		return $this->Usuario->checkUserPassword($this->Auth->user('id'), $password);
+	}
+
+	public function userOwner($model, $id, $user_id = null){
+		$user_id = ( $user_id != null ? $user_id : $this->Auth->user('id') );
+		$result = $model->find('count', array(
+			'conditions'=>array(
+				$model->alias.'.id'=>$id,
+				$model->alias.'.usuario_id'=>$user_id,
+			)
+		));
+		if($result > 0 or $this->Permit->user('root')){
+			return true;
+		}
+		throw new ForbiddenException(__('Permiso Denegado!'));
 	}
 
 

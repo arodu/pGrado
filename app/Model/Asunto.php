@@ -107,9 +107,9 @@ class Asunto extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Propietario' => array(
+		'Usuario' => array(
 			'className' => 'Usuario',
-			'foreignKey' => 'propietario_id',
+			'foreignKey' => 'usuario_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

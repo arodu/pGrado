@@ -350,9 +350,9 @@ class Usuario extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Propietario' => array(
+		'Asunto' => array(
 			'className' => 'Asunto',
-			'foreignKey' => 'propietario_id',
+			'foreignKey' => 'usuario_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

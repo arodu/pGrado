@@ -27,9 +27,7 @@
 
 			<?php else: ?>
 				<hr/>
-				<script type="text/javascript">
-					cargarAsuntos();
-				</script>
+				<?php echo $this->Html->scriptBlock('$("#tab-asuntos").recargar("'.$this->Html->url(array('controller'=>'asuntos','action'=>'index',$proyecto_id)).'");'); ?>
 				<?php echo $this->Form->buttom('Cerrar', array('value'=>'Cerrar', 'type'=>'button', 'class'=>'btn btn-default', 'data-dismiss'=>'modal')); ?>
 			<?php endif; ?>
 		</div>
@@ -37,7 +35,5 @@
 </div>
 
 <?php $this->Html->scriptStart(array('inline'=>false)); ?>
-	$('.ajaxForm').ajaxForm({
-		target: '#generalModal',
-	});
+	$('.ajaxForm').ajaxFormulario('#generalModal');
 <?php $this->Html->scriptEnd(); ?>

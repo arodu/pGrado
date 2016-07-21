@@ -60,6 +60,7 @@ class ComentariosController extends AppController {
 		}
 
 		$proyecto_id = $this->Comentario->find('proyecto_id', array('conditions'=>array('Comentario.id'=>$id)));
+		$this->userOwner($this->Comentario, $id);
 		$this->allowProyecto($proyecto_id);
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
@@ -78,7 +79,7 @@ class ComentariosController extends AppController {
 			$this->request->data = $this->Comentario->find('first', $options);
 		}
 		$this->request->data['Comentario']['texto'] = strip_tags($this->request->data['Comentario']['texto']);
-		$this->set(compact('success'));
+		$this->set(compact('success','proyecto_id'));
 	}
 
 	function toLink($text){
@@ -96,7 +97,7 @@ class ComentariosController extends AppController {
 		if (!$this->Comentario->exists($id)) {
 			throw new NotFoundException(__('Comentario Invalido!'));
 		}
-
+		$this->userOwner($this->Comentario, $id);
 		$proyecto_id = $this->Comentario->find('proyecto_id', array('conditions'=>array('Comentario.id'=>$id)));
 		$this->allowProyecto($proyecto_id);
 		$success = false;
@@ -112,7 +113,7 @@ class ComentariosController extends AppController {
 			$options = array('conditions' => array('Comentario.id' => $id));
 			$this->request->data = $this->Comentario->find('first', $options);
 		}
-		$this->set(compact('success'));
+		$this->set(compact('success', 'proyecto_id'));
 	}
 
 

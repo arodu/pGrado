@@ -29,20 +29,22 @@
 
 			<?php
 
-				$bg_class = '';
-				$icon_bg_class = 'bg-green';
-				$icon = 'fa fa-comment';
-				$user_active = false;
-				$item_class = '';
+				$deleted = $comentario['Comentario']['eliminado'];
+				$edited = $comentario['Comentario']['created'] != $comentario['Comentario']['updated'];
+				$isMy = $user_active = $comentario['Usuario']['id'] == $userInfo['id'];
 
-				if( $comentario['Comentario']['eliminado'] ){
-					$icon_bg_class = 'bg-red';
-					$icon = 'fa fa-times';
-				}elseif($comentario['Usuario']['id'] == $userInfo['id']){
-					$icon_bg_class = 'bg-blue';
-					$icon = 'fa fa-comment fa-flip-horizontal';
-					$user_active = true;
-					$item_class = 'timeline-item-user';
+				if($deleted){  // My Comment
+					$icon = array('bg'=>'bg-red','fa'=>'fa-trash', 'class'=>'');
+				}elseif($isMy and !$edited){
+					$icon = array('bg'=>'bg-blue','fa'=>'fa-comment fa-flip-horizontal', 'class'=>'');
+				}elseif($isMy and $edited){
+					$icon = array('bg'=>'bg-blue','fa'=>'fa-commenting fa-flip-horizontal', 'class'=>'');
+				}elseif(!$isMy and !$edited){
+					$icon = array('bg'=>'bg-green','fa'=>'fa-comment', 'class'=>'');
+				}elseif(!$isMy and $edited){
+					$icon = array('bg'=>'bg-green','fa'=>'fa-commenting', 'class'=>'');
+				}else{
+					$icon = array('bg'=>'bg-gray','fa'=>'fa-comments', 'class'=>'');
 				}
 
 			?>
@@ -59,9 +61,9 @@
 			<?php } ?>
 
 			<li>
-				<i class="fa <?php echo $icon.' '.$icon_bg_class;?>"></i>
-				<div class="timeline-item <?php echo $item_class;?>">
-					<h3 class="timeline-header <?php echo $bg_class;?>" >
+				<i class="fa <?php echo $icon['fa'].' '.$icon['bg'];?>"></i>
+				<div class="timeline-item">
+					<h3 class="timeline-header <?php echo $icon['class'];?>" >
 						<span class="btn-perfil" data-id="<?php echo $comentario['Usuario']['id'];?>">
 							<?php
 								$user_foto = $this->element('usuario/avatarXXS',array('foto' => $comentario['Usuario']['foto']));
@@ -114,7 +116,7 @@
 					</h3>
 
 					<?php if($comentario['Comentario']['eliminado'] == false ): ?>
-						<div class="timeline-body <?php echo $bg_class;?>">
+						<div class="timeline-body <?php echo $icon['class'];?>">
 							<?php
 								$text =	$comentario['Comentario']['texto'];
 								//$text = str_replace(" ", "&nbsp;", $text);
@@ -213,7 +215,7 @@
 			type: "POST",
 			complete: function(){
 				//$modal.find('.modal-body').html(result.responseText);
-				cargarComentarios();
+				$('#tab-coment').recargar("<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id));?>");
 			},
 		});
 

@@ -5,6 +5,8 @@
 				'admin'=>array(
 					'proyectos_index'=>array('coordpg','admin','root'),
 					'proyectos_edit'=>array('coordpg','admin','root'),
+					'proyectos_move'=>array('coordpg','admin','root'),
+					'proyectos_move_trans'=>array('coordpg','admin','root'),
 				),
 
 				'grupos'=>array(
@@ -44,24 +46,22 @@
 					),
 
 				'metas'=>array(
-					'index'=>array('estudiante','tutoracad','tutormetod'),
-					'add'=>array('estudiante','tutoracad','tutormetod'),
-					'view'=>array('estudiante','tutoracad','tutormetod'),
-					'edit'=>array('estudiante','tutoracad','tutormetod'),
-					'delete'=>array('estudiante','tutoracad','tutormetod'),
+					'index'=>array('loged'),
+					'add'=>array('loged'),
+					'edit'=>array('loged'),
+					'change'=>array('loged'),
+					//'view'=>array('loged'),
+					//'delete'=>array('loged'),
 				),
 
 				'asuntos'=>array(
-					'index'=>array('estudiante','tutoracad','tutormetod'),
-					'add'=>array('estudiante','tutoracad','tutormetod'),
-					'view'=>array('estudiante','tutoracad','tutormetod'),
-					'edit'=>array('estudiante','tutoracad','tutormetod'),
-					'delete'=>array('estudiante','tutoracad','tutormetod'),
+					'index'=>array('loged'),
+					'add'=>array('loged'),
+					'edit'=>array('loged'),
+					'change'=>array('loged'),
+					//'view'=>array('loged'),
+					//'delete'=>array('loged'),
 				),
-
-				'administrator'=>array(
-						//'print_asignacion_jurados'=>array('coordpg'),
-					),
 
 				'jurados'=>array(
 						'datos_impresion'=>array('coordpg'),

@@ -42,9 +42,7 @@
 
 			<?php else: ?>
 				<hr/>
-				<script type="text/javascript">
-					cargarMetas();
-				</script>
+				<?php echo $this->Html->scriptBlock('$("#tab-metas").recargar("'.$this->Html->url(array('controller'=>'metas','action'=>'index',$proyecto_id)).'");'); ?>
 				<?php echo $this->Form->buttom('Cerrar', array('value'=>'Cerrar', 'type'=>'button', 'class'=>'btn btn-default', 'data-dismiss'=>'modal')); ?>
 			<?php endif; ?>
 		</div>
@@ -56,9 +54,7 @@
 <?php $this->Html->script('/libs/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min', array('inline'=>false)); ?>
 
 <?php $this->Html->scriptStart(array('inline'=>false)); ?>
-	$('.ajaxForm').ajaxForm({
-		target: '#generalModal',
-	});
+	$('.ajaxForm').ajaxFormulario('#generalModal');
 
 	var fecha = $('#fechaCulminacion').datepicker({
 		format: "yyyy-mm-dd",

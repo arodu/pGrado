@@ -14,19 +14,21 @@
 			array('escape'=>false));?></li>
 
 		<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Directorio',
-			array('controller'=>'pages','action'=>'directorio','admin'=>false),
+			array('controller'=>'pages','action'=>'directorio'),
 
 			array('escape'=>false));?></li>
 
 		<li class=""></li>
 
 		<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Movimientos',
-			array('controller'=>'proyectos','action'=>'edit_batch','admin'=>true),
+			array('controller'=>'admin','action'=>'proyectos_move'),
 			array('escape'=>false));?></li>
 
-		<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Datos Impresión',
-			array('controller'=>'jurados','action'=>'datos_impresion','admin'=>false),
-			array('escape'=>false));?></li>
+		<?php if($mod_activo['proyecto.jurados']): ?>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Datos Impresión',
+				array('controller'=>'jurados','action'=>'datos_impresion'),
+				array('escape'=>false));?></li>
+		<?php endif; ?>
 
 		<?php if($mod_activo['main.descargas']): ?>
 			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Descargas',array('controller'=>'descargas','action'=>'index','admin'=>false),array('escape'=>false));?></li>

@@ -74,17 +74,5 @@
 			$('.sd_programa').selectDepend("<?php echo $this->Html->url(array('controller'=>'proyectos', 'action'=>'selectlist_programas')); ?>","-- seleccione --");
 			$('.sd_fases').selectDepend("<?php echo $this->Html->url(array('controller'=>'proyectos', 'action'=>'selectlist_fases')); ?>","-- seleccione --");
 
-
-			/*
-			$('#target_fase select').change(function(){
-				var ruta = "<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'estados_list','admin'=>true));?>/"+$(this).val();
-				$( "#target_estado" ).load(ruta);
-			});
-
-			$('#target_programa select').change(function(){
-				var ruta = "<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'getCategoria','admin'=>false)).'/';?>"+$(this).val();
-				$( "#target_categoria" ).load(ruta);
-			}); */
-
 	<?php $this->Html->scriptEnd(); ?>
 </section><!-- /.content -->

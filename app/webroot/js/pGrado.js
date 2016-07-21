@@ -55,9 +55,15 @@ $(function(){
 });
 
 $.fn.btnSubmit = function(){
-	$(this).closest('form').on('submit', function(){
-		$(this).prop('disabled',true);
-		$(this).addClass('disabled');
+
+}
+
+$.fn.ajaxFormulario = function(target){
+	$(this).ajaxForm({
+		target: target,
+		beforeSubmit: function(arr, $form, options) {
+			$form.find('.btn-submit').button('loading');
+		},
 	});
 }
 
@@ -76,12 +82,17 @@ $.fn.modalLink = function(target){
 			url: url,
 			dataType: 'html',
 			beforeSend: function(){
-				modal.find('.modal-body').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+				modal.html('<div class="modal-dialog modal-sm"><div class="modal-content"><div class="modal-body"><i class="fa fa-refresh fa-spin"></i> Cargando...</div></div></div>');
 			},
 			complete: function(msg){
 				modal.html(msg.responseText);
 				$('.btn-submit').btnSubmit();
-			}
+			},
+			error: function (jqXHR, exception) {
+				console.error(jqXHR);
+				alert( '['+jqXHR.status+'] '+jqXHR.statusText);
+				location.reload(true);
+			},
 		});
 
 		return false;
@@ -100,9 +111,7 @@ $.fn.modalLink = function(target){
 //	});
 //}
 
-
 $.fn.btnTextAnimado = function(){
-
 	var $itemAnimado = $(this).find('a');
 	var $itemText = $itemAnimado.find('.text-link');
 
@@ -176,7 +185,6 @@ $.fn.popoverPerfil = function () {
 
 };
 
-
 $.fn.selectDepend = function (url, empty = false) {
 	var loader_text = 'Loading...';
 	var error_text = 'Error!';
@@ -224,5 +232,27 @@ $.fn.selectDepend = function (url, empty = false) {
 		$select.empty(); // remove old options
 		$select.append($("<option></option>").attr("value", "").text(message));
 	}
+
+};
+
+$.fn.recargar = function(url){
+	var content = $(this);
+	$.ajax({
+		url: url,
+		dataType: 'html',
+		beforeSend: function(){
+			//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
+			//$(content).css('position','relative');
+			$(content).append('<div class="wrapper"><i class="fa fa-refresh fa-spin"></i> Cargando</div><br/><br/>');
+		},
+		complete: function(msg){
+			content.html(msg.responseText);
+		},
+		error: function (jqXHR, exception) {
+			console.error(jqXHR);
+			alert( '['+jqXHR.status+'] '+jqXHR.statusText);
+			location.reload(true);
+    },
+	});
 
 };

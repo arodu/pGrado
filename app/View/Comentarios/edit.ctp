@@ -19,9 +19,9 @@
 				?>
 			<?php else: ?>
 				<hr/>
-				<script type="text/javascript">
-					cargarComentarios();
-				</script>
+
+				<?php echo $this->Html->scriptBlock('$("#tab-coment").recargar("'.$this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id)).'");'); ?>
+
 				<?php echo $this->Form->buttom('Cerrar', array('value'=>'Cerrar', 'type'=>'button', 'class'=>'btn btn-default', 'data-dismiss'=>'modal')); ?>
 			<?php endif; ?>
 		</div>
@@ -30,66 +30,5 @@
 
 
 <?php $this->Html->scriptStart(array('inline'=>false)); ?>
-	$('.ajaxForm').ajaxForm({
-		target: '#generalModal',
-	});
+	$('.ajaxForm').ajaxFormulario('#generalModal');
 <?php $this->Html->scriptEnd(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-<div class="escenarios form">
-	<?php echo $this->Form->create('Comentario',array('class'=>'ajaxform', 'inputDefaults'=>array('div'=>array('class'=>'form-group'),'class'=>'form-control'))); ?>
-	<?php
-			echo $this->Form->input('Comentario.id');
-			echo $this->Form->input('Comentario.texto', array('type'=>'textarea', 'label'=>false));
-   ?>
-
-    <?php echo $this->Form->button(__('Guardar Cambios'),array('type'=>'submit','class'=>'btn btn-primary',));?>
-	<?php echo $this->Form->end(); ?>
-</div>
-
-<script type="text/javascript">
-
-  //$('#editSubmit').on('click', function(){
-
-  $('.ajaxform').submit(function(){
-
-    //var form = $(this).closest('.modal').find('form');
-    var form = $(this);
-    var postData = form.serializeArray();
-    var formURL = form.attr("action");
-    $.ajax({
-      url : formURL,
-      type: "POST",
-      data : postData,
-      success:function(data, textStatus, jqXHR){
-        //data: return data from server
-        $('#editCommentModal')
-          .modal('hide')
-          .on('hidden.bs.modal', function (e) {
-            cargarComentarios();
-          });
-      },
-      error: function(jqXHR, textStatus, errorThrown){
-        //if fails
-      },
-    });
-
-    return false;
-  });
-
-</script>
--->

@@ -47,14 +47,14 @@
 				</div>
 
 				<div class="btn-group">
-					<button type="button" class="btn btn btn-primary btn-xs filter" data-filter=".propietario-all">Propietario</button>
+					<button type="button" class="btn btn btn-primary btn-xs filter" data-filter=".usuario-all">Usuario</button>
 					<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span class="caret"></span>
 						<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<ul class="dropdown-menu">
 						<?php foreach ($usuarios_proyecto as $usuario_id => $usuario): ?>
-							<li><a href="#" class="filter" data-filter="<?php echo '.propietario-'.$usuario_id;?>"><?php echo $usuario; ?></a></li>
+							<li><a href="#" class="filter" data-filter="<?php echo '.usuario-'.$usuario_id;?>"><?php echo $usuario; ?></a></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>
@@ -85,7 +85,7 @@
 				$filter['meta'] = 'meta-all meta-'.$asunto['Meta']['id'].'';
 				$filter['status'] = 'status-all status-'.( $asunto['Asunto']['cerrado'] ? 'cerrado' : 'abierto' ).'';
 				$filter['responsable'] = 'responsable-all responsable-'.( $asunto['Asunto']['responsable_id'] ? $asunto['Asunto']['responsable_id'] : 'none' );
-				$filter['propietario'] = 'propietario-all propietario-'.$asunto['Asunto']['propietario_id'];
+				$filter['usuario'] = 'usuario-all usuario-'.$asunto['Asunto']['usuario_id'];
 			?>
 			<div class="mix <?php echo implode(' ',$filter);?>" data-seq="<?php echo $asunto['Asunto']['num_secuencia']; ?>">
 
@@ -106,8 +106,8 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="propietario">
-									<?php echo $this->General->dateTimeFormatView($asunto['Asunto']['updated']).' por '.$asunto['Propietario']['nombres'].' '.$asunto['Propietario']['apellidos']; ?>
+								<div class="usuario">
+									<?php echo $this->General->dateTimeFormatView($asunto['Asunto']['updated']).' por '.$asunto['Usuario']['nombre_completo']; ?>
 								</div>
 								<div class="meta"><?php echo $asunto['Meta']['titulo']; ?></div>
 							</div>
@@ -136,7 +136,7 @@
 									);
 								?>
 
-								<?php if( $userInfo['id'] == $asunto['Propietario']['id'] ): ?>
+								<?php if( $userInfo['id'] == $asunto['Usuario']['id'] ): ?>
 									<?php
 										echo $this->Html->link(
 											'<i class="fa fa-edit fa-fw"></i> '.__('Editar'),

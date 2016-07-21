@@ -564,112 +564,33 @@
 
 			$('.proyecto-modal-link').modalLink('#generalModal');
 
-			<?php // ----------------- user_popover ------------------- ?>
+			// ----------------- user_popover -------------------
 				//user_popover();
 				$('.btn-perfil').popoverPerfil();
 
-
-			<?php // ----------------- SCRIPTS TABs ------------------- ?>
-
-			var overlay_wrapper = '<div class="wrapper"><i class="fa fa-refresh fa-spin"></i> Cargando</div>';
-
-			<?php // ----------------- Cargar Comentarios ------------------- ?>
+			// ----------------- Cargar Comentarios -------------------
 				$('.box-body .btn-tab-coment').on('shown.bs.tab', function(event) {
-					cargarComentarios(event);
-					// e.target // newly activated tab
-					// e.relatedTarget // previous active tab
+					$('#tab-coment').recargar("<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto['Proyecto']['id']));?>");
 				});
 
-				function cargarComentarios(event){
-					$.ajax({
-						url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
-						dataType: 'html',
-						beforeSend: function(){
-							//$('#tab-coment').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-							$('#tab-coment.proyecto_overlay').append(overlay_wrapper);
-						},
-						complete: function(msg){
-							$('#tab-coment').html(msg.responseText);
-							//autosize($('#tab-coment .tab-timeline textarea'));
-						}
-					});
-				}
-
-			<?php // ----------------- Cargar Archivos ------------------- ?>
+			// ----------------- Cargar Archivos -------------------
 				$('.box-body a.btn-tab-archivos').on('shown.bs.tab', function (event) {
-					cargarArchivos(event);
+					$('#tab-archivos').recargar("<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'index',$proyecto['Proyecto']['id']));?>");
 				});
 
-				function cargarArchivos(event){
-					$.ajax({
-						url: "<?php echo $this->Html->url(array('controller'=>'archivos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id'])); ?>",
-						dataType: 'html',
-						beforeSend: function(){
-							//$('#tab-archivos').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-							$('#tab-archivos.proyecto_overlay').append(overlay_wrapper);
-						},
-						complete: function(msg){
-							$('#tab-archivos').html(msg.responseText);
-						}
-					});
-				}
-
-			<?php // ----------------- Cargar Metas ------------------- ?>
+			// ----------------- Cargar Metas -------------------
 				$('.box-body a.btn-tab-metas').on('shown.bs.tab', function(event) {
-					cargarMetas(event);
+					$('#tab-metas').recargar("<?php echo $this->Html->url(array('controller'=>'metas','action'=>'index',$proyecto['Proyecto']['id']));?>");
 				});
 
-				function cargarMetas(event){
-					$content = $('#tab-metas');
-					$.ajax({
-						url: "<?php echo $this->Html->url(array('controller'=>'metas','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
-						dataType: 'html',
-						beforeSend: function(){
-							//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-							$('#tab-metas.proyecto_overlay').append(overlay_wrapper);
-						},
-						complete: function(msg){
-							$content.html(msg.responseText);
-						}
-					});
-				}
-
-			<?php // ----------------- Cargar Asuntos ------------------- ?>
+			// ----------------- Cargar Asuntos -------------------
 				$('.box-body a.btn-tab-asuntos').on('shown.bs.tab', function(event) {
-					cargarAsuntos(event);
+					$('#tab-asuntos').recargar("<?php echo $this->Html->url(array('controller'=>'asuntos','action'=>'index',$proyecto['Proyecto']['id']));?>");
 				});
 
-				function cargarAsuntos(event){
-					$content = $('#tab-asuntos');
-					$.ajax({
-						url: "<?php echo $this->Html->url(array('controller'=>'asuntos','action'=>'index','admin'=>false,$proyecto['Proyecto']['id']));?>",
-						dataType: 'html',
-						beforeSend: function(){
-							//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-							$('#tab-asuntos.proyecto_overlay').append(overlay_wrapper);
-						},
-						complete: function(msg){
-							$content.html(msg.responseText);
-						}
-					});
-				}
-
-			<?php // ----------------- Cargar Jurados ------------------- ?>
+			// ----------------- Cargar Jurados -------------------
 				$('.box-body a.btn-tab-jurados').on('shown.bs.tab', function (e) {
-
-					$.ajax({
-						url: "<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'view_jurados','admin'=>false,$proyecto['Proyecto']['id']));?>",
-						dataType: 'html',
-						beforeSend: function(){
-							//$('#tab-jurados').html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
-							$('#tab-jurados.proyecto_overlay').append(overlay_wrapper);
-						},
-						complete: function(msg){
-							$('#tab-jurados').html(msg.responseText);
-						}
-					});
-					// e.target // newly activated tab
-					// e.relatedTarget // previous active tab
+					$('#tab-jurados').recargar("<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'view_jurados',$proyecto['Proyecto']['id']));?>");
 				});
 
 		<?php $this->Html->scriptEnd(); ?>

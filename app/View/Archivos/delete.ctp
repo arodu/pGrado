@@ -17,9 +17,7 @@
 
 			<?php else: ?>
 				<hr/>
-				<script type="text/javascript">
-					cargarArchivos();
-				</script>
+				<?php echo $this->Html->scriptBlock('$("#tab-archivos").recargar("'.$this->Html->url(array('controller'=>'archivos','action'=>'index',$proyecto_id)).'");'); ?>
 				<?php echo $this->Form->buttom('Cerrar', array('value'=>'Cerrar', 'type'=>'button', 'class'=>'btn btn-default', 'data-dismiss'=>'modal')); ?>
 			<?php endif; ?>
 		</div>

@@ -200,25 +200,7 @@ class ArchivosController extends AppController {
 		} else {
 			$this->request->data = $archivo;
 		}
-
-		/*
-
-
-		$archivo = $this->Archivo->find('first',array('conditions'=>array('Archivo.id'=>$id)));
-
-		if (!$archivo) {
-			throw new NotFoundException(__('Invalid archivo'));
-		}
-		$this->allowProyecto($archivo['Archivo']['proyecto_id']);
-		$this->request->allowMethod('post', 'delete');
-
-		if ($this->Archivo->delete()) {
-			//$file = new File(WWW_ROOT.ltrim($video['Video']['ruta'], '/'));
-			//$file->delete();
-		}else{
-			$this->Session->setFlash(__('The archivo could not be deleted. Please, try again.'),'alert/warning');
-		}
-		return $this->redirect(array('action' => 'index',$archivo['Archivo']['proyecto_id'])); */
+		$this->set('proyecto_id',$archivo['Archivo']['proyecto_id']);
 		$this->set(compact('success'));
 	}
 

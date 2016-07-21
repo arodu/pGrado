@@ -32,8 +32,8 @@ class AsuntosController extends AppController {
 			'order'=>array('Asunto.num_secuencia'=>'desc'),
 			'contain'=>array(
 				'Meta',
-				'Propietario'=>array(
-					'fields'=>array('id', 'nombres', 'apellidos', 'updated_foto'),
+				'Usuario'=>array(
+					'fields'=>array('id', 'nombres', 'apellidos', 'nombre_completo', 'updated_foto'),
 				),
 				'Responsable'=>array(
 					'fields'=>array('id', 'nombres', 'apellidos', 'updated_foto'),
@@ -81,7 +81,7 @@ class AsuntosController extends AppController {
 			));
 
 			$this->request->data['Asunto']['num_secuencia'] = @$ultimo_asunto['Asunto']['num_secuencia'] + 1;
-			$this->request->data['Asunto']['propietario_id'] = $this->Auth->user('id');
+			$this->request->data['Asunto']['usuario_id'] = $this->Auth->user('id');
 
 			$this->Asunto->create();
 			if ($this->Asunto->save($this->request->data)) {
@@ -110,6 +110,7 @@ class AsuntosController extends AppController {
 		}
 		$this->layout = 'ajax';
 		$proyecto_id = $this->Asunto->find('proyecto_id', array('conditions'=>array('Asunto.id'=>$id)));
+		$this->userOwner($this->Asunto, $id);
 		$this->allowProyecto($proyecto_id);
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
@@ -153,6 +154,7 @@ class AsuntosController extends AppController {
 		} else {
 			$this->request->data = $asunto;
 		}
+		$this->set('proyecto_id', $asunto['Asunto']['proyecto_id']);
 		$this->set(compact('asunto', 'success'));
 	}
 

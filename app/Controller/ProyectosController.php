@@ -448,48 +448,6 @@ class ProyectosController extends AppController {
       $this->set('success', $success);
     }
 
-//		public function delete($id = null) {
-//			$this->Proyecto->id = $id;
-//			if (!$this->Proyecto->exists()) {
-//				throw new NotFoundException(__('Invalid proyecto'));
-//			}
-//      $this->allowProyecto($id);
-//
-//      $proyecto = $this->Proyecto->find('first',array('conditions'=>array('Proyecto.id'=>$id)));
-//			$proyecto_id = $id;
-//			$usuarios_id = $this->Proyecto->Autor->find('list',array(
-//				'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.activo'=>'1','Autor.usuario_id <>'=>$this->Auth->user('id')),
-//				'fields'=>array('usuario_id')));
-//
-//
-//			/* Revisar fecha de creacion del proyecto*/
-//				$total_seconds = strtotime('now') - strtotime($proyecto['Proyecto']['created']);
-//				$total_horas = floor ( $total_seconds / 3600 );
-//				$tiempo_eliminacion = Configure::read('proyectos.tiempo.eliminacion');
-//				if($total_horas <= $tiempo_eliminacion and !$this->Permit->user('root') and !$this->Permit->user('admin') and !$this->Permit->user('coordpg')){
-//					$this->Session->setFlash(__('Solo se puede eliminar un Proyecto '.$tiempo_eliminacion.' horas despues de ser creado'),'alert/danger');
-//					return $this->redirect(array('action'=>'view',$id));
-//				}
-//			/* FIN Revisar fecha de creacion del proyecto*/
-//
-//
-//			$this->request->allowMethod('post', 'delete');
-//			if ($this->Proyecto->delete()) {
-//				$this->Session->setFlash(__('Proyecto eliminado correctamente.'),'alert/success');
-//
-//				/**/ // MENSAJES
-//				// Guardar Mensaje
-//				$this->Mensaje->saveMensaje( $usuarios_id, 'proy-delet', $this->Auth->user('nombre_completo').' ha eliminado el Proyecto #'.$proyecto_id);
-//				/**/
-//
-//			} else {
-//				$this->Session->setFlash(__('El Proyecto no se ha eliminado correctamente. Por favor, inténtelo de nuevo.'),'alert/danger');
-//			}
-//
-//
-//			return $this->redirect(array('action' => 'index'));
-//		}
-
     public function selectlist_programas($type_list, $ref_id = null){
       if($type_list == 'categorias' && $ref_id != null){
         $list = $this->Proyecto->Categoria->generateTreeList(array('activo'=>'1','programa_id'=>$ref_id),null,null,'--- ');
@@ -552,29 +510,6 @@ class ProyectosController extends AppController {
 				if(isset($aux_grupos[0])){ $grupos['Inactivos'] =$aux_grupos[0]; }
 
 			$this->set(compact('proyectos','fases','estados','categorias','grupos','sedes'));
-		}
-
-		public function admin_edit_batch() {
-
-			if ($this->request->is(array('post', 'put'))) {
-
-
-
-			}
-
-			$programas = $this->Proyecto->Programa->find('list',array(
-					'fields'=>array('Programa.id','Programa.nombre','TipoPrograma.nombre'),
-					'recursive'=>0,
-				));
-
-			$categorias = array();
-
-			$sedes = $this->Proyecto->Sede->find('list');
-			$fases = $this->Proyecto->Fase->find('list');
-			$grupos = $this->Proyecto->Grupo->find('list');
-			$estados = array();
-
-			$this->set(compact('categorias','programas', 'grupos','sedes', 'fases', 'estados'));
 		}
 
 		public function admin_asignacion_jurados($id = null, $fase_id = null){
