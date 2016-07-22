@@ -99,8 +99,7 @@
 								<div class="responsable col-md-1 pull-right">
 									<?php
 										if($asunto['Responsable']['id']){
-											$user_imagen = $this->element('usuario/avatarXXS',array('foto' => $asunto['Responsable']['updated_foto'].'$'.$asunto['Responsable']['id']));
-											echo $this->Html->image($user_imagen,array('class'=>'img-circle btn-perfil-asunto','data-id' => $asunto['Responsable']['id'] ));
+											echo $this->Custom->userFoto( $asunto['Responsable']['avatar'], 'xxs', array('class'=>'img-circle btn-perfil-asunto','data-id' => $asunto['Responsable']['id']) );
 										}
 									?>
 								</div>

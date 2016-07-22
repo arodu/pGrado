@@ -17,11 +17,7 @@
 
 			<div class="box-body text-center">
 				<div class="img-user-foto">
-					<?php //echo $this->Html->image('avatar.default.90.png',array('class'=>'img-responsive','style'=>'margin: auto;')); ?>
-
-					<?php
-						$user_foto = $this->element('usuario/avatar',array('foto' => $usuario['Usuario']['foto']));
-						echo $this->Html->image($user_foto,array('class'=>'img-responsive img-thumbnail','style'=>'margin: auto;')); ?>
+					<?php echo $this->Custom->userFoto( $usuario['Usuario']['avatar'], 'default', array('class'=>'img-responsive img-thumbnail') ); ?>
 				</div>
 			</div>
 
@@ -30,8 +26,6 @@
 						array('controller'=>'usuarios','action'=>'add_foto','admin'=>false),
 						array('escape'=>false,'class'=>'btn btn-default btn-sm')
 					); ?>
-
-
 			</div>
 
 			<div class="overlay hidden"><i class="fa fa-refresh fa-spin"></i></div>

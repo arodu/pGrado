@@ -14,7 +14,7 @@
 			array('escape'=>false));?></li>
 
 		<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Directorio',
-			array('controller'=>'pages','action'=>'directorio'),
+			array('controller'=>'admin','action'=>'usuarios_directorio'),
 
 			array('escape'=>false));?></li>
 

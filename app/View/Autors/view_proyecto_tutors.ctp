@@ -7,10 +7,7 @@
       <?php $btn_perfil = ( $tutor['Autor']['activo'] ? 'btn-perfil' : '' ); ?>
       <div class="autor <?php echo ( $tutor['Autor']['activo'] ? 'activo' : 'inactivo' ); ?>">
         <div class="avatar">
-          <?php
-            $user_imagen = $this->element('usuario/avatarXS',array('foto' => $tutor['Usuario']['foto']));
-            echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $tutor['Usuario']['id'] ));
-          ?>
+          <?php echo $this->Custom->userFoto( $tutor['Usuario']['avatar'], 'xs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $tutor['Usuario']['id']) ); ?>
         </div>
         <div class="datos">
           <span class="nombre"><?php echo $tutor['Usuario']['nombre_completo']; ?></span>

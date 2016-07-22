@@ -7,6 +7,7 @@
 					'proyectos_edit'=>array('coordpg','admin','root'),
 					'proyectos_move'=>array('coordpg','admin','root'),
 					'proyectos_move_trans'=>array('coordpg','admin','root'),
+					'usuarios_directorio'=>array('coordpg','admin','root'),
 				),
 
 				'grupos'=>array(
@@ -112,6 +113,8 @@
 						'add_foto'=>'loged',
 						'existeFoto'=>'loged',
 						'getFoto'=>'loged',
+
+						'foto'=>'public',
 					),
 
 				'mensajes'=>array(

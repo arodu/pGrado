@@ -17,7 +17,7 @@ class ComentariosController extends AppController {
 						'conditions'=>array('Comentario.proyecto_id'=>$proyecto_id),
 						'order'=>array('Comentario.created'=>'DESC'),
 						'contain'=>array(
-								'Usuario'=>array('fields'=>array('id','nombre_completo','foto'))
+								'Usuario'=>array('fields'=>array('id','nombre_completo','avatar'))
 							),
 					);
 

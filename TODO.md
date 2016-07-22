@@ -1,9 +1,9 @@
 ## TODO
-* Agregar/Elimiar tutor del proyectos
 * Mostrar foto de usuario
+* Revisar Perfil cuando usuario es Profesor
 * Mostrar Perfil en popover
+* Revisar menuActivo
 * Editar Escenario del Proyecto con modal-link
-
 
 * Revisar Lista de Proyectos (Estudiantes, TutorAcad, TutorMetod, Jurados)
 
@@ -16,6 +16,7 @@
 * Acomodar menu Principal (LISTO)
 * Arreglar error en archivos PDF, impresion de Planillas del Proyecto (LISTO)
 * Modulo de Descargas
+* Agregar/Elimiar tutor del proyectos
 
 
 ## Hoja de Ruta

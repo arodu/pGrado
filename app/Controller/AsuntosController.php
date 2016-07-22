@@ -33,10 +33,10 @@ class AsuntosController extends AppController {
 			'contain'=>array(
 				'Meta',
 				'Usuario'=>array(
-					'fields'=>array('id', 'nombres', 'apellidos', 'nombre_completo', 'updated_foto'),
+					'fields'=>array('id', 'nombres', 'apellidos', 'nombre_completo', 'avatar'),
 				),
 				'Responsable'=>array(
-					'fields'=>array('id', 'nombres', 'apellidos', 'updated_foto'),
+					'fields'=>array('id', 'nombres', 'apellidos', 'avatar'),
 				),
 			)
 		));

@@ -25,7 +25,7 @@ class Usuario extends AppModel {
 	public $virtualFields = array(
 			'nombre_completo' => 'CONCAT(Usuario.nombres," ",Usuario.apellidos)',
 			'cedula_nombre_completo' => 'CONCAT(Usuario.cedula," - ",Usuario.nombres," ",Usuario.apellidos)',
-			'foto' => 'CONCAT(Usuario.updated_foto,"$",Usuario.id)',
+			//'foto' => 'CONCAT(Usuario.updated_foto,"$",Usuario.id)',
 		);
 
 /**
@@ -419,7 +419,7 @@ class Usuario extends AppModel {
 			$this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']);
 		}
 
-		$codigo = date('now') . $this->data[$this->alias]['id'];
+		$codigo = date('now') . '-' . $this->data[$this->alias]['id']. '-'. rand();
 		$this->data[$this->alias]['hash'] = hash( 'sha1' , $codigo );
 		return true;
 	}
@@ -447,8 +447,9 @@ class Usuario extends AppModel {
 
 		$out['id'] = $usuario['Usuario']['id'];
 		$out['nombre'] = $usuario['Usuario']['nombres'].' '.$usuario['Usuario']['apellidos'];
-		$out['updated_foto'] = $usuario['Usuario']['updated_foto'];
-		$out['foto'] = $usuario['Usuario']['foto'];
+		//$out['updated_foto'] = $usuario['Usuario']['updated_foto'];
+		//$out['foto'] = $usuario['Usuario']['foto'];
+		$out['avatar'] = $usuario['Usuario']['avatar'];
 
 		//$out['sede'] = $usuario['Sede']['nombre'];
 		$out['Sede'] = $usuario['Sede'];

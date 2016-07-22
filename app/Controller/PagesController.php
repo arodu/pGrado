@@ -189,22 +189,4 @@ class PagesController extends AppController {
 	}
 
 
-	public function directorio(){
-		$this->loadModel('Usuario');
-		$this->Usuario->recursive = 0;
-
-		$this->Paginator->settings =  array(
-					'contain'=>array('DescripcionUsuario','Sede','TipoUsuario'),
-					'limit' => 20
-				);
-
-		$usuarios = $this->Paginator->paginate('Usuario',$this->Search->getConditions(null,'Usuario'));
-
-		$sedes = $this->Usuario->Sede->find('list');
-		$tipoUsuarios = $this->Usuario->TipoUsuario->find('list');
-		$this->set(compact('usuarios','sedes','tipoUsuarios'));
-	}
-
-
-
 }

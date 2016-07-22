@@ -1,19 +1,14 @@
-<?php $user_foto = $this->element('usuario/avatarMD',array('foto' => $userInfo['foto'])); ?>
-
 <!-- User Account: style can be found in dropdown.less -->
 <li class="dropdown user user-menu">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		<?php // echo $this->Html->image($user_foto, array('class'=>'user-image','alt'=>'User Image')); ?>
-		<?php echo $this->Html->image($user_foto,array('class'=>'user-image','alt'=>'User Image')); ?>
+		<?php echo $this->Custom->userFoto( $userInfo['avatar'], 'xxs', array('class'=>'user-image','alt'=>'User Image') ); ?>
 		<span class="hidden-xs"><?php echo $userInfo['nombre']; ?>&nbsp;</span>
 	</a>
 
 	<ul class="dropdown-menu">
 		<!-- User image -->
 		<li class="user-header">
-			<?php // echo $this->Html->image($user_foto, array('class'=>'img-circle','alt'=>'User Image')); ?>
-
-			<?php echo $this->Html->image($user_foto,array('class'=>'img-circle','alt'=>'User Image')); ?>
+			<?php echo $this->Custom->userFoto( $userInfo['avatar'], 'md', array('class'=>'img-circle','alt'=>'User Image') ); ?>
 
 			<p>
 				<?php echo $userInfo['nombre']; ?>

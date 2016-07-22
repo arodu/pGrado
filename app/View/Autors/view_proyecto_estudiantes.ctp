@@ -6,10 +6,7 @@
       <?php $btn_perfil = ( $estudiante['Autor']['activo'] ? 'btn-perfil' : '' ); ?>
       <div class="autor <?php echo ( $estudiante['Autor']['activo'] ? 'activo' : 'inactivo' ); ?>">
         <div class="avatar">
-          <?php
-            $user_imagen = $this->element('usuario/avatarXS',array('foto' => $estudiante['Usuario']['foto']));
-            echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $estudiante['Usuario']['id'] ));
-          ?>
+          <?php echo $this->Custom->userFoto( $estudiante['Usuario']['avatar'], 'xs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $estudiante['Usuario']['id']) ); ?>
         </div>
         <div class="datos">
           <span class="nombre"><?php echo $estudiante['Usuario']['nombre_completo']; ?></span>

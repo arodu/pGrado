@@ -57,7 +57,7 @@ class AutorsController extends AppController {
 				'Autor.tipo_autor_id' => $this->Autor->TipoAutor->findIdByCode('estudiante'),
 			),
 			'contain'=>array(
-				'Usuario'=>array('fields'=>array('id','cedula','nombre_completo','email','foto')),
+				'Usuario'=>array('fields'=>array('id','cedula','nombre_completo','email','avatar')),
 			),
 		));
 
@@ -192,7 +192,7 @@ class AutorsController extends AppController {
 				'Autor.tipo_autor_id <>' => $this->Autor->TipoAutor->findIdByCode('estudiante'),
 			),
 			'contain'=>array(
-				'Usuario'=>array('fields'=>array('id','cedula','nombre_completo','email','foto')),
+				'Usuario'=>array('fields'=>array('id','cedula','nombre_completo','email','avatar')),
 				'TipoAutor',
 			),
 		));

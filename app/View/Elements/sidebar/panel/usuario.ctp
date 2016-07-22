@@ -1,8 +1,7 @@
-<?php $user_foto = $this->element('usuario/avatarMD',array('foto' => $userInfo['foto'])); ?>
 <!-- Sidebar user panel -->
 <div class="user-panel">
 	<div class="pull-left image">
-		<?php echo $this->Html->image($user_foto,array('class'=>'img-circle','alt'=>'User Image')); ?>
+		<?php echo $this->Custom->userFoto( $userInfo['avatar'], 'xs', array('class'=>'img-circle','alt'=>'User Image') ); ?>
 	</div>
 	<div class="pull-left info">
 		<p><?php echo $userInfo['nombre'];?></p>

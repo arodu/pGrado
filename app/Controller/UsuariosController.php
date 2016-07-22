@@ -45,7 +45,6 @@ class UsuariosController extends AppController {
 			$this->set('usuario',$usuario);
 		}
 
-
 		public function view() {
 			//$this->writeUserInfo();
 			$id = $this->Auth->user('id');
@@ -167,6 +166,81 @@ class UsuariosController extends AppController {
 		public function add_foto(){
 
 			$id = $this->Auth->user('id');
+
+			$path_file = Configure::read('sistema.archivos.usuarios');
+			$path_avatar = Configure::read('sistema.archivos.avatar');
+			$usuario = $this->Usuario->getField(array('id','avatar'), $id);
+
+			if ($this->request->is('post')) {
+
+				$file = $this->params['form']['avatar_file'];
+
+				if ($file['error'] == UPLOAD_ERR_OK) {
+
+					if( $this->Imagen->esImagen($file['name'])){
+						$foto_id = sha1($id.'-'.date('now').'-'.rand());
+						$ext = $this->Imagen->getExtension($file['name']);
+						$tmp_nombre = $id.'.'.$ext;
+						$foto_name = $foto_id.'.jpg';
+					}else{
+						$this->Flash->alert_error('Error en el Formato del Archivo');
+						return $this->redirect(array('action'=>'add_foto'));
+					}
+
+					if(move_uploaded_file($file['tmp_name'], $path_file.$tmp_nombre)){
+						$fuente = $path_file.$tmp_nombre;
+
+						$crop = $path_file.'crop'.$id.'.png';
+						$avatar_data = $this->request->data['avatar_data'];
+						$this->CropImagen->create($fuente, $crop, $avatar_data ); // Creacion del Crop
+
+						$this->Imagen->miniatura($crop, $path_file.$path_avatar['default'].$foto_name, array(
+									'miniatura_alto'=>200,'miniatura_ancho'=>200,
+								));
+
+						$this->Imagen->miniatura($crop, $path_file.$path_avatar['md'].$foto_name, array(
+									'miniatura_alto'=>100,'miniatura_ancho'=>100,
+								));
+
+						$this->Imagen->miniatura($crop, $path_file.$path_avatar['xs'].$foto_name, array(
+									'miniatura_alto'=>50,'miniatura_ancho'=>50,
+								));
+
+						$this->Imagen->miniatura($crop, $path_file.$path_avatar['xxs'].$foto_name, array(
+									'miniatura_alto'=>25,'miniatura_ancho'=>25,
+								));
+
+						$old = array();
+						if($usuario['Usuario']['avatar']){
+							$old = array(
+								$path_file.$path_avatar['default'].$usuario['Usuario']['avatar'],
+								$path_file.$path_avatar['md'].$usuario['Usuario']['avatar'],
+								$path_file.$path_avatar['xs'].$usuario['Usuario']['avatar'],
+								$path_file.$path_avatar['xxs'].$usuario['Usuario']['avatar'],
+							);
+						}
+
+						$this->Imagen->remover( array_merge( array($fuente,$crop), $old) );
+
+						$data['Usuario'] = array('id'=>$id, 'avatar' => $foto_name);
+						if( $this->Usuario->save($data)){
+							$this->Flash->alert_success('Foto de usuario Cargada con exito!');
+							return $this->redirect(array('action'=>'index'));
+						}else{
+							$this->Flash->alert_error('Error Cargando el Archivo');
+						}
+					}
+				}else{
+					$this->Flash->alert_error('Error Cargando el Archivo');
+				}
+			}
+
+		}
+
+		/*
+		public function add_foto(){
+
+			$id = $this->Auth->user('id');
 			$path_file = Configure::read('sistema.archivos.usuarios');
 
 			if ($this->request->is('post')) {
@@ -218,7 +292,9 @@ class UsuariosController extends AppController {
 				}
 			}
 		}
+		*/
 
+		/**/
 		public function existeFoto($tipo_foto = null, $id = null){
 
 			if($id == null) $id = $this->Auth->user('id');
@@ -267,6 +343,26 @@ class UsuariosController extends AppController {
 
 			}
 		}
+  	/**/
+
+		public function foto($size = 'default', $file = null ){
+			$path_user_file = Configure::read('sistema.archivos.usuarios');
+			$path_avatar = Configure::read('sistema.archivos.avatar');
+			$file = ( $file != null ? $file : 'user.jpg' );
+
+			$file = new File($path_user_file.$path_avatar[$size].$file);
+
+			if( $file->exists() ){
+				$this->response->type( $file->mime() );
+				$this->response->file( $file->path );
+			}else{
+				$this->response->type('image/jpg');
+				$this->response->file( $path_user_file.$path_avatar[$size].'user.jpg' );
+			}
+
+			return $this->response;
+		}
+
 
 
 		/* public function add_default_foto(){

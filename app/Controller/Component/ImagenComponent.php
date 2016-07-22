@@ -95,7 +95,7 @@ class ImagenComponent extends Component {
 				case 'gif' :
 				case 'image/gif' :
 							$im = imageCreateFromGif($fuente);
-							
+
 							break;
 
 				case "jpg":
@@ -148,10 +148,16 @@ class ImagenComponent extends Component {
 		return mb_strtolower( end($aux) );
 	}
 
-	public function remover($ruta_archivo){
-		$file = new File( $ruta_archivo );
-		if( $file->delete() ){
-			return true;
+	public function remover($archivos){
+		$archivos = ( is_array($archivos) ? $archivos : array($archivos) );
+		$out = array();
+		foreach ($archivos as $archivo){
+			$file = new File( $archivo );
+			if( $file->delete() ){
+				$out[$archivo] = true;
+			}else{
+				$out[$archivo] = false;
+			}
 		}
 		return false;
 	}

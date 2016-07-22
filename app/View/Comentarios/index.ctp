@@ -65,10 +65,7 @@
 				<div class="timeline-item">
 					<h3 class="timeline-header <?php echo $icon['class'];?>" >
 						<span class="btn-perfil" data-id="<?php echo $comentario['Usuario']['id'];?>">
-							<?php
-								$user_foto = $this->element('usuario/avatarXXS',array('foto' => $comentario['Usuario']['foto']));
-							 	echo $this->Html->image($user_foto, array('class'=>'user-image img-circle','alt'=>'User Image','width'=>'20'));
-							 ?>
+							<?php echo $this->Custom->userFoto( $comentario['Usuario']['avatar'], 'xxs', array('class'=>'user-image img-circle','alt'=>'User Image','width'=>'20') ); ?>
 							<?php echo $comentario['Usuario']['nombre_completo'];?>
 						</span>
 						<br class="visible-xs">

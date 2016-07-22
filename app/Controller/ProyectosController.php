@@ -413,10 +413,9 @@ class ProyectosController extends AppController {
 					'conditions'=>array('Jurado.proyecto_id'=>$proyecto_id),
 					'contain'=>array(
 						'TipoJurado',
-						'Usuario'=>array('fields'=>array('id','nombre_completo','email','foto')),
+						'Usuario'=>array('fields'=>array('id','nombre_completo','email','avatar')),
 					),
 				));
-
 
 			$aux = null;
 			foreach ($jurados_data as $jurado_data) {

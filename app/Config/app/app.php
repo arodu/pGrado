@@ -45,6 +45,10 @@
 		$config['sistema']['archivos']['usuarios'] = ROOT.DS.APP_DIR.DS.'files'.DS.'usuarios'.DS;
 		$config['sistema']['archivos']['backups'] = ROOT.DS.APP_DIR.DS.'files'.DS.'backups'.DS;
 
+		$config['sistema']['archivos']['avatar']['default'] = 'avatar'.DS.'default'.DS;
+		$config['sistema']['archivos']['avatar']['md'] = 'avatar'.DS.'md'.DS;
+		$config['sistema']['archivos']['avatar']['xs'] = 'avatar'.DS.'xs'.DS;
+		$config['sistema']['archivos']['avatar']['xxs'] = 'avatar'.DS.'xxs'.DS;
 
 	// CONTACTOS
 		$config['sistema']['contactos']['unerg']['network'] = 'http://aisunerg.net.ve';
