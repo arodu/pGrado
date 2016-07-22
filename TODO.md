@@ -1,5 +1,4 @@
 ## TODO
-* Mostrar foto de usuario
 * Revisar Perfil cuando usuario es Profesor
 * Mostrar Perfil en popover
 * Revisar menuActivo
@@ -17,6 +16,7 @@
 * Arreglar error en archivos PDF, impresion de Planillas del Proyecto (LISTO)
 * Modulo de Descargas
 * Agregar/Elimiar tutor del proyectos
+* Mostrar foto de usuario
 
 
 ## Hoja de Ruta
