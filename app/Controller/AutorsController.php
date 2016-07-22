@@ -176,11 +176,11 @@ class AutorsController extends AppController {
 
 		$this->set('autor_id', $id);
 		$this->set('proyecto_id', $autor['Autor']['proyecto_id']);
-		$this->set(compact('success','proyecto_id'));
+		$this->set(compact('success'));
 	}
 
-
 	public function view_proyecto_tutors($proyecto_id = null){
+		$this->layout = 'ajax';
 		$proyecto = $this->Autor->Proyecto->getField(array('id','bloqueado','activo'), $proyecto_id);
 		if(!$proyecto){ throw new NotFoundException(__('Invalid proyecto')); }
 		$this->allowProyecto($proyecto_id);
@@ -200,193 +200,82 @@ class AutorsController extends AppController {
 		$this->set(compact('tutors','proyecto'));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		$this->layout = 'ajax';
-
-		if ($this->request->is('post')) {
-			$error = '';
-			$guardar = true;
-
-			$cant_tipo_autor = Configure::read('proyectos.cantidad.tipo_autor');
-
-			$proyecto = $this->Autor->Proyecto->find('first',array(
-					'conditions'=>array('Proyecto.id'=>$this->request->data['Autor']['proyecto_id']),
-					'contain'=>array(
-							//'Autor'=>array('TipoAutor')
-						),
-					'recursive'=>-1,
-				));
-
-			if($proyecto['Proyecto']['activo']===true){
-				$guardar = false;
-				$error = 'No se puede Agregar un '.$this->request->data['Autor']['tipoAutorNombre'].' a un Proyecto Activo.';
-			}
-
-			$cant_actual = $this->Autor->find('count',array(
-					'conditions'=>array(
-						'Autor.proyecto_id'=>$this->request->data['Autor']['proyecto_id'],
-						'Autor.tipo_autor_id'=>$this->request->data['Autor']['tipo_autor_id'],
-					),
-				));
-
-			// ---------------------- REVISAR QUE ESTUDIANTE PUEDE AGREGAR
-			// ----------------------
-			// FALTA AGREGAR QUE NO BUSQUE ESTUDIANTEs QUE YA TENGAN OTROS PROYECTOS, O QUE TENGAN OTROS PROYECTOS ACTIVOS
-				$autors_proyecto2 = $this->Autor->find('list',array(
-					'conditions'=>array(
-						'Autor.proyecto_id'=>$this->request->data['Autor']['proyecto_id'],
-					),'fields'=>array('usuario_id'),
-				));
-
-				foreach ($autors_proyecto2 as $autor_usuario_id) {
-					if($autor_usuario_id == $this->request->data['Autor']['usuario_id']){
-						$guardar = false;
-						$error = 'El '.$this->request->data['Autor']['tipoAutorNombre'].' ya es parte del Proyecto';
-					}
-				}
-
-				//debug($this->request->data);
-				if($this->request->data['Autor']['tipoAutorNombre'] == 'Estudiante'){
-
-					$cant_proyectos = $this->Autor->find('count',array(
-						'conditions'=>array(
-							'Autor.usuario_id'=>$this->request->data['Autor']['usuario_id'],
-							'Autor.tipo_autor_id'=>$this->Autor->TipoAutor->findIdByCode('estudiante'))));
-
-					$cant_proyectos_posibles = Configure::read('proyectos.cantidad.posiblesPorEstudiante');
-
-					if( $cant_proyectos >= $cant_proyectos_posibles ){
-						$guardar = false;
-
-						$estudiante = $this->Autor->Usuario->find('first',array(
-								'conditions'=>array('Usuario.id'=>$this->request->data['Autor']['usuario_id']),
-								'recursive'=>-1,
-								'fields'=>'nombre_completo',
-							));
-
-						$error = 'El/La estudiante <strong>'.$estudiante['Usuario']['nombre_completo'].'</strong> ya tiene la máxima cantidad de proyectos/propuestas posibles, comuníquese con el/la para que elimine alguna propuesta anterior antes de solicitarle que sea su compañero/a en este proyecto.';
-					}
-				}
-
-
-			// ---------------------- REVISAR QUE ESTUDIANTE PUEDE AGREGAR
-
-			$code = $this->Autor->TipoAutor->find('first',array('conditions'=>array('TipoAutor.id'=>$this->request->data['Autor']['tipo_autor_id']),'recursive'=>-1));
-
-			if($cant_actual >= $cant_tipo_autor[$code['TipoAutor']['code']]){
-				$guardar = false;
-				$error = "No se pueden agregar otro ".$code['TipoAutor']['nombre']." en este proyecto";
-			}
-
-
-			if($guardar){
-				$this->Autor->create();
-				if ($this->Autor->save($this->request->data)) {
-					$this->Session->setFlash($this->request->data['Autor']['tipoAutorNombre'].' ha sido Guardado', 'alert/success');
-
-						/**/ // MENSAJES
-						// Guardar Mensaje
-						$proyecto_id = $this->request->data['Autor']['proyecto_id'];
-						$usuarios_id = $this->Autor->find( 'list', array(
-							'conditions'=>array(
-									'Autor.proyecto_id'=>$proyecto_id,
-									'Autor.activo'=>'1',
-									'Autor.usuario_id <>'=> $this->Auth->user('id')),
-							'fields'=>array('usuario_id')));
-
-						$this->Mensaje->saveMensaje( $usuarios_id, 'autor-add', $this->Auth->user('nombre_completo').' ha agregado un '.$this->request->data['Autor']['tipoAutorNombre'].' al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
-
-						$usuarios_id = array($this->request->data['Autor']['usuario_id']);
-
-						$action = 'index';
-						if($code['TipoAutor']['code'] == 'tutoracad'){
-							$action = 'indexTutorAcad';
-						}elseif($code['TipoAutor']['code'] == 'tutormetod'){
-							$action = 'indexTutorMetod';
-						}
-						$this->Mensaje->saveMensaje( $usuarios_id, 'autor-inv', 'Lo han invitado a ser parte de un Proyecto, #'.$proyecto_id, array('controller'=>'proyectos','action'=>$action) );
-						/**/
-
-				} else {
-					$this->Session->setFlash('Error al Guardar:<br/>'.$error, 'alert/danger');
-				}
-			}else{
-				$this->Session->setFlash('Error al Guardar:<br/>'.$error, 'alert/danger');
-			}
-			return $this->redirect(array('controller'=>'proyectos','action' => 'view',$this->request->data['Autor']['proyecto_id']));
-		}
-
-		if ($this->request->is('get')) {
-
-			$tipoAutorCode = $this->request->query['tipoAutor'];
-			$proyecto_id = $this->request->query['proyecto_id'];
-
-			$tipoAutor = $this->Autor->TipoAutor->find('first',array('conditions'=>array('TipoAutor.code'=>$tipoAutorCode),'recursive'=>-1));
-			$usuarios_proyecto = $this->Autor->find('list',array('fields'=>array('usuario_id'),'conditions'=>array('Autor.proyecto_id'=>$proyecto_id)));
-
-			if($tipoAutor['TipoAutor']['code'] == 'estudiante'){
-				return $this->redirect(array('action'=>'addCompanero',$proyecto_id));
-			}elseif($tipoAutor['TipoAutor']['code'] == 'tutoracad'){
-				$usuarios = $this->Autor->Usuario->listPerfil('tutoracad', $usuarios_proyecto);
-			}elseif($tipoAutor['TipoAutor']['code'] == 'tutormetod'){
-				$usuarios = $this->Autor->Usuario->listPerfil('tutormetod', $usuarios_proyecto);
-			}else{
-				$usuarios = array();
-			}
-			$this->set(compact('proyecto_id', 'tipoAutor','usuarios'));
-		}
-	}
-
-	public function addCompanero($proyecto_id){
+	public function add_tutor($proyecto_id, $tipo_autor){
 		$this->layout = 'ajax';
 		$this->allowProyecto($proyecto_id);
+		$success = false;
 
-		if ($this->request->is('post')) {
+		$tipoAutor = $this->Autor->TipoAutor->find('first',array('conditions'=>array('TipoAutor.code'=>$tipo_autor)));
+		$cant_tipo_autor = $this->Autor->find('count', array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$proyecto_id,
+				'Autor.tipo_autor_id' => $tipoAutor['TipoAutor']['id'],
+			),
+		));
+		$cant_pos_tipo_autor = Configure::read('proyectos.cantidad.tipo_autor');
 
-			$tipo_usuario_id = '1';
-			$companero = $this->Autor->Usuario->find('first',array(
-				'conditions'=>array(
-					'Usuario.cedula'=>$this->request->data['Autor']['cedula'],
-					'Usuario.tipo_usuario_id'=>$tipo_usuario_id,
-					)
-				));
+		if($cant_tipo_autor >= $cant_pos_tipo_autor[$tipo_autor]){
+			$this->Flash->call_error('No se puede agregar otro '.$tipoAutor['TipoAutor']['nombre'].' a este Proyecto');
+			$success = true;
+		}
+		$usuarios_proyecto = $this->Autor->find('list',array('fields'=>array('usuario_id'),'conditions'=>array('Autor.proyecto_id'=>$proyecto_id)));
 
-			if(!empty($companero)){
+		if ($this->request->is('post') and !$success){
 
-				//debug($this->request->data); exit();
+				if(isset($usuarios_proyecto[ $this->request->data['Autor']['usuario_id'] ])){
+					$this->Flash->call_error('El '.$tipoAutor['TipoAutor']['nombre'].' ya es parte de este Proyecto');
+					$success = true;
+				}else{
+					$this->request->data['Autor']['activo'] = false;
+					$this->request->data['Autor']['proyecto_id'] = $proyecto_id;
+					$this->Autor->create();
+					if( $this->Autor->save($this->request->data) ){
+						$this->Flash->call_success($tipoAutor['TipoAutor']['nombre'].' agregado con exito al Proyecto');
+						$success = true;
+					}else{
+						$this->Flash->call_error('Ha ocurrido un error guardando los datos.');
+					}
+				}
+		}else{
+			$usuarios = $this->Autor->Usuario->listPerfil($tipo_autor, $usuarios_proyecto);
+			$this->set(compact('usuarios'));
+		}
+		$this->set(compact('proyecto_id','success', 'tipoAutor'));
+	}
 
-				/*array(
-					'Autor' => array(
-						'proyecto_id' => '7',
-						'usuario_id' => '3',
-						'tipo_autor_id' => '3',
-						'tipoAutorNombre' => 'Tutor Metodologico'
-					)
-				)*/
-				$data['Autor']['proyecto_id'] = $this->request->data['Autor']['proyecto_id'];
-				$data['Autor']['usuario_id'] = $companero['Usuario']['id'];
-				$data['Autor']['tipo_autor_id'] = '1';
-				$data['Autor']['tipoAutorNombre'] = 'Estudiante';
+	public function delete_tutor($id){
+		$this->layout = 'ajax';
+		$autor = $this->Autor->getField(array('proyecto_id','usuario_id', 'activo', 'tipo_autor_id'), $id);
+		$tipoAutor = $this->Autor->TipoAutor->getField(array('id','nombre','code'), $autor['Autor']['tipo_autor_id']);
+		$this->allowProyecto($autor['Autor']['proyecto_id']);
+		$success = false;
 
-				$this->request->data = $data;
-
-				$this->add();
-
-			}else{
-				$this->Session->setFlash('Numero de Cedula <strong>'.$this->request->data['Autor']['cedula'].'</strong> no se encuentra Registrado','alert/danger');
-			}
-			return $this->redirect(array('controller'=>'proyectos','action' => 'view',$this->request->data['Autor']['proyecto_id']));
-
+		if( $autor['Autor']['usuario_id'] == $this->Auth->user('id')){
+			$this->Flash->call_warning(__('¿Esta seguro que desea renunciar al Proyecto?'));
+		}elseif($autor['Autor']['activo']){
+			$this->Flash->call_error(__('No se puede eliminar a un '.$tipoAutor['TipoAutor']['nombre'].' activo en el Proyecto'));
+			$success = true;
 		}
 
-		$this->set('proyecto_id',$proyecto_id);
+		if($this->request->is('post') and !$success){
+			$this->Autor->id = $id;
+			if($this->checkUserPassword($this->request->data['Autor']['user_password'])){
+				if ($this->Autor->delete()) {
+					$this->Flash->call_success($tipoAutor['TipoAutor']['nombre'].__(' eliminado con exito'));
+					$success = true;
+				}else{
+					$this->Flash->alert_error(__('Ha ocurrido un error elimiando al '.$tipoAutor['TipoAutor']['nombre'].'.'));
+				}
+			}else{
+				$this->Flash->alert_error(__('Contraseña de usuario Incorrecta.'));
+			}
+		}
 
+		$this->set('autor_id', $id);
+		$this->set('proyecto_id', $autor['Autor']['proyecto_id']);
+		$this->set(compact('success','tipoAutor'));
 	}
+
 
 /**
  * edit method

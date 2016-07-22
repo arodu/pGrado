@@ -196,7 +196,7 @@
 				</div>
 
 			<?php // ----------------- DATOS TUTORES ------------------- ?>
-				<div id="tutores" class="panel-tutors box <?php echo $classActivo;?>">
+				<div id="panel-tutors" class="box <?php echo $classActivo;?>">
 					<?php
 						echo $this->requestAction(
 							array('controller' => 'autors', 'action' => 'view_proyecto_tutors', $proyecto['Proyecto']['id']),

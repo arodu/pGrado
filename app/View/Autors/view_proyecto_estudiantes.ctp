@@ -18,7 +18,6 @@
         </div>
 
         <?php if( !$proyecto['Proyecto']['bloqueado'] and (!$estudiante['Autor']['activo'] or $userInfo['id']==$estudiante['Usuario']['id']) ): ?>
-
             <?php
               echo $this->Form->button('<i class="fa fa-times-circle"></i>',array(
                 'type' => 'button',

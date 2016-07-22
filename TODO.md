@@ -1,9 +1,15 @@
 ## TODO
-* Acomodar Dashboard
+* Agregar/Elimiar tutor del proyectos
+* Mostrar foto de usuario
+* Mostrar Perfil en popover
+* Editar Escenario del Proyecto con modal-link
+
+
 * Revisar Lista de Proyectos (Estudiantes, TutorAcad, TutorMetod, Jurados)
 
 
 ## DONE
+* Acomodar Dashboard
 * En listado de Tutores Academicos, solo pueden aparecer los que sean tipo tutoracad
 (vistas: proyectos.add, proyectos.view)
 * Agregar Permit (LISTO)
