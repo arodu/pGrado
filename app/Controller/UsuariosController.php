@@ -131,24 +131,6 @@ class UsuariosController extends AppController {
 		}
 
 
-		// Editar Categorias -- revisar para despues
-		/*public function editcategorias(){
-			$id = $this->Auth->user('id');
-			if ($this->request->is(array('post', 'put'))) {
-				if ($this->Usuario->save($this->request->data)) {
-					$this->Session->setFlash(__('Categorias').' guardado con Éxito','alert/success');
-					return $this->redirect(array('action' => 'view'));
-				} else {
-					$this->Session->setFlash(__('The usuario could not be saved. Please, try again.'),'alert/danger');
-				}
-			}
-
-			$this->request->data = array('Usuario'=>array('id'=>$id));
-			$categorias = $this->Usuario->Categoria->generateTreeList(array('activo'=>'1'),null,null,'|---');
-			$this->set(compact('categorias'));
-		} */
-
-
 		public function editpassword() {
 			$id = $this->Auth->user('id');
 			if ($this->request->is(array('post', 'put'))) {
@@ -164,7 +146,6 @@ class UsuariosController extends AppController {
 
 
 		public function add_foto(){
-
 			$id = $this->Auth->user('id');
 
 			$path_file = Configure::read('sistema.archivos.usuarios');
@@ -229,121 +210,15 @@ class UsuariosController extends AppController {
 						}else{
 							$this->Flash->alert_error('Error Cargando el Archivo');
 						}
+					}else{
+						$this->Flash->alert_error('Error Cargando el Archivo');
 					}
 				}else{
 					$this->Flash->alert_error('Error Cargando el Archivo');
 				}
 			}
-
 		}
 
-		/*
-		public function add_foto(){
-
-			$id = $this->Auth->user('id');
-			$path_file = Configure::read('sistema.archivos.usuarios');
-
-			if ($this->request->is('post')) {
-
-				$file = $this->params['form']['avatar_file'];
-
-				if ($file['error'] == UPLOAD_ERR_OK) {
-
-					if( $this->Imagen->esImagen($file['name'])){
-						$ext = $this->Imagen->getExtension($file['name']);
-						$tmp_nombre = $id.'.'.$ext;
-					}else{
-						return $this->redirect(array('action'=>'add_foto'));
-					}
-
-					if(move_uploaded_file($file['tmp_name'], $path_file.$tmp_nombre)){
-
-						$fuente = $path_file.$tmp_nombre;
-						$crop = $path_file.'crop'.$id.'.png';
-
-						$avatar_data = $this->request->data['avatar_data'];
-
-						$this->CropImagen->create($fuente, $crop, $avatar_data );
-
-						$this->Imagen->miniatura($crop, $path_file.$this->Usuario->foto('user',$id), array(
-									'miniatura_alto'=>200,'miniatura_ancho'=>200,
-								));
-
-						$this->Imagen->miniatura($crop, $path_file.$this->Usuario->foto('md',$id), array(
-									'miniatura_alto'=>100,'miniatura_ancho'=>100,
-								));
-
-						$this->Imagen->miniatura($crop, $path_file.$this->Usuario->foto('xs',$id), array(
-									'miniatura_alto'=>50,'miniatura_ancho'=>50,
-								));
-
-						$this->Imagen->miniatura($crop, $path_file.$this->Usuario->foto('xxs',$id), array(
-									'miniatura_alto'=>25,'miniatura_ancho'=>25,
-								));
-
-						$this->Imagen->remover( $fuente );
-						$this->Imagen->remover( $crop );
-
-						$this->Usuario->id = $id;
-						$this->Usuario->saveField("updated_foto", date("Y-m-d H:i:s") );
-
-						return $this->redirect(array('action'=>'index'));
-					}
-				}
-			}
-		}
-		*/
-
-		/**/
-		public function existeFoto($tipo_foto = null, $id = null){
-
-			if($id == null) $id = $this->Auth->user('id');
-
-			$name = $id.'.png';
-			$path_to_files = Configure::read('sistema.archivos.usuarios');
-
-			$file_name = $this->Usuario->foto($tipo_foto,$id);
-
-			$file = new File( $path_to_files.$file_name );
-
-			if( $file->exists() ){
-				return $path_to_files.$file_name;
-			}else{
-				return false;
-			}
-		}
-
-		public function getUpdatedFoto($id = null){
-			if(!$id){ $id = $this->Auth->user('id'); }
-			$usuario = $this->Usuario->find('first',array(
-					'conditions'=>array('Usuario.id'=>$id),
-				));
-			return $usuario['Usuario']['updated_foto'];
-		}
-
-		public function getFoto($clave = null){
-
-			if($clave==null){
-				throw new NotFoundException(__('Invalid archivo'));
-			}else{
-
-				$code = @convert_uudecode( urldecode($clave) );
-
-				@list($uf, $tipo_foto, $id) = @explode("$", $code);
-
-				if( $ruta_foto = $this->existeFoto($tipo_foto,$id) ){
-					$this->response->type('image/png');
-					$this->response->file( $ruta_foto );
-				}else{
-					$path_to_files = Configure::read('sistema.archivos.usuarios');
-					$this->response->file($path_to_files.'user.default.png');
-				}
-
-				return $this->response;
-
-			}
-		}
-  	/**/
 
 		public function foto($size = 'default', $file = null ){
 			$path_user_file = Configure::read('sistema.archivos.usuarios');
@@ -362,37 +237,6 @@ class UsuariosController extends AppController {
 
 			return $this->response;
 		}
-
-
-
-		/* public function add_default_foto(){
-
-			$id = $this->Auth->user('id');
-			$path_to_files = Configure::read('sistema.archivos.usuarios');
-
-			$usuario = $this->Usuario->find('first',array(
-					'conditions'=>array('Usuario.id'=>$id),
-					'fields'=>array('nombres','apellidos'),
-				));
-
-
-			$text =  substr( trim($usuario['Usuario']['nombres']), 0, 1 ) . substr( trim($usuario['Usuario']['apellidos']), 0, 1 );
-			$text =  mb_strtoupper($text, 'UTF-8');
-
-
-			$url = 'https://placeholdit.imgix.net/~text?txtsize=50&bg=CCCCCC&txtclr=333333&w=100&h=100&txt='.$text;
-			$file_name = 'u'.$id.'.png';
-			copy($url, $path_to_files.$id.DS.$file_name);
-
-
-			$url = 'https://placeholdit.imgix.net/~text?txtsize=25&bg=CCCCCC&txtclr=333333&w=40&h=40&txt='.$text;
-			$file_name_xs = 'u'.$id.'.xs.png';
-			copy($url, $path_to_files.$id.DS.$file_name_xs);
-
-			debug($url);
-			exit();
-		} */
-
 
 
 	// ************** LOGIN **********************************
