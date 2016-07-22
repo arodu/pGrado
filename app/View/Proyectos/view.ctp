@@ -1,19 +1,8 @@
 <?php // ----------------- PRECONDICIONES ------------------- ?>
 	<?php
 		$classActivo = '';
-
 		if($proyecto['Proyecto']['activo']){
 			$classActivo = ' box-primary box-solid';
-		}
-
-		$cant_estudiantes=0;
-		$cant_tutores=0;
-		foreach($proyecto['Autor'] as $autor){
-			if($autor['TipoAutor']['code'] == 'estudiante'){
-				$cant_estudiantes++;
-			}else{
-				$cant_tutores++;
-			}
 		}
 	?>
 
@@ -31,45 +20,25 @@
 <section class="content">
 	<?php echo $this->Flash->render(); ?>
 
-
 	<?php // ----------------- PANEL COORDINADOR ------------------- ?>
 		<?php if($this->Permit->hasPermission(array('coordpg','admin','root'))): ?>
-			<nav class="navbar navbar-yellow">
-			  <div class="container-fluid">
-			    <!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header">
-			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			      <span class="navbar-brand">Panel Coordinador</span>
-			    </div>
-
-			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><?php echo $this->Html->link('<i class="fa fa-caret-left fa-fw"></i> '.__('Listado'),array('controller'=>'admin','action'=>'proyectos_index'),array('class'=>'','escape'=>false)); ?></li>
-						</ul>
-			      <ul class="nav navbar-nav navbar-right">
-							<li><?php echo $this->Html->link('Editar Proyecto',array('controller'=>'admin','action'=>'proyectos_edit',$proyecto['Proyecto']['id']),array('class'=>'','escape'=>false)); ?></li>
-
-							<?php if($mod_activo['proyecto.jurados']): ?>
-								<li><?php echo $this->Html->link('Asignar Jurados',array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id']),array('class'=>'','escape'=>false)); ?></li>
-							<?php endif; ?>
-
-			      </ul>
-			    </div><!-- /.navbar-collapse -->
-			  </div><!-- /.container-fluid -->
-			</nav>
+			<?php
+				echo $this->element('admin/panel', array('links'=>array(
+					'left'=>array(
+						'<i class="fa fa-chevron-left fa-fw"></i> '.__('Listado') => array('controller'=>'admin','action'=>'proyectos_index'),
+					),
+					'right'=>array(
+						'<i class="fa fa-users fa-fw"></i> '.__('Asignar Jurados') => array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id']),
+						'<i class="fa fa-edit fa-fw"></i> '.__('Editar Proyecto') => array('controller'=>'admin','action'=>'proyectos_edit',$proyecto['Proyecto']['id']),
+					)
+				)));
+			?>
 		<?php endif; ?>
-
 
 	<div class="row">
 	<?php // ----------------- PANEL PRINCIPAL ------------------- ?>
 		<div class="col-sm-9">
-			<div class="box <?php echo $classActivo;?>">
+			<div class="panel_main box <?php echo $classActivo;?>">
 
 				<?php $revision = $proyecto['Revision'][0]; ?>
 
@@ -113,18 +82,6 @@
 												<span class="hidden-sm hidden-xs"><?php echo __('Comentarios'); ?></span>
 											</a>
 										</li>
-										<!-- <li role="presentation" class="dropdown">
-											<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-												<i class="fa fa-quote-left"></i>
-												<span class="hidden-sm">&nbsp;Comentarios</span>
-											</a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a id="coment-all" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>Todos</a></li>
-												<li class="divider"></li>
-												<li><a id="coment-users" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-users"></i>Usuarios</a></li>
-												<li><a id="coment-system" class="btn-tab-coment" href="#tab-coment" data-toggle="tab"><i class="fa fa-desktop"></i>Sistema</a></li>
-											</ul>
-										</li> -->
 									<?php } ?>
 
 								<?php // ----------------- BOTON TAB 4 ------------------- ?>
@@ -164,121 +121,28 @@
 							<?php // ----------------- TABS ------------------- ?>
 								<?php // ----------------- TAB 1 info ------------------- ?>
 									<div id="tab-info" class="tab-pane fade in active">
-
-											<div class="text-muted text-right">
-												<small>
-													<strong>Ultima Actualización: </strong>
-													<br class="visible-xs" />
-													<?php echo h($revision['Usuario']['nombre_completo']).' - '.
-															$this->General->dateTimeFormatView($revision['updated']
-														); ?>
-												</small>
-											</div>
-
-										<?php // ----------------- BOX RESUMEN ------------------------- ?>
-											<div class="box box-default box-solid">
-												<div class="box-header with-border">
-													<strong><?php echo __('Resumen'); ?></strong>
-													<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
-												</div>
-
-												<div class="box-body text-justify">
-													<?php echo $this->General->htmlTrim($revision['resumen']); ?>
-												</div>
-
-												<div class="box-footer">
-													<?php
-													$etiquetas = explode(',', $revision['etiquetas']);
-													foreach ($etiquetas as $etiqueta) {
-														echo '<span class="label label-default">'.
-																trim($etiqueta).
-																'</span> ';
-													}
-													?>
-												</div>
-
-											</div>
-
-										<?php // ----------------- BOX DESCRIPCION --------------------- ?>
-											<div class="box box-default box-solid">
-												<div class="box-header with-border">
-													<strong><?php echo __('Descripción'); ?></strong>
-													<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
-												</div>
-
-												<div class="box-body text-justify">
-													<?php echo $this->General->htmlTrim($revision['descripcion']); ?>
-												</div>
-											</div>
-
-										<?php // ----------------- BOX OBSERVACIONES ------------------- ?>
-											<div class="box box-default box-solid">
-												<div class="box-header with-border">
-													<strong><?php echo __('Observaciones'); ?></strong>
-													<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div>
-												</div>
-												<div class="box-body text-justify">
-													<?php
-														if($revision['observaciones'] == ''){
-															echo '<div class="text-muted"><small>Sin Observaciones</small></div>';
-														}else{
-															echo $this->General->htmlTrim($revision['observaciones']);
-														}
-													?>
-												</div>
-											</div>
-
-											<?php // ----------------- BOX FOOTER ------------------- ?>
-												<div>
-													<hr/>
-													<?php
-
-														if($mod_activo['proyecto.revisions'] and !$proyecto['Proyecto']['bloqueado']){
-															echo $this->Html->link('<i class="fa fa-edit"></i> '.__('Editar Revision'),
-																	array('controller'=>'revisions','action' => 'edit', $revision['id']),
-																	array('class'=>'btn btn-primary','escape'=>false)
-																).'&nbsp;';
-
-															/* Botones de VER REVISINES Y VERSION PARA IMPRIMIR */
-															echo $this->Html->link('<i class="fa fa-code-fork"></i>' .__('Ver Revisiones'),
-																	array('controller'=>'revisions','action' => 'index',$proyecto['Proyecto']['id']),
-																	array('class'=>'btn btn-default','escape'=>false)
-																).'&nbsp;';
-														}
-
-														if($mod_activo['proyecto.imprimir']){
-															echo $this->Html->link('<i class="fa fa-print fa-fw"></i> '.__('Imprimir Planillas'), '#',
-																array('class'=>'btn btn-default','escape'=>false, 'data-toggle'=>'modal', 'data-target'=>'#planillasModal')
-															);
-														}
-													?>
-												</div>
+										<?php
+											echo $this->requestAction(
+												array('controller' => 'proyectos', 'action' => 'info', $proyecto['Proyecto']['id']),
+												array('return')
+											);
+										?>
 									</div>
 
 								<?php // ----------------- TAB 2 archivos ------------------- ?>
-									<div id="tab-archivos" class="tab-pane fade border-radious proyecto_archivos proyecto_overlay">
-										<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
-									</div>
+									<div id="tab-archivos" class="tab-pane fade border-radious proyecto_archivos"></div>
 
 								<?php // ----------------- TAB 3 comment ------------------- ?>
-									<div id="tab-coment" class="tab-pane fade border-radious proyecto_comentarios proyecto_overlay">
-										<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
-									</div>
+									<div id="tab-coment" class="tab-pane fade border-radious proyecto_comentarios"></div>
 
 								<?php // ----------------- TAB 4 metas ------------------- ?>
-									<div id="tab-metas" class="tab-pane fade border-radious proyecto_metas proyecto_overlay">
-										<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
-									</div>
+									<div id="tab-metas" class="tab-pane fade border-radious proyecto_metas"></div>
 
 								<?php // ----------------- TAB 5 asuntos ------------------- ?>
-									<div id="tab-asuntos" class="tab-pane fade border-radious proyecto_asuntos proyecto_overlay">
-										<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
-									</div>
+									<div id="tab-asuntos" class="tab-pane fade border-radious proyecto_asuntos"></div>
 
 								<?php // ----------------- TAB 6 jurados ------------------- ?>
-									<div id="tab-jurados" class="tab-pane fade border-radious proyecto_jurados proyecto_overlay">
-										<!-- <i class="fa fa-refresh fa-spin"></i> Cargando... -->
-									</div>
+									<div id="tab-jurados" class="tab-pane fade border-radious proyecto_jurados"></div>
 
 						</div>
 					</div>
@@ -288,7 +152,7 @@
 	<?php // ----------------- PANEL LATERAL DERECHO ------------------- ?>
 		<div class="col-sm-3">
 			<?php // ----------------- DATOS PROYECTO ------------------- ?>
-				<div class="box <?php echo $classActivo;?>">
+				<div class="panel_side box <?php echo $classActivo;?>">
 					<div class="box-header">
 						<h3 class="box-title">Proyecto</h3>
 						<div class="box-tools pull-right">
@@ -322,96 +186,23 @@
 				</div>
 
 			<?php // ----------------- DATOS AUTORES ------------------- ?>
-				<div id="autores" class="box <?php echo $classActivo;?>">
-					<div class="box-header">
-						<h3 class="box-title"><?php echo (($cant_estudiantes >= 2) ? 'Autores' : 'Autor');?></h3>
-					</div>
-					<div class="box-body">
-						<?php foreach ($proyecto['Autor'] as $autor): ?>
-							<?php if($autor['TipoAutor']['code'] == 'estudiante'): ?>
-								<?php $btn_perfil = ( $autor['activo'] ? 'btn-perfil' : '' ); ?>
-								<div class="autor <?php echo ( $autor['activo'] ? 'activo' : 'inactivo' ); ?>">
-									<div class="avatar">
-										<?php
-											$user_imagen = $this->element('usuario/avatarXS',array('foto' => $autor['Usuario']['foto']));
-											echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $autor['Usuario']['id'] ));
-										?>
-									</div>
-									<div class="datos">
-										<span class="nombre"><?php echo $autor['Usuario']['nombre_completo']; ?></span>
-										<span class="cedula"><?php echo $autor['Usuario']['cedula']; ?></span>
-										<i class="user-inactivo fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
-									</div>
-									<?php if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo']) ): ?>
-										<?php //if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo'] or $userInfo['id']==$autor['Usuario']['id']) ): ?>
-										<?php echo $this->Form->postLink('<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger close','title'=>'Eliminar','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?')); ?>
-									<?php endif; ?>
-
-								</div>
-							<?php endif;?>
-						<?php endforeach; ?>
-					</div>
-
-					<?php if(!$proyecto['Proyecto']['bloqueado'] and !$proyecto['Proyecto']['activo']): ?>
-							<?php $cant_pos_estudiante = Configure::read('proyectos.cantidad.tipo_autor.estudiante'); ?>
-							<?php if($cant_estudiantes < $cant_pos_estudiante): ?>
-								<div class="box-footer">
-									<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="estudiante" title="Agregar Compañero"><i class="fa fa-plus"></i> Compañero</button>
-								</div>
-							<?php endif; ?>
-					<?php endif; ?>
+				<div id="panel-estudiantes" class="box <?php echo $classActivo;?>">
+					<?php
+						echo $this->requestAction(
+							array('controller' => 'autors', 'action' => 'view_proyecto_estudiantes', $proyecto['Proyecto']['id']),
+							array('return')
+						);
+					?>
 				</div>
 
 			<?php // ----------------- DATOS TUTORES ------------------- ?>
-				<div id="tutores" class="box <?php echo $classActivo;?>">
-					<div class="box-header">
-						<h3 class="box-title"><?php echo (($cant_tutores >= 2) ? 'Tutores' : 'Tutor');?></h3>
-					</div>
-					<div class="box-body">
-						<?php $academico = $metodologico = false; ?>
-						<?php foreach ($proyecto['Autor'] as $autor): ?>
-							<?php if($autor['TipoAutor']['code'] != 'estudiante'): ?>
-								<?php $btn_perfil = ( $autor['activo'] ? 'btn-perfil' : '' ); ?>
-								<div class="autor <?php echo ( $autor['activo'] ? 'activo' : 'inactivo' ); ?>">
-									<div class="avatar">
-										<?php
-											$user_imagen = $this->element('usuario/avatarXS',array('foto' => $autor['Usuario']['foto']));
-											echo $this->Html->image($user_imagen,array('class'=>'img-circle '.$btn_perfil,'data-id' => $autor['Usuario']['id'] ));
-										?>
-									</div>
-									<div class="datos">
-										<span class="nombre"><?php echo $autor['Usuario']['nombre_completo']; ?></span>
-										<span class="cedula"><?php echo $autor['TipoAutor']['nombre']; ?></span>
-										<i class="user-inactivo fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
-									</div>
-									<?php if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo']) ): ?>
-										<?php //if( !$proyecto['Proyecto']['bloqueado'] and (!$autor['activo'] or $userInfo['id']==$autor['Usuario']['id']) ): ?>
-										<?php echo $this->Form->postLink('<i class="fa fa-times-circle"></i>', array('controller'=>'autors','action' => 'delete',$autor['id']), array('class'=>'text-danger close','title'=>'Eliminar','escape'=>false), __('¿Esta seguro que desea eliminar este '.$autor['TipoAutor']['nombre'].' de su Proyecto?')); ?>
-									<?php endif; ?>
-
-								</div>
-
-								<?php
-									$academico = ( $autor['TipoAutor']['code']=='tutoracad' ? true : $academico );
-									$metodologico = ( $autor['TipoAutor']['code']=='tutormetod' ? true : $metodologico );
-								?>
-							<?php endif;?>
-						<?php endforeach; ?>
-					</div>
-
-					<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
-						<div class="box-footer">
-							<?php if(!$academico): ?>
-								<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutoracad" title="Agregar Tutor Académico"><i class="fa fa-plus"></i> Académico</button>
-							<?php endif; ?>
-
-							<?php if(!$metodologico): ?>
-								<button type="button" class="btn btn-default btn-xs btn-tooltip" data-toggle="modal" data-target="#addAutor" data-whatever="tutormetod" title="Agregar Tutor Metodológico"><i class="fa fa-plus"></i> Metodológico</button>
-							<?php endif; ?>
-
-						</div>
-					<?php endif; ?>
-
+				<div id="tutores" class="panel-tutors box <?php echo $classActivo;?>">
+					<?php
+						echo $this->requestAction(
+							array('controller' => 'autors', 'action' => 'view_proyecto_tutors', $proyecto['Proyecto']['id']),
+							array('return')
+						);
+					?>
 				</div>
 
 			<?php // ----------------- DATOS ESCENARIO ------------------- ?>
@@ -468,6 +259,8 @@
 				<?php endif; ?>
 		</div>
 
+	</div>
+
 	<?php // ----------------- MODAL IMPRESION DE PLANILLAS ------------------- ?>
 		<?php if($mod_activo['proyecto.imprimir']): ?>
 			<div class="modal fade" id="planillasModal" tabindex="-1" role="dialog" aria-labelledby="planillasModalLabel" aria-hidden="true">
@@ -485,7 +278,7 @@
 
 								// Planilla 001 - Vista de Impresion
 										echo $this->Html->link('<i class="fa fa-file-text-o fa-fw"></i> 001 - Proyecto/Propuesta versión para Imprimir',
-											array('controller'=>'proyectos','action'=>'printPdf',$proyecto['Proyecto']['id'],'admin'=>false),
+											array('controller'=>'proyectos','action'=>'pdf_view',$proyecto['Proyecto']['id'],'admin'=>false),
 											array('class'=>'list-group-item','target'=>'_blank','escape'=>false));
 
 								// Planilla 002 - Planilla de Aprobacion de Propuesta
@@ -562,7 +355,7 @@
 	<?php // ----------------- JavaScript ------------------- ?>
 		<?php $this->Html->scriptStart(array('inline' => false)); ?>
 
-			$('.proyecto-modal-link').modalLink('#generalModal');
+			$('.proyecto-modal-link, .estudiante-modal-link, .tutor-modal-link').modalLink('#generalModal');
 
 			// ----------------- user_popover -------------------
 				//user_popover();

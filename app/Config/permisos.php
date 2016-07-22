@@ -30,19 +30,21 @@
 						'indexTutorMetod'=>array('tutormetod'),
 						'indexJurado'=>array('tutoracad'),
 
-						'view'=>array('estudiante','tutoracad','tutormetod'),
+						'view'=>'loged',
+						'info'=>'loged',
 						'printView'=>array('estudiante','tutoracad','tutormetod'),
 						'view_jurados'=>array('estudiante','tutoracad','tutormetod'),
 
+						'pdf_view'=>'loged',
 						'selectlist_programas'=>'loged',
 						'selectlist_fases'=>'loged',
 
 						//'admin_index'=>array('admin','coordpg'),
-						'admin_view'=>array('admin','coordpg'),
-						'admin_estados_list'=>array('coordpg'),
+						//'admin_view'=>array('admin','coordpg'),
+						//'admin_estados_list'=>array('coordpg'),
 						//'admin_edit'=>array('coordpg'),
 						'admin_asignacion_jurados'=>array('coordpg'),
-						'admin_edit_batch'=>array('coordpg'),
+						//'admin_edit_batch'=>array('coordpg'),
 					),
 
 				'metas'=>array(
@@ -130,6 +132,14 @@
 						'addCompanero'=>array('estudiante'),
 						'solicitud'=>array('estudiante','tutoracad','tutormetod'),
 						'delete'=>array('estudiante'),
+
+						'view_proyecto_estudiantes'=>'loged',
+						'add_estudiante'=>array('estudiante', 'coordpg', 'admin', 'root'),
+						'delete_estudiante'=>array('estudiante', 'coordpg', 'admin', 'root'),
+
+						'view_proyecto_tutors'=>'loged',
+						'add_tutor'=>array('estudiante', 'coordpg', 'admin', 'root'),
+						'delete_tutor'=>array('estudiante', 'coordpg', 'admin', 'root'),
 					),
 
 				'pages'=>array(

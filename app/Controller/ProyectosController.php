@@ -168,25 +168,26 @@ class ProyectosController extends AppController {
 		}
 
 		public function view($id = null){
-
       if (!$this->Proyecto->exists($id)) { throw new NotFoundException(__('Invalid proyecto')); }
       $this->allowProyecto($id);
 
       $proyecto = $this->Proyecto->find('first', array(
         'conditions' => array('Proyecto.id' => $id),
         'contain'=>array(
-          'Categoria','Sede','Fase','Grupo','Estado','Escenario','Programa',
-          'Autor'=>array(
-            'TipoAutor',
-            'Usuario'=>array(
-              'DescripcionUsuario',
-              'fields'=>array('cedula','cedula_nombre_completo','nombre_completo','id','email','foto'),
-            )
-          ),
+          'Categoria','Sede','Fase','Grupo','Estado','Programa',
+          'Escenario',
+          //'Autor'=>array(
+          //  'TipoAutor',
+          //  'Usuario'=>array(
+          //    'DescripcionUsuario',
+          //    'fields'=>array('cedula','cedula_nombre_completo','nombre_completo','id','email','foto'),
+          //  )
+          //),
           'Revision'=>array(
+            'fields'=>array('id','titulo','updated'),
             'order'=>array('Revision.updated'=>'DESC'),
             'limit'=>'1',
-            'Usuario'=>array('fields'=>array('nombre_completo','id'))
+            //'Usuario'=>array('fields'=>array('nombre_completo','id'))
           )
         )
       ));
@@ -209,21 +210,36 @@ class ProyectosController extends AppController {
 			}
 		}
 
+    public function info($id = null){
+      if (!$this->Proyecto->exists($id)) { throw new NotFoundException(__('Invalid proyecto')); }
+      $this->allowProyecto($id);
+      $revision = $this->Proyecto->Revision->find('first',array(
+        'conditions'=>array('Revision.proyecto_id'=>$id),
+        'order'=>array('Revision.updated'=>'desc'),
+        'limit'=>1,
+        'contain'=>array(
+          'Proyecto'=>array('fields'=>array('id','bloqueado')),
+          'Usuario'=>array('fields'=>array('id','nombre_completo')),
+        )
+      ));
+      $this->set('revision', $revision);
+    }
+
 		public function printView($id = null){
 			$this->layout = 'print';
 			$this->view($id);
             //$this->render("Planillas/print_proyecto");
 		}
 
-    public function printPdf($id = null){
+    public function pdf_view($id = null){
 			$this->layout = 'printPdf';
 			$this->view($id);
-            $this->response->type('application/pdf');
-            $this->set('title_for_layout', 'planilla001_'.$id);
+      $this->response->type('application/pdf');
+      $this->set('title_for_layout', 'planilla001_'.$id);
 
-            //$this->set( 'verificacion', $this->genCodeVerificacion('001/'.$proyecto['Revision'][0]['id'] ));
+      //$this->set( 'verificacion', $this->genCodeVerificacion('001/'.$proyecto['Revision'][0]['id'] ));
 
-            //$this->render("Planillas/print_proyecto");
+      //$this->render("Planillas/print_proyecto");
 		}
 
 		public function add() {

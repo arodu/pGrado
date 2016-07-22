@@ -1,5 +1,50 @@
 <?php
 
+
+function diff($old, $new){
+			$maxlen = 0;
+        foreach($old as $oindex => $ovalue){
+                $nkeys = array_keys($new, $ovalue);
+                foreach($nkeys as $nindex){
+                        $matrix[$oindex][$nindex] = isset($matrix[$oindex - 1][$nindex - 1]) ?
+                                $matrix[$oindex - 1][$nindex - 1] + 1 : 1;
+                        if($matrix[$oindex][$nindex] > $maxlen){
+                                $maxlen = $matrix[$oindex][$nindex];
+                                $omax = $oindex + 1 - $maxlen;
+                                $nmax = $nindex + 1 - $maxlen;
+                        }
+                }
+        }
+        if($maxlen == 0) return array(array('d'=>$old, 'i'=>$new));
+        return array_merge(
+                diff(array_slice($old, 0, $omax), array_slice($new, 0, $nmax)),
+                array_slice($new, $nmax, $maxlen),
+                diff(array_slice($old, $omax + $maxlen), array_slice($new, $nmax + $maxlen)));
+}
+
+function htmlDiff($old, $new){
+        $diff = diff(explode(' ', $old), explode(' ', $new));
+				$ret = '';
+        foreach($diff as $k){
+                if(is_array($k))
+                        $ret .= (!empty($k['d'])?"<del>".implode(' ',$k['d'])."</del> ":'').
+                                (!empty($k['i'])?"<ins>".implode(' ',$k['i'])."</ins> ":'');
+                else $ret .= $k . ' ';
+        }
+        return $ret;
+}
+
+$a = '<b>Lorem ipsum dolor <u>sit amet</u>, consectetur adipiscing elit. Nullam blandit sollicitudin eros et vulputate. Cras pretium tincidunt lorem at sollicitudin. Vestibulum at ante ut tellus egestas semper eu hendrerit dui. Duis turpis ligula, pretium sit amet massa eu, commodo bibendum metus. Sed at neque vitae libero ultricies venenatis. Nam semper lobortis arcu, sed pulvinar justo laoreet a. Duis laoreet ultricies risus non posuere. Quisque convallis eu metus ac convallis.</b>';
+$b = 'Lorem ipsum dolor <i>sit amet</i>, aperiam percipit duo ut, fabulas assentior in nam, mea ad quod pertinacia. Has te oratio consetetur, phaedrum splendide philosophia pri ea. Illud mucius consectetuer eu quo, te eripuit lucilius cum, dolorum legimus invidunt eu qui. His justo accumsan cu, mea natum mediocrem ea, quot utinam sit et. Ne mea purto vitae explicari.';
+
+//debug(diff(explode(' ', $b), explode(' ', $a)));
+echo htmlDiff($b, $a);
+
+
+
+	<?php
+
+
 	// echo '<hr/>';
 		$options = array(
 				'1'=>array(

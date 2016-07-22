@@ -153,4 +153,17 @@ class AppModel extends Model {
 		return ( isset($result[$this->alias]['proyecto_id']) ? $result[$this->alias]['proyecto_id'] : null );
 	}
 
+	public function getField($fields, $id){
+		if( !is_array($fields) ){
+			$fields = array($fields);
+		}
+
+		return $this->find('first', array(
+			'conditions'=>array(
+				$this->alias.'.id'=>$id,
+			),
+			'fields'=>$fields,
+		));
+	}
+
 }

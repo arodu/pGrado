@@ -44,6 +44,162 @@ class AutorsController extends AppController {
 		$this->set('autor', $this->Autor->find('first', $options));
 	}
 */
+
+	public function view_proyecto_estudiantes($proyecto_id = null){
+		$this->layout = 'ajax';
+		$proyecto = $this->Autor->Proyecto->getField(array('id','bloqueado','activo'), $proyecto_id);
+		if(!$proyecto){ throw new NotFoundException(__('Invalid proyecto')); }
+		$this->allowProyecto($proyecto_id);
+
+		$estudiantes = $this->Autor->find('all',array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$proyecto_id,
+				'Autor.tipo_autor_id' => $this->Autor->TipoAutor->findIdByCode('estudiante'),
+			),
+			'contain'=>array(
+				'Usuario'=>array('fields'=>array('id','cedula','nombre_completo','email','foto')),
+			),
+		));
+
+
+		$this->set(compact('estudiantes','proyecto'));
+	}
+
+	public function add_estudiante($proyecto_id){
+		$this->layout = 'ajax';
+		$this->allowProyecto($proyecto_id);
+		$success = false;
+
+		$tipo_autor_id_estudiante = $this->Autor->TipoAutor->findIdByCode('estudiante');
+		$cant_autores = $this->Autor->find('count', array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$proyecto_id,
+				'Autor.tipo_autor_id'=> $tipo_autor_id_estudiante,
+			)
+		));
+
+		$cant_pos_estudiante = Configure::read('proyectos.cantidad.tipo_autor.estudiante');
+		if($cant_autores >= $cant_pos_estudiante){
+			$this->Flash->call_error('No se pueden Agregar mas Estudiantes a este Proyecto');
+			$success = true;
+		}
+
+		if ($this->request->is('post') and !$success){
+
+			$estudiante = $this->Autor->Usuario->find('first',array(
+				'conditions'=>array(
+					'Usuario.cedula'=>$this->request->data['Autor']['cedula'],
+					'Usuario.tipo_usuario_id'=>$this->Autor->Usuario->TipoUsuario->findIdByCode('estudiante'),
+				)
+			));
+
+			if(!empty($estudiante)){
+				$proyectos_estudiante = $this->Autor->find('list', array(
+					'conditions'=>array(
+						'Autor.usuario_id'=>$estudiante['Usuario']['id'],
+						'Autor.tipo_autor_id'=> $tipo_autor_id_estudiante,
+					),
+					'fields'=>array('Autor.proyecto_id', 'Autor.activo'),
+				));
+
+				$posiblesPorEstudiante = Configure::read('proyectos.cantidad.posiblesPorEstudiante');
+				if( isset($proyectos_estudiante[$proyecto_id]) ){
+					$this->Flash->call_info('El estudiante ya es parte del Proyecto');
+					$success = true;
+				}elseif(count($proyectos_estudiante) < $posiblesPorEstudiante){
+					$data['Autor'] = array(
+						'proyecto_id'=> $proyecto_id,
+						'usuario_id'=> $estudiante['Usuario']['id'],
+						'tipo_autor_id'=> $tipo_autor_id_estudiante,
+						'activo'=> false,
+					);
+					$this->Autor->create();
+					if( $this->Autor->save($data) ){
+						$this->Flash->call_success('Estudiante agregado con exito al Proyecto');
+						$success = true;
+					}else{
+						$this->Flash->call_error('Ha ocurrido un error guardando los datos.');
+					}
+				}else{
+					$this->Flash->call_warning('El/La estudiante ya tiene la máxima cantidad de proyectos/propuestas posibles, comuníquese con el/la para que elimine alguna propuesta anterior antes de solicitarle que sea su compañero/a en este proyecto.');
+					$success = true;
+				}
+			}else{
+				$this->Flash->alert_error('Numero de cedula <strong>'.$this->request->data['Autor']['cedula'].'</strong> no se encuentra Registrado');
+				$this->request->data = null;
+			}
+			//debug($this->request->data); exit();
+		}
+
+		$this->set(compact('proyecto_id', 'success'));
+	}
+
+	public function delete_estudiante($id){
+		$this->layout = 'ajax';
+		$autor = $this->Autor->getField(array('proyecto_id','usuario_id', 'activo'), $id);
+		$this->allowProyecto($autor['Autor']['proyecto_id']);
+		$success = false;
+
+		if( $autor['Autor']['usuario_id'] == $this->Auth->user('id')){
+			$this->Flash->call_warning(__('¿Esta seguro que desea renunciar al Proyecto?'));
+		}elseif($autor['Autor']['activo']){
+			$this->Flash->call_error(__('No se puede eliminar a un Estudiante Activo en el Proyecto'));
+			$success = true;
+		}
+
+		$tipo_autor_id_estudiante = $this->Autor->TipoAutor->findIdByCode('estudiante');
+		$cant_autores = $this->Autor->find('count', array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$autor['Autor']['proyecto_id'],
+				'Autor.tipo_autor_id'=> $tipo_autor_id_estudiante,
+			)
+		));
+
+		if($cant_autores <= 1){
+			$this->Flash->call_error(__('No se puede eliminar a todos los estudiantes del Proyecto'));
+			$success = true;
+		}
+
+		if($this->request->is('post') and !$success){
+			$this->Autor->id = $id;
+			if($this->checkUserPassword($this->request->data['Autor']['user_password'])){
+				if ($this->Autor->delete()) {
+					$this->Flash->call_success(__('Estudiante Eliminado con exito'));
+					$success = true;
+				}else{
+					$this->Flash->alert_error(__('Ha ocurrido un error elimiando al Estudiante.'));
+				}
+			}else{
+				$this->Flash->alert_error(__('Contraseña de usuario Incorrecta.'));
+			}
+		}
+
+		$this->set('autor_id', $id);
+		$this->set('proyecto_id', $autor['Autor']['proyecto_id']);
+		$this->set(compact('success','proyecto_id'));
+	}
+
+
+	public function view_proyecto_tutors($proyecto_id = null){
+		$proyecto = $this->Autor->Proyecto->getField(array('id','bloqueado','activo'), $proyecto_id);
+		if(!$proyecto){ throw new NotFoundException(__('Invalid proyecto')); }
+		$this->allowProyecto($proyecto_id);
+
+		$tutors = $this->Autor->find('all',array(
+			'conditions'=>array(
+				'Autor.proyecto_id'=>$proyecto_id,
+				 // Diferente de Estudiante
+				'Autor.tipo_autor_id <>' => $this->Autor->TipoAutor->findIdByCode('estudiante'),
+			),
+			'contain'=>array(
+				'Usuario'=>array('fields'=>array('id','cedula','nombre_completo','email','foto')),
+				'TipoAutor',
+			),
+		));
+
+		$this->set(compact('tutors','proyecto'));
+	}
+
 /**
  * add method
  *

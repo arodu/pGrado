@@ -235,6 +235,11 @@ $.fn.selectDepend = function (url, empty = false) {
 
 };
 
+$.fn.overlay1 = function(){
+	$(this).addClass('overlay1');
+	$(this).append('<br/><div class="wrapper"><i class="fa fa-refresh fa-spin"></i> Cargando</div>');
+}
+
 $.fn.recargar = function(url){
 	var content = $(this);
 	$.ajax({
@@ -243,7 +248,7 @@ $.fn.recargar = function(url){
 		beforeSend: function(){
 			//$content.html('<i class="fa fa-refresh fa-spin"></i> Cargando...');
 			//$(content).css('position','relative');
-			$(content).append('<div class="wrapper"><i class="fa fa-refresh fa-spin"></i> Cargando</div><br/><br/>');
+			$(content).overlay1();
 		},
 		complete: function(msg){
 			content.html(msg.responseText);

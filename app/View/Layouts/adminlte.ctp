@@ -34,7 +34,8 @@
 		</script>
 
 	</head>
-	<body class="skin-blue fixed"> <?php //<body class="skin-blue fixed sidebar-mini">?>
+	<?php // <body class="skin-blue fixed"> ?>
+	<body class="skin-blue fixed sidebar-mini">
 
 		<div class="wrapper">
 
@@ -99,5 +100,8 @@
 
 			if($mod_activo['external.google_analytics']){ echo $this->element('external/google_analytics'); }
 		?>
+
+		<?php echo $this->element('commons/noscript'); ?>
+
   </body>
 </html>
