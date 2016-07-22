@@ -4,7 +4,7 @@
 <div class="box-body">
   <?php $academico = $metodologico = false; ?>
   <?php foreach ($tutors as $tutor): ?>
-      <?php $btn_perfil = ( $tutor['Autor']['activo'] ? 'btn-perfil' : '' ); ?>
+      <?php $btn_perfil = ( $tutor['Autor']['activo'] ? 'btn-perfil-tutor' : '' ); ?>
       <div class="autor <?php echo ( $tutor['Autor']['activo'] ? 'activo' : 'inactivo' ); ?>">
         <div class="avatar">
           <?php echo $this->Custom->userFoto( $tutor['Usuario']['avatar'], 'xs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $tutor['Usuario']['id']) ); ?>
@@ -65,4 +65,5 @@
 
 <?php echo $this->Html->scriptStart(array('inline'=>false)); ?>
   $('.tutor-modal-link').modalLink('#generalModal');
+  $('.btn-perfil-tutor').popoverPerfil();
 <?php echo $this->Html->scriptEnd(); ?>

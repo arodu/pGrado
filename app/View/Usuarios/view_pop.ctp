@@ -5,8 +5,8 @@
 		</a>
 	</div>
 	<div class="media-body">
-		<h4 class="media-heading"><?php echo $usuario['Usuario']['nombre_completo']; ?></h4>
+		<strong><?php echo $usuario['Usuario']['nombre_completo']; ?></strong><br/>
 		<?php echo $usuario['TipoUsuario']['nombre'].' - '.$usuario['Sede']['nombre']; ?><br/>
 		<?php echo $usuario['Usuario']['email']; ?><br/>
 	</div>
-	</div>
+</div>

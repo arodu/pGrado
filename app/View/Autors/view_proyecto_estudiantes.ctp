@@ -3,7 +3,7 @@
 </div>
 <div class="box-body">
   <?php foreach ($estudiantes as $estudiante): ?>
-      <?php $btn_perfil = ( $estudiante['Autor']['activo'] ? 'btn-perfil' : '' ); ?>
+      <?php $btn_perfil = ( $estudiante['Autor']['activo'] ? 'btn-perfil-estudiante' : '' ); ?>
       <div class="autor <?php echo ( $estudiante['Autor']['activo'] ? 'activo' : 'inactivo' ); ?>">
         <div class="avatar">
           <?php echo $this->Custom->userFoto( $estudiante['Usuario']['avatar'], 'xs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $estudiante['Usuario']['id']) ); ?>
@@ -49,4 +49,5 @@
 
 <?php echo $this->Html->scriptStart(array('inline'=>false)); ?>
   $('.estudiante-modal-link').modalLink('#generalModal');
+  $('.btn-perfil-estudiante').popoverPerfil();
 <?php echo $this->Html->scriptEnd(); ?>

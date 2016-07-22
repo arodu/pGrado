@@ -1,11 +1,9 @@
-## TODO
-* Revisar Perfil cuando usuario es Profesor
-* Mostrar Perfil en popover
+za3## TODO
 * Revisar menuActivo
+* Modificar los el proyecto index de estudiante/tutorAcademico/tutorMetodologico
 * Editar Escenario del Proyecto con modal-link
 
 * Revisar Lista de Proyectos (Estudiantes, TutorAcad, TutorMetod, Jurados)
-
 
 ## DONE
 * Acomodar Dashboard
@@ -17,7 +15,8 @@
 * Modulo de Descargas
 * Agregar/Elimiar tutor del proyectos
 * Mostrar foto de usuario
-
+* Revisar Perfil cuando usuario es Profesor
+* Mostrar Perfil en popover
 
 ## Hoja de Ruta
 * Completar modulo de descargas

@@ -358,8 +358,7 @@
 			$('.proyecto-modal-link, .estudiante-modal-link, .tutor-modal-link').modalLink('#generalModal');
 
 			// ----------------- user_popover -------------------
-				//user_popover();
-				$('.btn-perfil').popoverPerfil();
+				$('.btn-perfil, .btn-perfil-estudiante, .btn-perfil-tutor').popoverPerfil();
 
 			// ----------------- Cargar Comentarios -------------------
 				$('.box-body .btn-tab-coment').on('shown.bs.tab', function(event) {
