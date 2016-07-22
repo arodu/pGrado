@@ -6,6 +6,11 @@ class AdminController extends AppController {
 	public $components = array('Paginator', 'Session','Search');
   public $layout = 'adminlte';
 
+  public function beforeFilter(){
+    parent::beforeFilter();
+    $this->set('menuActive','coordpg');
+  }
+
   public function proyectos_index(){
     $this->Proyecto->recursive = 0;
 

@@ -1,5 +1,4 @@
 za3## TODO
-* Revisar menuActivo
 * Modificar los el proyecto index de estudiante/tutorAcademico/tutorMetodologico
 * Editar Escenario del Proyecto con modal-link
 
@@ -17,6 +16,7 @@ za3## TODO
 * Mostrar foto de usuario
 * Revisar Perfil cuando usuario es Profesor
 * Mostrar Perfil en popover
+* Revisar menuActivo
 
 ## Hoja de Ruta
 * Completar modulo de descargas
