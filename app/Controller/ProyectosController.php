@@ -50,8 +50,7 @@ class ProyectosController extends AppController {
 					'contain'=>array(
 							'Categoria','Fase','Estado','Programa','Grupo','Sede',
 							'Autor'=>array('fields'=>array('id','activo'),
-								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo')),
-								'TipoAutor'),
+								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo','avatar')),'TipoAutor'),
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
 					),
 				));
@@ -84,12 +83,10 @@ class ProyectosController extends AppController {
             'Proyecto.created'=>'desc',
           ),
 					'contain'=>array(
+            'Categoria','Fase','Estado','Grupo','Programa','Sede',
 							'Autor'=>array(
 								'fields'=>array('id','activo'),
-								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo')),'TipoAutor'),
-							'Categoria',
-							'Fase',
-							'Estado',
+								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo','avatar')),'TipoAutor'),
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
 					),
 				));
@@ -118,12 +115,10 @@ class ProyectosController extends AppController {
             'Proyecto.created'=>'desc',
           ),
 					'contain'=>array(
+            'Categoria','Fase','Estado','Grupo','Programa','Sede',
 							'Autor'=>array(
 								'fields'=>array('id','activo'),
-								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo')),'TipoAutor'),
-							'Categoria',
-							'Fase',
-							'Estado',
+								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo','avatar')),'TipoAutor'),
 							'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
 					),
 				));

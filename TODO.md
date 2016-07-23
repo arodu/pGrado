@@ -1,8 +1,9 @@
 za3## TODO
-* Modificar los el proyecto index de estudiante/tutorAcademico/tutorMetodologico
 * Editar Escenario del Proyecto con modal-link
-
-* Revisar Lista de Proyectos (Estudiantes, TutorAcad, TutorMetod, Jurados)
+* Agregar avatar al index de estudiante/tutorAcademico/tutorMetodologico
+* Agregar tipo_autor para entrar en la areas comunes (proyectos, proyecto_view)  --> ?a=estudiante, ?a=coordpg, ?a=tutoracad
+* Agregar Modulo de Movimientos por lotes
+* Agregar Modulo de Jurados
 
 ## DONE
 * Acomodar Dashboard
@@ -17,14 +18,4 @@ za3## TODO
 * Revisar Perfil cuando usuario es Profesor
 * Mostrar Perfil en popover
 * Revisar menuActivo
-
-## Hoja de Ruta
-* Completar modulo de descargas
-* Revision
-  * Ingresar nuevo estudiante (LISTO)
-  * Actualizar los datos (LISTO)
-  * Generar nuevo proyecto
-  * Agregar Escenario al Proyecto
-  * Agregar Tutor Academico y Metodologico
-  * Agregar Compañero
-  *
+* Modificar los el proyecto index de estudiante/tutorAcademico/tutorMetodologico

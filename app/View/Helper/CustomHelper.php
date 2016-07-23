@@ -12,4 +12,15 @@ class CustomHelper extends AppHelper {
     return $this->Html->image( $this->Html->url(array('controller'=>'usuarios', 'action'=>'foto', $size, $avatar), true), $options );
   }
 
+
+	public function getTipoAutor($autores, $tipoAutor, $campo = 'nombre_completo'){
+		$out = array();
+		foreach($autores as $autor){
+			if($autor['TipoAutor']['code'] == $tipoAutor){
+				$out[ $autor['Usuario']['id'] ] = $autor['Usuario'][$campo];
+			}
+		}
+		return $out;
+	}
+
 }

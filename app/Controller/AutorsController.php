@@ -349,25 +349,42 @@ class AutorsController extends AppController {
 
 				/**/ // MENSAJES
 				// Guardar Mensaje
-				$this->Mensaje->saveMensaje( $usuarios_id, 'autor-solsi', $autor['Usuario']['nombre_completo'].' ha aceptado la solicitud de pertenecer al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
+				//$this->Mensaje->saveMensaje( $usuarios_id, 'autor-solsi', $autor['Usuario']['nombre_completo'].' ha aceptado la solicitud de pertenecer al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
 
 			} else {
 				$this->Session->setFlash(__('The autor could not be saved. Please, try again.'));
 			}
 
 		}elseif($resp == 'no'){
-			$this->Autor->id = $id;
-			if ($this->Autor->delete()) {
-				$this->Session->setFlash(__('No ha aceptado la solicitud, el proyecto se ha borrado de su listado de proyectos.'),'alert/warning');
 
-				/**/ // MENSAJES
-				// Guardar Mensaje
-				$this->Mensaje->saveMensaje( $usuarios_id, 'autor-solno', $autor['Usuario']['nombre_completo'].' NO ha aceptado la solicitud de pertenecer al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
-
-			} else {
-				$this->Session->setFlash(__('The autor could not be deleted. Please, try again.'));
+			$delete = true;
+			if($autor['TipoAutor']['code'] == 'estudiante'){
+				$cant_estudiantes = $this->Autor->find('count', array(
+					'conditions'=>array(
+						'Autor.proyecto_id'=>$autor['Autor']['proyecto_id'],
+						'Autor.tipo_autor_id'=>$autor['Autor']['tipo_autor_id'],
+					),
+				));
+				if($cant_estudiantes <= 1){
+					$delete = false;
+				}
 			}
 
+			if($delete){
+				$this->Autor->id = $id;
+				if ($this->Autor->delete()) {
+					$this->Flash->alert_warning(__('No ha aceptado la solicitud, el proyecto se ha borrado de su listado de proyectos.'));
+
+					/**/ // MENSAJES
+					// Guardar Mensaje
+					//$this->Mensaje->saveMensaje( $usuarios_id, 'autor-solno', $autor['Usuario']['nombre_completo'].' NO ha aceptado la solicitud de pertenecer al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
+
+				} else {
+					$this->Flash->alert_error(__('The autor could not be deleted. Please, try again.'));
+				}
+			}else{
+				$this->Flash->alert_error(__('Ha ocurrido un error eliminando la solicitud'));
+			}
 		}
 
 		if($autor['TipoAutor']['code'] == 'estudiante'){
@@ -381,47 +398,5 @@ class AutorsController extends AppController {
 		}
 	}
 
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$autor = $this->Autor->find('first',array(
-			'conditions'=>array('Autor.id'=>$id),
-			'contain'=>array('TipoAutor')
-		));
-		$this->allowProyecto($autor['Autor']['proyecto_id']);
-
-		$this->request->allowMethod('post', 'delete');
-		$this->Autor->id = $id;
-
-		if ($this->Autor->delete()) {
-			$this->Session->setFlash(__('El '.$autor['TipoAutor']['nombre'].' seleccionado ha sido eliminado correctamente.'),'alert/success');
-
-			$proyecto_id = $autor['Proyecto']['id'];
-			$usuarios_id = $this->Autor->find( 'list', array(
-				'conditions'=>array(
-						'Autor.proyecto_id'=>$proyecto_id,
-						'Autor.activo'=>'1',
-						'Autor.usuario_id <>'=> $this->Auth->user('id')),
-				'fields'=>array('usuario_id')));
-			$this->Mensaje->saveMensaje( $usuarios_id, 'autor-delet', $this->Auth->user('nombre_completo').' ha revocado la invitacion al Proyecto #'.$proyecto_id.' de un '.$autor['TipoAutor']['nombre'], array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
-
-			$usuarios_id = array( $autor['Autor']['usuario_id'] );
-			$this->Mensaje->saveMensaje( $usuarios_id, 'autor-delet', 'Su invitación al Proyecto #'.$proyecto_id.' ha sido revocada');
-
-
-
-		} else {
-			$this->Session->setFlash(__('El '.$autor['TipoAutor']['nombre'].' seleccionado NO ha sido eliminado correctamente. Por favor, intentelo de nuevo.'),'alert/danger');
-		}
-
-		return $this->redirect(array('controller'=>'proyectos','action' => 'view',$autor['Autor']['proyecto_id']));
-
-	}
 
 }

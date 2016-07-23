@@ -28,101 +28,15 @@
 			<?php endif; ?>
 		</div><!-- /.box-header -->
 		<div class="box-body">
-
-
-			<?php if(count($proyectos) > 0): ?>
-				<?php foreach ($proyectos as $proyecto): ?>
-					<?php echo $this->element('entity/proyecto', array('user_activo'=>false, 'proyecto'=>$proyecto)); ?>
-					<?php echo $this->element('entity/proyecto', array('user_activo'=>true, 'proyecto'=>$proyecto)); ?>
-				<?php endforeach; ?>
-			<?php endif; ?>
-
-			<?php if(count($proyectos) > 0){ ?>
-				<?php foreach ($proyectos as $proyecto) { ?>
-						<?php
-							// Buscar si el autor se encuentra activo en el proyecto que se este revisando en ese momento
-							$autor_activo = false;
-							foreach ($proyecto['Autor'] as $autor) {
-								if($autor['usuario_id'] == $userInfo['id']){
-
-									$autor_activo = $autor['activo'];
-									$autor_id = $autor['id'];
-
-									if($autor_activo == false){
-										$tipo_solicitud = ( ($autor['TipoAutor']['code'] == 'estudiante') ? 'Coautor' : $autor['TipoAutor']['nombre'] );
-									}
-
-								}
-							}
-						?>
-						<div class="callout callout-gray active" style="margin-bottom: 5px;">
-								<div class="row">
-									<?php
-										$class_col = ( $autor_activo == false ? 'col-md-7' : 'col-md-12');
-									?>
-
-									<div class="<?php echo $class_col;?>">
-										<div class="">
-
-											<div class="text-bold text-justify proyecto_titulo">
-												<?php
-													$proyecto_titulo =  strip_tags($proyecto['Revision'][0]['titulo']);
-													if($autor_activo==false){
-														echo $proyecto_titulo;
-													}else{
-														echo $this->Html->link('<i class="fa fa-chevron-circle-right"></i>&nbsp;'.$proyecto_titulo, array('action' => 'view', $proyecto['Proyecto']['id']),array('escape'=>false));
-													}
-												?>
-											</div>
-
-											<div class="proyecto_datos text">
-												<dl class="dl-horizontal">
-													<dt>Tema:</dt><dd><?php echo $proyecto['Proyecto']['tema'];?></dd>
-													<dt>Linea de Investigación:</dt><dd><?php echo $proyecto['Categoria']['nombre'];?></dd>
-													<dt>Autor(es):</dt>
-													<dd>
-													<?php
-														foreach ($proyecto['Autor'] as $autor) {
-															if($autor['TipoAutor']['code'] == 'estudiante') echo $autor['Usuario']['cedula_nombre_completo'].'<br/>';
-														}
-													?>
-													</dd>
-												</dl>
-											</div>
-
-										</div>
-
-										<div class="">
-											<div class="label label-default"><?php echo $proyecto['Fase']['nombre'];?></div>
-											<div class="label label-default"><?php echo $proyecto['Estado']['nombre'];?></div>
-
-										</div>
-
-									</div>
-
-									<?php if($autor_activo == false) { ?>
-										<div class="col-md-5">
-											<div class="panel panel-warning">
-												<div class="panel-heading text-justify"><?php echo 'Le han solicitado ser '.$tipo_solicitud.' en este Trabajo de Grado'; ?>
-												</div>
-												<div class="panel-body text-center">
-													¿Aceptar Solicitud?
-												<?php echo $this->Form->postLink('<strong>Si</strong>', array('controller'=>'autors','action' => 'solicitud',$autor_id,'si'),array('class'=>'btn btn-warning btn-sm','escape'=>false), __('¿Esta seguro que desea Aceptar esta Solicitud?')); ?>
-												<?php echo $this->Form->postLink('<strong>No</strong>', array('controller'=>'autors','action' => 'solicitud',$autor_id,'no'),array('class'=>'btn btn-default btn-sm','escape'=>false), __('¿Esta seguro que NO desea Aceptar esta Solicitud?')); ?>
-												</div>
-											</div>
-										</div>
-									<?php } ?>
-								</div>
-						</div>
-				<?php } // endforeach?>
-
-			<?php }else{ // EndIf
-
-				echo $this->element('callout/gray',array('titulo'=>'No se encontraron Propuestas o Proyectos','mensaje'=>'Presione en "Agregar Nueva Propuesta", o espere a que algún estudiante le solicite formar parte de su propuesta o proyecto.'));
-
-			} // EndIfElse?>
-
+			<?php
+				if(count($proyectos) > 0){
+					foreach ($proyectos as $proyecto){
+						echo $this->element('entity/proyecto', array('proyecto'=>$proyecto));
+					}
+				}else{
+					echo $this->element('callout/gray',array('titulo'=>'No se encontraron Propuestas o Proyectos','mensaje'=>'Presione en "Agregar Nueva Propuesta", o espere a que algún estudiante le solicite formar parte de su propuesta o proyecto.'));
+				}
+			?>
 		</div><!-- /.box-body -->
 	</div>
 
