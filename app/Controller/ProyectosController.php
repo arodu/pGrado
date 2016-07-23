@@ -351,46 +351,6 @@ class ProyectosController extends AppController {
 			$this->set(compact('categorias'));
 		}
 
-		public function escenario_edit($proyecto_id = null) {
-			$this->verificarModulo('proyecto.escenarios');
-      $this->allowProyecto($proyecto_id);
-
-			if ($this->request->is(array('post', 'put'))) {
-				if ($this->Proyecto->Escenario->save($this->request->data)) {
-					$this->Session->setFlash(__('The escenario has been saved.'),'alert/success');
-
-					/**/ // MENSAJES
-					// Guardar Mensaje
-					$usuarios_id = $this->Proyecto->Autor->find('list',array(
-						'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.activo'=>'1','Autor.usuario_id <>'=>$this->Auth->user('id')),
-						'fields'=>array('usuario_id')));
-					$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', $this->Auth->user('nombre_completo').' ha modificado el escenario del Proyecto', array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
-					/**/
-
-					return $this->redirect(array('controller'=>'proyectos', 'action' => 'view',$proyecto_id));
-				} else {
-					$this->Session->setFlash(__('The escenario could not be saved. Please, try again.'),'alert/danger');
-				}
-
-			} else {
-				$options = array('conditions' => array('Escenario.proyecto_id' => $proyecto_id));
-				$this->request->data = $this->Proyecto->Escenario->find('first', $options);
-			}
-
-      $proyecto = $this->Proyecto->find('first', array(
-        'conditions'=>array('Proyecto.id'=>$proyecto_id),
-        'contain'=>array(
-          'Revision'=>array(
-            'fields'=>array('id','titulo'),
-            'order'=>array('updated'=>'desc'),
-            'limit'=>1,
-          )
-        )
-      ));
-
-      $this->set(compact('proyecto'));
-		}
-
 		public function view_jurados($proyecto_id = null) {
 
 			$this->layout = 'ajax';

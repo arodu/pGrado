@@ -1,6 +1,6 @@
 <?php
 	$contactos = Configure::read('sistema.contactos');
-	
+
 	$classAn = '';
 	if(isset($animado) && $animado == true){
 		$classAn = 'btngroup-contactos-animado';
@@ -50,5 +50,5 @@
 
 <?php $this->Html->scriptStart(array('inline' => false)); ?>
 	$('.btngroup-contactos .text-link').hide();
-	$('.btngroup-contactos-animado').btnTextAnimado();
+	//$('.btngroup-contactos-animado').btnTextAnimado();
 <?php $this->Html->scriptEnd(); ?>

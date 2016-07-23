@@ -207,28 +207,13 @@
 
 			<?php // ----------------- DATOS ESCENARIO ------------------- ?>
 				<?php if($mod_activo['proyecto.escenarios']){ ?>
-					<div class="box <?php echo $classActivo;?>">
-						<div class="box-header">
-							<h3 class="box-title">Escenario</h3>
-						</div>
-						<div class="box-body">
-							<?php if($proyecto['Escenario']['id'] != null){ ?>
-								<?php echo '<strong>Nombre: </strong>'.$proyecto['Escenario']['nombre'] ?><br/>
-								<?php echo '<strong>Dirección: </strong>'.$proyecto['Escenario']['direccion'] ?><br/>
-								<?php echo '<strong>Contacto: </strong>'.$proyecto['Escenario']['persona'] ?><br/>
-								<?php echo '<strong>Telefono: </strong>'.$proyecto['Escenario']['telefono'] ?><br/>
-								<?php echo '<strong>Carta de Aceptación: </strong>'. ($proyecto['Escenario']['carta_aceptacion'] ? 'Si' : 'No' ); ?><br/>
-								<?php echo '<strong>Carta de Implementación: </strong>'. ($proyecto['Escenario']['carta_implementacion'] ? 'Si' : 'No' ); ?><br/>
-							<?php }else{
-									echo '<p>Sin Escenario de Proyecto</p>';
-							} ?>
-						</div>
-						<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
-							<div class="box-footer">
-								<?php
-									echo $this->Html->link('<i class="fa fa-plus"></i> '.__('Escenario'),array('action'=>'escenario_edit',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default btn-xs btn-tooltip','title'=>'Agregar Escenario','escape'=>false)); ?>
-							</div>
-						<?php endif; ?>
+					<div id="panel-escenario" class="box <?php echo $classActivo;?>">
+						<?php
+							echo $this->requestAction(
+								array('controller' => 'escenarios', 'action' => 'view', $proyecto['Proyecto']['id']),
+								array('return')
+							);
+						?>
 					</div>
 				<?php } ?>
 
@@ -299,51 +284,6 @@
 			</div>
 		<?php endif; ?>
 
-	<?php // ----------------- MODAL AGREGAR AUTOR ------------------- ?>
-		<?php if(!$proyecto['Proyecto']['bloqueado']): ?>
-				<div class="modal fade" id="addAutor" tabindex="-1" role="dialog" aria-labelledby="addAutor" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				        <h4 class="modal-title" id="addAutorLabel">Agregar ...</h4>
-				      </div>
-				      <div id="modal-content" class="modal-body">
-				      		Cargando...
-				          <?php // echo $this->Form->input('usuarios',array('empty'=>'-- seleccione --')); ?>
-				      </div>
-				      <div class="modal-footer">
-								<?php echo $this->Form->button('Cerrar',array('class'=>'btn btn-default pull-left','type'=>'button','data-dismiss'=>'modal')); ?>
-				        <?php // echo $this->Form->button('Guardar',array('class'=>'btn btn-primary','type'=>'submit')); ?>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-
-				<?php $this->Html->scriptStart(array('inline' => false)); ?>
-					$('#addAutor').on('show.bs.modal', function (event){
-						var button = $(event.relatedTarget); // Button that triggered the modal
-						var recipient = button.data('whatever'); // Extract info from data-* attributes
-						var modal = $(this);
-						$.ajax({
-							url: '<?php echo $this->Html->url(array('controller'=>'autors','action'=>'add'))?>',
-							type: 'get',
-							data: {tipoAutor: recipient, proyecto_id: '<?php echo $proyecto['Proyecto']['id']?>'},
-							dataType: 'html',
-							beforeSend: function(){
-								modal.find('#modal-content').html('<i class="fa fa-refresh fa-spin"></i> Cargando Formulario...');
-								modal.find('.modal-title').text('Agregar ...');
-							},
-							complete: function(msg){
-								modal.find('#modal-content').html(msg.responseText);
-								titulo = modal.find('#modal-content').find('#tipoAutorNombre').val();
-								modal.find('.modal-title').text('Agregar ' + titulo);
-							}
-						});
-					});
-				<?php $this->Html->scriptEnd(); ?>
-		<?php endif; ?>
-
 	<?php // ----------------- Enlaces EXTERNOS ------------------- ?>
 		<?php echo $this->Html->css('/libs/jquery-file-upload/css/jquery.fileupload',array('inline'=>false)); ?>
 		<?php echo $this->Html->script('/libs/jquery-file-upload/js/vendor/jquery.ui.widget',array('inline'=>false)); ?>
@@ -351,11 +291,12 @@
 		<?php echo $this->Html->script('/libs/jquery-autosize/dist/autosize.min',array('inline'=>false)); ?>
 		<?php echo $this->Html->script('/libs/jquery-form/jquery.form',array('inline'=>false)); ?>
 		<?php echo $this->Html->script('/libs/mixitup/build/jquery.mixitup.min', array('inline'=>false)); ?>
+		<?php echo $this->Html->script('/libs/jquery-maskedinput/dist/jquery.maskedinput.min',array('inline'=>false)); ?>
 
 	<?php // ----------------- JavaScript ------------------- ?>
 		<?php $this->Html->scriptStart(array('inline' => false)); ?>
 
-			$('.proyecto-modal-link, .estudiante-modal-link, .tutor-modal-link').modalLink('#generalModal');
+			$('.modal-link, .proyecto-modal-link, .estudiante-modal-link, .tutor-modal-link').modalLink('#generalModal');
 
 			// ----------------- user_popover -------------------
 				$('.btn-perfil, .btn-perfil-estudiante, .btn-perfil-tutor').popoverPerfil();

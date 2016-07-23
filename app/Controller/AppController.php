@@ -113,6 +113,10 @@ class AppController extends Controller {
 
 	public function allowProyecto($proyecto_id){
 		$this->loadModel('Autor');
+
+		$this->Autor->Proyecto->id = $proyecto_id;
+		if (!$this->Autor->Proyecto->exists()) { throw new NotFoundException(__('Proyecto Invalido!')); }
+
 		$proyecto_autor = $this->Autor->find('count', array(
 			'conditions'=>array(
 				'Autor.proyecto_id'=>$proyecto_id,

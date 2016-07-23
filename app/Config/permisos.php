@@ -95,6 +95,11 @@
 						'delete'=>'loged',
 					),
 
+				'escenarios'=>array(
+						'view'=>'loged',
+						'edit'=>'loged',
+				),
+
 				'planillas'=>array(
 						'aprobacionPropuesta'=>array('estudiante'),
 						'verificar'=>array('coordpg'),

@@ -84,7 +84,7 @@ class AutorsController extends AppController {
 			$success = true;
 		}
 
-		if ($this->request->is('post') and !$success){
+		if($this->request->is('post') and !$success){
 
 			$estudiante = $this->Autor->Usuario->find('first',array(
 				'conditions'=>array(

@@ -74,6 +74,7 @@
 
 					<!-- Main content -->
 					<section class="content">
+						<?php debug('Layout Deprecated! '.$this->params['controller'].'/'.$this->params['action']); ?>
 						<?php echo $this->Session->flash(); ?>
 						<?php echo $this->fetch('content'); ?>
 					</section><!-- /.content -->
