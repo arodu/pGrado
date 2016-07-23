@@ -108,26 +108,6 @@ form {
   }
 }
 
-.callout.callout-gray, .alert.alert-gray {
-  color: #000 !important;
-  border-color: #B5BBC8;
-  background-color: #F4F4F4;
-  &.active {
-    border-color: #367FA9;
-  }
-  a{
-    color: #367FA9;
-    text-decoration: none;
-  }
-  .btn{
-    color: #333;
-    text-decoration: none;
-  }
-  &:hover {
-    background-color: #E4E4E4;
-  }
-}
-
 .sidebar-mini.sidebar-collapse .nodisplay {
   display: none;
 }
@@ -195,13 +175,12 @@ form {
       margin-bottom: 0;
       display: inline-block;
   }
-
-
 }
 
 @import "adds";
 @import "bs_mod";
-@import "proyecto";
+@import "proyecto_index";
+@import "proyecto_view";
 @import "proyecto_archivos";
 @import "proyecto_metas";
 @import "proyecto_asuntos";

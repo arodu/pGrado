@@ -6,12 +6,15 @@
       <?php $btn_perfil = ( $estudiante['Autor']['activo'] ? 'btn-perfil-estudiante' : '' ); ?>
       <div class="autor <?php echo ( $estudiante['Autor']['activo'] ? 'activo' : 'inactivo' ); ?>">
         <div class="avatar">
-          <?php echo $this->Custom->userFoto( $estudiante['Usuario']['avatar'], 'xs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $estudiante['Usuario']['id']) ); ?>
+          <?php echo $this->Custom->userFoto( $estudiante['Usuario']['avatar'], 'xxs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $estudiante['Usuario']['id']) ); ?>
         </div>
         <div class="datos">
-          <span class="nombre"><?php echo $estudiante['Usuario']['nombre_completo']; ?></span>
+          <span class="nombre">
+            <i class="user-inactivo fa fa-user-times fa-fw btn-tooltip btn-tooltip-estudiante mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
+            <?php echo $estudiante['Usuario']['nombre_completo']; ?>
+          </span>
           <span class="cedula"><?php echo $estudiante['Usuario']['cedula']; ?></span>
-          <i class="user-inactivo fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
+
         </div>
 
         <?php if( !$proyecto['Proyecto']['bloqueado'] and (!$estudiante['Autor']['activo'] or $userInfo['id']==$estudiante['Usuario']['id']) ): ?>
@@ -50,4 +53,5 @@
 <?php echo $this->Html->scriptStart(array('inline'=>false)); ?>
   $('.estudiante-modal-link').modalLink('#generalModal');
   $('.btn-perfil-estudiante').popoverPerfil();
+  $('.btn-tooltip-estudiante').tooltip({ html: true });
 <?php echo $this->Html->scriptEnd(); ?>

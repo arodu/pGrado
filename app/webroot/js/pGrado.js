@@ -1,7 +1,5 @@
 $(function(){
-	$('.btn-tooltip').tooltip({
-		html: true,
-	});
+	$('.btn-tooltip').tooltip({ html: true });
 
 	$('.no-border-red').removeClass('required');
 

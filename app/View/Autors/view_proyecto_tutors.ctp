@@ -7,12 +7,14 @@
       <?php $btn_perfil = ( $tutor['Autor']['activo'] ? 'btn-perfil-tutor' : '' ); ?>
       <div class="autor <?php echo ( $tutor['Autor']['activo'] ? 'activo' : 'inactivo' ); ?>">
         <div class="avatar">
-          <?php echo $this->Custom->userFoto( $tutor['Usuario']['avatar'], 'xs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $tutor['Usuario']['id']) ); ?>
+          <?php echo $this->Custom->userFoto( $tutor['Usuario']['avatar'], 'xxs', array('class'=>'img-circle '.$btn_perfil,'data-id' => $tutor['Usuario']['id']) ); ?>
         </div>
         <div class="datos">
-          <span class="nombre"><?php echo $tutor['Usuario']['nombre_completo']; ?></span>
+          <span class="nombre">
+            <i class="user-inactivo fa fa-user-times fa-fw btn-tooltip btn-tooltip-tutor mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
+            <?php echo $tutor['Usuario']['nombre_completo']; ?>
+          </span>
           <span class="cedula"><?php echo $tutor['TipoAutor']['nombre']; ?></span>
-          <i class="user-inactivo fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>
         </div>
         <?php if( !$proyecto['Proyecto']['bloqueado'] and (!$tutor['Autor']['activo'] or $userInfo['id']==$tutor['Usuario']['id']) ): ?>
             <?php
@@ -66,4 +68,5 @@
 <?php echo $this->Html->scriptStart(array('inline'=>false)); ?>
   $('.tutor-modal-link').modalLink('#generalModal');
   $('.btn-perfil-tutor').popoverPerfil();
+  $('.btn-tooltip-tutor').tooltip({ html: true });
 <?php echo $this->Html->scriptEnd(); ?>

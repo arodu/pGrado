@@ -1,7 +1,8 @@
 .autor{
   font-size: 14px;
-  padding: 4px;
-  margin-bottom: 4px;
+  padding: 6px;
+  margin-bottom: 6px;
+  min-height: 42px;
   position: relative;
 
   &:hover{
@@ -9,17 +10,15 @@
   }
 
   .avatar{
-    max-width: 50px;
+    max-width: 25px;
     display: inline-block;
-    vertical-align: bottom;
   }
   .datos{
     display: inline-block;
-    vertical-align: bottom;
     position: absolute;
       top: 0;
       right: 26px;
-      left: 60px;
+      left: 40px;
       bottom: 0;
 
     .nombre{

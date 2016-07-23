@@ -7,7 +7,7 @@
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content proyectos index">
 	<?php echo $this->Flash->render(); ?>
 
 	<div class="box box-primary">
@@ -28,6 +28,15 @@
 			<?php endif; ?>
 		</div><!-- /.box-header -->
 		<div class="box-body">
+
+
+			<?php if(count($proyectos) > 0): ?>
+				<?php foreach ($proyectos as $proyecto): ?>
+					<?php echo $this->element('entity/proyecto', array('user_activo'=>false, 'proyecto'=>$proyecto)); ?>
+					<?php echo $this->element('entity/proyecto', array('user_activo'=>true, 'proyecto'=>$proyecto)); ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
 			<?php if(count($proyectos) > 0){ ?>
 				<?php foreach ($proyectos as $proyecto) { ?>
 						<?php

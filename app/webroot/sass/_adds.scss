@@ -37,3 +37,37 @@
     width: 1.25em;
   }
 }
+
+.callout.callout-gray, .alert.alert-gray {
+  background-color: #EEE;
+  border-color: #B5BBC8;
+  &:hover {
+    background-color: #e0e0e0;
+  }
+  &.blue {
+    border-color: #367FA9;
+  }
+  &.red {
+    border-color: #D33724;
+  }
+  &.yellow {
+    border-color: #DB8B0B;
+  }
+  &.green {
+    border-color: #008D4C;
+  }
+  a{
+    color: #3c8dbc;
+    text-decoration: none;
+    &:hover{
+      color: #367FA9;
+    }
+  }
+  .btn, .btn:hover{
+    color: #fff;
+    &.btn-default, &.btn-default:hover {
+      color: #444;
+    }
+  }
+
+}

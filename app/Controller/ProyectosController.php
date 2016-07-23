@@ -48,7 +48,7 @@ class ProyectosController extends AppController {
             'Proyecto.created'=>'desc',
           ),
 					'contain'=>array(
-							'Categoria','Fase','Estado',
+							'Categoria','Fase','Estado','Programa','Grupo','Sede',
 							'Autor'=>array('fields'=>array('id','activo'),
 								'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo')),
 								'TipoAutor'),

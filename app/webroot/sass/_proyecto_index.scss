@@ -1,0 +1,38 @@
+.proyectos.index{
+  .item-proyecto{
+    .titulo{
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .datos{
+      span{
+        font-weight: bold;
+      }
+      ol, ul {
+        margin-top: 0;
+        margin-bottom: 0px;
+      }
+    }
+    .autors{
+      & > div {
+        margin-left: 20px;
+      }
+      .tipo_autor {
+        margin-left: 0px;
+        font-weight: bold;
+      }
+    }
+    .progreso{
+      .progress {
+        margin-bottom: 0px;
+      }
+      .value{
+        font-size: .7em;
+        text-align: right;
+      }
+    }
+    .etiquetas{
+      //margin: 10px 0;
+    }
+  }
+}
