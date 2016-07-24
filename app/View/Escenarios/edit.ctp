@@ -12,17 +12,17 @@
 					<?php
 						echo '<fieldset>';
 							echo '<legend>Empresa, Institución u Organización</legend>';
-							echo $this->bsForm->input('id');
-							echo $this->bsForm->input('nombre',array('label'=>'Nombre'));
-							echo $this->bsForm->input('direccion',array('label'=>'Dirección'));
+							echo $this->bsForm->input('Escenario.id');
+							echo $this->bsForm->input('Escenario.nombre',array('label'=>'Nombre'));
+							echo $this->bsForm->input('Escenario.direccion',array('label'=>'Dirección'));
 					?>
 							<div class="form-group bs-switch bs-switch-escenario">
 								<label for="EscenarioCartaAceptacion">Carta de Aceptación</label>
-								<?php echo $this->Form->checkbox('carta_aceptacion', array('id'=>'EscenarioCartaAceptacion')); ?>
+								<?php echo $this->Form->checkbox('Escenario.carta_aceptacion', array('id'=>'EscenarioCartaAceptacion')); ?>
 							</div>
 							<div class="form-group bs-switch bs-switch-escenario">
 								<label for="EscenarioCartaImplementacion">Carta de Implpementación</label>
-								<?php echo $this->Form->checkbox('carta_implementacion', array('id'=>'EscenarioCartaImplementacion')); ?>
+								<?php echo $this->Form->checkbox('Escenario.carta_implementacion', array('id'=>'EscenarioCartaImplementacion')); ?>
 							</div>
 
 					<?php
@@ -32,9 +32,9 @@
 
 						echo '<fieldset>';
 							echo '<legend>Persona de Contacto</legend>';
-							echo $this->bsForm->input('cedula',array('label'=>'Cedula'));
-							echo $this->bsForm->input('persona',array('label'=>'Nombre y Apellido'));
-							echo $this->bsForm->input('telefono',array('label'=>'Telefono','class'=>'form-control mask-telef'));
+							echo $this->bsForm->input('Escenario.cedula',array('label'=>'Cedula'));
+							echo $this->bsForm->input('Escenario.persona',array('label'=>'Nombre y Apellido'));
+							echo $this->bsForm->input('Escenario.telefono',array('label'=>'Telefono','class'=>'form-control mask-telef'));
 						echo '</fieldset>';
 					?>
 
