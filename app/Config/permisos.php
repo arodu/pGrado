@@ -21,8 +21,9 @@
 
 				//Controladores
 				'proyectos'=>array(
-						'index'=>array('estudiante'),
+						'index'=>array('loged'),
 						'verActivo'=>array('estudiante'),
+
 						'add'=>array('estudiante'),
 						'getCategoria'=>array('estudiante'),
 						'escenario_edit'=>array('estudiante'),
