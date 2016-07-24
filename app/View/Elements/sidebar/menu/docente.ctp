@@ -1,5 +1,6 @@
 <?php
-	$activeClass = ( (isset($menuActive) && $menuActive=='docente') ? 'active' : 'treeview');
+	$allows = array('docente','tutoracad','tutormetod','jurado');
+	$activeClass = ( (isset($menuActive) && in_array($menuActive, $allows)) ? 'active' : '');
 ?>
 <li class="treeview <?php echo $activeClass; ?>">
 	<a href="#">
@@ -11,19 +12,15 @@
 	<ul class="treeview-menu">
 
 		<?php if(isset($userInfo['perfil']['tutoracad']) && $userInfo['perfil']['tutoracad']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Académicas',array('controller'=>'proyectos','action'=>'indexTutorAcad','admin'=>false),array('escape'=>false));?></li>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Académicas',array('controller'=>'proyectos','action'=>'indexTutorAcad','?'=>array('a'=>'tutoracad')),array('escape'=>false));?></li>
 		<?php endif; ?>
 
 		<?php if(isset($userInfo['perfil']['tutormetod']) && $userInfo['perfil']['tutormetod']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Metodológicas',array('controller'=>'proyectos','action'=>'indexTutorMetod','admin'=>false),array('escape'=>false));?></li>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Metodológicas',array('controller'=>'proyectos','action'=>'indexTutorMetod','?'=>array('a'=>'tutormetod')),array('escape'=>false));?></li>
 		<?php endif; ?>
 
 		<?php if($mod_activo['proyecto.jurados']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Jurado',array('controller'=>'proyectos','action'=>'indexJurado','admin'=>false),array('escape'=>false));?></li>
-		<?php endif; ?>
-
-		<?php if($mod_activo['main.descargas']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Descargas',array('controller'=>'descargas','action'=>'index','admin'=>false),array('escape'=>false));?></li>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Jurado',array('controller'=>'proyectos','action'=>'indexJurado','?'=>array('a'=>'jurado')),array('escape'=>false));?></li>
 		<?php endif; ?>
 
 	</ul>

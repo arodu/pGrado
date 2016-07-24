@@ -18,8 +18,9 @@
     }
   }
 
-  $checkbox = (isset($checkbox) ? $checkbox : false);
-	$progreso = (isset($progreso) ? $progreso : false);
+  $checkbox = ( isset($checkbox) ? $checkbox : false );
+	$progreso = ( isset($progreso) ? $progreso : false );
+  $ancla = ( isset($ancla) ? $ancla : array() );
 ?>
 <?php
 	$class = ($proyecto['Proyecto']['activo'] ? 'blue' : '');
@@ -42,7 +43,7 @@
 		        }else{
 							echo ( $proyecto['Proyecto']['bloqueado'] ? '<i class="fa fa-fw fa-lock text-danger"></i> ' : '' );
 		          if($user_activo){
-		            echo $this->Html->link('<i class="fa fa-play-circle"></i> '.$proyecto['Revision'][0]['titulo'], array('controller'=>'proyectos', 'action'=>'view', $proyecto['Proyecto']['id']), array('escape'=>false));
+		            echo $this->Html->link('<i class="fa fa-play-circle"></i> '.$proyecto['Revision'][0]['titulo'], array('controller'=>'proyectos', 'action'=>'view', $proyecto['Proyecto']['id']) + $ancla, array('escape'=>false));
 		          }else{
 		            echo '<i class="fa fa-pause-circle"></i> '.$proyecto['Revision'][0]['titulo'];
 		          }

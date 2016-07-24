@@ -33,6 +33,9 @@
 			//    echo $this->element('sidebar/menu/admin');
 
 			if(isset($userInfo) && $userInfo)
+				echo $this->element('sidebar/menu/general');
+
+			if(isset($userInfo) && $userInfo)
 				echo $this->element('sidebar/menu/usuario');
 
 		/*

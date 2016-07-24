@@ -33,7 +33,7 @@
 			<?php
 				if(count($proyectos) > 0){
 					foreach ($proyectos as $proyecto){
-						echo $this->element('entity/proyecto', array('proyecto'=>$proyecto));
+						echo $this->element('entity/proyecto', array('proyecto'=>$proyecto, 'ancla'=>$ancla));
 					}
 				}else{
 					echo $this->element('callout/gray',array('titulo'=>'No se encontraron Propuestas o Proyectos','mensaje'=>'Presione en "Agregar Nueva Propuesta", o espere a que algún estudiante le solicite formar parte de su propuesta o proyecto.'));

@@ -4,6 +4,11 @@ class ProyectosController extends AppController {
   public $uses = array('Proyecto','Mensaje');
 	public $components = array('Paginator', 'Session','Search');
 
+  // CallBacks
+    public function beforeRender(){
+      $this->set('ancla', ( isset($this->viewVars['menuActive']) ? array('?'=>array('a'=>$this->viewVars['menuActive'])) : array() ));
+    }
+
 	// *************** METODOS PROYECTOS *************************
 		public function verActivo(){
 			$this->autoRender = false;
@@ -62,7 +67,9 @@ class ProyectosController extends AppController {
 			$proyectos = $aux;
 			$this->set(compact('proyectos'));
 
-			$this->set('menuActive','estudiante');
+      if(isset($this->request->query['a'])){
+        $this->set('menuActive',$this->request->query['a']);
+      }
 		}
 
 		public function indexTutorAcad() {
@@ -92,7 +99,7 @@ class ProyectosController extends AppController {
 
 			$this->set(compact('proyectos'));
 
-			$this->set('menuActive','docente');
+			$this->set('menuActive','tutoracad');
 
 			$this->render('index');
 		}
@@ -123,7 +130,7 @@ class ProyectosController extends AppController {
 				));
 			$this->set(compact('proyectos'));
 
-			$this->set('menuActive','docente');
+			$this->set('menuActive','tutormetod');
 
 			$this->render('index');
 		}
@@ -195,13 +202,10 @@ class ProyectosController extends AppController {
 
 			$this->set(compact('proyecto','proyecto_autor','cant_archivos','cant_comentarios'));
 
-			if(@$proyecto_autor['TipoAutor']['code'] == 'estudiante'){
-				$this->set('menuActive','estudiante');
-			}elseif(@$proyecto_autor['TipoAutor']['code'] == 'tutormetod'){
-				$this->set('menuActive','docente');
-			}elseif(@$proyecto_autor['TipoAutor']['code'] == 'tutoracad'){
-				$this->set('menuActive','docente');
-			}
+      if(isset($this->request->query['a'])){
+        $this->set('menuActive',$this->request->query['a']);
+      }
+
 		}
 
     public function info($id = null){
