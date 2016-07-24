@@ -1,3 +1,4 @@
+
 <?php
 	$sistemaInfo = Configure::read('sistema.info');
 	echo $this->element('commons/header_view', array(
