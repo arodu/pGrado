@@ -35,7 +35,63 @@ class ProyectosController extends AppController {
 			return $this->redirect(array('action'=>'index'));
 		}
 
-		public function index() {
+    public function index($tipo_autor = null){
+      if($tipo_autor == null){
+        $tipo_autor = (isset($this->request->query['a']) ? $this->request->query['a'] : 'all');
+      }
+
+      $proyectos_autor = $this->proyectos_autor($this->Auth->user('id'), $tipo_autor);
+
+      $proyectos = $this->Proyecto->find('all',array(
+          'conditions'=>array(
+              'Proyecto.id'=>$proyectos_autor,
+          ),
+          'order'=>array(
+            'Proyecto.created'=>'desc',
+          ),
+          'contain'=>array(
+              'Categoria','Fase','Estado','Programa','Grupo','Sede',
+              'Autor'=>array('fields'=>array('id','activo'),
+              'Usuario'=>array('fields'=>array('id','cedula_nombre_completo','nombre_completo','avatar')),'TipoAutor'),
+              'Revision'=>array('fields'=>array('Revision.titulo'),'order'=>array('Revision.updated'=>'desc'),'limit'=>'1'),
+          ),
+        ));
+
+        $aux = null;
+        foreach ($proyectos as $proyecto) {
+          $proyecto['Categoria']['nombre'] = $this->Proyecto->Categoria->getRuta($proyecto['Categoria']['id']);
+          $aux[] = $proyecto;
+        }
+        $proyectos = $aux;
+        $this->set(compact('proyectos'));
+
+        if(isset($this->request->query['a'])){
+          $this->set('menuActive',$this->request->query['a']);
+        }
+    }
+
+    private function proyectos_autor($usuario_id, $tipo_autor = 'all'){
+      if($tipo_autor == 'all' or $tipo_autor == null){
+        $proyectos_autor = $this->Proyecto->Autor->find('list',array(
+  					'conditions'=>array(
+  						'Autor.usuario_id'=>$usuario_id,
+  					),
+  					'fields'=>array('Autor.proyecto_id'),
+  				));
+      }else{
+        $proyectos_autor = $this->Proyecto->Autor->find('list',array(
+          'conditions'=>array(
+            'Autor.usuario_id'=>$usuario_id,
+            'Autor.tipo_autor_id'=> $this->Proyecto->Autor->TipoAutor->findIdByCode($tipo_autor),
+          ),
+          'fields'=>array('Autor.proyecto_id'),
+        ));
+      }
+
+      return $proyectos_autor;
+    }
+
+		public function index_estudiante() {
 			$proyectos_autor = $this->Proyecto->Autor->find('list',array(
 					'conditions'=>array(
 						'Autor.usuario_id'=>$this->Auth->user('id'),
@@ -72,7 +128,7 @@ class ProyectosController extends AppController {
       }
 		}
 
-		public function indexTutorAcad() {
+		public function index_tutoracad() {
 			$proyectos_autor = $this->Proyecto->Autor->find('list',array(
 					'conditions'=>array(
 						'Autor.usuario_id'=>$this->Auth->user('id'),
@@ -104,7 +160,7 @@ class ProyectosController extends AppController {
 			$this->render('index');
 		}
 
-		public function indexTutorMetod() {
+		public function index_tutometod() {
 			$proyectos_autor = $this->Proyecto->Autor->find('list',array(
 					'conditions'=>array(
 						'Autor.usuario_id'=>$this->Auth->user('id'),
