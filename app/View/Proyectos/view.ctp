@@ -24,14 +24,22 @@
 	<?php // ----------------- PANEL COORDINADOR ------------------- ?>
 		<?php if($this->Permit->hasPermission(array('coordpg','admin','root'))): ?>
 			<?php
+				$right = 	array('<i class="fa fa-edit fa-fw"></i> '.__('Editar Proyecto') => array('controller'=>'admin','action'=>'proyectos_edit',$proyecto['Proyecto']['id']));
+
+				if($mod_activo['proyecto.jurados']){
+					$right = 	array_merge(
+						array('<i class="fa fa-users fa-fw"></i> '.__('Asignar Jurados') => array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id'])),
+						$right
+					);
+				}
+			?>
+
+			<?php
 				echo $this->element('admin/panel', array('links'=>array(
 					'left'=>array(
 						'<i class="fa fa-chevron-left fa-fw"></i> '.__('Listado') => array('controller'=>'admin','action'=>'proyectos_index'),
 					),
-					'right'=>array(
-						'<i class="fa fa-users fa-fw"></i> '.__('Asignar Jurados') => array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id']),
-						'<i class="fa fa-edit fa-fw"></i> '.__('Editar Proyecto') => array('controller'=>'admin','action'=>'proyectos_edit',$proyecto['Proyecto']['id']),
-					)
+					'right'=>$right
 				)));
 			?>
 		<?php endif; ?>
