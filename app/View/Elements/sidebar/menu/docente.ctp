@@ -12,11 +12,11 @@
 	<ul class="treeview-menu">
 
 		<?php if(isset($userInfo['perfil']['tutoracad']) && $userInfo['perfil']['tutoracad']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Académicas',array('controller'=>'proyectos','action'=>'indexTutorAcad','?'=>array('a'=>'tutoracad')),array('escape'=>false));?></li>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Académicas',array('controller'=>'proyectos','action'=>'index','?'=>array('a'=>'tutoracad')),array('escape'=>false));?></li>
 		<?php endif; ?>
 
 		<?php if(isset($userInfo['perfil']['tutormetod']) && $userInfo['perfil']['tutormetod']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Metodológicas',array('controller'=>'proyectos','action'=>'indexTutorMetod','?'=>array('a'=>'tutormetod')),array('escape'=>false));?></li>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Tutorias Metodológicas',array('controller'=>'proyectos','action'=>'index','?'=>array('a'=>'tutormetod')),array('escape'=>false));?></li>
 		<?php endif; ?>
 
 		<?php if($mod_activo['proyecto.jurados']): ?>

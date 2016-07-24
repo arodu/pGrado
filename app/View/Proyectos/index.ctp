@@ -14,9 +14,7 @@
 
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<?php if($this->params['action'] == 'index' && $userInfo['perfil']['estudiante']){  ?>
-				<?php echo $this->Html->link('<i class="fa fa-plus"></i> Agregar Nueva Propuesta',array('controller'=>'proyectos','action'=>'add'),array('class'=>'btn btn-sm btn-primary','escape'=>false));?>
-			<?php } ?>
+			<?php echo $this->Permit->link('<i class="fa fa-plus"></i> Agregar Nueva Propuesta',array('controller'=>'proyectos','action'=>'add'),array('class'=>'btn btn-sm btn-primary','escape'=>false));?>
 
 			<?php if($this->params['action'] != 'index' && ( $userInfo['perfil']['tutoracad'] || $userInfo['perfil']['tutormetod'])):  ?>
 				<!-- <h4>&nbsp;</h4>
