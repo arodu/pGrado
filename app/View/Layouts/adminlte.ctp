@@ -22,6 +22,7 @@
 			echo $this->Html->css('/libs/AdminLTE/dist/css/skins/skin-blue.min'); // AdminLTE Skins Blue
 
 			//echo $this->Html->css('/libs/iCheck/square/blue.min'); // iCheck
+			echo $this->Html->css('/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min'); // bootstrap-switch
 
 			echo $this->Html->css('pGrado.min'); //pGrado CSS
 
@@ -83,18 +84,19 @@
 			echo $this->fetch('bottom-html');
 
 			//-------------------- JavaScript Block ------------------//
-			echo $this->Html->script('/libs/jquery/dist/jquery.min');								// jQuery
-			echo $this->Html->script('/libs/bootstrap/dist/js/bootstrap.min'); 						// Bootstrap JS
-			echo $this->Html->script('/libs/AdminLTE/dist/js/app.min');								// AdminLTE App
-			//echo $this->Html->script('/libs/adminlte/plugins/iCheck/icheck.min.js');				// iCheck
+			echo $this->Html->script('/libs/jquery/dist/jquery.min'); // jQuery
+			echo $this->Html->script('/libs/bootstrap/dist/js/bootstrap.min'); // Bootstrap JS
+			echo $this->Html->script('/libs/AdminLTE/dist/js/app.min'); // AdminLTE App
+			//echo $this->Html->script('/libs/adminlte/plugins/iCheck/icheck.min.js'); // iCheck
 
 			#echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min'); // smalot-sootstrap-datetimepicker
 			#echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es'); // smalot-sootstrap-datetimepicker
 
-			echo $this->Html->script('/libs/AdminLTE/plugins/slimScroll/jquery.slimscroll.min');	// Slimscroll
-			echo $this->Html->script('/libs/AdminLTE/plugins/fastclick/fastclick.min'); 			// FastClick
-			echo $this->Html->script('pGrado'); 													// pGrado
-			//echo $this->Html->script('/libs/AdminLTE/js/demo'); 									// AdminLTE for demo purposes
+			echo $this->Html->script('/libs/AdminLTE/plugins/slimScroll/jquery.slimscroll.min'); // Slimscroll
+			echo $this->Html->script('/libs/AdminLTE/plugins/fastclick/fastclick.min'); // FastClick
+			echo $this->Html->script('/libs/bootstrap-switch/dist/js/bootstrap-switch.min'); // bootstrap-switch
+			echo $this->Html->script('pGrado'); // pGrado
+			//echo $this->Html->script('/libs/AdminLTE/js/demo'); // AdminLTE for demo purposes
 
 			echo $this->fetch('script');
 

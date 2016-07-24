@@ -37,24 +37,30 @@
 				</div>
 				<div class="box-body">
 					<div class="row">
-					<?php
-						echo $this->bsForm->input('Proyecto.id');
-						echo $this->bsForm->input('Proyecto.tema',array('div'=>array('class'=>'form-group col-sm-12')));
+						<?php
+							echo $this->bsForm->input('Proyecto.id');
+							echo $this->bsForm->input('Proyecto.tema',array('div'=>array('class'=>'form-group col-sm-12')));
 
-						echo $this->bsForm->input('Proyecto.programa_id',array('empty'=>'--seleccione--','id'=>'programa', 'class'=>'sd_programa form-control', 'data-child'=>'categorias', 'data-target'=>'#categorias'));
-						echo $this->bsForm->input('Proyecto.categoria_id',array('empty'=>'--seleccione--','id'=>'categorias', 'class'=>'sd_programa form-control'));
+							echo $this->bsForm->input('Proyecto.programa_id',array('empty'=>'--seleccione--','id'=>'programa', 'class'=>'sd_programa form-control', 'data-child'=>'categorias', 'data-target'=>'#categorias'));
+							echo $this->bsForm->input('Proyecto.categoria_id',array('empty'=>'--seleccione--','id'=>'categorias', 'class'=>'sd_programa form-control'));
 
-						echo $this->bsForm->input('Proyecto.grupo_id',array('empty'=>'--seleccione--'));
+							echo $this->bsForm->input('Proyecto.grupo_id',array('empty'=>'--seleccione--'));
 
-						echo $this->bsForm->input('Proyecto.sede_id',array('empty'=>'--seleccione--'));
+							echo $this->bsForm->input('Proyecto.sede_id',array('empty'=>'--seleccione--'));
 
-						echo $this->bsForm->input('Proyecto.fase_id',array('empty'=>'--seleccione--','id'=>'fases', 'class'=>'sd_fases form-control', 'data-child'=>'estados', 'data-target'=>'#estados'));
-						echo $this->bsForm->input('Proyecto.estado_id',array('empty'=>'--seleccione--','id'=>'estados', 'class'=>'sd_fases form-control'));
+							echo $this->bsForm->input('Proyecto.fase_id',array('empty'=>'--seleccione--','id'=>'fases', 'class'=>'sd_fases form-control', 'data-child'=>'estados', 'data-target'=>'#estados'));
+							echo $this->bsForm->input('Proyecto.estado_id',array('empty'=>'--seleccione--','id'=>'estados', 'class'=>'sd_fases form-control'));
+						?>
 
-						echo $this->bsForm->input('Proyecto.activo',array('label'=>'Activar Proyecto'));
+						<div class="form-group col-sm-6 bs-switch">
+							<label for="ProyectoActivo">Proyecto Activado</label>
+							<?php echo $this->Form->checkbox('Proyecto.activo', array('id'=>'ProyectoActivo')); ?>
+						</div>
+						<div class="form-group col-sm-6 bs-switch">
+							<label for="ProyectoBloqueado">Proyecto Bloqueado</label>
+							<?php echo $this->Form->checkbox('Proyecto.bloqueado', array('id'=>'ProyectoBloqueado')); ?>
+						</div>
 
-						echo $this->bsForm->input('Proyecto.bloqueado',array('label'=>'Bloquear Proyecto'));
-					?>
 					</div>
 				</div>
 
@@ -72,9 +78,11 @@
 
 
 	<?php $this->Html->scriptStart(array('inline' => false)); ?>
-
+			$('.bs-switch input[type=checkbox]').bootstrapSwitch({
+				onText: "Si",
+				offText: "No",
+			});
 			$('.sd_programa').selectDepend("<?php echo $this->Html->url(array('controller'=>'proyectos', 'action'=>'selectlist_programas')); ?>","-- seleccione --");
 			$('.sd_fases').selectDepend("<?php echo $this->Html->url(array('controller'=>'proyectos', 'action'=>'selectlist_fases')); ?>","-- seleccione --");
-
 	<?php $this->Html->scriptEnd(); ?>
 </section><!-- /.content -->
