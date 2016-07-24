@@ -68,17 +68,14 @@ class ProyectosController extends AppController {
         if(isset($this->request->query['a'])){
           $this->set('menuActive',$this->request->query['a']);
         }
+
+        if($tipo_autor == 'jurado'){
+          $this->render('index_jurados');
+        }
     }
 
     private function proyectos_autor($usuario_id, $tipo_autor = 'all'){
-      if($tipo_autor == 'all' or $tipo_autor == null){
-        $proyectos_autor = $this->Proyecto->Autor->find('list',array(
-  					'conditions'=>array(
-  						'Autor.usuario_id'=>$usuario_id,
-  					),
-  					'fields'=>array('Autor.proyecto_id'),
-  				));
-      }else{
+      if( in_array($tipo_autor, array('estudiante','tutoracad','tutormetod')) ){
         $proyectos_autor = $this->Proyecto->Autor->find('list',array(
           'conditions'=>array(
             'Autor.usuario_id'=>$usuario_id,
@@ -86,6 +83,20 @@ class ProyectosController extends AppController {
           ),
           'fields'=>array('Autor.proyecto_id'),
         ));
+      }elseif($tipo_autor == 'jurado'){
+        $proyectos_autor = $this->Proyecto->Jurado->find('list',array(
+          'conditions'=>array(
+            'Jurado.usuario_id'=>$usuario_id,
+          ),
+          'fields'=>array('Jurado.proyecto_id'),
+        ));
+      }else{
+        $proyectos_autor = $this->Proyecto->Autor->find('list',array(
+  					'conditions'=>array(
+  						'Autor.usuario_id'=>$usuario_id,
+  					),
+  					'fields'=>array('Autor.proyecto_id'),
+  				));
       }
 
       return $proyectos_autor;
@@ -226,6 +237,7 @@ class ProyectosController extends AppController {
 
 		public function view($id = null){
       if (!$this->Proyecto->exists($id)) { throw new NotFoundException(__('Invalid proyecto')); }
+
       $this->allowProyecto($id);
 
       $proyecto = $this->Proyecto->find('first', array(

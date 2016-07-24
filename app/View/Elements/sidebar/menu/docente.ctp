@@ -20,7 +20,7 @@
 		<?php endif; ?>
 
 		<?php if($mod_activo['proyecto.jurados']): ?>
-			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Jurado',array('controller'=>'proyectos','action'=>'indexJurado','?'=>array('a'=>'jurado')),array('escape'=>false));?></li>
+			<li><?php echo $this->Html->link('<i class="fa fa-circle-o"></i>Jurado',array('controller'=>'proyectos','action'=>'index','?'=>array('a'=>'jurado')),array('escape'=>false));?></li>
 		<?php endif; ?>
 
 	</ul>

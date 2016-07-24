@@ -16,7 +16,6 @@ class AutorsController extends AppController {
 	public function view_proyecto_estudiantes($proyecto_id = null){
 		$this->layout = 'ajax';
 		$proyecto = $this->Autor->Proyecto->getField(array('id','bloqueado','activo'), $proyecto_id);
-		if(!$proyecto){ throw new NotFoundException(__('Invalid proyecto')); }
 		$this->allowProyecto($proyecto_id);
 
 		$estudiantes = $this->Autor->find('all',array(
@@ -325,15 +324,7 @@ class AutorsController extends AppController {
 			}
 		}
 
-		if($autor['TipoAutor']['code'] == 'estudiante'){
-			return $this->redirect(array('controller'=>'proyectos','action' => 'index'));
-		}elseif($autor['TipoAutor']['code'] == 'tutoracad'){
-			return $this->redirect(array('controller'=>'proyectos','action' => 'indexTutorAcad'));
-		}elseif($autor['TipoAutor']['code'] == 'tutormetod'){
-			return $this->redirect(array('controller'=>'proyectos','action' => 'indexTutorMetod'));
-		}else{
-			return $this->redirect(array('controller'=>'pages','action' => 'index'));
-		}
+		return $this->redirect(  array('controller'=>'proyectos','action' => 'index', '?'=>array('a'=>$autor['TipoAutor']['code'])) );
 	}
 
 

@@ -114,6 +114,7 @@ class AppController extends Controller {
 
 	public function allowProyecto($proyecto_id){
 		$this->loadModel('Autor');
+		$this->loadModel('Jurado');
 
 		$this->Autor->Proyecto->id = $proyecto_id;
 		if (!$this->Autor->Proyecto->exists()) { throw new NotFoundException(__('Proyecto Invalido!')); }
@@ -125,9 +126,22 @@ class AppController extends Controller {
 				'Autor.activo'=>true,
 			),
 		));
+
 		if($proyecto_autor > 0 or $this->Permit->user('root') or $this->Permit->user('admin') or $this->Permit->user('coordpg')){
 			return true;
 		}
+
+		$proyecto_jurado = $this->Jurado->find('count', array(
+			'conditions'=>array(
+				'Jurado.proyecto_id'=>$proyecto_id,
+				'Jurado.usuario_id'=>$this->Auth->user('id'),
+			),
+		));
+
+		if($proyecto_jurado > 0){
+			return true;
+		}
+
 		throw new NotFoundException(__('Proyecto no Pertenece al Usuario Actual'));
 	}
 

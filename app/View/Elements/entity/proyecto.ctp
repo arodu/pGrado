@@ -7,7 +7,8 @@
 ?>
 <?php
   // Buscar si el autor se encuentra activo en el proyecto que se este revisando en ese momento
-  $user_activo = false;
+  $user_activo = ( isset($user_activo) ? $user_activo : false );
+
   foreach ($proyecto['Autor'] as $autor) {
     if($autor['usuario_id'] == $userInfo['id']){
       $user_activo = $autor['activo'];
@@ -21,6 +22,7 @@
   $checkbox = ( isset($checkbox) ? $checkbox : false );
 	$progreso = ( isset($progreso) ? $progreso : false );
   $ancla = ( isset($ancla) ? $ancla : array() );
+
 ?>
 <?php
 	$class = ($proyecto['Proyecto']['activo'] ? 'blue' : '');

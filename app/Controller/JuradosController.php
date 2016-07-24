@@ -8,17 +8,8 @@ class JuradosController extends AppController {
 	}
 
 	public function view($proyecto_id = null) {
-
 		$this->layout = 'ajax';
-
-		$proyecto_autor = $this->Jurado->Proyecto->Autor->find('first',array(
-			'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-			'recursive'=>-1,
-		));
-
-		if(empty($proyecto_autor)){
-			throw new NotFoundException(__('Invalid proyecto'));
-		}
+		$this->allowProyecto($proyecto_id);
 
 		$jurados_data = $this->Jurado->find('all',array(
 				'conditions'=>array('Jurado.proyecto_id'=>$proyecto_id),

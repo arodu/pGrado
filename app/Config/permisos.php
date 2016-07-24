@@ -22,16 +22,16 @@
 				//Controladores
 				'proyectos'=>array(
 						'index'=>array('loged'),
-						'verActivo'=>array('estudiante'),
+						//'verActivo'=>array('estudiante'),
 
 						'add'=>array('estudiante'),
 						'getCategoria'=>array('estudiante'),
-						'escenario_edit'=>array('estudiante'),
-						'delete'=>array('estudiante'),
+						//'escenario_edit'=>array('estudiante'),
+						'delete'=>array('estudiante','coordpg'),
 
-						'indexTutorAcad'=>array('tutoracad'),
-						'indexTutorMetod'=>array('tutormetod'),
-						'indexJurado'=>array('tutoracad'),
+						//'indexTutorAcad'=>array('tutoracad'),
+						//'indexTutorMetod'=>array('tutormetod'),
+						//'indexJurado'=>array('tutoracad'),
 
 						'view'=>'loged',
 						'info'=>'loged',
@@ -46,7 +46,7 @@
 						//'admin_view'=>array('admin','coordpg'),
 						//'admin_estados_list'=>array('coordpg'),
 						//'admin_edit'=>array('coordpg'),
-						'admin_asignacion_jurados'=>array('coordpg'),
+						//'admin_asignacion_jurados'=>array('coordpg'),
 						//'admin_edit_batch'=>array('coordpg'),
 					),
 
@@ -71,8 +71,7 @@
 				'jurados'=>array(
 						'datos_impresion'=>array('coordpg'),
 						'editar_datos_impresion'=>array('coordpg'),
-						'view' => array('loged'),
-
+						'view' => array('loged'),	
 
 						'grupo_meta'=>array('coordpg'),
 						'buscar_proyectos'=>array('coordpg'),
@@ -142,16 +141,16 @@
 				'autors'=>array(
 						'add'=>array('estudiante', 'coordpg', 'admin', 'root'),
 						'addCompanero'=>array('estudiante'),
-						'solicitud'=>array('estudiante','tutoracad','tutormetod'),
-						'delete'=>array('estudiante'),
+						'solicitud'=>array('loged'),
+						'delete'=>array('loged'),
 
 						'view_proyecto_estudiantes'=>'loged',
 						'add_estudiante'=>array('estudiante', 'coordpg', 'admin', 'root'),
-						'delete_estudiante'=>array('estudiante', 'coordpg', 'admin', 'root'),
+						'delete_estudiante'=>array('loged'),
 
 						'view_proyecto_tutors'=>'loged',
 						'add_tutor'=>array('estudiante', 'coordpg', 'admin', 'root'),
-						'delete_tutor'=>array('estudiante', 'coordpg', 'admin', 'root'),
+						'delete_tutor'=>array('loged'),
 					),
 
 				'pages'=>array(
