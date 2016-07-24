@@ -147,7 +147,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading"><strong><?php echo __('Descripcion'); ?></strong></div>
 							<div class="text-justify panel-body">
-								<?php echo $ultima['Revision']['descripcion'];?>
+								<?php echo $revision['Revision']['descripcion'];?>
 								&nbsp;
 							</div>
 						</div>

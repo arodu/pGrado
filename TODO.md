@@ -1,4 +1,9 @@
 ## TODO
+* No esta guardando el escenario para el tutor academico
+* No se esta imprimiendo la planilla 001
+* Lanza un error en la asignacion_jurados cuando no tiene tutor Academicos
+* Bloquear proyectos/view cuando usuario sea jurado
+
 * Agregar tipo_autor para entrar en la areas comunes (proyectos, proyecto_view)  --> ?a=estudiante, ?a=coordpg, ?a=tutoracad
 * Administrar Grupos
 * Agregar Modulo de Movimientos por lotes
@@ -23,10 +28,3 @@
 * Pasar todos los layouts a adminlte
 * Tomar screeenshots para la presentacion
 * Revisar controller del usuario popover
-
-
-
-No esta guardando el escenario para el tutor academico
-No se esta imprimiendo la planilla 001
-Lanza un error en la asignacion_jurados cuando no tiene tutor Academicos
-Bloquear proyectos/view cuando usuario sea jurado
