@@ -28,7 +28,7 @@
 
 				if($mod_activo['proyecto.jurados']){
 					$right = 	array_merge(
-						array('<i class="fa fa-users fa-fw"></i> '.__('Asignar Jurados') => array('controller'=>'proyectos','action'=>'asignacion_jurados','admin'=>true,$proyecto['Proyecto']['id'])),
+						array('<i class="fa fa-users fa-fw"></i> '.__('Asignar Jurados') => array('controller'=>'admin','action'=>'proyectos_asignacion_jurados',$proyecto['Proyecto']['id'])),
 						$right
 					);
 				}
@@ -298,9 +298,7 @@
 		<?php echo $this->Html->script('/libs/jquery-file-upload/js/vendor/jquery.ui.widget',array('inline'=>false)); ?>
 		<?php echo $this->Html->script('/libs/jquery-file-upload/js/jquery.fileupload.js',array('inline'=>false)); ?>
 		<?php echo $this->Html->script('/libs/jquery-autosize/dist/autosize.min',array('inline'=>false)); ?>
-		<?php echo $this->Html->script('/libs/jquery-form/jquery.form',array('inline'=>false)); ?>
 		<?php echo $this->Html->script('/libs/mixitup/build/jquery.mixitup.min', array('inline'=>false)); ?>
-		<?php echo $this->Html->script('/libs/jquery-maskedinput/dist/jquery.maskedinput.min',array('inline'=>false)); ?>
 
 	<?php // ----------------- JavaScript ------------------- ?>
 		<?php $this->Html->scriptStart(array('inline' => false)); ?>
@@ -332,7 +330,7 @@
 
 			// ----------------- Cargar Jurados -------------------
 				$('.box-body a.btn-tab-jurados').on('shown.bs.tab', function (e) {
-					$('#tab-jurados').recargar("<?php echo $this->Html->url(array('controller'=>'proyectos','action'=>'view_jurados',$proyecto['Proyecto']['id']));?>");
+					$('#tab-jurados').recargar("<?php echo $this->Html->url(array('controller'=>'jurados','action'=>'view',$proyecto['Proyecto']['id']));?>");
 				});
 
 		<?php $this->Html->scriptEnd(); ?>

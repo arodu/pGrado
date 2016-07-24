@@ -11,14 +11,10 @@
 						<?php foreach ($jurados[$fase_id] as $jurado) { ?>
 							<li>
 								<a class="btn-perfil text-center" tabindex="0" role="button" data-id="<?php echo $jurado['Usuario']['id'];?>">
-								<?php
-									$user_imagen = $this->element('usuario/avatarMD',array('foto' => $jurado['Usuario']['foto']));
-
-									echo $this->Html->image($user_imagen,array('class'=>'users-list-img img-responsive img-circle'));
-								?>
+								<?php echo $this->Custom->userFoto( $jurado['Usuario']['avatar'], 'md', array('class'=>'img-circle','data-id' => $jurado['Usuario']['id']) ); ?>
 								<span class="users-list-name"><?php echo $jurado['Usuario']['nombre_completo']; ?></span></a>
 								<span class="users-list-date"><?php echo $jurado['TipoJurado']['nombre']; ?></span>
-							</li>						
+							</li>
 						<?php } ?>
 					</ul>
 				</fieldset>

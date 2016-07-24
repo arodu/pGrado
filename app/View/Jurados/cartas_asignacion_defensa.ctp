@@ -1,6 +1,7 @@
-<?php 
+<?php
+	error_reporting(false);
 	$espacio = '&nbsp;&nbsp;&nbsp;&nbsp;';
-	$cod = 'UTF-8'; 
+	$cod = 'UTF-8';
 
 	$css = '<style type="text/css">
 				.parrafo {text-align:justify;text-indent:40pt;margin-bottom:10pt;line-height: 1.2;}
@@ -9,16 +10,9 @@
 				.strong{font-weight:bold;}
 			</style>';
 
-	$this->Pdf->init();
-	//$this->Pdf->SetFont('helvetica', '', 11);
-	$this->Pdf->SetFont('freesans', '', 11);
+	$out = array();
 
-	$this->Pdf->SetMargins(17,30);
-
-	// debug($proyectos); exit();
-
-	foreach ($proyectos as $proyecto) {
-
+	foreach ($proyectos as $proyecto):
 		// AUTORES
 			$tutoracad = null;
 			$estudiante = null;
@@ -86,114 +80,39 @@
 
 		$proyecto['Jurado'][] = $aux;
 
-		foreach ($proyecto['Jurado'] as $jurado) {
+		foreach ($proyecto['Jurado'] as $jurado):
 			$html = '';
 			//<p class="right strong">San Juan de los Morros, 08 de Abril de 2015</p>
-			$html .= '
-				
-				<p class="right strong">San Juan de los Morros, '.$this->General->dateFormatComplete($grupo_meta['fecha_comun']).'</p>
+			$html .= '<p class="right strong">San Juan de los Morros, '.$this->General->dateFormatComplete($grupo_meta['fecha_comun']).'</p>';
+			$html .= '<p style="text-align: left;">Ciudadano(a):<br/>';
+			$html .= '<span class="strong">PROF. '.mb_strtoupper($jurado['Usuario']['nombre_completo'],$cod).'</span></p>';
+			$html .= '<p class="parrafo">Me es grato dirigirme a usted a los fines de notificarle que en el Consejo de Estudios de Postgrado de la Universidad Nacional Experimental de los Llanos Centrales Rómulo Gallegos, en <span class="strong">Sesión Ordinaria N° '.$grupo_meta['no_consj_area'].' de fecha, '.$grupo_meta['fecha_consj_area'].'</span>, fue designado(a) <span class="strong">JURADO '.mb_strtoupper($jurado['TipoJurado']['nombre'],$cod).'</span>, para evaluar el '.$trabajo.' titulado: <span class="strong">'.mb_strtoupper($proyecto['Revision'][0]['titulo'],$cod).'</span>, realizado por el(la) ciudadano(a): <span class="strong">'.mb_strtoupper($estudiante['Usuario']['nombre_completo'],$cod).'</span>, Titular de la Cédula de Identidad N° <span class="strong">'.mb_strtoupper($estudiante['Usuario']['cedula'],$cod).'</span>, como requisito parcial para obtener el grado de <span class="strong">'.mb_strtoupper($proyecto['Programa']['grado'],$cod).'</span>.</p>';
+			$html .= '<p class="parrafo">Es de señalar que de acuerdo a lo establecido en el Reglamento de Estudios de Postgrado vigente, en el capítulo III, artículos 112 y 113 respectivamente, corresponde al Tutor(a)-Coordinador(a) del Jurado convocar a los demás miembros para la discusión del trabajo y fijar la fecha para la defensa pública del mismo, en un plazo máximo de treinta (30) días hábiles.</p>';
+			$html .= '<p class="parrafo">Anexo a la presente el Trabajo en referencia e Instrumento de Evaluación para plasmas las observaciones y sugerencias que considere pertinentes, en un lapso de 5 - 10 días, a partir de haber recibido esta correspondencia. Dicho instrumento deberá consignarlo al Tutor(a)-Coordinador(a) del Jurado, quien lo remitirá al participante para incorporar las observaciones y sugerencias a que hubiere lugar, en la versión definitiva.</p>';
+			$html .= '<p class="parrafo">El jurado está conformado de la siguiente manera:</p>';
+			$html .= '<p>'.$tabla_jurados.'</p>';
+			$html .= '<p class="parrafo">Con la seguridad de contar con su presencia en la defensa del Trabajo, quedo de usted.</p>';
+			$html .= '<p class="center">Atentamente;</p>';
+			$html .= '<p>&nbsp;<br/></p>';
+			$html .= '<p class="center strong">'.$firma['asignacion_jurados.firma.nombre'].'<br/>';
+			$html .= $firma['asignacion_jurados.firma.cargo'].'</p>';
 
-			<p style="text-align: left;">Ciudadano(a):<br/>
-			<span class="strong">PROF. '.mb_strtoupper($jurado['Usuario']['nombre_completo'],$cod).'</span></p>
+			$out[] = $html;
+
+		endforeach;
+	endforeach;
 
 
-			<p class="parrafo">Me es grato dirigirme a usted a los fines de notificarle que en el Consejo de Estudios de Postgrado de la Universidad Nacional Experimental de los Llanos Centrales Rómulo Gallegos, en <span class="strong">Sesión Ordinaria N° '.$grupo_meta['no_consj_area'].' de fecha, '.$grupo_meta['fecha_consj_area'].'</span>, fue designado(a) <span class="strong">JURADO '.mb_strtoupper($jurado['TipoJurado']['nombre'],$cod).'</span>, para evaluar el '.$trabajo.' titulado: <span class="strong">'.mb_strtoupper($proyecto['Revision'][0]['titulo'],$cod).'</span>, realizado por el(la) ciudadano(a): <span class="strong">'.mb_strtoupper($estudiante['Usuario']['nombre_completo'],$cod).'</span>, Titular de la Cédula de Identidad N° <span class="strong">'.mb_strtoupper($estudiante['Usuario']['cedula'],$cod).'</span>, como requisito parcial para obtener el grado de <span class="strong">'.mb_strtoupper($proyecto['Programa']['grado'],$cod).'</span>.</p>
 
-			<p class="parrafo">Es de señalar que de acuerdo a lo establecido en el Reglamento de Estudios de Postgrado vigente, en el capítulo III, artículos 112 y 113 respectivamente, corresponde al Tutor(a)-Coordinador(a) del Jurado convocar a los demás miembros para la discusión del trabajo y fijar la fecha para la defensa pública del mismo, en un plazo máximo de treinta (30) días hábiles.</p>
-
-			<p class="parrafo">Anexo a la presente el Trabajo en referencia e Instrumento de Evaluación para plasmas las observaciones y sugerencias que considere pertinentes, en un lapso de 5 - 10 días, a partir de haber recibido esta correspondencia. Dicho instrumento deberá consignarlo al Tutor(a)-Coordinador(a) del Jurado, quien lo remitirá al participante para incorporar las observaciones y sugerencias a que hubiere lugar, en la versión definitiva.</p>
-				
-			<p class="parrafo">El jurado está conformado de la siguiente manera:</p>
-
-			<p>'.$tabla_jurados.'</p>
-
-				<p class="parrafo">Con la seguridad de contar con su presencia en la defensa del Trabajo, quedo de usted.</p>
-
-				<p class="center">Atentamente;</p>
-				<p>&nbsp;<br/></p>
-				<p class="center strong">'.$firma['asignacion_jurados.firma.nombre'].'<br/>
-				'.$firma['asignacion_jurados.firma.cargo'].'</p>
-			';
-
-			//$html .= $jurado['id'].'<br/>';
-			//$html .= $jurado['TipoJurado']['nombre'].'<br/>';
-			//$html .= $jurado['Usuario']['nombre_completo'].'<br/>';
-			//$html .= $proyecto['Revision'][0]['titulo'].'<br/>';
-			//$html .= '<hr/>';
-
-			// add a page
-			$this->Pdf->AddPage();
-
-			// output the HTML content
-			$this->Pdf->writeHTML($css.$html);
-			//$this->Pdf->writeHTML($html);
-
-		}
-
-		//$html = ;
-
-		/*
-			echo $css.$html;
-			debug($proyecto);
-			debug($planilla);
-			debug($jurados);
-			exit();
-		/**/
-
-		//$barcode = $this->Html->url(array('controller'=>'planillas','action'=>'verificar',$planilla['Planilla']['id'],$verificacion),true);
-
-		//$this->Pdf->core->setBarcode( $barcode );
-
-		//$html .= $barcode;
-
-		// set font
-		//debug($proyecto); exit();
+	$css = $this->element('pdf/style');
+	$this->Pdf->init(array('tipo'=>'memo'));
+	$this->Pdf->SetFont('freesans', '', 8);
+	$this->Pdf->writeHTML($css);
+	foreach ($out as $page) {
+		$this->Pdf->AddPage();
+		$this->Pdf->writeHTML($html);
 	}
-	// reset pointer to the last page
 	$this->Pdf->lastPage();
-	// ---------------------------------------------------------
-	//Close and output PDF document
-	$this->Pdf->Output($title_for_layout.'.pdf', 'D');
-
-	//============================================================+
-	// END OF FILE
-	//============================================================+
-	/**/
-
-
-
-	/*
-					San Juan de los Morros, 08 de Abril de 2015	
-
-Ciudadano(a):
-PROF. ASDADA ASD ASASDADD
-
-
-	Me es grato dirigirme a usted a los fines de notificarle que en el Consejo de Estudios de Postgrado de la Universidad Nacional Experimental de los Llanos Centrales Rómulo Gallegos, en #Sesión Ordinaria N° 03 de fecha, 07/04/2015#, fue designado(a) #JURADO SUPLENTE#, para evaluar el #Trabajo Doctoral# titulado: #TITULO DEL TRABAJO#, realizado por el(la) ciudadano(a): #NOMBRE COMPLETO#, Titular de la Cédula de Identidad N° #2313123#, como requisito parcial para obtener el grado de #DOCTOR(A) EN CIENCIAS DE LA EDUCACION#.
-	Es de señalar que de acuerdo a lo establecido en el Reglamento de Estudios de Postgrado vigente, en el capítulo III, articulos 112 y 113 respectivamente, corresponde al Tutor(a)-Coordinador(a) del Jurado convocar a los demas miembros para la discusión del trabajo y fijar la fecha para la defensa pública del mismo, en un plazo máximo de treinta (30) días hábiles.
-	Anexo a la presente el Trabajo en referencia e Instrumento de Evaluación para plasmas las observaciones y sugerencias que considere pertinentes, en un lapso de 5 - 10 días, a partir de haber recibido esta correspondencia. Dicho instrumento deberá consignarlo al Tutor(a)-Coordinador(a) del Jurado, quien lo remitirá al participante para incorporar las observaciones y sugerencias a que hubiere lugar, en la versión definitiva.
-	El jurado está conformado de la siguiente manera:
-
-JURADO PRINCIPAL	|	JURADO SUPLENTE
-Prof. sd		|	Prof. dwdwef
-Tutor Coordinador	|	Prof. wefwfwe
-Prof. dqd		|	Prof. wfwefw
-Prof. qwd		|	Prof. fwef
-Prof. qd	
-Prof. qd	
-
-	Con la seguridad de contar con su presencia en la defensa del Trabajo, quedo de usted.
-
-	Atentamente;
-
-
-	Dra. Nellys Chirinos
-	Directora Académica de Postgrado
-	*/
-
-
+	$this->Pdf->Output($title_for_layout.'.pdf', 'I');
 
 ?>
-
-
-

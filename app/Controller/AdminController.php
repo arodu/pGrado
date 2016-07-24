@@ -64,10 +64,8 @@ class AdminController extends AppController {
   }
 
 	public function proyectos_edit($proyecto_id = null) {
-		if (!$this->Proyecto->exists($proyecto_id)) {
-			throw new NotFoundException(__('Invalid proyecto'));
-		}
 
+    $this->allowProyecto($proyecto_id);
     $proyecto_view = $this->Proyecto->findProyecto($proyecto_id);
 
 		if ($this->request->is(array('post', 'put'))) {
@@ -179,6 +177,120 @@ class AdminController extends AppController {
     $tipoUsuarios = $this->Usuario->TipoUsuario->find('list');
     $this->set(compact('usuarios','sedes','tipoUsuarios'));
   }
+
+  public function proyectos_asignacion_jurados($proyecto_id = null, $fase_id = null){
+    $this->allowProyecto($proyecto_id);
+    $proyecto = $this->Proyecto->findProyecto($proyecto_id);
+    if( $fase_id == null){
+      $fase_id = $proyecto['Proyecto']['fase_id'];
+    }
+
+    $fases = $this->Proyecto->Fase->find('list',array('conditions'=>array('Fase.tiene_jurados'=>true)));
+
+    if( !isset( $fases[$fase_id] )){
+      $this->Flash->alert_error('No se puede Asignar Jurados en la fase actual del Proyecto');
+      return $this->redirect(array('controller'=>'proyectos', 'action'=>'view', $proyecto_id));
+    }
+
+
+
+    if ($this->request->is(array('post', 'put'))) {
+
+      ksort($this->request->data['Jurado']);
+      $jurados = $this->request->data['Jurado'];
+      $proyecto_id = $this->request->data['Proyecto']['id'];
+
+
+      //debug($jurados); exit();
+
+      $jurados_data = null;
+      $jurados_id = null;
+      foreach ($jurados as $jurado) {
+        $aux = null;
+        $aux['proyecto_id'] = $proyecto_id;
+        $aux['fase_id'] = $fase_id;
+
+        $jurados_data[]['Jurado'] = array_merge($jurado,$aux);
+        if ( $jurado['id'] != '' ){ $jurados_id[] =  $jurado['id']; }
+      }
+
+      $jurados_rmv = $this->Proyecto->Jurado->find('list',array(
+        'conditions'=>array(
+            'Jurado.proyecto_id'=>$proyecto_id,
+            'Jurado.fase_id'=>$fase_id,
+            'NOT'=>array('Jurado.id' => $jurados_id),
+          )
+      ));
+
+      if( !empty($jurados_rmv) ){
+        $this->Proyecto->Jurado->deleteAll( array('Jurado.id'=>$jurados_rmv) );
+      }
+
+      if($this->Proyecto->Jurado->saveMany($jurados_data)){
+        $this->Session->setFlash(__('Asignación de Jurados en la fase <strong>'.$fases[$fase_id].'</strong> realizado con exito'),'alert/success');
+        return $this->redirect(array('action'=>'proyectos_asignacion_jurados',$proyecto_id,$fase_id));
+      }
+
+    }else{
+
+      $jurados = $this->Proyecto->Jurado->find('all',array(
+          'conditions'=>array(
+              'Jurado.proyecto_id' => $proyecto['Proyecto']['id'],
+              'Jurado.fase_id' => $fase_id,
+            ),
+        ));
+      $this->set(compact('jurados'));
+
+    }
+
+    /*$proyecto = $this->Proyecto->find('first',array(
+          'conditions'=>array('Proyecto.id'=>$proyecto_id),
+          'contain'=>array(
+              'Fase','Estado',
+              'Revision'=>array(
+                  'limit'=>'1','order'=>array('Revision.updated'=>'DESC'),
+                  'fields'=>array('id','titulo')
+                ),
+              'Autor'=>array(
+                'conditions'=>array(
+                  'Autor.tipo_autor_id'=>$this->Proyecto->Autor->TipoAutor->findIdByCode( array('estudiante','tutoracad') ),
+                ),
+                'Usuario'=>array(
+                  'fields'=>array('cedula_nombre_completo'),
+                )
+              ),
+            ),
+        )); */
+
+    $tutoracad = $this->Proyecto->Autor->find('first', array(
+      'conditions'=>array(
+        'Autor.proyecto_id'=>$proyecto_id,
+        'Autor.tipo_autor_id'=>$this->Proyecto->Autor->TipoAutor->findIdByCode('tutoracad'),
+      ),
+      'contain'=>array('Usuario'),
+    ));
+
+    $usuarios = $this->Proyecto->Autor->Usuario->find('list',array(
+        'conditions'=>array(
+          'Usuario.tipo_usuario_id' =>  $this->Proyecto->Autor->Usuario->TipoUsuario->findIdByCode('profesor'),
+          'NOT'=>array(
+            'Usuario.id'=>$tutoracad['Autor']['usuario_id'],
+          )
+        ),
+        'fields'=>array('id','nombre_completo'),
+        'order'=>array('nombres','apellidos'),
+      ));
+
+    $tipo_jurados = $this->Proyecto->Jurado->TipoJurado->find('list');
+
+    $fase = $this->Proyecto->Fase->find('first',array(
+        'conditions'=>array('Fase.id'=>$fase_id),
+      ));
+
+    $this->set(compact('proyecto','usuarios','tipo_jurados','fases','fase_id','fase','tutoracad'));
+    //debug($proyecto); exit();
+  }
+
 
 }
 ?>

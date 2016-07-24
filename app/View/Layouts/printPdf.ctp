@@ -3,7 +3,7 @@
 
     // $barcode = $this->Html->url(array('controller'=>'planillas','action'=>'verificar','001',$verificacion),true);
 
-	$html = $this->fetch('content');
+    $html = $this->fetch('content');
 
     $this->Pdf->init();
 

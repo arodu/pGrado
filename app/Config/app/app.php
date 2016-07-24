@@ -89,7 +89,7 @@
 				'proyecto.archivos' => true,
 				'proyecto.escenarios' => true,
 				'proyecto.comentarios' => true,
-				'proyecto.jurados' => false,
+				'proyecto.jurados' => true,
 				'proyecto.metas' => true,
 				'proyecto.asuntos' => true,
 

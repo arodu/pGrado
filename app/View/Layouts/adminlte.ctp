@@ -92,9 +92,12 @@
 			#echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min'); // smalot-sootstrap-datetimepicker
 			#echo $this->Html->script('/libs/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es'); // smalot-sootstrap-datetimepicker
 
+			echo $this->Html->script('/libs/jquery-form/jquery.form');
 			echo $this->Html->script('/libs/AdminLTE/plugins/slimScroll/jquery.slimscroll.min'); // Slimscroll
 			echo $this->Html->script('/libs/AdminLTE/plugins/fastclick/fastclick.min'); // FastClick
 			echo $this->Html->script('/libs/bootstrap-switch/dist/js/bootstrap-switch.min'); // bootstrap-switch
+			echo $this->Html->script('/libs/jquery-maskedinput/dist/jquery.maskedinput.min');
+
 			echo $this->Html->script('pGrado'); // pGrado
 			//echo $this->Html->script('/libs/AdminLTE/js/demo'); // AdminLTE for demo purposes
 

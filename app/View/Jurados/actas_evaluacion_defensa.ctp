@@ -1,24 +1,12 @@
-<?php 
+<?php
+	error_reporting(false);
 	$espacio = '&nbsp;&nbsp;&nbsp;&nbsp;';
-	$cod = 'UTF-8'; 
+	$cod = 'UTF-8';
 	$esp_firma = '&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>';
 
-	$css = '<style type="text/css">
-				.parrafo {text-align:justify;text-indent:40pt;margin-bottom:10pt;line-height: 1.4;}
-				.center{text-align:center;}
-				.right{text-align:right;}
-				.strong{font-weight:bold;}
-			</style>';
+	$pages = array();
 
-	$this->Pdf->init(array('tipo'=>'memo'));
-	//$this->Pdf->SetFont('helvetica', '', 11);
-	$this->Pdf->SetFont('freesans', '', 11);
-
-	$this->Pdf->SetMargins(17,30);
-
-	// debug($proyectos); exit();
-
-	foreach ($proyectos as $proyecto) {
+	foreach ($proyectos as $proyecto):
 
 		// AUTORES
 			$tutoracad = null;
@@ -63,7 +51,7 @@
 
 					$tabla_jurados .= '<td colspan="2" class="center">';
 					if(!$coordinador){
-						
+
 						$tabla_jurados .= $esp_firma;
 						$tabla_jurados .= 'Prof. (Tutor(a) - Coordinador(a)) '.mb_strtoupper($tutoracad['Usuario']['nombre_completo'],$cod).'<br/>';
 						$tabla_jurados .= 'C.I. No. '.$tutoracad['Usuario']['cedula'];
@@ -71,7 +59,7 @@
 						$tabla_jurados .= '&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>';
 						$tabla_jurados .= 'Prof. Tutor(a) '.mb_strtoupper($tutoracad['Usuario']['nombre_completo'],$cod).'<br/>';
 						$tabla_jurados .= 'C.I. No. '.$tutoracad['Usuario']['cedula'];
-						
+
 					}
 					$tabla_jurados .= '</td>';
 
@@ -185,66 +173,27 @@
 
 			$html = '';
 			//<p class="right strong">San Juan de los Morros, 08 de Abril de 2015</p>
-			$html .= '
-				
-				<p class="center strong">ACTA DE EVALUACIÓN<br/>'.$trabajo['title'].'</p>
+			$html .= '<p class="text-center strong">ACTA DE EVALUACIÓN<br/>'.$trabajo['title'].'</p>';
+			$html .= '<p class="parrafo">Nosotros, '.$texto_jurados.' En nuestro carácter de Jurados Principales designados por el Consejo de Estudios de Postgrado de la Universidad Nacional Experimental de los Llanos Centrales Rómulo Gallegos, en  <span class="strong"> Sesión Ordinaria N° '.$grupo_meta['no_consj_area'].' de fecha, '.$grupo_meta['fecha_consj_area'].'</span>, para evaluar '.$trabajo['text'].' presentado por el(la) ciudadano(a): <span class="strong">'.mb_strtoupper($estudiante['Usuario']['nombre_completo'],$cod).'</span>, Titular de la Cédula de Identidad N° <span class="strong">'.$estudiante['Usuario']['cedula'].'</span>, Titulado: <span class="strong">'.mb_strtoupper($proyecto['Revision'][0]['titulo'],$cod).'</span>, mediante el cual, opta al Grado de <span class="strong">'.mb_strtoupper($proyecto['Programa']['grado'],$cod).'</span>, dejamos constancia de que dicho Trabajo fue:<br/>APROBADO____, NO APROBADO____.</p>';
+			$html .= '<p class="parrafo">Observaciones: __________________________________________________________________________________________________________________________________________________________________________________________________________________________</p>';
+			$html .= '<p class="parrafo">En fe de todo lo anterior suscribimos la presente ACTA DE EVALUACIÓN, En la Ciudad de San Juan de los Morros a los _____ dias del mes de __________________ del año __________.</p>';
+			$html .= $tabla_jurados;
 
-				<p class="parrafo">Nosotros, '.$texto_jurados.' En nuestro carácter de Jurados Principales designados por el Consejo de Estudios de Postgrado de la Universidad Nacional Experimental de los Llanos Centrales Rómulo Gallegos, en  <span class="strong"> Sesión Ordinaria N° '.$grupo_meta['no_consj_area'].' de fecha, '.$grupo_meta['fecha_consj_area'].'</span>, para evaluar '.$trabajo['text'].' presentado por el(la) ciudadano(a): <span class="strong">'.mb_strtoupper($estudiante['Usuario']['nombre_completo'],$cod).'</span>, Titular de la Cédula de Identidad N° <span class="strong">'.$estudiante['Usuario']['cedula'].'</span>, Titulado: <span class="strong">'.mb_strtoupper($proyecto['Revision'][0]['titulo'],$cod).'</span>, mediante el cual, opta al Grado de <span class="strong">'.mb_strtoupper($proyecto['Programa']['grado'],$cod).'</span>, dejamos constancia de que dicho Trabajo fue:<br/>APROBADO____, NO APROBADO____.</p>
+			$pages[] = $html;
 
-				<p class="parrafo">Observaciones: __________________________________________________________________________________________________________________________________________________________________________________________________________________________</p>
-
-				<p class="parrafo">En fe de todo lo anterior suscribimos la presente ACTA DE EVALUACIÓN, En la Ciudad de San Juan de los Morros a los _____ dias del mes de __________________ del año __________.</p>
-
-			'.$tabla_jurados;
-
-			//mb_strtoupper($jurado['TipoJurado']['nombre'],$cod)
-
-			//$html .= $jurado['id'].'<br/>';
-			//$html .= $jurado['TipoJurado']['nombre'].'<br/>';
-			//$html .= $jurado['Usuario']['nombre_completo'].'<br/>';
-			//$html .= $proyecto['Revision'][0]['titulo'].'<br/>';
-			//$html .= '<hr/>';
-
-			// add a page
-			$this->Pdf->AddPage();
-
-			// output the HTML content
-			$this->Pdf->writeHTML($css.$html);
-			//$this->Pdf->writeHTML($html);
+	endforeach;
 
 
-		//$html = ;
-
-		/*
-			echo $css.$html;
-			debug($proyecto);
-			debug($planilla);
-			debug($jurados);
-			exit();
-		/**/
-
-		//$barcode = $this->Html->url(array('controller'=>'planillas','action'=>'verificar',$planilla['Planilla']['id'],$verificacion),true);
-
-		//$this->Pdf->core->setBarcode( $barcode );
-
-		//$html .= $barcode;
-
-		// set font
-		//debug($proyecto); exit();
+	$css = $this->element('pdf/style');
+	$this->Pdf->init(array('tipo'=>'memo'));
+	$this->Pdf->SetFont('freesans', '', 8);
+	$this->Pdf->writeHTML($css);
+	foreach ($pages as $page) {
+		$this->Pdf->AddPage();
+		$this->Pdf->writeHTML($html);
 	}
-	// reset pointer to the last page
 	$this->Pdf->lastPage();
-	// ---------------------------------------------------------
-	//Close and output PDF document
-	$this->Pdf->Output($title_for_layout.'.pdf', 'D');
-
-	//============================================================+
-	// END OF FILE
-	//============================================================+
-	/**/
+	$this->Pdf->Output($title_for_layout.'.pdf', 'I');
 
 
 ?>
-
-
-

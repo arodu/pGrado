@@ -8,6 +8,7 @@
 					'proyectos_move'=>array('coordpg','admin','root'),
 					'proyectos_move_trans'=>array('coordpg','admin','root'),
 					'usuarios_directorio'=>array('coordpg','admin','root'),
+					'proyectos_asignacion_jurados'=>array('coordpg','admin','root'),
 				),
 
 				'grupos'=>array(
@@ -68,10 +69,12 @@
 
 				'jurados'=>array(
 						'datos_impresion'=>array('coordpg'),
+						'editar_datos_impresion'=>array('coordpg'),
+						'view' => array('loged'),
+
+
 						'grupo_meta'=>array('coordpg'),
 						'buscar_proyectos'=>array('coordpg'),
-
-
 						// Imresiones PDF
 						'cartas_asignacion_defensa'=>array('coordpg'),
 						'actas_evaluacion_defensa'=>array('coordpg'),

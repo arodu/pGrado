@@ -1,4 +1,1 @@
-<?php
-	echo $this->fetch('content');
-	//echo $this->element('sql_dump');
-?>
+<?php echo $this->fetch('content');

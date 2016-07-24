@@ -7,46 +7,116 @@ class JuradosController extends AppController {
 		parent::beforeFilter();
 	}
 
-	public function datos_impresion(){
+	public function view($proyecto_id = null) {
 
+		$this->layout = 'ajax';
+
+		$proyecto_autor = $this->Jurado->Proyecto->Autor->find('first',array(
+			'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
+			'recursive'=>-1,
+		));
+
+		if(empty($proyecto_autor)){
+			throw new NotFoundException(__('Invalid proyecto'));
+		}
+
+		$jurados_data = $this->Jurado->find('all',array(
+				'conditions'=>array('Jurado.proyecto_id'=>$proyecto_id),
+				'contain'=>array(
+					'TipoJurado',
+					'Usuario'=>array('fields'=>array('id','nombre_completo','email','avatar')),
+				),
+			));
+
+		$aux = null;
+		foreach ($jurados_data as $jurado_data) {
+			$aux[$jurado_data['Jurado']['fase_id']][] = $jurado_data;
+		}
+
+		$this->set('jurados',$aux);
+
+		$fases = $this->Jurado->Proyecto->Fase->find('list',array('order'=>array('orden'=>'DESC')));
+
+		$this->set('fases',$fases);
+	}
+
+
+	public function datos_impresion(){
 		if ($this->request->is(array('post', 'put'))) {
 
-			//$this->set('extra',$this->request->data['Extra']);
+			if($this->request->data['btn'] == 'buscar'){
+				return $this->redirect(array('action'=>'editar_datos_impresion', $this->request->data['Proyecto']['grupo_id'], $this->request->data['Proyecto']['fase_id']));
+			}
 
-			$grupo = $this->Jurado->Proyecto->Grupo->find('first',array('conditions'=>array('Grupo.id'=>$this->request->data['Proyecto']['grupo_id'])));
-			$old_meta = json_decode($grupo['Grupo']['meta'],true);
-			$old_meta = ( $old_meta['fases'] ? $old_meta['fases'] : array() );
-			$new_meta = array($this->request->data['Proyecto']['fase_id'] => $this->request->data['GrupoMeta']);
-			$meta = array( 'fases'=>array_replace($old_meta,$new_meta) );
 
-			$grupo_meta = json_encode($meta);
+			exit();
+		}else{
+			$fases = $this->Jurado->Proyecto->Fase->find('list',array('conditions'=>array('Fase.tiene_jurados'=>true)));
+			$grupos = $this->Jurado->Proyecto->Grupo->find('list');
+			$this->set(compact(array('fases','grupos')));
+		}
+	}
 
-			$grupo_data['Grupo'] = array(
-					'id'=>$this->request->data['Proyecto']['grupo_id'],
-					'meta'=>$grupo_meta,
+	public function editar_datos_impresion($grupo_id, $fase_id){
+		$this->layout = 'ajax';
+		$this->loadModel('Grupo');
+		$grupo = $this->Grupo->find('first',array('conditions'=>array('Grupo.id'=>$grupo_id)));
+		$meta = json_decode($grupo['Grupo']['meta'],true);
+		$empty = true;
+		if ($this->request->is(array('post', 'put'))) {
+			$grupo_id = $this->request->data['GrupoMeta']['grupo_id'];
+			$fase_id = $this->request->data['GrupoMeta']['fase_id'];
+			$meta_data = array(
+				'no_consj_area' => $this->request->data['GrupoMeta']['no_consj_area'],
+				'fecha_consj_area' => $this->request->data['GrupoMeta']['fecha_consj_area'],
+				'fecha_comun' => $this->request->data['GrupoMeta']['fecha_comun']
+			);
+
+			$meta['fases'][$fase_id] = $meta_data;
+
+			$data['Grupo'] = array(
+				'id'=>$grupo_id,
+				'meta'=>json_encode($meta),
+			);
+
+			if( $this->Grupo->save($data) ){
+				$this->Flash->alert_success('Información Guardada con Exito!');
+				$empty = false;
+			}else{
+				$this->Flash->alert_error('No se ha podido guardar la información');
+			}
+
+		}else{
+			$grupo_meta = $meta['fases'][$fase_id];
+			if( isset($grupo_meta) and !empty($grupo_meta) ){
+				$this->request->data['GrupoMeta'] = array(
+					'grupo_id'=>$grupo_id,
+					'fase_id'=>$fase_id,
+					'no_consj_area' => $grupo_meta['no_consj_area'],
+					'fecha_consj_area' => $grupo_meta['fecha_consj_area'],
+					'fecha_comun' => $grupo_meta['fecha_comun'],
 				);
-
-			if($this->Jurado->Proyecto->Grupo->save($grupo_data)){
-				$this->Session->setFlash('Datos Guardados correctamente','alert/success');
-
-				if($this->request->data['boton'] == 'comunicacion'){
-					return $this->redirect( array('action'=>'cartas_asignacion_defensa',$this->request->data['Proyecto']['grupo_id']) );
-
-				}elseif($this->request->data['boton'] == 'actas_evaluacion'){
-					return $this->redirect( array('action'=>'actas_evaluacion_defensa',$this->request->data['Proyecto']['grupo_id']) );
-
-				}else{
-					$this->set('grupo_meta',true);
-
-				}
+				$empty = false;
+			}else{
+				$this->request->data['GrupoMeta'] = array(
+					'grupo_id'=>$grupo_id,
+					'fase_id'=>$fase_id,
+					'no_consj_area' => null,
+					'fecha_consj_area' => null,
+					'fecha_comun' => null
+				);
 			}
 		}
 
-		$fases = $this->Jurado->Proyecto->Fase->find('list',array('conditions'=>array('Fase.tiene_jurados'=>true)));
-		$grupos = $this->Jurado->Proyecto->Grupo->find('list');
-
-		$this->set(compact(array('fases','grupos')));
+		$cant_proyectos = $this->Jurado->Proyecto->find('count', array(
+			'contidions'=>array(
+				'Proyecto.grupo_id'=>$grupo_id,
+				'Proyecto.fase_id'=>$fase_id,
+			)
+		));
+		$this->set(compact(array('cant_proyectos', 'empty')));
 	}
+
 
 	public function grupo_meta($grupo_id, $fase_id){
 
@@ -92,6 +162,8 @@ class JuradosController extends AppController {
 
 	public function cartas_asignacion_defensa($grupo_id = null, $proyecto_id = null ){
 		$this->layout = 'vacio';
+		//$this->layout = 'pdfMultiPage';
+
 		$this->response->type('application/pdf');
 		$this->set('title_for_layout','cartasAsignacionDefensa');
 
@@ -137,6 +209,10 @@ class JuradosController extends AppController {
 			)
 		);
 
+		if(empty($proyectos)){
+			throw new NotFoundException(__('No hay Proyectos con Jurados para mostrar.'));
+		}
+
 		$this->set('proyectos',$proyectos);
 
 		// Firma
@@ -146,7 +222,6 @@ class JuradosController extends AppController {
 					'fields'=>array('clave','valor')
 				));
 			$this->set('firma',$firma);
-
 
 		// Datos del Comunicado
 			$grupo = $this->Jurado->Proyecto->Grupo->find('first',array(
