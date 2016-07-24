@@ -2,6 +2,8 @@
 App::uses('AppController', 'Controller');
 class PanelAdminAppController extends AppController {
 
+	public $layout = 'sb-admin';
+
 	public $components = array(
 		'Session',
 		/*'Permisos'=>array(
