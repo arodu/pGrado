@@ -30,7 +30,7 @@
 		?>
 
 		<script type="text/javascript">
-			var popover_url = "<?php echo $this->Html->url(array('controller'=>'usuarios','action'=>'view_pop','admin'=>false)).'/'; ?>";
+			var popover_url = "<?php echo $this->Html->url(array('controller'=>'usuarios','action'=>'popover')).'/'; ?>";
 		</script>
 
 	</head>

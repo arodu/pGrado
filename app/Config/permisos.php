@@ -109,7 +109,7 @@
 				'usuarios'=>array(
 						'index'=>'loged',
 						'view'=>'loged',
-						'view_pop'=>'loged',
+						'popover'=>'loged',
 						'edit'=>'loged',
 						'editpassword'=>'loged',
 						'editcategorias'=>'loged',

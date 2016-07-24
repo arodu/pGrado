@@ -31,17 +31,14 @@ class UsuariosController extends AppController {
 			$this->redirect(array('action'=>'view'));
 		}
 
-		public function view_pop($id){
+		public function popover($id){
 			$this->layout = 'ajax';
 			$usuario = $this->Usuario->find('first',array(
 					'conditions'=>array('Usuario.id'=>$id),
 					'contain'=>array(
-							'Sede','TipoUsuario','DescripcionUsuario'
+							'Sede','TipoUsuario'
 						),
 				));
-
-			// debug($usuario);
-
 			$this->set('usuario',$usuario);
 		}
 

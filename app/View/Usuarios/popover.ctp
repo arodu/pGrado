@@ -7,6 +7,6 @@
 	<div class="media-body">
 		<strong><?php echo $usuario['Usuario']['nombre_completo']; ?></strong><br/>
 		<?php echo $usuario['TipoUsuario']['nombre'].' - '.$usuario['Sede']['nombre']; ?><br/>
-		<?php echo $usuario['Usuario']['email']; ?><br/>
+		<?php echo $usuario['Usuario']['email']; ?>
 	</div>
 </div>

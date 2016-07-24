@@ -95,7 +95,7 @@
 
 				'external.google_analytics' => false,
 				'external.google_recaptcha' => false,
-				'external.facebook_page' => true,   // true only if twitter_timeline is false
+				'external.facebook_page' => false,   // true only if twitter_timeline is false
 				'external.twitter_timeline' => false,   // true only if facebook_page is false
 			);
 
