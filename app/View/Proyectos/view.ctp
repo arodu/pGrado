@@ -6,15 +6,16 @@
 		}
 	?>
 
-<?php // ----------------- HEADER ------------------- ?>
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Proyecto <small>Ver Proyecto</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Proyectos')=>array('controller'=>'proyectos','action'=>'index'),
-		__('Ver Proyecto')=>true,
-	)); ?>
-</section>
+<?php
+	echo $this->element('commons/header_view', array(
+		'title'=>'Proyectos',
+		'subtitle'=>'Ver Proyecto',
+		'breadcrumb'=>array(
+			__('Proyectos')=>array('controller'=>'proyectos','action'=>'index'),
+			__('Ver Proyecto')=>true,
+		)
+	));
+?>
 
 <!-- Main content -->
 <section class="content">

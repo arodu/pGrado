@@ -16,11 +16,6 @@ class AsuntosController extends AppController {
 	public $components = array('Paginator');
 	public $layout = 'ajax';
 
-/**
- * index method
- *
- * @return void
- */
 	public function index($proyecto_id) {
 		$this->layout = 'ajax';
 		$this->allowProyecto($proyecto_id);
@@ -46,28 +41,6 @@ class AsuntosController extends AppController {
 		$this->set(compact('asuntos', 'proyecto_id', 'metas', 'usuarios_proyecto'));
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
- /*
-	public function view($id = null) {
-		if (!$this->Asunto->exists($id)) {
-			throw new NotFoundException(__('Invalid asunto'));
-		}
-		$options = array('conditions' => array('Asunto.' . $this->Asunto->primaryKey => $id));
-		$this->set('asunto', $this->Asunto->find('first', $options));
-	}
-	*/
-
-/**
- * add method
- *
- * @return void
- */
 	public function add($proyecto_id) {
 		$this->layout = 'ajax';
 		$this->allowProyecto($proyecto_id);
@@ -97,21 +70,12 @@ class AsuntosController extends AppController {
 		$this->set(compact('metas', 'responsables','proyecto_id', 'success'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function edit($id = null) {
-		if (!$this->Asunto->exists($id)) {
-			throw new NotFoundException(__('Invalid asunto'));
-		}
 		$this->layout = 'ajax';
+		if (!$this->Asunto->exists($id)) { throw new NotFoundException(__('Invalid asunto')); }
+		$this->allowProyecto($proyecto_id);
 		$proyecto_id = $this->Asunto->find('proyecto_id', array('conditions'=>array('Asunto.id'=>$id)));
 		$this->userOwner($this->Asunto, $id);
-		$this->allowProyecto($proyecto_id);
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Asunto->save($this->request->data)) {
@@ -158,18 +122,8 @@ class AsuntosController extends AppController {
 		$this->set(compact('asunto', 'success'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function delete($id = null) {
-		$this->Asunto->id = $id;
-		if (!$this->Asunto->exists()) {
-			throw new NotFoundException(__('Invalid asunto'));
-		}
+		if (!$this->Asunto->exists($id)) { throw new NotFoundException(__('Invalid asunto')); }
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Asunto->delete()) {
 			//$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
@@ -179,4 +133,5 @@ class AsuntosController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
 }

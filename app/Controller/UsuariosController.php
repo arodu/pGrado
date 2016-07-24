@@ -126,10 +126,10 @@ class UsuariosController extends AppController {
 			$this->set('options',$this->options);
 
 			//exit();
+			$this->set('usuario', $this->Usuario->getField(array('id','nombre_completo'), $id));
 
 			$this->render('edit_'.Configure::read('Sistema.tipo'));
 		}
-
 
 		public function editpassword() {
 			$id = $this->Auth->user('id');
@@ -142,6 +142,7 @@ class UsuariosController extends AppController {
 				}
 			}
 			$this->request->data = array('Usuario'=>array('id'=>$id));
+			$this->set('usuario', $this->Usuario->getField(array('id','nombre_completo'), $id));
 		}
 
 
@@ -217,6 +218,8 @@ class UsuariosController extends AppController {
 					$this->Flash->alert_error('Error Cargando el Archivo');
 				}
 			}
+
+			$this->set('usuario', $this->Usuario->getField(array('id','nombre_completo'), $id));
 		}
 
 

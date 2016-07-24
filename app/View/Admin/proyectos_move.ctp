@@ -1,11 +1,13 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Proyectos <small>Movimientos</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Listado Proyectos')=>array('controller'=>'admin','action'=>'proyectos_index'),
-		__('Movimientos')=>true,
-	)); ?>
-</section>
+<?php
+	echo $this->element('commons/header_view', array(
+		'title'=>'Proyecto',
+		'subtitle'=>'Movimientos',
+		'breadcrumb'=>array(
+			__('Listado Proyectos')=>array('controller'=>'admin','action'=>'proyectos_index'),
+			__('Movimientos')=>true,
+		)
+	));
+?>
 
 <!-- Main content -->
 <section class="content">

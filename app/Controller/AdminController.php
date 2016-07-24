@@ -4,7 +4,6 @@ class AdminController extends AppController {
 
   public $uses = array('Proyecto');
 	public $components = array('Paginator', 'Session','Search');
-  public $layout = 'adminlte';
 
   public function beforeFilter(){
     parent::beforeFilter();

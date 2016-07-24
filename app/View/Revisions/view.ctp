@@ -1,3 +1,5 @@
+
+<!-- 
 <div class="text-muted text-right">
 	<small>
 		<strong>Ultima Actualización: </strong><br class="visible-xs" />
@@ -6,7 +8,7 @@
 </div>
 
 
-<?php // ----------------- BOX RESUMEN ------------------- ?> 
+<?php // ----------------- BOX RESUMEN ------------------- ?>
 	<div class="box box-default box-solid">
 		<div class="box-header with-border">
 			<strong><?php echo __('Resumen'); ?></strong>
@@ -18,7 +20,7 @@
 		</div>
 
 		<div class="box-footer">
-			<?php 
+			<?php
 			$etiquetas = explode(',', $revision['etiquetas']);
 			foreach ($etiquetas as $etiqueta) {
 				echo '<span class="label label-default">'.trim($etiqueta).'</span> ';
@@ -28,7 +30,7 @@
 
 	</div>
 
-<?php // ----------------- BOX DESCRIPCION ------------------- ?> 
+<?php // ----------------- BOX DESCRIPCION ------------------- ?>
 	<div class="box box-default box-solid">
 		<div class="box-header with-border">
 			<strong><?php echo __('Descripción'); ?></strong>
@@ -38,9 +40,9 @@
 		<div class="box-body text-justify">
 			<?php echo $this->General->htmlTrim($revision['descripcion']); ?>
 		</div>
-	</div>	
+	</div>
 
-<?php // ----------------- BOX OBSERVACIONES ------------------- ?> 
+<?php // ----------------- BOX OBSERVACIONES ------------------- ?>
 	<div class="box box-default box-solid">
 		<div class="box-header with-border">
 			<strong><?php echo __('Observaciones'); ?></strong>
@@ -51,8 +53,10 @@
 				if($revision['observaciones'] == ''){
 					echo '<div class="text-muted"><small>Sin Observaciones</small></div>';
 				}else{
-					echo $this->General->htmlTrim($revision['observaciones']);		
+					echo $this->General->htmlTrim($revision['observaciones']);
 				}
 			?>
 		</div>
 	</div>
+
+-->

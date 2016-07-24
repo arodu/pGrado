@@ -1,5 +1,4 @@
 <?php
-
 	$meta_id = $this->bsForm->value('Meta.id');
 
 	$metas[$meta_id] =  array(

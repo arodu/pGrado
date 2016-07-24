@@ -4,6 +4,7 @@ App::uses('AppController', 'Controller');
 class ComentariosController extends AppController {
 
 	//public $uses = array('Comentario','Mensaje');
+	public $layout = 'ajax';
 
 	public function beforeFilter(){
 		$this->verificarModulo('proyecto.comentarios');
@@ -82,7 +83,7 @@ class ComentariosController extends AppController {
 		$this->set(compact('success','proyecto_id'));
 	}
 
-	function toLink($text){
+	private function toLink($text){
 		$text = html_entity_decode($text);
 		$text = " ".$text;
 		$text = eregi_replace('(((f|ht){1}tp://)[-a-zA-Z0-9@:%_+.~#?&//=]+)','<a href="\1" target="_blank">\1</a>', $text);
@@ -115,6 +116,5 @@ class ComentariosController extends AppController {
 		}
 		$this->set(compact('success', 'proyecto_id'));
 	}
-
 
 }

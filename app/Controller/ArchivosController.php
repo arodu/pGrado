@@ -10,8 +10,8 @@ App::uses('AppController', 'Controller');
 class ArchivosController extends AppController {
 
 	public $components = array('Session','Imagen');
-
 	private $sufijo = '.min';
+	public $layout = 'ajax';
 
 	public function beforeFilter(){
 		$this->verificarModulo('proyecto.archivos');
@@ -45,7 +45,6 @@ class ArchivosController extends AppController {
 
 		return $this->response;
 	}
-
 
 	public function miniatura($id = null){
 		return $this->imagen($id,true);
@@ -145,41 +144,6 @@ class ArchivosController extends AppController {
 		}
 	}
 
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-/*	public function edit($id = null) {
-		if (!$this->Archivo->exists($id)) {
-			throw new NotFoundException(__('Invalid archivo'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Archivo->save($this->request->data)) {
-				$this->Session->setFlash(__('The archivo has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The archivo could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Archivo.' . $this->Archivo->primaryKey => $id));
-			$this->request->data = $this->Archivo->find('first', $options);
-		}
-		$proyectos = $this->Archivo->Proyecto->find('list');
-		$usuarios = $this->Archivo->Usuario->find('list');
-		$this->set(compact('proyectos', 'usuarios'));
-	} */
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function delete($id = null) {
 		$this->layout = 'ajax';
 		$archivo = $this->Archivo->find('first', array('conditios'=>array('Archivo.id'=>$id)));

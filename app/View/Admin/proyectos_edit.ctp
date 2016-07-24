@@ -1,12 +1,14 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Proyecto <small>Editar Datos del Proyecto</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Listado Proyectos')=>array('controller'=>'admin','action'=>'proyectos_index'),
-		__('Ver Proyecto')=>array('controller'=>'proyectos','action'=>'view',$this->bsForm->value('Proyecto.id')),
-		__('Editar')=>true,
-	)); ?>
-</section>
+<?php
+	echo $this->element('commons/header_view', array(
+		'title'=>'Proyecto',
+		'subtitle'=>'Editar Datos del Proyecto',
+		'breadcrumb'=>array(
+			__('Listado Proyectos')=>array('controller'=>'admin','action'=>'proyectos_index'),
+			__('Ver Proyecto')=>array('controller'=>'proyectos','action'=>'view',$this->bsForm->value('Proyecto.id')),
+			__('Editar')=>true,
+		)
+	));
+?>
 
 <!-- Main content -->
 <section class="content">

@@ -27,22 +27,9 @@
   $class = (!$proyecto['Proyecto']['bloqueado'] ? $class : 'red');
 ?>
 <div class="item-proyecto callout callout-gray <?php echo $class?>">
+
 	<div class="row">
-
-		<?php if(!$user_activo): ?>
-			<div class="col-md-3 controles">
-				<div class="well well-sm text-justify">
-          Le han solicitado ser <em><?php echo $tipo_solicitud ?></em> en este Trabajo de Grado:<br/>
-          ¿Aceptar solicitud?
-					<div class="btn-group btn-group-justified">
-            <?php echo $this->Form->postLink('<strong><i class="fa fa-check fa-fw"></i>SI</strong>', array('controller'=>'autors','action' => 'solicitud', $autor_id,'si'),array('class'=>'btn btn-warning btn-xs','escape'=>false), __('¿Esta seguro que desea Aceptar esta Solicitud?')); ?>
-            <?php echo $this->Form->postLink('<strong><i class="fa fa-ban fa-fw"></i>NO</strong>', array('controller'=>'autors','action' => 'solicitud', $autor_id,'no'),array('class'=>'btn btn-default btn-xs','escape'=>false), __('¿Esta seguro que NO desea Aceptar esta Solicitud?')); ?>
-					</div>
-				</div>
-			</div>
-		<?php endif; ?>
-
-		<div class="<?php echo ($user_activo ? 'col-md-12' : 'col-md-9') ?>">
+		<div class="<?php echo ($user_activo ? 'col-md-12' : 'col-md-9 col-md-push-3') ?>">
 			<div class="row">
 		    <div class="col-md-12 titulo">
 		      <?php
@@ -65,7 +52,7 @@
 		  </div>
 		  <div class="row">
 				<div class="col-md-3 autors">
-          <?php $estudiantes = $this->Custom->getTipoAutor($proyecto['Autor'], 'estudiante'); ?>
+          <?php $estudiantes = $this->Custom->usuariosList($this->Custom->getTipoAutor($proyecto['Autor'], 'estudiante')); ?>
 					<div class="tipo_autor"><?php echo ( count($estudiantes) > 1 ? 'Autores' : 'Autor'); ?></div>
           <?php foreach ($estudiantes as $estudiante): ?>
             <div><?php echo $estudiante ?></div>
@@ -86,22 +73,22 @@
 						<li><?php echo $proyecto['Sede']['nombre'] ?></li>
 					</ul>
 		    </div>
-				<div class="row">
-          <?php $tutoracad = $this->Custom->getTipoAutor($proyecto['Autor'], 'tutoracad'); ?>
-          <?php if(!empty($tutoracad)): ?>
-  					<div class="col-md-6 autors">
-  						<div><strong>Tutor Académico: </strong><?php echo implode(', ',$tutoracad) ?></div>
-  					</div>
-          <?php endif; ?>
+      </div>
+			<div class="row tutors">
+        <?php $tutoracad = $this->Custom->usuariosList( $this->Custom->getTipoAutor($proyecto['Autor'], 'tutoracad') ); ?>
+        <?php if(!empty($tutoracad)): ?>
+					<div class="col-md-6">
+						<div><strong>Tutor Académico: </strong><?php echo implode(', ',$tutoracad) ?></div>
+					</div>
+        <?php endif; ?>
 
-          <?php $tutormetod = $this->Custom->getTipoAutor($proyecto['Autor'], 'tutormetod'); ?>
-          <?php if(!empty($tutormetod)): ?>
-  					<div class="col-md-6 autors">
-  						<div><strong>Tutor Metodológico: </strong><?php echo implode(', ',$tutormetod) ?></div>
-  					</div>
-          <?php endif; ?>
-				</div>
-		  </div>
+        <?php $tutormetod = $this->Custom->usuariosList( $this->Custom->getTipoAutor($proyecto['Autor'], 'tutormetod') ); ?>
+        <?php if(!empty($tutormetod)): ?>
+					<div class="col-md-6">
+						<div><strong>Tutor Metodológico: </strong><?php echo implode(', ',$tutormetod) ?></div>
+					</div>
+        <?php endif; ?>
+			</div>
 			<?php if($progreso !== false): ?>
 				<div class="row">
 					<div class="col-md-12 progreso">
@@ -113,6 +100,19 @@
 				</div>
 			<?php endif; ?>
 		</div>
+
+    <?php if(!$user_activo): ?>
+			<div class="col-md-3 col-md-pull-9 solicitud">
+				<div class="well well-sm text-justify">
+          Le han solicitado ser <em><?php echo $tipo_solicitud ?></em> en este Trabajo de Grado:<br/>
+          ¿Aceptar solicitud?
+					<div class="btn-group btn-group-justified">
+            <?php echo $this->Form->postLink('<strong><i class="fa fa-check fa-fw"></i>SI</strong>', array('controller'=>'autors','action' => 'solicitud', $autor_id,'si'),array('class'=>'btn btn-warning btn-xs','escape'=>false), __('¿Esta seguro que desea Aceptar esta Solicitud?')); ?>
+            <?php echo $this->Form->postLink('<strong><i class="fa fa-ban fa-fw"></i>NO</strong>', array('controller'=>'autors','action' => 'solicitud', $autor_id,'no'),array('class'=>'btn btn-default btn-xs','escape'=>false), __('¿Esta seguro que NO desea Aceptar esta Solicitud?')); ?>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
 
 
 	</div>

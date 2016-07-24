@@ -1,7 +1,8 @@
-za3## TODO
-* Agregar avatar y el usuario_inactivo al index de estudiante/tutorAcademico/tutorMetodologico
-* Pasar todos los layouts a adminlte
+## TODO
+* Tomar screeenshots para la presentacion
+* Revisar controller del usuario popover
 * Agregar tipo_autor para entrar en la areas comunes (proyectos, proyecto_view)  --> ?a=estudiante, ?a=coordpg, ?a=tutoracad
+* Administrar Grupos
 * Agregar Modulo de Movimientos por lotes
 * Agregar Modulo de Jurados
 
@@ -20,3 +21,5 @@ za3## TODO
 * Revisar menuActivo
 * Modificar los el proyecto index de estudiante/tutorAcademico/tutorMetodologico
 * Editar Escenario del Proyecto con modal-link
+* Agregar avatar y el usuario_inactivo al index de estudiante/tutorAcademico/tutorMetodologico
+* Pasar todos los layouts a adminlte

@@ -2,6 +2,7 @@
 App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
+	public $layout = 'adminlte';
 	public $components = array(
 		'DebugKit.Toolbar',
 		'Flash',

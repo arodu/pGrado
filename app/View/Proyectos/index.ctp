@@ -1,10 +1,12 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Proyectos <small>Indice</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Proyectos')=>true,
-	)); ?>
-</section>
+<?php
+	echo $this->element('commons/header_view', array(
+		'title'=>'Proyectos',
+		'subtitle'=>'Indice',
+		'breadcrumb'=>array(
+			__('Proyectos')=>true,
+		)
+	));
+?>
 
 <!-- Main content -->
 <section class="content proyectos index">

@@ -10,7 +10,6 @@ class RevisionsController extends AppController {
 
 
 	public $uses = array('Revision','Mensaje');
-	public $layout = 'adminlte';
 /**
  * Components
  *

@@ -9,41 +9,9 @@ App::uses('AppController', 'Controller');
 class AutorsController extends AppController {
 
 	public $uses = array('Autor','Mensaje');
-
-/**
- * Components
- *
- * @var array
- */
 	public $components = array('Paginator');
+	public $layout = 'ajax';
 
-/**
- * index method
- *
- * @return void
- */
-/*
-	public function index() {
-		$this->Autor->recursive = 0;
-		$this->set('autors', $this->Paginator->paginate());
-	} */
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-/*
-	public function view($id = null) {
-		if (!$this->Autor->exists($id)) {
-			throw new NotFoundException(__('Invalid autor'));
-		}
-		$options = array('conditions' => array('Autor.' . $this->Autor->primaryKey => $id));
-		$this->set('autor', $this->Autor->find('first', $options));
-	}
-*/
 
 	public function view_proyecto_estudiantes($proyecto_id = null){
 		$this->layout = 'ajax';
@@ -275,36 +243,6 @@ class AutorsController extends AppController {
 		$this->set('proyecto_id', $autor['Autor']['proyecto_id']);
 		$this->set(compact('success','tipoAutor'));
 	}
-
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-/*	public function edit($id = null) {
-		if (!$this->Autor->exists($id)) {
-			throw new NotFoundException(__('Invalid autor'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Autor->save($this->request->data)) {
-				$this->Session->setFlash(__('The autor has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The autor could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Autor.' . $this->Autor->primaryKey => $id));
-			$this->request->data = $this->Autor->find('first', $options);
-		}
-		$proyectos = $this->Autor->Proyecto->find('list');
-		$usuarios = $this->Autor->Usuario->find('list');
-		$tipoAutors = $this->Autor->TipoAutor->find('list');
-		$this->set(compact('proyectos', 'usuarios', 'tipoAutors'));
-	}
-*/
 
 	public function solicitud($id = null,$resp = null) {
 		$this->Autor->id = $id;

@@ -13,14 +13,47 @@ class CustomHelper extends AppHelper {
   }
 
 
-	public function getTipoAutor($autores, $tipoAutor, $campo = 'nombre_completo'){
+	public function getTipoAutor($autores, $tipoAutor){
 		$out = array();
 		foreach($autores as $autor){
 			if($autor['TipoAutor']['code'] == $tipoAutor){
-				$out[ $autor['Usuario']['id'] ] = $autor['Usuario'][$campo];
+				$out[] = $autor;
 			}
 		}
 		return $out;
+	}
+
+	public function usuariosList($autores, $campo = 'nombre_completo'){
+		$out = array();
+		foreach ($autores as $autor) {
+			if($autor['activo']){
+				$out[] = $autor['Usuario'][$campo];
+			}else{
+				$out[] = $this->Html->tag('span',
+					'<i class="fa fa-user-times fa-fw btn-tooltip mano" title="No ha aceptado <br/>solicitud de proyecto"></i>'.$autor['Usuario'][$campo],
+					array('class'=>'text-muted')
+				);
+			}
+		}
+		return $out;
+	}
+
+	public function breadcrumb($list=array()){
+		$out = '';
+		$init = '<i class="fa fa-home"></i> '.__('Inicio');
+		if(empty($list)){
+			$out .= '<li class="active">'.$init.'</li>';
+		}else{
+			$out .= '<li>'.$this->Html->link($init, '/', array('escape'=>false)).'</li>';
+			foreach ($list as $value => $url) {
+				if($url === true){
+					$out .= '<li class="active">'.$value.'</li>';
+				}else{
+					$out .= '<li>'.$this->Html->link($value, $url, array('escape'=>false)).'</li>';
+				}
+			}
+		}
+		return '<ol class="breadcrumb">'.$out.'</ol>';
 	}
 
 }

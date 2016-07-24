@@ -1,23 +1,13 @@
 <?php
-	$this->assign('title-page', 'Proyectos <small>Agregar</small>');
-
-	$bc = array(
-			'items'=>array(
-					0 => array('title'=>'Proyectos','url'=>'/proyectos/index'),
-				),
-			'config'=>array('activo'=>'Agregar Proyecto')
-		);
-	$this->assign('breadcrumb', $this->element('commons/breadcrumb',array('bc'=>$bc)));
+	echo $this->element('commons/header_view', array(
+		'title'=>'Proyectos',
+		'subtitle'=>'Agregar',
+		'breadcrumb'=>array(
+			__('Proyectos')=>array('controller'=>'proyectos','action'=>'index'),
+			__('Agregar Proyecto')=>true,
+		)
+	));
 ?>
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Proyectos <small>Agregar</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Proyectos')=>array('controller'=>'proyectos','action'=>'index'),
-		__('Agregar Proyecto')=>true,
-	)); ?>
-</section>
 
 <!-- Main content -->
 <section class="content">

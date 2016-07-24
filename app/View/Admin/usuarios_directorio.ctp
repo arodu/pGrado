@@ -1,11 +1,13 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Usuarios <small>Directorio</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Listado Proyectos')=>array('controller'=>'admin','action'=>'proyectos_index'),
-		__('Directorio de Usuarios')=>true,
-	)); ?>
-</section>
+<?php
+	echo $this->element('commons/header_view', array(
+		'title'=>'Usuarios',
+		'subtitle'=>'Directorio',
+		'breadcrumb'=>array(
+			__('Listado Proyectos')=>array('controller'=>'admin','action'=>'proyectos_index'),
+			__('Directorio de Usuarios')=>true,
+		)
+	));
+?>
 
 <!-- Main content -->
 <section class="content">

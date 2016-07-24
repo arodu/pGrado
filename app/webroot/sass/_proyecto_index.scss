@@ -13,6 +13,9 @@
         margin-bottom: 0px;
       }
     }
+    .tutors{
+      padding-top: 8px;
+    }
     .autors{
       & > div {
         margin-left: 20px;
@@ -29,6 +32,12 @@
       .value{
         font-size: .7em;
         text-align: right;
+      }
+    }
+    .solicitud{
+      .well{
+        margin-top: 10px;
+        margin-bottom: 0;
       }
     }
     .etiquetas{

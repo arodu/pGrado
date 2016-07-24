@@ -1,14 +1,15 @@
 <?php $proyecto_id = $ultima['Revision']['proyecto_id']; ?>
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-	<h1>Revisiones <small>Comparar Revisiones</small></h1>
-	<?php echo $this->General->breadcrumb(array(
-		__('Proyectos')=>array('controller'=>'proyectos','action'=>'index'),
-		__('Ver Proyecto')=>array('controller'=>'proyectos','action'=>'view',$proyecto_id),
-		__('Comparar Revisiones')=>true,
-	)); ?>
-</section>
+<?php
+	echo $this->element('commons/header_view', array(
+		'title'=>'Revisiones',
+		'subtitle'=>'Comparar',
+		'breadcrumb'=>array(
+			__('Proyectos')=>array('controller'=>'proyectos','action'=>'index'),
+			__('Ver Proyecto')=>array('controller'=>'proyectos','action'=>'view',$proyecto_id),
+			__('Comparar Revisiones')=>true,
+		)
+	));
+?>
 
 <!-- Main content -->
 <section class="content">

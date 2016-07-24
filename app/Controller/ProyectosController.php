@@ -3,7 +3,6 @@ App::uses('AppController', 'Controller');
 class ProyectosController extends AppController {
   public $uses = array('Proyecto','Mensaje');
 	public $components = array('Paginator', 'Session','Search');
-  public $layout = 'adminlte';
 
 	// *************** METODOS PROYECTOS *************************
 		public function verActivo(){
