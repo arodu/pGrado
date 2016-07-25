@@ -1,23 +1,25 @@
 <div id="metas" class="metas index">
 	<div class="pull-right">
 		<?php
-			echo $this->Form->button('<i class="fa fa-plus fa-fw"></i> '.__('Nueva Meta'),array(
-				'type' => 'button',
-				'class'=>'btn btn-default btn-sm meta-modal-link',
-				'data-url'=> $this->Html->url(array('controller'=>'metas', 'action'=>'add', $proyecto_id)),
-				'data-action'=>'add',
-				'title'=>'Agregar Nueva Meta',
-			));
+			if( !$proyecto_bloqueado ){
+				echo $this->Form->button('<i class="fa fa-plus fa-fw"></i> '.__('Nueva Meta'),array(
+					'type' => 'button',
+					'class'=>'btn btn-default btn-sm meta-modal-link',
+					'data-url'=> $this->Html->url(array('controller'=>'metas', 'action'=>'add', $proyecto_id)),
+					'data-action'=>'add',
+					'title'=>'Agregar Nueva Meta',
+				));
+			}
 		?>
 	</div>
 	<div class="clearfix"></div>
 	<hr/>
 	<div>
-		<?php echo printMetas($metas, $this); ?>
+		<?php echo printMetas($metas, $this, 0, $proyecto_bloqueado); ?>
 	</div>
 </div>
 
-	<?php function printMetas($metas, $object, $rec = 0){ ?>
+	<?php function printMetas($metas, $object, $rec = 0, $proyecto_bloqueado = false){ ?>
 		<?php foreach($metas as $meta): ?>
 			<div class="meta">
 				<div class="row father">
@@ -50,42 +52,45 @@
 
 					</div>
 					<div class="col-md-2">
-						<?php if($meta['Meta']['cerrado']): ?>
-							<?php
-								echo $object->Form->button('<i class="fa fa-unlock-alt fa-fw"></i> '.__('Abrir'),array(
-									'type' => 'button',
-									'class'=>'btn btn-danger btn-xs btn-block meta-modal-link',
-									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
-									'data-action'=>'edit',
-									'title'=>'Abrir Meta',
-								));
-							?>
-						<?php else: ?>
-							<?php
-								echo $object->Form->button('<i class="fa fa-lock fa-fw"></i> '.__('Cerrar'),array(
-									'type' => 'button',
-									'class'=>'btn btn-primary btn-xs btn-block meta-modal-link',
-									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
-									'data-action'=>'edit',
-									'title'=>'Cerrar Meta',
-								));
-							?>
-							<?php
-								echo $object->Form->button('<i class="fa fa-edit fa-fw"></i> '.__('Editar'),array(
-									'type' => 'button',
-									'class'=>'btn btn-default btn-xs btn-block meta-modal-link',
-									'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'edit', $meta['Meta']['id'])),
-									'data-action'=>'edit',
-									'title'=>'Editar Meta',
-								));
-							?>
+
+						<?php if( !$proyecto_bloqueado ): ?>
+							<?php if($meta['Meta']['cerrado']): ?>
+								<?php
+									echo $object->Form->button('<i class="fa fa-unlock-alt fa-fw"></i> '.__('Abrir'),array(
+										'type' => 'button',
+										'class'=>'btn btn-danger btn-xs btn-block meta-modal-link',
+										'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
+										'data-action'=>'edit',
+										'title'=>'Abrir Meta',
+									));
+								?>
+							<?php else: ?>
+								<?php
+									echo $object->Form->button('<i class="fa fa-lock fa-fw"></i> '.__('Cerrar'),array(
+										'type' => 'button',
+										'class'=>'btn btn-primary btn-xs btn-block meta-modal-link',
+										'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'change', $meta['Meta']['id'])),
+										'data-action'=>'edit',
+										'title'=>'Cerrar Meta',
+									));
+								?>
+								<?php
+									echo $object->Form->button('<i class="fa fa-edit fa-fw"></i> '.__('Editar'),array(
+										'type' => 'button',
+										'class'=>'btn btn-default btn-xs btn-block meta-modal-link',
+										'data-url'=> $object->Html->url(array('controller'=>'metas', 'action'=>'edit', $meta['Meta']['id'])),
+										'data-action'=>'edit',
+										'title'=>'Editar Meta',
+									));
+								?>
+							<?php endif; ?>
 						<?php endif; ?>
 
 					</div>
 				</div>
 				<div class="child">
 					<!-- childs -->
-					<?php printMetas($meta['children'], $object, $rec+1); ?>
+					<?php printMetas($meta['children'], $object, $rec+1, $proyecto_bloqueado); ?>
 					<!-- /childs -->
 				</div>
 			</div>

@@ -351,4 +351,9 @@ class Proyecto extends AppModel {
 		return $proyecto;
 	}
 
+	public function bloqueado($proyecto_id){
+		$proyecto = $this->getField('bloqueado',$proyecto_id);
+		return $proyecto[$this->alias]['bloqueado'];
+	}
+
 }

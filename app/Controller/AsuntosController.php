@@ -39,6 +39,7 @@ class AsuntosController extends AppController {
 		$metas = $this->Asunto->Meta->generateTreeList(array('Meta.proyecto_id'=>$proyecto_id),null,null,'&nbsp;&nbsp;&nbsp;&nbsp;');
 		$usuarios_proyecto = $this->Asunto->Proyecto->Autor->usuarios($proyecto_id);
 		$this->set(compact('asuntos', 'proyecto_id', 'metas', 'usuarios_proyecto'));
+		$this->set('proyecto_bloqueado',$this->Asunto->Proyecto->bloqueado($proyecto_id));
 	}
 
 	public function add($proyecto_id) {

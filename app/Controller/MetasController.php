@@ -31,6 +31,7 @@ class MetasController extends AppController {
 		));
 
 		$this->set( compact('metas','proyecto_id') );
+		$this->set('proyecto_bloqueado', $this->Meta->Proyecto->bloqueado($proyecto_id));
 	}
 
 /**

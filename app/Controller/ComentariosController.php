@@ -30,6 +30,7 @@ class ComentariosController extends AppController {
 		$comentarios = $this->Comentario->find('all',$options);
 		$this->set('comentarios',$comentarios);
 		$this->set('proyecto_id',$proyecto_id);
+		// $this->set('proyecto_bloqueado', $this->Comentario->Proyecto->bloqueado($proyecto_id));
 	}
 
 	public function add() {

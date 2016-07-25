@@ -25,6 +25,8 @@ class ArchivosController extends AppController {
 				'conditions'=>array('Archivo.proyecto_id'=>$proyecto_id),
 				'order'=>array('Archivo.id'=>'DESC')
 			));
+
+		$this->set('proyecto_bloqueado',$this->Archivo->Proyecto->bloqueado($proyecto_id));
 		$this->set(compact('archivos','proyecto_id'));
 	}
 

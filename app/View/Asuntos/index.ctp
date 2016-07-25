@@ -65,15 +65,17 @@
 	<?php // ------------- Boton Agregar Asunto ------- ?>
 		<div class="pull-right">
 			<?php
-				echo $this->Html->link(
-					'<i class="fa fa-plus fa-fw"></i> '.__('Nuevo Asunto'),
-					array('controller'=>'asuntos', 'action'=>'add', $proyecto_id),
-					array(
-						'id'=>'btn-nuevo-asunto',
-						'class'=>'btn btn-default btn-sm',
-						'escape'=>false,
-					)
-				);
+				if( !$proyecto_bloqueado ){
+					echo $this->Html->link(
+						'<i class="fa fa-plus fa-fw"></i> '.__('Nuevo Asunto'),
+						array('controller'=>'asuntos', 'action'=>'add', $proyecto_id),
+						array(
+							'id'=>'btn-nuevo-asunto',
+							'class'=>'btn btn-default btn-sm',
+							'escape'=>false,
+						)
+					);
+				}
 			?>
 		</div>
 
@@ -112,43 +114,44 @@
 							</div>
 						</div>
 						<div class="col-md-2">
-							<?php if($asunto['Asunto']['cerrado']): ?>
-								<?php
-									echo $this->Html->link(
-										'<i class="fa fa-unlock-alt fa-fw"></i> '.__('Abrir'),
-										array('controller'=>'asuntos', 'action'=>'change', $asunto['Asunto']['id']),
-										array(
-											'class'=>'btn btn-danger btn-xs btn-block btn-edit-asunto',
-											'escape'=>false,
-										)
-									);
-								?>
-							<?php else: ?>
-								<?php
-									echo $this->Html->link(
-										'<i class="fa fa-lock fa-fw"></i> '.__('Cerrar'),
-										array('controller'=>'asuntos', 'action'=>'change', $asunto['Asunto']['id']),
-										array(
-											'class'=>'btn btn-primary btn-xs btn-block btn-edit-asunto',
-											'escape'=>false,
-										)
-									);
-								?>
+							<?php if( !$proyecto_bloqueado ): ?>
+									<?php if($asunto['Asunto']['cerrado']): ?>
+										<?php
+											echo $this->Html->link(
+												'<i class="fa fa-unlock-alt fa-fw"></i> '.__('Abrir'),
+												array('controller'=>'asuntos', 'action'=>'change', $asunto['Asunto']['id']),
+												array(
+													'class'=>'btn btn-danger btn-xs btn-block btn-edit-asunto',
+													'escape'=>false,
+												)
+											);
+										?>
+									<?php else: ?>
+										<?php
+											echo $this->Html->link(
+												'<i class="fa fa-lock fa-fw"></i> '.__('Cerrar'),
+												array('controller'=>'asuntos', 'action'=>'change', $asunto['Asunto']['id']),
+												array(
+													'class'=>'btn btn-primary btn-xs btn-block btn-edit-asunto',
+													'escape'=>false,
+												)
+											);
+										?>
 
-								<?php if( $userInfo['id'] == $asunto['Usuario']['id'] ): ?>
-									<?php
-										echo $this->Html->link(
-											'<i class="fa fa-edit fa-fw"></i> '.__('Editar'),
-											array('controller'=>'asuntos', 'action'=>'edit', $asunto['Asunto']['id']),
-											array(
-												'class'=>'btn btn-default btn-xs btn-block btn-edit-asunto',
-												'escape'=>false,
-											)
-										);
-									?>
-								<?php endif; ?>
+										<?php if( $userInfo['id'] == $asunto['Usuario']['id'] ): ?>
+											<?php
+												echo $this->Html->link(
+													'<i class="fa fa-edit fa-fw"></i> '.__('Editar'),
+													array('controller'=>'asuntos', 'action'=>'edit', $asunto['Asunto']['id']),
+													array(
+														'class'=>'btn btn-default btn-xs btn-block btn-edit-asunto',
+														'escape'=>false,
+													)
+												);
+											?>
+										<?php endif; ?>
+									<?php endif; ?>
 							<?php endif; ?>
-
 						</div>
 					</div>
 			</div>

@@ -4,22 +4,24 @@
 	<div class="progress-bar progress-bar-primary progress-bar-striped"></div>
 </div>
 
-<div class="file-box">
-	<div class="file">
-		<div class="fileinput-button">
-			<input id="fileupload" type="file" name="file" />
-			<div class="icon">
-				<i class="fa fa-plus"></i>
-			</div>
-			<span class="text-progress text-muted"></span>
-			<div class="file-name">
-				<span><strong><i class="fa fa-upload fa-fw"></i> Agregar Archivo...</strong></span>
-				<br>
-				<small>&nbsp;</small>
+<?php if(!$proyecto_bloqueado): ?>
+	<div class="file-box">
+		<div class="file">
+			<div class="fileinput-button">
+				<input id="fileupload" type="file" name="file" />
+				<div class="icon">
+					<i class="fa fa-plus"></i>
+				</div>
+				<span class="text-progress text-muted"></span>
+				<div class="file-name">
+					<span><strong><i class="fa fa-upload fa-fw"></i> Agregar Archivo...</strong></span>
+					<br>
+					<small>&nbsp;</small>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+<?php endif; ?>
 
 <?php foreach ($archivos as $archivo) { ?>
 	<div class="file-box">
@@ -37,10 +39,12 @@
 			?>
 
 			<?php
-				echo $this->Html->link('<i class="fa fa-times"></i>',
-						array('controller'=>'archivos','action'=>'delete',$archivo['Archivo']['id']),
-						array('class'=>'delete-file file-modal-link','escape'=>false)
-					);
+				if(!$proyecto_bloqueado){
+					echo $this->Html->link('<i class="fa fa-times"></i>',
+							array('controller'=>'archivos','action'=>'delete',$archivo['Archivo']['id']),
+							array('class'=>'delete-file file-modal-link','escape'=>false)
+						);
+				}
 			?>
 
 			<a href="<?php echo $url;?>" title="<?php echo $archivo['Archivo']['nombre'];?>" target="_blank">
