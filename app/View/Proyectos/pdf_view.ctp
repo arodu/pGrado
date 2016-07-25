@@ -1,5 +1,6 @@
 <?php
 error_reporting(false);
+//debug($proyecto);
 
 $verf = crypt($proyecto['Proyecto']['id'].$proyecto['Revision'][0]['updated'], 'rl');
 

@@ -108,7 +108,6 @@ class JuradosController extends AppController {
 		$this->set(compact(array('cant_proyectos', 'empty')));
 	}
 
-
 	public function grupo_meta($grupo_id, $fase_id){
 
 		$this->layout = 'ajax';
@@ -152,6 +151,10 @@ class JuradosController extends AppController {
 
 
 	public function cartas_asignacion_defensa($grupo_id = null, $proyecto_id = null ){
+
+		$proyecto_id = ( isset($this->request->named['proyecto']) ? $this->request->named['proyecto'] : $proyecto_id );
+		$grupo_id = ( isset($this->request->named['grupo']) ? $this->request->named['grupo'] : $grupo_id );
+
 		$this->layout = 'vacio';
 		//$this->layout = 'pdfMultiPage';
 
@@ -225,6 +228,9 @@ class JuradosController extends AppController {
 	}
 
 	public function actas_evaluacion_defensa($grupo_id = null, $proyecto_id = null ){
+
+		$proyecto_id = ( isset($this->request->named['proyecto']) ? $this->request->named['proyecto'] : $proyecto_id );
+		$grupo_id = ( isset($this->request->named['grupo']) ? $this->request->named['grupo'] : $grupo_id );
 
 		$this->layout = 'vacio';
 		$this->set('title_for_layout','actasEvaluacionDefensa');

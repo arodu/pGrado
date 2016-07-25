@@ -102,7 +102,7 @@ class ProyectosController extends AppController {
       return $proyectos_autor;
     }
 
-		public function index_estudiante() {
+		/*public function index_estudiante() {
 			$proyectos_autor = $this->Proyecto->Autor->find('list',array(
 					'conditions'=>array(
 						'Autor.usuario_id'=>$this->Auth->user('id'),
@@ -234,10 +234,9 @@ class ProyectosController extends AppController {
 
 			$this->render('new_index');
 		}
+    */
 
 		public function view($id = null){
-      if (!$this->Proyecto->exists($id)) { throw new NotFoundException(__('Invalid proyecto')); }
-
       $this->allowProyecto($id);
 
       $proyecto = $this->Proyecto->find('first', array(
@@ -294,18 +293,38 @@ class ProyectosController extends AppController {
 		public function printView($id = null){
 			$this->layout = 'print';
 			$this->view($id);
-            //$this->render("Planillas/print_proyecto");
+      //$this->render("Planillas/print_proyecto");
 		}
 
     public function pdf_view($id = null){
+      $this->allowProyecto($id);
+
 			$this->layout = 'printPdf';
-			$this->view($id);
-      $this->response->type('application/pdf');
       $this->set('title_for_layout', 'planilla001_'.$id);
 
-      //$this->set( 'verificacion', $this->genCodeVerificacion('001/'.$proyecto['Revision'][0]['id'] ));
+      $proyecto = $this->Proyecto->find('first', array(
+        'conditions' => array('Proyecto.id' => $id),
+        'contain'=>array(
+          'Categoria','Sede','Fase','Grupo','Estado','Programa',
+          'Escenario',
+          'Autor'=>array(
+            'TipoAutor',
+            'Usuario'=>array(
+              'DescripcionUsuario',
+              'fields'=>array('cedula','cedula_nombre_completo','nombre_completo','id','email'),
+            )
+          ),
+          'Revision'=>array(
+            //'fields'=>array('id','titulo','updated'),
+            'order'=>array('Revision.updated'=>'DESC'),
+            'limit'=>'1',
+            'Usuario'=>array('fields'=>array('nombre_completo','id'))
+          )
+        )
+      ));
 
-      //$this->render("Planillas/print_proyecto");
+      $this->response->type('application/pdf');
+      $this->set(compact('proyecto'));
 		}
 
 		public function add() {

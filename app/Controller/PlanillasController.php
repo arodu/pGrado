@@ -41,20 +41,7 @@ class PlanillasController extends AppController {
 		$this->response->type('application/pdf');
 		$this->set('title_for_layout','aprobacionPropuesta');
 
-		if (!$this->Proyecto->exists($proyecto_id)) {
-			throw new NotFoundException(__('Invalid proyecto'));
-		}
-
-		$proyecto_autor = $this->Proyecto->Autor->find('first',array(
-				'conditions'=>array('Autor.proyecto_id'=>$proyecto_id,'Autor.usuario_id'=>$this->Auth->user('id'),'Autor.activo'=>1),
-				'contain'=>array('TipoAutor')
-			));
-
-		$userInfo = $this->Permit->user();
-
-		if(empty($proyecto_autor) || !$userInfo['coordpg'] || !$userInfo['root']){
-			throw new ForbiddenException(); // Proyecto no Pertenece al Usuario Actual
-		}
+		$this->allowProyecto($proyecto_id);
 
 		$planilla = $this->Planilla->find('first',array(
 			'conditions'=>array(
@@ -75,8 +62,8 @@ class PlanillasController extends AppController {
 		$jurados = $this->Proyecto->Autor->Usuario->find('all',array(
 				'conditions'=>array( 'Usuario.id' => $planillaData->jurados_id ),
 				'fields'=>array('id','cedula','nombre_completo'),
-				'recursive'=>-1
-,			));
+				'recursive'=>-1,
+			));
 
 		$options = array(
 			'conditions' => array('Proyecto.id' => $proyecto_id),

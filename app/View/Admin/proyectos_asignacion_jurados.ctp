@@ -13,7 +13,6 @@
 <section class="content">
 	<?php echo $this->Flash->render(); ?>
 
-
 	<?php echo $this->Form->create('Proyecto',array('inputDefaults'=>array('div'=>array('class'=>'form-group col-md-12 required'),'class'=>'form-control'))); ?>
 
 	<div class="row">
@@ -58,18 +57,16 @@
 							</div>
 						</li>
 
-
-						<li class="item">
-
-							<div class="form-group col-sm-4 col-xs-6">
-						      <p class="form-control form-control-static">Tutor Académico</p>
-						  </div>
-							<div class="form-group col-sm-7 col-xs-6">
-						      <p class="form-control form-control-static"><?php echo $tutoracad['Usuario']['nombre_completo'] ?></p>
-							</div>
-
-						</li>
-
+						<?php if(!empty($tutoracad)): ?>
+							<li class="item">
+								<div class="form-group col-sm-4 col-xs-6">
+							      <p class="form-control form-control-static">Tutor Académico</p>
+							  </div>
+								<div class="form-group col-sm-7 col-xs-6">
+							      <p class="form-control form-control-static"><?php echo $tutoracad['Usuario']['nombre_completo'] ?></p>
+								</div>
+							</li>
+						<?php endif; ?>
 
 						<?php $i = 0; ?>
 
@@ -174,31 +171,28 @@
 				<div class="box-footer">
 					<?php echo $this->Form->submit('Guardar',array('class'=>'btn btn-primary', 'div'=>false)); ?>
 					<?php echo $this->Form->reset('Reset',array('class'=>'btn btn-default', 'div'=>false)); ?>
-					<?php echo $this->Html->link('Cancelar',array('action'=>'view',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default')); ?>
+					<?php echo $this->Html->link('Cancelar',array('controller'=>'proyectos', 'action'=>'view',$proyecto['Proyecto']['id']),array('class'=>'btn btn-default')); ?>
 				</div>
 
 			</div>
 
 		</div>
-
-		<div class="col-sm-3">
+	</div>
+	<div class="row">
+		<div class="col-sm-9">
 			<div class="box box-success">
-				<!--<div class="box-header">
-					<h4 class="text-justify">Proyectos</h4>
-				</div> -->
 				<div class="box-body">
 
-					<?php
+					<?php if($fase['Fase']['code'] == 'defensa'): ?>
+							<?php echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Carta de Asignación',
+									array('controller'=>'jurados','action'=>'cartas_asignacion_defensa','proyecto'=>$proyecto['Proyecto']['id'],'admin'=>false),
+									array('class'=>'btn btn-success ','target'=>'_blank','escape'=>false)); ?>
 
-						if($fase['Fase']['code'] == 'defensa'){
-							echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Carta de Asignación',
-									array('controller'=>'jurados','action'=>'cartas_asignacion_defensa',0,$proyecto['Proyecto']['id'],'admin'=>false),
-									array('class'=>'btn btn-success btn-block','target'=>'_blank','escape'=>false));
-							echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Acta de Evaluación',
-								array('controller'=>'jurados','action'=>'actas_evaluacion_defensa',0,$proyecto['Proyecto']['id'],'admin'=>false),
-								array('class'=>'btn btn-success btn-block','target'=>'_blank','escape'=>false));
-						}
-					?>
+							<?php echo $this->Html->link('<i class="fa fa-print fa-fw"></i> Acta de Evaluación',
+								array('controller'=>'jurados','action'=>'actas_evaluacion_defensa','proyecto'=>$proyecto['Proyecto']['id'],'admin'=>false),
+								array('class'=>'btn btn-success','target'=>'_blank','escape'=>false)); ?>
+					<?php endif; ?>
+
 				</div>
 			</div>
 		</div>

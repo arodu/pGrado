@@ -71,7 +71,7 @@
 				'jurados'=>array(
 						'datos_impresion'=>array('coordpg'),
 						'editar_datos_impresion'=>array('coordpg'),
-						'view' => array('loged'),	
+						'view' => array('loged'),
 
 						'grupo_meta'=>array('coordpg'),
 						'buscar_proyectos'=>array('coordpg'),
@@ -104,10 +104,10 @@
 				),
 
 				'planillas'=>array(
-						'aprobacionPropuesta'=>array('estudiante'),
+						'aprobacionPropuesta'=>'loged',
 						'verificar'=>array('coordpg'),
 						'asignacion_jurados'=>array('coordpg'),
-					),
+				),
 
 				'usuarios'=>array(
 						'index'=>'loged',

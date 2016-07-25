@@ -44,6 +44,10 @@
 
 </section>
 
+<?php $this->Html->css('/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min', array('inline'=>false)); ?>
+<?php $this->Html->script('/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min', array('inline'=>false)); ?>
+<?php $this->Html->script('/libs/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min', array('inline'=>false)); ?>
+
 <?php echo $this->Html->scriptStart(array('inline'=>false)); ?>
 	$('.ajaxForm').ajaxFormulario('#grupo-meta');
 <?php echo $this->Html->scriptEnd(); ?>

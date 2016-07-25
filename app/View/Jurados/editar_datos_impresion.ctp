@@ -29,6 +29,7 @@
         				'type'=>'text',
         				'class'=>'datepicker form-control',
         				'placeholder'=>'dd-mm-yyyy',
+                'readonly'=>true,
         				'div'=>array('class'=>'form-group col-md-4 required')
         			));
 
@@ -38,6 +39,7 @@
         				'type'=>'text',
         				'class'=>'datepicker form-control',
         				'placeholder'=>'dd-mm-yyyy',
+                'readonly'=>true,
         				'div'=>array('class'=>'form-group col-md-4 required')
         			));
         ?>
@@ -49,13 +51,17 @@
           <?php
             echo $this->Html->link(
               'Comunicaciones',
-              array('controller'=>'jurados', 'action'=>'cartas_asignacion_defensa',$this->Form->value('GrupoMeta.grupo_id')),
+              array('controller'=>'jurados', 'action'=>'cartas_asignacion_defensa', 'grupo'=>$this->Form->value('GrupoMeta.grupo_id')),
               array('class'=>'btn btn-success', 'target'=>'blank')
             );
           ?>
-
-          <?php //echo $this->bsForm->button('Comunicaciones', array('type'=>'submit', 'name'=>'btn','value'=>'comunicaciones', 'class'=>'btn btn-success')); ?>
-          <?php //echo $this->bsForm->button('Actas de Evaluación', array('type'=>'submit', 'name'=>'btn','value'=>'actas_evaluacion', 'class'=>'btn btn-success')); ?>
+          <?php
+            echo $this->Html->link(
+              'Actas de Evaluación',
+              array('controller'=>'jurados', 'action'=>'actas_evaluacion_defensa', 'grupo'=>$this->Form->value('GrupoMeta.grupo_id')),
+              array('class'=>'btn btn-success', 'target'=>'blank')
+            );
+          ?>
         <?php endif; ?>
 
       </div>
@@ -66,4 +72,12 @@
 
 <?php echo $this->Html->scriptStart(array('inline'=>false)); ?>
 	$('.ajaxForm').ajaxFormulario('#grupo-meta');
+  $('.datepicker').datepicker({
+    format: "yyyy-mm-dd",
+    maxViewMode: 2,
+    language: "es",
+    orientation: "auto left",
+    todayHighlight: true
+  });
+
 <?php echo $this->Html->scriptEnd(); ?>

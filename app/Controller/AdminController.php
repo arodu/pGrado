@@ -192,8 +192,6 @@ class AdminController extends AppController {
       return $this->redirect(array('controller'=>'proyectos', 'action'=>'view', $proyecto_id));
     }
 
-
-
     if ($this->request->is(array('post', 'put'))) {
 
       ksort($this->request->data['Jurado']);
@@ -274,7 +272,7 @@ class AdminController extends AppController {
         'conditions'=>array(
           'Usuario.tipo_usuario_id' =>  $this->Proyecto->Autor->Usuario->TipoUsuario->findIdByCode('profesor'),
           'NOT'=>array(
-            'Usuario.id'=>$tutoracad['Autor']['usuario_id'],
+            'Usuario.id'=>@$tutoracad['Autor']['usuario_id'],
           )
         ),
         'fields'=>array('id','nombre_completo'),
