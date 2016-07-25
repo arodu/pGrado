@@ -83,7 +83,7 @@ class AutorsController extends AppController {
 					$this->Autor->create();
 					if( $this->Autor->save($data) ){
 						$this->Flash->call_success('Estudiante agregado con exito al Proyecto');
-						$this->sistemaComentario($proyecto_id, 'Nuevo estudiante agregado <span class="sub-comment">'.$estudiante['Usuario']['nombre_completo'].'</span>');
+						$this->sistemaComentario($proyecto_id, 'Estudiante agregado <span class="sub-comment">'.$estudiante['Usuario']['nombre_completo'].'</span>');
 						$success = true;
 					}else{
 						$this->Flash->call_error('Ha ocurrido un error guardando los datos.');
@@ -305,6 +305,9 @@ class AutorsController extends AppController {
 				$this->Session->setFlash(__('Ha aceptado la solicitud, ya puede ingresar al proyecto.'),'alert/success');
 
 
+				//$estudiante = $this->Autor->Usuario->getField(array('nombre_completo'), $autor['Autor']['usuario_id']);
+				$this->sistemaComentario($proyecto_id, 'Solicitud de ingreso al proyecto <strong>Aceptada</strong>');
+
 				/**/ // MENSAJES
 				// Guardar Mensaje
 				//$this->Mensaje->saveMensaje( $usuarios_id, 'autor-solsi', $autor['Usuario']['nombre_completo'].' ha aceptado la solicitud de pertenecer al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
@@ -333,6 +336,7 @@ class AutorsController extends AppController {
 				if ($this->Autor->delete()) {
 					$this->Flash->alert_warning(__('No ha aceptado la solicitud, el proyecto se ha borrado de su listado de proyectos.'));
 
+					$this->sistemaComentario($proyecto_id, 'Solicitud de ingreso al proyecto <strong>Rechazada</strong>');
 					/**/ // MENSAJES
 					// Guardar Mensaje
 					//$this->Mensaje->saveMensaje( $usuarios_id, 'autor-solno', $autor['Usuario']['nombre_completo'].' NO ha aceptado la solicitud de pertenecer al Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );

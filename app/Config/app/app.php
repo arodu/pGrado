@@ -17,7 +17,7 @@
 			$minor	= '3';
 			$update	= '';
 			$bdd	= '3';
-			$state	= 'rs1';
+			$state	= 'rc1';
 			$coment = '';
 
 			$versionLargo = $mayor.'.'.$minor.( ( $update=='' ? '' : '.'.$update) ).'-'.$bdd.' '.( ( $state=='' ? '' : $state) ).' '.( $coment=='' ? '' : '('.$coment.')') ; // 0.3.1-3 alfa (designer)
