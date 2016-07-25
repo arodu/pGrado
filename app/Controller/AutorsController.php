@@ -83,6 +83,7 @@ class AutorsController extends AppController {
 					$this->Autor->create();
 					if( $this->Autor->save($data) ){
 						$this->Flash->call_success('Estudiante agregado con exito al Proyecto');
+						$this->sistemaComentario($proyecto_id, 'Nuevo estudiante agregado <span class="sub-comment">'.$estudiante['Usuario']['nombre_completo'].'</span>');
 						$success = true;
 					}else{
 						$this->Flash->call_error('Ha ocurrido un error guardando los datos.');
@@ -131,6 +132,14 @@ class AutorsController extends AppController {
 			$this->Autor->id = $id;
 			if($this->checkUserPassword($this->request->data['Autor']['user_password'])){
 				if ($this->Autor->delete()) {
+
+					if( $autor['Autor']['usuario_id'] == $this->Auth->user('id')){
+						$this->sistemaComentario($autor['Autor']['proyecto_id'], 'Renuncia al proyecto');
+					}else{
+						$estudiante = $this->Autor->Usuario->getField(array('nombre_completo'), $autor['Autor']['usuario_id']);
+						$this->sistemaComentario($autor['Autor']['proyecto_id'], 'Estudiante eliminado <span class="sub-comment">'.$estudiante['Usuario']['nombre_completo'].'</span>');
+					}
+
 					$this->Flash->call_success(__('Estudiante Eliminado con exito'));
 					$success = true;
 				}else{
@@ -199,6 +208,10 @@ class AutorsController extends AppController {
 					if( $this->Autor->save($this->request->data) ){
 						$this->Flash->call_success($tipoAutor['TipoAutor']['nombre'].' agregado con exito al Proyecto');
 						$success = true;
+
+						$tutor = $this->Autor->Usuario->getField(array('nombre_completo'), $this->request->data['Autor']['usuario_id']);
+						$this->sistemaComentario($proyecto_id, $tipoAutor['TipoAutor']['nombre'].' agregado <span class="sub-comment">'.$tutor['Usuario']['nombre_completo'].'</span>');
+
 					}else{
 						$this->Flash->call_error('Ha ocurrido un error guardando los datos.');
 					}
@@ -230,6 +243,14 @@ class AutorsController extends AppController {
 				if ($this->Autor->delete()) {
 					$this->Flash->call_success($tipoAutor['TipoAutor']['nombre'].__(' eliminado con exito'));
 					$success = true;
+
+					if( $autor['Autor']['usuario_id'] == $this->Auth->user('id')){
+						$this->sistemaComentario($autor['Autor']['proyecto_id'], 'Renuncia al proyecto');
+					}else{
+						$tutor = $this->Autor->Usuario->getField(array('nombre_completo'), $autor['Autor']['usuario_id']);
+						$this->sistemaComentario($autor['Autor']['proyecto_id'], $tipoAutor['TipoAutor']['nombre'].' agregado <span class="sub-comment">'.$tutor['Usuario']['nombre_completo'].'</span>');
+					}
+
 				}else{
 					$this->Flash->alert_error(__('Ha ocurrido un error elimiando al '.$tipoAutor['TipoAutor']['nombre'].'.'));
 				}

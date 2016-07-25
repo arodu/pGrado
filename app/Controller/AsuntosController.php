@@ -61,6 +61,7 @@ class AsuntosController extends AppController {
 			if ($this->Asunto->save($this->request->data)) {
 				$this->Asunto->Meta->review($proyecto_id);
 				$this->Flash->call_success(__('The asunto has been saved.'));
+				$this->sistemaComentario($proyecto_id, 'Nuevo asunto creado <span class="sub-comment">#'.$this->request->data['Asunto']['num_secuencia'].'</span>');
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));
@@ -74,14 +75,15 @@ class AsuntosController extends AppController {
 	public function edit($id = null) {
 		$this->layout = 'ajax';
 		if (!$this->Asunto->exists($id)) { throw new NotFoundException(__('Invalid asunto')); }
-		$this->allowProyecto($proyecto_id);
 		$proyecto_id = $this->Asunto->find('proyecto_id', array('conditions'=>array('Asunto.id'=>$id)));
+		$this->allowProyecto($proyecto_id);
 		$this->userOwner($this->Asunto, $id);
 		$success = false;
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Asunto->save($this->request->data)) {
 				$this->Asunto->Meta->review($proyecto_id);
 				$this->Flash->call_success(__('The asunto has been saved.'));
+				$this->sistemaComentario($proyecto_id, 'Asunto editado <span class="sub-comment">#'.$this->request->data['Asunto']['num_secuencia'].'</span>');
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));
@@ -112,6 +114,13 @@ class AsuntosController extends AppController {
 			if ($this->Asunto->save($data)) {
 				$this->Asunto->Meta->review($asunto['Asunto']['proyecto_id']);
 				$this->Flash->call_success(__('The asunto has been saved.'));
+
+				if($cerrado){
+					$this->sistemaComentario($asunto['Asunto']['proyecto_id'], 'Asunto cerrado <span class="sub-comment">#'.$asunto['Asunto']['num_secuencia'].'</span>');
+				}else{
+					$this->sistemaComentario($asunto['Asunto']['proyecto_id'], 'Asunto abierto <span class="sub-comment">#'.$asunto['Asunto']['num_secuencia'].'</span>');
+				}
+
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The asunto could not be saved. Please, try again.'));

@@ -1,134 +1,80 @@
+<div class="btn-group pull-right">
+	<?php
+		echo $this->Form->button('<i class="fa fa-comments fa-fw"></i> '.__('Todos'),array(
+			'type' => 'button',
+			'class'=>'reload btn btn-default btn-sm',
+			'data-url'=> $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id)),
+		));
+	?>
+	<?php
+		echo $this->Form->button('<i class="fa fa-users fa-fw"></i> '.__('Usuarios'),array(
+			'type' => 'button',
+			'class'=>'reload btn btn-default btn-sm',
+			'data-url'=> $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id,'users')),
+		));
+	?>
+	<?php
+		echo $this->Form->button('<i class="fa fa-desktop fa-fw"></i> '.__('Sistema'),array(
+			'type' => 'button',
+			'class'=>'reload btn btn-default btn-sm',
+			'data-url'=> $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id,'system')),
+		));
+	?>
+</div>
+<div class="clearfix"></div>
+
+<?php echo $this->Flash->render(); ?>
+
 <div class="tab-timeline">
 	<ul class="timeline">
-		<li>
-			<i class="fa fa-quote-left bg-gray"></i>
 
-			<div class="timeline-item">
-				<div class="timeline-body">
-					<?php echo $this->Form->create('Comentario',array('id'=>'form-coment', 'url'=>array('controller'=>'comentarios', 'action'=>'add'))); ?>
-						<?php echo $this->Form->hidden('proyecto_id', array('value'=>$proyecto_id)); ?>
-						<?php echo $this->Form->hidden('tipo', array('id'=>'form-tipo','value'=>'add')); ?>
-						<?php echo $this->Form->input('texto',array(
-									'type'=>'textarea',
-									'id'=>'add-coment',
-									'class'=>'form-control',
-									'label'=>false,
-									'placeholder'=>'Agregar Nuevo Comentario...',
-									'rows'=>'1',
-								)); ?>
-					<?php echo $this->Form->end(); ?>
+		<?php if($tipo!='system'): ?>
+			<li>
+				<i class="fa fa-quote-left bg-gray"></i>
+				<div class="timeline-item">
+					<div class="timeline-body">
+						<?php echo $this->Form->create('Comentario',array('class'=>'form-coment', 'url'=>array('controller'=>'comentarios', 'action'=>'add'))); ?>
+							<?php echo $this->Form->hidden('proyecto_id', array('value'=>$proyecto_id)); ?>
+							<?php echo $this->Form->hidden('tipo', array('id'=>'form-tipo','value'=>'add')); ?>
+							<?php echo $this->Form->input('texto',array(
+										'type'=>'textarea',
+										'class'=>'form-control add-coment',
+										'label'=>false,
+										'placeholder'=>'Agregar Nuevo Comentario...',
+										'rows'=>'1',
+									)); ?>
+						<?php echo $this->Form->end(); ?>
+					</div>
+					<div class="timeline-footer hidden">
+						<?php echo $this->Form->button('Publicar',array('type'=>'button','class'=>'btn btn-primary btn-coment'));?>
+					</div>
 				</div>
-				<div class="timeline-footer hidden">
-					<?php echo $this->Form->button('Publicar',array('type'=>'button','id'=>'btn-coment','class'=>'btn btn-primary'));?>
-				</div>
-			</div>
-		</li>
+			</li>
+		<?php endif; ?>
 
 		<?php $fecha = ""; ?>
 		<?php foreach ($comentarios as $comentario): ?>
 
-			<?php
-
-				$deleted = $comentario['Comentario']['eliminado'];
-				$edited = $comentario['Comentario']['created'] != $comentario['Comentario']['updated'];
-				$isMy = $user_active = $comentario['Usuario']['id'] == $userInfo['id'];
-
-				if($deleted){  // My Comment
-					$icon = array('bg'=>'bg-red','fa'=>'fa-trash', 'class'=>'');
-				}elseif($isMy and !$edited){
-					$icon = array('bg'=>'bg-blue','fa'=>'fa-comment fa-flip-horizontal', 'class'=>'');
-				}elseif($isMy and $edited){
-					$icon = array('bg'=>'bg-blue','fa'=>'fa-commenting fa-flip-horizontal', 'class'=>'');
-				}elseif(!$isMy and !$edited){
-					$icon = array('bg'=>'bg-green','fa'=>'fa-comment', 'class'=>'');
-				}elseif(!$isMy and $edited){
-					$icon = array('bg'=>'bg-green','fa'=>'fa-commenting', 'class'=>'');
-				}else{
-					$icon = array('bg'=>'bg-gray','fa'=>'fa-comments', 'class'=>'');
-				}
-
-			?>
-
 			<?php $coment_fecha = $this->General->niceDateFormatView($comentario['Comentario']['created']); ?>
 
-			<?php if($coment_fecha != $fecha){ ?>
-				<?php $fecha = $coment_fecha; ?>
-				<li class="time-label">
-					<span class="bg-blue">
-						<?php echo $fecha; ?>
-					</span>
-				</li>
-			<?php } ?>
+			<?php if($coment_fecha != $fecha): ?>
+			  <?php $fecha = $coment_fecha; ?>
+			  <li class="time-label">
+			    <span class="bg-blue">
+			      <?php echo $fecha; ?>
+			    </span>
+			  </li>
+			<?php endif; ?>
 
-			<li>
-				<i class="fa <?php echo $icon['fa'].' '.$icon['bg'];?>"></i>
-				<div class="timeline-item">
-					<h3 class="timeline-header <?php echo $icon['class'];?>" >
-						<span class="btn-perfil" data-id="<?php echo $comentario['Usuario']['id'];?>">
-							<?php echo $this->Custom->userFoto( $comentario['Usuario']['avatar'], 'xxs', array('class'=>'user-image img-circle','alt'=>'User Image','width'=>'20') ); ?>
-							<?php echo $comentario['Usuario']['nombre_completo'];?>
-						</span>
-						<br class="visible-xs">
-						<small class="time">
-							<i class="fa fa-clock-o fa-fw"></i>&nbsp;<?php echo $this->General->timeFormatView($comentario['Comentario']['created']);?>
-
-							<?php
-								if($comentario['Comentario']['eliminado'] == true ){
-									echo '<em>[Eliminado: '.$this->General->dateTimeFormatView($comentario['Comentario']['updated']).']</em>';
-								}elseif( $comentario['Comentario']['created'] != $comentario['Comentario']['updated']){
-									echo '<em>[Editado: '.$this->General->dateTimeFormatView($comentario['Comentario']['updated']).']</em>';
-								}
-							?>
-						</small>
-
-
-						<?php if($user_active and $comentario['Comentario']['eliminado'] == false): ?>
-							<div class="btn-group pull-right">
-
-								<a type="button" class="mano dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-caret-down fa-fw"></i></a>
-
-								<ul class="dropdown-menu" role="menu">
-									<li>
-										<?php
-											echo $this->Html->link(
-												'<i class="fa fa-edit fa-fw"></i>'.__('Editar'),
-												array('controller'=>'comentarios', 'action'=>'edit', $comentario['Comentario']['id']),
-												array('class'=>'comment-modal-link','escape'=>false)
-											);
-										?>
-									</li>
-									<li>
-										<?php
-											echo $this->Html->link(
-												'<i class="fa fa-trash fa-fw"></i>'.__('Eliminar'),
-												array('controller'=>'comentarios', 'action'=>'delete', $comentario['Comentario']['id']),
-												array('class'=>'comment-modal-link','escape'=>false)
-											);
-										?>
-									</li>
-								</ul>
-							</div>
-						<?php endif; ?>
-
-					</h3>
-
-					<?php if($comentario['Comentario']['eliminado'] == false ): ?>
-						<div class="timeline-body <?php echo $icon['class'];?>">
-							<?php
-								$text =	$comentario['Comentario']['texto'];
-								//$text = str_replace(" ", "&nbsp;", $text);
-								$text = str_replace("\n", "<br />", $text);
-
-								echo $text;
-							?>
-						</div>
-					<?php endif; ?>
-
-				</div>
-			</li>
+			<?php
+				if(!$comentario['Comentario']['sistema']){
+					echo $this->element('entity/comentario_user', array('comentario'=>$comentario));
+				}else{
+					echo $this->element('entity/comentario_system', array('comentario'=>$comentario));
+				}
+			 ?>
 
 		<?php endforeach; ?>
-
 
 		<li>
 			<i class="fa fa-clock-o bg-gray"></i>
@@ -153,21 +99,25 @@
 
 <script type="text/javascript">
 
-	autosize($('#add-coment'));
+	$('.reload').on('click', function(){
+		$('#tab-coment').recargar( $(this).data('url') );
+	});
 
-	$('#add-coment').focus(function(){
+	autosize($('.add-coment'));
+
+	$('.add-coment').focus(function(){
 		$(this).closest('.timeline-item').find('.timeline-footer').removeClass('hidden');
 	});
 
-	$('#btn-coment').click(function(){
-		$('#form-coment').submit();
+	$('.btn-coment').click(function(){
+		$('.form-coment').submit();
 	});
 
-	$('#form-coment').on('submit',function(){
-		var str = $('#add-coment').val();
+	$('.form-coment').on('submit',function(){
+		var str = $('.add-coment').val();
 		if(str.length > 0){
 			$.ajax({
-				url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'add'));?>",
+				url: "<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'add',$tipo));?>",
 				type: 'post',
 				data: {
 						texto: str,
@@ -175,13 +125,13 @@
 					},
 				dataType: 'html',
 				beforeSend: function(msg){
-					$('#btn-coment').attr('disabled',true);
+					$('.btn-coment').attr('disabled',true);
 				},
 				complete: function(msg){
-					$('#add-coment').val("");
+					$('.add-coment').val("");
 					$('#tab-coment').html(msg.responseText);
-					$('#btn-coment').attr('disabled',false);
-					$('#add-coment').focus();
+					$('.btn-coment').attr('disabled',false);
+					$('.add-coment').focus();
 				}
 			});
 		}
@@ -212,7 +162,7 @@
 			type: "POST",
 			complete: function(){
 				//$modal.find('.modal-body').html(result.responseText);
-				$('#tab-coment').recargar("<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id));?>");
+				$('#tab-coment').recargar("<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto_id,$tipo));?>");
 			},
 		});
 

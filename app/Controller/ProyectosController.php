@@ -387,6 +387,8 @@ class ProyectosController extends AppController {
             $meta['Meta'] = array('proyecto_id'=>$this->Proyecto->id, 'titulo'=>'default');
             if( !$this->Proyecto->Meta->save($meta) ){ $guardar = false; }
 
+            $this->sistemaComentario($this->Proyecto->id, "Proyecto Creado");
+
 						if( $guardar ){
 							$this->Session->setFlash(__('Su Propuesta ha sido guardada correctamente.'),'alert/success');
 
@@ -394,7 +396,8 @@ class ProyectosController extends AppController {
 								$proyecto_id = $this->Proyecto->id;
 								$usuarios_id = array($this->request->data['Autor']['tutor_id']);
 								$action = 'indexTutorAcad';
-								$this->Mensaje->saveMensaje( $usuarios_id, 'autor-inv', 'Lo han invitado a ser parte de un Proyecto, #'.$proyecto_id, array('controller'=>'proyectos','action'=>$action) );
+
+								//$this->Mensaje->saveMensaje( $usuarios_id, 'autor-inv', 'Lo han invitado a ser parte de un Proyecto, #'.$proyecto_id, array('controller'=>'proyectos','action'=>$action) );
 							}
 
 							return $this->redirect(array('action' => 'index'));

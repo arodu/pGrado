@@ -107,16 +107,18 @@ class RevisionsController extends AppController {
 			if ($this->Revision->save($this->request->data)) {
 				$this->Session->setFlash(__('The revision has been saved.'),'alert/success');
 
+				$this->sistemaComentario($revision['Revision']['proyecto_id'], "Actualización del Proyecto");
+
 			/**/ // MENSAJES
 			// Guardar Mensaje
-			$proyecto_id = $revision['Revision']['proyecto_id'];
-			$usuarios_id = $this->Revision->Proyecto->Autor->find( 'list', array(
-				'conditions'=>array(
-						'Autor.proyecto_id'=>$proyecto_id,
-						'Autor.activo'=>'1',
-						'Autor.usuario_id <>'=> $this->Auth->user('id')),
-				'fields'=>array('usuario_id')));
-			$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', $this->Auth->user('nombre_completo').' ha actualizado la revision del Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
+			//$proyecto_id = $revision['Revision']['proyecto_id'];
+			//$usuarios_id = $this->Revision->Proyecto->Autor->find( 'list', array(
+			//	'conditions'=>array(
+			//			'Autor.proyecto_id'=>$proyecto_id,
+			//			'Autor.activo'=>'1',
+			//			'Autor.usuario_id <>'=> $this->Auth->user('id')),
+			//	'fields'=>array('usuario_id')));
+			//$this->Mensaje->saveMensaje( $usuarios_id, 'proy-edit', $this->Auth->user('nombre_completo').' ha actualizado la revision del Proyecto #'.$proyecto_id, array('controller'=>'proyectos','action'=>'view',$proyecto_id) );
 			/**********************/
 
 				return $this->redirect(array('controller'=>'proyectos','action' => 'view',$revision['Revision']['proyecto_id']));

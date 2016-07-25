@@ -91,6 +91,33 @@
 												<span class="hidden-sm hidden-xs"><?php echo __('Comentarios'); ?></span>
 											</a>
 										</li>
+
+										<!-- <li class="dropdown">
+											<a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
+												<i class="fa fa-quote-left"></i>&nbsp;
+												<span class="hidden-sm hidden-xs"><?php echo __('Comentarios'); ?></span>
+												<span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu">
+												<li role="presentation">
+													<a href="#tab-coment" class="btn-tab-coment" data-toggle="tab" data-tipo="all" title="Todos los Comentarios">
+														<i class="fa fa-comments fa-fw"></i>Todos
+													</a>
+												</li>
+												<li role="presentation" class="divider"></li>
+												<li role="presentation">
+													<a href="#tab-coment-users" class="btn-tab-coment-users" data-toggle="tab" data-tipo="users" title="Comentarios de los Usuarios">
+														<i class="fa fa-users fa-fw"></i>Usuarios
+													</a>
+												</li>
+												<li role="presentation">
+													<a href="#tab-coment-system" class="btn-tab-coment-system" data-toggle="tab" data-tipo="system" title="Comentarios del Sistema">
+														<i class="fa fa-desktop fa-fw"></i>Sistema
+													</a>
+												</li>
+											</ul>
+										</li> -->
+
 									<?php } ?>
 
 								<?php // ----------------- BOTON TAB 4 ------------------- ?>
@@ -309,7 +336,7 @@
 				$('.btn-perfil, .btn-perfil-estudiante, .btn-perfil-tutor').popoverPerfil();
 
 			// ----------------- Cargar Comentarios -------------------
-				$('.box-body .btn-tab-coment').on('shown.bs.tab', function(event) {
+				$('.box-body .btn-tab-coment').on('show.bs.tab', function(event) {
 					$('#tab-coment').recargar("<?php echo $this->Html->url(array('controller'=>'comentarios','action'=>'index',$proyecto['Proyecto']['id']));?>");
 				});
 

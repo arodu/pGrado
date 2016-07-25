@@ -135,7 +135,7 @@ class ArchivosController extends AppController {
 
 					$this->Archivo->create();
 					if ($this->Archivo->save($data_archivo)) {
-						//return $this->redirect(array('action' => 'index',$proyecto_id));
+						$this->sistemaComentario($proyecto_id, 'Nuevo archivo agregado <span class="sub-comment">'.$file['name'].'</span>');
 						return $this->redirect(array('action' => 'index',$proyecto_id));
 					}
 				}else{
@@ -157,6 +157,7 @@ class ArchivosController extends AppController {
 			$path_to_files = Configure::read('sistema.archivos.proyectos');
 			if ($this->Archivo->delete()) {
 				$this->Flash->call_success(__('Archivo Eliminado.'));
+				$this->sistemaComentario($archivo['Archivo']['proyecto_id'], 'Archivo eliminado <span class="sub-comment">'.$archivo['Archivo']['nombre'].'</span>');
 				$success = true;
 				//$file = new File(WWW_ROOT.ltrim($video['Video']['ruta'], '/'));
 				//$file->delete();

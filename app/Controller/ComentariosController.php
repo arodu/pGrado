@@ -22,18 +22,19 @@ class ComentariosController extends AppController {
 							),
 					);
 
-		if($tipo == 'coment-users'){
-			$options['conditions'] = array_merge($options['conditions'], array('Comentario.usuario_id >'=>0));
-		}elseif($tipo == 'coment-system'){
-			$options['conditions'] = array_merge($options['conditions'], array('Comentario.usuario_id'=>0));
+		if($tipo == 'users'){
+			$options['conditions'] = array_merge($options['conditions'], array('Comentario.sistema'=>false));
+		}elseif($tipo == 'system'){
+			$options['conditions'] = array_merge($options['conditions'], array('Comentario.sistema'=>true));
 		}
+
 		$comentarios = $this->Comentario->find('all',$options);
-		$this->set('comentarios',$comentarios);
-		$this->set('proyecto_id',$proyecto_id);
+		$this->set(compact('tipo','comentarios','proyecto_id'));
 		// $this->set('proyecto_bloqueado', $this->Comentario->Proyecto->bloqueado($proyecto_id));
 	}
 
-	public function add() {
+	public function add($tipo = null) {
+
 		$this->layout = 'ajax';
 		if ($this->request->is('post')) {
 			$this->allowProyecto($this->request->data['proyecto_id']);
@@ -46,10 +47,11 @@ class ComentariosController extends AppController {
 
 				$this->Comentario->create();
 				if ($this->Comentario->save($comentario)) {
-					return $this->redirect(array('action' => 'index',$this->request->data['proyecto_id']));
+					return $this->redirect(array('action' => 'index',$this->request->data['proyecto_id'],$tipo));
 				}
 			}else{
-				return $this->redirect(array('action' => 'index',$this->request->data['proyecto_id']));
+				$this->Flash->alert_error('No se ha podido enviar el comentario');
+				return $this->redirect(array('action' => 'index',$this->request->data['proyecto_id'],$tipo));
 			}
 		}
 		throw new InternalErrorException();

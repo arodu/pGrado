@@ -168,5 +168,22 @@ class AppController extends Controller {
 		throw new ForbiddenException(__('Permiso Denegado!'));
 	}
 
+	public function sistemaComentario($proyecto_id, $mensaje, $usuario_id = null){
+		$this->loadModel('Comentario');
+		$usuario_id = ( $usuario_id == null ? $this->Auth->user('id') : $usuario_id );
+
+		$data['Comentario'] = array(
+			'usuario_id'=>$usuario_id,
+			'texto'=>$mensaje,
+			'proyecto_id'=>$proyecto_id,
+			'sistema'=>true,
+		);
+
+		if($this->Comentario->save($data)){
+			return true;
+		}
+		return false;
+	}
+
 
 }

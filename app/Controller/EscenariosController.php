@@ -27,6 +27,7 @@ class EscenariosController extends AppController {
 
 		if($this->request->is(array('post', 'put')) and !$success){
 			if ($this->Escenario->save($this->request->data)) {
+				$this->sistemaComentario($proyecto_id, 'Escenario editado');
 				$this->Flash->call_success('Escenario guardado con exito');
 				$success = true;
 			}else{

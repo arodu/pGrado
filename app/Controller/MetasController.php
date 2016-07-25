@@ -67,6 +67,7 @@ class MetasController extends AppController {
 			if ($this->Meta->save($this->request->data)) {
 				$this->Meta->review($proyecto_id);
 				$this->Flash->call_success(__('Nueva Meta guardada con exito!'));
+				$this->sistemaComentario($proyecto_id, 'Nueva meta creada <span class="sub-comment">'.$this->request->data['Meta']['titulo'].'</span>');
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
@@ -94,6 +95,7 @@ class MetasController extends AppController {
 			if ($this->Meta->save($this->request->data)) {
 				$this->Meta->review($proyecto_id);
 				$this->Flash->call_success(__('The meta has been saved.'));
+				$this->sistemaComentario($proyecto_id, 'Meta editada <span class="sub-comment">'.$this->request->data['Meta']['titulo'].'</span>');
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
@@ -123,6 +125,13 @@ class MetasController extends AppController {
 			if ($this->Meta->save($data)) {
 				$this->Meta->review($meta['Meta']['proyecto_id']);
 				$this->Flash->call_success(__('The meta has been saved.'));
+
+				if($meta['Meta']['cerrado']){
+					$this->sistemaComentario($meta['Meta']['proyecto_id'], 'Meta abierta <span class="sub-comment">'.$meta['Meta']['titulo'].'</span>');
+				}else{
+					$this->sistemaComentario($meta['Meta']['proyecto_id'], 'Meta cerrada <span class="sub-comment">'.$meta['Meta']['titulo'].'</span>');
+				}
+
 				$success = true;
 			} else {
 				$this->Flash->call_error(__('The meta could not be saved. Please, try again.'));
