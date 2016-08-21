@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('File', 'Utility');
+
 class PagesController extends AppController {
 
 /**
@@ -13,6 +15,55 @@ class PagesController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		// $this->Auth->allow('creditos');
+	}
+
+	public function chat(){
+		if($this->request->is('post')){
+			//$file = Configure::read('sistema.archivos.misc') . 'info.txt';
+			//debug(file_get_contents($filename));
+			//exit();
+		}
+		//debug(date('now').': Mensaje nuevo');
+	}
+
+	public function pull( $last = 0 ){ // Rescatar Info
+		$file = Configure::read('sistema.archivos.misc') . 'info.txt';
+
+		$lastAccess = filemtime($file);
+		while($lastAccess <= $last){
+		    clearstatcache();
+			$lastAccess = filemtime($file);
+			sleep(1);
+			//flush();
+			session_write_close();
+		}
+
+		$list = array('success'=>true, 'msg'=>'mensaje', 'last'=>$lastAccess);
+
+		$this->response->type('json');
+		$this->response->body(json_encode($list));
+		return $this->response;
+	}
+
+	public function messages(){
+		$this->layout = 'ajax';
+		$file = Configure::read('sistema.archivos.misc') . 'info.txt';
+
+		if($this->request->is('post')){
+			//debug($this->Auth->user());
+			debug($this->request->data);
+		
+			$mensaje = '['.date('Y-m-d H:i:s').'] '.$this->Auth->user('nombre_completo').': '.$this->request->data['add'].'<br/>';
+			//echo $mensaje;
+			file_put_contents($file, $mensaje, FILE_APPEND | LOCK_EX);
+			flush();
+			exit();
+		}
+		$out = file_get_contents($file);
+		$out = str_replace(" ", "&nbsp;", $out);
+		$out = str_replace("\n", "<br/>", $out);
+		echo $out;
+		exit();
 	}
 
 	public function test(){

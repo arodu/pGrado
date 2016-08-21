@@ -44,6 +44,7 @@
 		$config['sistema']['archivos']['proyectos'] = ROOT.DS.APP_DIR.DS.'files'.DS.'proyectos'.DS;
 		$config['sistema']['archivos']['usuarios'] = ROOT.DS.APP_DIR.DS.'files'.DS.'usuarios'.DS;
 		$config['sistema']['archivos']['backups'] = ROOT.DS.APP_DIR.DS.'files'.DS.'backups'.DS;
+		$config['sistema']['archivos']['misc'] = ROOT.DS.APP_DIR.DS.'files'.DS.'misc'.DS;
 
 		$config['sistema']['archivos']['avatar']['default'] = 'avatar'.DS.'default'.DS;
 		$config['sistema']['archivos']['avatar']['md'] = 'avatar'.DS.'md'.DS;

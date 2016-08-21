@@ -155,12 +155,16 @@
 
 				'pages'=>array(
 						'index'=>'loged',
-						'test'=>array('loged'),
 						'creditos'=>'loged',
 						'descargas'=>'loged',
-						'file_upload'=>'loged',
+						//'file_upload'=>'loged',
 						'error'=>'loged',
-						'directorio'=>array('coordpg'),
+						//'directorio'=>array('coordpg'),
+
+						'test'=>'loged',
+						'chat'=>'loged',
+						'pull'=>'loged',
+						'messages'=>'loged',
 					),
 
 					'descargas'=>array(

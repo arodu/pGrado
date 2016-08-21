@@ -1,5 +1,6 @@
 ## TODO
 * Arregla HTML en la carta de evaluacion y asignacion
+* Crear modulo de tareas con las metas incorporadas y las etiquetas, parecido a github
 
 * Bloquear proyectos/view cuando usuario sea jurado
 

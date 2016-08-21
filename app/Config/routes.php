@@ -33,6 +33,7 @@
 	Router::connect('/foto/*', array('controller' => 'usuarios', 'action' => 'getFoto'));
 
 	Router::connect('/verf', array('controller' => 'planillas', 'action' => 'verificar'));
+	Router::connect('/chat', array('controller' => 'pages', 'action' => 'chat'));
 
 	Router::connect('/panel_admin', array('controller' => 'usuarios', 'action' => 'login','plugin'=>'panel_admin'));
 
