@@ -17,6 +17,7 @@ class UsuariosController extends AppController {
 			parent::beforeFilter();
 			// Allow users to register and logout.
 			$this->Auth->allow('register','recover','logout','login');
+			//$this->Auth->allow('register','recover','logout','login','index','edit');
 		}
 
 		public function beforeRender(){
@@ -626,3 +627,4 @@ class UsuariosController extends AppController {
 		}
 
 }
+
